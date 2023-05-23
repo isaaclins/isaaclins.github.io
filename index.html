@@ -90,18 +90,27 @@
     </footer>
 
     <script>
-      var cursorSvg = document.getElementById('clickable-cursor-svg');
+    var cursorSvg = document.getElementById('clickable-cursor-svg');
 
-      document.addEventListener('mousemove', function (event) {
-        var x = event.clientX;
-        var y = event.clientY;
+    document.addEventListener('mousemove', function(event) {
+      var x = event.clientX;
+      var y = event.clientY;
 
-        cursorSvg.style.left = x + 'px';
-        cursorSvg.style.top = y + 'px';
-      });
+      cursorSvg.style.left = x + 'px';
+      cursorSvg.style.top = y + 'px';
 
-  
-      setInterval(createSnowflake, 200);
+      var windowWidth = window.innerWidth;
+      var windowHeight = window.innerHeight;
+      var svgWidth = cursorSvg.offsetWidth;
+      var svgHeight = cursorSvg.offsetHeight;
+      // Check if the SVG touches the window's border
+      if (x <= 10 || x + svgWidth >= windowWidth || y <= 
+      30 || y + svgHeight >= windowHeight) {
+        cursorSvg.style.display = 'none'; // Hide the SVG element
+      } else {
+        cursorSvg.style.display = 'block'; // Show the SVG element
+      }
+    });
     </script>
   </body>
 </html>
