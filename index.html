@@ -111,6 +111,28 @@
         cursorSvg.style.display = 'block'; // Show the SVG element
       }
     });
+
+
+
+
+    window.addEventListener('DOMContentLoaded', function() {
+  // Check if the user is accessing the website on a mobile device
+  var isMobile = /iPhone|iPad|iPod|Android|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  
+  // Function to remove the element with id="clickable-cursor-svg"
+  function removeElement(elementId) {
+    var element = document.getElementById(elementId);
+    if (element) {
+      element.parentNode.removeChild(element);
+    }
+  }
+  
+  // Remove the element if the user is on a mobile device
+  if (isMobile) {
+    removeElement('clickable-cursor-svg');
+  }
+});
+
     </script>
   </body>
 </html>
