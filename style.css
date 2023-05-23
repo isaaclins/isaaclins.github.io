@@ -1,0 +1,28 @@
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  top: 500%;
+}
+#profilepic {
+  height: 100px;
+}
+.middle-pic {
+  top: 35%;
+}
+:root {
+  cursor: none;
+  height: 200%;
+}
+#clickable-cursor-svg {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: rotate(270deg);
+}
+footer {
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+}
