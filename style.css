@@ -1,33 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap');
+
+.text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
 body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  top: 500%; 
+  top: 500%;
 }
+
 #profilepic {
   height: 100px;
 }
+
 .middle-pic {
   top: 35%;
 }
+
 :root {
   cursor: none;
   height: 200%;
 }
+
 #clickable-cursor-svg {
   position: fixed;
   pointer-events: none;
   z-index: 9999;
   transform: rotate(270deg);
 }
+
 footer {
   position: absolute;
   bottom: -100%;
   left: 0;
   width: 100%;
 }
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap');
 
-.text{
-  font-family: 'Plus Jakarta Sans', sans-serif;
+#headertextcustom {
+  text-decoration: none;
+  color: #000000;
+  position: relative;
+  position: middle;
+}
+
+#headertextcustom :hover {
+  text-decoration: underline;
+  color: #000000;
+  position: relative;
+  position: middle;
+}
+
+.outofbox {
+  visibility: hidden;
+}
+.backgroundsvg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  visibility: hidden;
+}
+
+.backgroundsvg svg {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  animation: fluidDrop 10s linear infinite;
+  visibility: hidden;
+}
+
+@keyframes falling {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+@keyframes fluidDrop {
+  from {
+    top: 0px;
+  }
+  to {
+    top: 200%;
+  }
 }
