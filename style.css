@@ -23,7 +23,10 @@ body {
   cursor: none;
   height: 200%;
 }
-
+button:hover,
+a:hover {
+  cursor: none;
+}
 #clickable-cursor-svg {
   position: fixed;
   pointer-events: none;
