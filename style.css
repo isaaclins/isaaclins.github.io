@@ -1,16 +1,27 @@
+
+button:hover,
+a:hover, body {
+  cursor: none;
+}
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap');
 
 .text {
   font-family: 'Plus Jakarta Sans', sans-serif;
 }
-
+selector, .collapse, .navbar-toggler-icon
+ { 
+  cursor: none; 
+}
 body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   top: 500%;
 }
-
+.btn:hover
+{
+  cursor: none;
+}
 #profilepic {
   height: 100px;
 }
@@ -20,13 +31,10 @@ body {
 }
 
 :root {
-  cursor: none;
+
   height: 200%;
 }
-button:hover,
-a:hover {
-  cursor: none;
-}
+
 #clickable-cursor-svg {
   position: fixed;
   pointer-events: none;
