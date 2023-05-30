@@ -1,16 +1,17 @@
-
 button:hover,
-a:hover, body {
+a:hover,
+body {
   cursor: none;
 }
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap');
-
-.text {
+.testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest
+  .text {
   font-family: 'Plus Jakarta Sans', sans-serif;
 }
-selector, .collapse, .navbar-toggler-icon
- { 
-  cursor: none; 
+selector,
+.collapse,
+.navbar-toggler-icon {
+  cursor: none;
 }
 body {
   display: flex;
@@ -18,8 +19,7 @@ body {
   min-height: 100vh;
   top: 500%;
 }
-.btn:hover
-{
+.btn:hover {
   cursor: none;
 }
 #profilepic {
@@ -31,7 +31,6 @@ body {
 }
 
 :root {
-
   height: 200%;
 }
 
