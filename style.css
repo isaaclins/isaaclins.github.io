@@ -4,7 +4,6 @@ body {
   cursor: none;
 }
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap');
-.testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest
   .text {
   font-family: 'Plus Jakarta Sans', sans-serif;
 }
@@ -84,6 +83,16 @@ footer {
   animation: fluidDrop 10s linear infinite;
   visibility: hidden;
 }
+@keyframes jump {
+  0% { transform: translate(-50%, -50%) scale(1.25, 0.75); }
+}
+
+}
+
+#mainarrow{
+  animation:  10s infinite;
+}
+
 
 @keyframes falling {
   0% {
