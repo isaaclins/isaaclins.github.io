@@ -27,6 +27,7 @@
   </head>
 
   <body>
+    <div class="unnecessary">
     <div class="backgroundsvg">
       <!--SHIELD-FILLED-->
       <svg
@@ -264,6 +265,9 @@
         />
       </svg>
     </div>
+  </div>
+
+  
     <nav class="navbar navbar-light bg-lighter">
       <div class="container-fluid">
         <button
@@ -391,7 +395,10 @@
           </div>
         </div>
       </div>
+    
+    
     </div>
+    <br>
     <hr>
 
     <div class=" container position-absolute top-50 start-50 translate-middle">
@@ -409,13 +416,19 @@
       <div class="row">
         <div class="col-12 text-center">
           <h1 class="text">I'm Isaac Lins</h1>
+<<<<<<< HEAD
           <h2 class="text fw-lighter">application developer student</h2>
+=======
+          <h2 class="text fw-lighter">Software Developer Student</h2>
+          <br>
+          <div class="slowanim animate__animated  animate__infinite animate__heartBeat">
+>>>>>>> 898c4ba989a50d58dc40bb43a7fb937c038a1d20
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="32"
             height="32"
             fill="currentColor"
-            class="animate__animated animate__infinite animate__pulse bi bi-arrow-down mainarrow "
+            class="bi bi-arrow-down mainarrow "
             viewBox="0 0 16 16"
             id="mainarrow"
           >
@@ -424,6 +437,7 @@
               d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"
             />
           </svg>
+        </div>
         </div>
       </div>
     </div>
@@ -534,104 +548,6 @@
         </div>
       </div>
     </footer>
-
-    <script>
-      var cursorSvg = document.getElementById('clickable-cursor-svg');
-
-      document.addEventListener('mousemove', function (event) {
-        var x = event.clientX;
-        var y = event.clientY;
-
-        cursorSvg.style.left = x + 'px';
-        cursorSvg.style.top = y + 'px';
-
-        var windowWidth = window.innerWidth;
-        var windowHeight = window.innerHeight;
-        var svgWidth = cursorSvg.offsetWidth;
-        var svgHeight = cursorSvg.offsetHeight;
-        // Check if the SVG touches the window's border
-        if (
-          x <= 10 ||
-          x + svgWidth >= windowWidth ||
-          y <= 30 ||
-          y + svgHeight >= windowHeight
-        ) {
-          cursorSvg.style.display = 'none'; // Hide the SVG element
-        } else {
-          cursorSvg.style.display = 'block'; // Show the SVG element
-        }
-      });
-
-      window.addEventListener('DOMContentLoaded', function () {
-        // Check if the user is accessing the website on a mobile device
-        var isMobile =
-          /iPhone|iPad|iPod|Android|webOS|BlackBerry|IEMobile|Opera Mini/i.test(
-            navigator.userAgent
-          );
-
-        // Function to remove the element with id="clickable-cursor-svg"
-        function removeElement(elementId) {
-          var element = document.getElementById(elementId);
-          if (element) {
-            element.parentNode.removeChild(element);
-          }
-        }
-
-        // Remove the element if the user is on a mobile device
-        if (isMobile) {
-          removeElement('clickable-cursor-svg');
-        }
-      });
-
-      function downloadResume() {
-        var link = document.createElement('a');
-        link.href =
-          'https://cdn.discordapp.com/attachments/1091090575484272720/1111530947981090866/resume.pdf';
-        link.download = 'resume.pdf';
-        link.click();
-      }
-
-
-
-// Select the element you want to observe
-const cardElement = document.querySelector('.CARDRIGHT');
-
-// Create a new Intersection Observer
-const observer = new IntersectionObserver(function(entries, observer) {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      // Add the desired class when the element is in view
-      entry.target.classList.add('animate__slideInRight');
-//RMV      entry.target.classList.remove('invisible');
-      observer.unobserve(entry.target); // Stop observing once the class is added
-    }
-  });
-}, { threshold: 0.5 });
-
-// Start observing the element
-observer.observe(cardElement);
-
-
-const myCardElement = document.querySelector('.CARDLEFT');
-
-// Create a new Intersection Observer
-const myObserver = new IntersectionObserver(function(entries, observer) {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      // Add the desired class when the element is in view
-      entry.target.classList.add('animate__slideInLeft');
-//RMV       entry.target.classList.remove('invisible'); 
-      observer.unobserve(entry.target); // Stop observing once the class is added
-    }
-  });
-}, { threshold: 0.5 });
-
-// Start observing the element
-myObserver.observe(myCardElement);
-
-
-
-    </script>
   </body>
 </html>
 

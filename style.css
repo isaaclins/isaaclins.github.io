@@ -10,7 +10,10 @@ body {
   min-height: 100vh;
   top: 500%;
 }
+.slowanim{
+  animation-duration: 3s;
 
+}
 #profilepic {
   height: 100px;
 }
