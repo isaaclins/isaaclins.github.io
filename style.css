@@ -3,6 +3,9 @@
   .text {
   font-family: 'Plus Jakarta Sans', sans-serif;
 }
+.animate10s{
+  animation-duration: 10s;
+}
 
 body {
   display: flex;
