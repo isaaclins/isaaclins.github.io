@@ -24,9 +24,7 @@ body {
 .middle-pic {
   top: 35%;
 }
-.card{
-  visibility: hidden;
-}
+
 
 :root {
   height: 200%;

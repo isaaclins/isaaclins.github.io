@@ -63,8 +63,8 @@ const observer = new IntersectionObserver(function(entries, observer) {
 entries.forEach(entry => {
 if (entry.isIntersecting) {
 // Add the desired class when the element is in view
-entry.target.classList.add('animate__slideInRight');
-//RMV      entry.target.classList.remove('invisible');
+  entry.target.classList.add('animate__slideInRight');
+//rmv  entry.target.classList.remove('invisible');
 observer.unobserve(entry.target); // Stop observing once the class is added
 }
 });
@@ -81,8 +81,8 @@ const myObserver = new IntersectionObserver(function(entries, observer) {
 entries.forEach(entry => {
 if (entry.isIntersecting) {
 // Add the desired class when the element is in view
-entry.target.classList.add('animate__slideInLeft');
-//RMV       entry.target.classList.remove('invisible'); 
+  entry.target.classList.add('animate__slideInLeft');
+//rmv  entry.target.classList.remove('invisible'); 
 observer.unobserve(entry.target); // Stop observing once the class is added
 }
 });
