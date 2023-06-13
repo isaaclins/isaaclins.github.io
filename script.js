@@ -1,3 +1,5 @@
+
+
 var cursorSvg = document.getElementById('clickable-cursor-svg');
 
 document.addEventListener('mousemove', function (event) {

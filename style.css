@@ -18,7 +18,7 @@ body {
 
 .WIP { 
 /* CHANGE visible WITH hidden */
-  visibility: shown;
+  visibility: hidden;
 }
 #profilepic {
   height: 100px;
