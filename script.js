@@ -1,4 +1,8 @@
-
+window.onload = function () {
+  alert(
+    "Thank you for visiting! My Website is a WIP and therefore I'm asking you not to judge ;)"
+  );
+};
 
 var cursorSvg = document.getElementById('clickable-cursor-svg');
 
