@@ -11,6 +11,10 @@ body {
   top: 500%;
 }
 
+.invisible-card { 
+/* CHANGE visible WITH hidden */
+  visibility: visible;
+}
 #profilepic {
   height: 100px;
 }

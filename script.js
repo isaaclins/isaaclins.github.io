@@ -82,10 +82,10 @@ entries.forEach(entry => {
 if (entry.isIntersecting) {
 // Add the desired class when the element is in view
   entry.target.classList.add('animate__slideInLeft');
-  entry.target.classList.remove('invisible'); 
+  entry.target.classList.remove('invisible-card'); 
 observer.unobserve(entry.target); // Stop observing once the class is added
 } else{
-  entry.target.classList.add('invisible'); 
+  entry.target.classList.add('invisible-card'); 
 }
 });
 }, { threshold: 0.5 });
