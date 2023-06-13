@@ -1,15 +1,17 @@
 @echo off
 echo started file
 cd ..
-:START 
+
+:START
 echo LAST COMMIT MESSAGE:
 echo -------------------
-echo %message%
+type commit_message.txt
 echo -------------------
 git add .
 echo added files
 
 set /p message="Enter your commit message: "
+echo %message% > commit_message.txt
 echo added message
 
 git commit -m "%message%"
