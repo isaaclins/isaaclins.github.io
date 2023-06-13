@@ -1,7 +1,11 @@
 @echo off
 echo started file
 cd ..
-:START
+:START 
+echo LAST COMMIT MESSAGE:
+echo -------------------
+echo %message%
+echo -------------------
 git add .
 echo added files
 
