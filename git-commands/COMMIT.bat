@@ -1,7 +1,7 @@
 @echo off
 echo started file
 cd ..
-:1
+:START
 git add .
 echo added files
 
@@ -12,6 +12,4 @@ git commit -m "%message%"
 echo committed changes with message: 
 echo %message%
 echo .
- 
-pause
-GOTO 1
+GOTO START
