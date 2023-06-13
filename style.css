@@ -13,7 +13,7 @@ body {
 
 .invisible-card { 
 /* CHANGE visible WITH hidden */
-  visibility: visible;
+  visibility: hidden;
 }
 #profilepic {
   height: 100px;
