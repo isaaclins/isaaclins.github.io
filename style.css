@@ -11,9 +11,14 @@ body {
   top: 500%;
 }
 
-.invisible-card { 
+
+.aboutmetext{
+  height: -100px;
+}
+
+.WIP { 
 /* CHANGE visible WITH hidden */
-  visibility: hidden;
+  visibility: shown;
 }
 #profilepic {
   height: 100px;
