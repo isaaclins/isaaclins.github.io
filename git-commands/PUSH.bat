@@ -2,7 +2,7 @@
 setlocal
 
 echo started file
-
+cd ..
 git add .
 echo added files
 

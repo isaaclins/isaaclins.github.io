@@ -64,7 +64,7 @@ entries.forEach(entry => {
 if (entry.isIntersecting) {
 // Add the desired class when the element is in view
   entry.target.classList.add('animate__slideInRight');
-//rmv  entry.target.classList.remove('invisible');
+  entry.target.classList.remove('invisible');
 observer.unobserve(entry.target); // Stop observing once the class is added
 }
 });
@@ -82,7 +82,7 @@ entries.forEach(entry => {
 if (entry.isIntersecting) {
 // Add the desired class when the element is in view
   entry.target.classList.add('animate__slideInLeft');
-//rmv  entry.target.classList.remove('invisible'); 
+  entry.target.classList.remove('invisible'); 
 observer.unobserve(entry.target); // Stop observing once the class is added
 }
 });

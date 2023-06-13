@@ -1,4 +1,5 @@
 @echo off
+cd ..
 echo doing pull
 git pull
 

@@ -3,9 +3,6 @@
   .text {
   font-family: 'Plus Jakarta Sans', sans-serif;
 }
-.animate10s{
-  animation-duration: 10s;
-}
 
 body {
   display: flex;
@@ -13,10 +10,7 @@ body {
   min-height: 100vh;
   top: 500%;
 }
-.slowanim{
-  animation-duration: 3s;
 
-}
 #profilepic {
   height: 100px;
 }
@@ -77,11 +71,6 @@ footer {
 @keyframes jump {
   0% { transform: translate(-50%, -50%) scale(1.25, 0.75); }
 }
-
-#mainarrow{
-  animation:  10s infinite;
-}
-
 
 @keyframes falling {
   0% {
