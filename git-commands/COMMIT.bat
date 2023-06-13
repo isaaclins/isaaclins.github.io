@@ -4,7 +4,7 @@ cd ..
 :START 
 echo LAST COMMIT MESSAGE:
 echo -------------------
-echo %message%
+echo 		%message%
 echo -------------------
 git add .
 echo added files
