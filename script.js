@@ -84,6 +84,8 @@ if (entry.isIntersecting) {
   entry.target.classList.add('animate__slideInLeft');
   entry.target.classList.remove('invisible'); 
 observer.unobserve(entry.target); // Stop observing once the class is added
+} else{
+  entry.target.classList.add('invisible'); 
 }
 });
 }, { threshold: 0.5 });
