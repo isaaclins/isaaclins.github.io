@@ -1,1 +1,1 @@
-template.html added 
+added head to template 
