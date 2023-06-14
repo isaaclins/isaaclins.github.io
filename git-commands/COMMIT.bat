@@ -14,9 +14,19 @@ set /p message="Enter your commit message: "
 echo %message% > commitmsg.txt
 echo added message
 
-git commit -m "%message%"
-echo committed changes with message: 
-echo %message%
-pause
+if "%message%"=="push" (
+    echo Pushing changes...
+    call :PUSHING
+) else (
+    git commit -m "%message%"
+    echo committed changes with message:
+    echo %message%
+    pause
+)
 cls
+GOTO START
+
+:PUSHING
+git push
+echo pushed changes to remote repository
 GOTO START

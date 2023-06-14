@@ -1,1 +1,1 @@
-NOTE: you have to adapt every navbar. Start with the template then go change them around man, but not today tho 
+push 
