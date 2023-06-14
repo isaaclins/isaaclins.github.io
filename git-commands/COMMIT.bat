@@ -17,6 +17,9 @@ echo added message
 if "%message%"=="push" (
     echo Pushing changes...
     call :PUSHING
+) else if "%message%"=="pull" (
+    echo Pulling changes...
+    call :PULLING
 ) else (
     git commit -m "%message%"
     echo committed changes with message:
@@ -28,5 +31,12 @@ GOTO START
 
 :PUSHING
 git push
-echo pushed changes to remote repository
+
+echo Just Pushed!
+GOTO START
+
+:PULLING
+git pull
+
+echo Just Pulled!
 GOTO START
