@@ -27,7 +27,6 @@
     <title>Isaac Lins | About me</title>
   </head>
   <body class="">
-    <br />
     <nav class="navbar navbar-light bg-lighter">
       <div class="container-fluid">
         <button
@@ -47,7 +46,7 @@
       <div class="bg-lighter p-4">
         <div class="row text-center">
           <div class="row">
-            <div class="col">
+            <div class="col" href="index.html">
               <button class="transparent-button btn btn-custom" onclick="TODO">
                 <a
                   href="index.html"
@@ -78,6 +77,7 @@
               <button
                 class="transparent-button btn btn-custom"
                 onclick="TODO()"
+                href="aboutme.html"
               >
                 <a
                   href="aboutme.html"
@@ -103,7 +103,8 @@
             <div class="col">
               <button
                 class="transparent-button btn btn-custom"
-                onclick="GOTOPROJECTS()"
+                onclick="LOGPROJECTS(TODO)"
+                href="projects.html"
               >
                 <a
                   href="projects.html"
@@ -126,7 +127,7 @@
               </button>
             </div>
 
-            <div class="col">
+            <div class="col" onclick="downloadResume()">
               <button
                 class="transparent-button btn btn-custom"
                 onclick="downloadResume()"
@@ -156,9 +157,8 @@
         </div>
       </div>
     </div>
-    <br />
-    <hr />
-
+    <br>
+    <hr>
     <div class="container">
       <h1>About Me</h1>
       <br />
