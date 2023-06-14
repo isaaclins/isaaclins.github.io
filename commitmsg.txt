@@ -1,1 +1,1 @@
-added head to template 
+added navbar 
