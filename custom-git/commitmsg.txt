@@ -1,1 +1,1 @@
-the same as the last commit but with projects 
+removed onclick 
