@@ -1,1 +1,1 @@
-removed pause from COMMIT.BAT 
+its now automatically ;) 
