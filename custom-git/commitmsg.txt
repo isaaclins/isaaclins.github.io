@@ -1,1 +1,1 @@
-its now automatically ;) 
+forgot to add the other end of the div in thte footer 
