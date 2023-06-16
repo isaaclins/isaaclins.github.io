@@ -1,1 +1,1 @@
-removed root from style.css 
+wow did alot. formatted the whole code and added div to tag ALL of the header/navbar 
