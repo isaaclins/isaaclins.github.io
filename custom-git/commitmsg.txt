@@ -1,1 +1,1 @@
-added footer end and changed name of header/navbar 
+removed pause from COMMIT.BAT 

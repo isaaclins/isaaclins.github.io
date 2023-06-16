@@ -24,7 +24,6 @@ if "%message%"=="push" (
     git commit -m "%message%"
     echo committed changes with message:
     echo %message%
-    pause
 )
 cls
 GOTO START
