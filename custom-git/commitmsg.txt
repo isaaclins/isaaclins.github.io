@@ -1,1 +1,1 @@
-wow did alot. formatted the whole code and added div to tag ALL of the header/navbar 
+added footer end and changed name of header/navbar 
