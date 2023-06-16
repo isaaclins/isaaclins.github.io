@@ -1,1 +1,1 @@
-forgot to add the other end of the div in thte footer 
+added aboutme.html to the href column 
