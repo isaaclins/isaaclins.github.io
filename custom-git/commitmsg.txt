@@ -1,1 +1,1 @@
-push 
+removed style from body, unnecessary 
