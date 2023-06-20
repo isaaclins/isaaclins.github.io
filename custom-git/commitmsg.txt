@@ -1,1 +1,1 @@
-added template folder 
+added templates inside template folder 
