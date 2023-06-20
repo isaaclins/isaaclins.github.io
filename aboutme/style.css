@@ -2,11 +2,13 @@
 .text {
   font-family: 'Plus Jakarta Sans', sans-serif;
 }
-
+.navbartext {
+  font-size: 2vw;
+  
+}
 body {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
 }
 .aboutmetext {
   font-family: 'Rubik', sans-serif;
