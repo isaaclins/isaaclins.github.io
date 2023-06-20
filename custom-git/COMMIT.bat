@@ -20,12 +20,14 @@ if "%message%"=="push" (
 ) else if "%message%"=="pull" (
     echo Pulling changes...
     call :PULLING
+) else if "%message%"=="cls" (
+    cls
+    call :START
 ) else (
     git commit -m "%message%"
     echo committed changes with message:
     echo %message%
 )
-cls
 GOTO START
 
 :PUSHING

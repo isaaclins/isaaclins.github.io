@@ -1,1 +1,1 @@
-added templates inside template folder 
+changed commit.bat 
