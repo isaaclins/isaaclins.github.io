@@ -7,7 +7,7 @@ echo LAST COMMIT MESSAGE:
 echo -------------------
 type custom-git\commitmsg.txt
 echo -------------------
-git add .
+git add -A
 echo added files
 
 set /p message="Enter your commit message: "

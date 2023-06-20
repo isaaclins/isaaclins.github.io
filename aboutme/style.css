@@ -1,6 +1,5 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap');
-  .text {
+.text {
   font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
@@ -8,14 +7,11 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-
 }
-
+.aboutmetext {
+  font-family: 'Rubik', sans-serif;
+}
 
 footer {
-
   width: 100%;
 }
-
-
-
