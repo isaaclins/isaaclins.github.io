@@ -1,1 +1,1 @@
-reformatted all images on top (svg's) so it made the svgs responsive 
+push 

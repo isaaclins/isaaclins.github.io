@@ -6,6 +6,9 @@
   font-size: 2vw;
   
 }
+.bigtext{
+  font-size: 4vw;
+}
 body {
   display: flex;
   flex-direction: column;
