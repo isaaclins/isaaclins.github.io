@@ -53,8 +53,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
 function downloadResume() {
   var link = document.createElement('a');
-  link.href =
-    'https://cdn.discordapp.com/attachments/1091090575484272720/1111530947981090866/resume.pdf';
+  link.href = 'https://cdn.discordapp.com/attachments/1091090575484272720/1111530947981090866/resume.pdf';
   link.download = 'resume.pdf';
   link.click();
 }
