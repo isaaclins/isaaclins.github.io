@@ -1,20 +1,33 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap');
 a {
-color: black;
+  color: black;
 }
+
 body {
   font-family: 'Plus Jakarta Sans', sans-serif;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-
 }
 footer {
   width: 100%;
 }
 
-.aboutmetext{
-
+.footer-icon {
+  width: 5em;
+  height: 2em;
+}
+.bs-icon-circle {
+  transition: transform 0.3s ease-in-out;
 }
 
+.bs-icon-circle:hover {
+  transform: scale(1.1);
+}
+.icon {
+  transition: transform 0.3s ease-in-out;
+}
+
+.icon:hover {
+  transform: scale(1.1);
+}

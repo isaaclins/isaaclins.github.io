@@ -1,5 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap');
-.text {
+
+a {
+  color: black;
+  }
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+  }
+footer {
+    width: 100%;
+  }
+  .text {
   font-family: 'Plus Jakarta Sans', sans-serif;
 }
 .navbartext {
@@ -7,12 +21,12 @@
   
 }
 .bigtext{
-  font-size: 4vw;
+  font-size: 3vw;
 }
-body {
-  display: flex;
-  flex-direction: column;
-}
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap');
+
+
 .aboutmetext {
   font-family: 'Rubik', sans-serif;
   font-size: 1.5vw;
@@ -22,8 +36,4 @@ body {
 }
 .S-sentence{
   font-size: 3vw;
-}
-
-footer {
-  width: 100%;
 }
