@@ -11,3 +11,5 @@ changed them again now reasonable
 remind me to NOT copypaste into commit-bat, it will break the whole thing 
 also changed the home icon 
 push 
+deleted readme.md 
+push 
