@@ -3,15 +3,20 @@ echo started file
 cd ..
 
 :START
-echo LAST COMMIT MESSAGE:
-echo -------------------
+echo LAST COMMIT MESSAGES:
+echo ----------------------
 type custom-git\commitmsg.txt
-echo -------------------
+echo ----------------------
 git add -A
 echo added files
 
 set /p message="Enter your commit message: "
-echo %message% > custom-git\commitmsg.txt
+
+REM Appending the latest commit message to the existing commit messages
+type custom-git\commitmsg.txt > custom-git\temp.txt
+echo %message% >> custom-git\temp.txt
+move /y custom-git\temp.txt custom-git\commitmsg.txt
+
 echo added message
 
 if "%message%"=="push" (
