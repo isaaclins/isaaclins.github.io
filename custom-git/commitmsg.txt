@@ -3,3 +3,4 @@ changed the comit.bat file
 push 
 CHANGEDTHE commit.bat file again 
 push 
+removed unnecessary line in style.css 
