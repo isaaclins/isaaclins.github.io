@@ -13,3 +13,4 @@ also changed the home icon
 push 
 deleted readme.md 
 push 
+added misc to github pages 
