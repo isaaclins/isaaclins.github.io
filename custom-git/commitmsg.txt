@@ -1,1 +1,3 @@
 push 
+changed the comit.bat file 
+push 

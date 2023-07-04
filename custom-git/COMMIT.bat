@@ -3,9 +3,12 @@ echo started file
 cd ..
 
 :START
-echo LAST COMMIT MESSAGES:
+echo LAST COMMIT MESSAGE:
 echo ----------------------
-type custom-git\commitmsg.txt
+for /f "usebackq tokens=*" %%i in ("custom-git\commitmsg.txt") do (
+    set "latest=%%i"
+)
+echo %latest%
 echo ----------------------
 git add -A
 echo added files
