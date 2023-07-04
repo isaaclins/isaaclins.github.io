@@ -7,3 +7,4 @@ removed unnecessary line in style.css
                     width="4vw" on download 
 made the download icon reasonable 
 made the projects icon reasonably big 
+changed them again now reasonable 
