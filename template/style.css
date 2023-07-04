@@ -51,6 +51,7 @@ footer {
 }
 .title {
   font-size: 3vw;
+   animation-duration: 2s; /* don't forget to set a duration! */
 }
 .footer-icon {
   width: 5vw !important;
@@ -75,7 +76,7 @@ footer {
 }
 
 .projects:hover {
-  animation: spin 0.1s linear infinite;
+  animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
@@ -91,3 +92,4 @@ footer {
   100% {
     transform: rotate(0deg);
   }}
+
