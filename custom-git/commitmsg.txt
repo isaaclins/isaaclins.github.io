@@ -15,3 +15,5 @@ deleted readme.md
 push 
 added misc to github pages 
 added misc to github pages again 
+psh 
+push 
