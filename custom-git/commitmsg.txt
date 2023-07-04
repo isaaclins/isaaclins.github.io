@@ -5,3 +5,4 @@ CHANGEDTHE commit.bat file again
 push 
 removed unnecessary line in style.css 
                     width="4vw" on download 
+made the download icon reasonable 
