@@ -4,7 +4,8 @@ push
 CHANGEDTHE commit.bat file again 
 push 
 removed unnecessary line in style.css 
-                    width="4vw" on download 
+width="4vw" on download 
 made the download icon reasonable 
 made the projects icon reasonably big 
 changed them again now reasonable 
+remind me to NOT copypaste into commit-bat, it will break the whole thing 
