@@ -1,3 +1,5 @@
 push 
 changed the comit.bat file 
 push 
+CHANGEDTHE commit.bat file again 
+push 
