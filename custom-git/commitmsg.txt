@@ -30,3 +30,4 @@ added text to template to see if it works
 changed size of icons 
 push 
 made the mailtotext smaller/bigger 
+HAB css ort gewechselt 
