@@ -20,3 +20,4 @@ push
 added minor but important changes 
 push 
 made the spin anim different, removed navbar boilerplatecode, tweaked things 
+removed unnecessary stuff 
