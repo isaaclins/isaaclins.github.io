@@ -27,3 +27,5 @@ added animation delay
 hey isaac if you see this, add. a .duck 
 push 
 added text to template to see if it works 
+changed size of icons 
+push 

@@ -51,13 +51,19 @@ footer {
 .bi-github:hover {
   color: var(--githubLM) !important;
 }
+.text{
+  font-size: 1.2vw;
+}
+strong{
+  font-size: 1.3vw;
+}
 .title {
   font-size: 3vw;
-   animation-duration: 2s; /* don't forget to set a duration! */
+  animation-duration: 2s; /* don't forget to set a duration! */
 }
 .footer-icon {
-  width: 1.5vw !important;
-  height: 1.5vw !important;
+  width: 2vw !important;
+  height: 2vw !important;
 }
 
 .bs-icon-circle {
