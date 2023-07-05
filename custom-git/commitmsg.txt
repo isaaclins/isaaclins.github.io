@@ -24,3 +24,5 @@ removed unnecessary stuff
 added row-cols-ls-x and made it to 4 
 push 
 added animation delay 
+hey isaac if you see this, add. a .duck 
+push 

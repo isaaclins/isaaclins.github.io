@@ -74,53 +74,27 @@ footer {
 }
 
 .icon:hover {
-  
+  animation: wiggle 0.25s infinite;
   transform: scale(1.1);
 }
 
-.projects:hover {
-  animation: spin 1s linear infinite;
-}
 
 
-@keyframes spin {
+
+@keyframes wiggle {
   0% {
     transform: rotate(0deg);
   }
-  10% {
-    transform: rotate(36deg);
-  }
-  20% {
-    transform: rotate(72deg);
-  }
-  30% {
-    transform: rotate(108deg);
-  }
-  40% {
-    transform: rotate(144deg);
+  25% {
+    transform: rotate(5deg);
   }
   50% {
-    transform: rotate(180deg);
+    transform: rotate(-5deg);
   }
-  60% {
-    transform: rotate(216deg);
-  }
-  70% {
-    transform: rotate(252deg);
-  }
-  80% {
-    transform: rotate(288deg);
-  }
-  90% {
-    transform: rotate(324deg);
+  75% {
+    transform: rotate(5deg);
   }
   100% {
-    transform: rotate(360deg);
+    transform: rotate(0deg);
   }
 }
-
-
-  @keyframes slideleft {
-
-    
-  }
