@@ -10,7 +10,9 @@
   --linkedin: #0a66c2;
   --githubLM: #0d1117;
   --githubDM: #e6edf3;
+  --projects: #dc5757;
 }
+
 
 a,
 body,
@@ -54,9 +56,10 @@ footer {
    animation-duration: 2s; /* don't forget to set a duration! */
 }
 .footer-icon {
-  width: 5vw !important;
-  height: 4vw !important;
+  width: 1.5vw !important;
+  height: 1.5vw !important;
 }
+
 .bs-icon-circle {
   transition-duration: 0.3s; /* Duration of the transition */
   transition-delay: 0.2s; /* Delay before the transition starts */
@@ -79,17 +82,45 @@ footer {
   animation: spin 1s linear infinite;
 }
 
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
   }
+  10% {
+    transform: rotate(36deg);
+  }
+  20% {
+    transform: rotate(72deg);
+  }
   30% {
-    transform: rotate(-90deg);
+    transform: rotate(108deg);
+  }
+  40% {
+    transform: rotate(144deg);
+  }
+  50% {
+    transform: rotate(180deg);
   }
   60% {
-    transform: rotate(90deg);
+    transform: rotate(216deg);
+  }
+  70% {
+    transform: rotate(252deg);
+  }
+  80% {
+    transform: rotate(288deg);
+  }
+  90% {
+    transform: rotate(324deg);
   }
   100% {
-    transform: rotate(0deg);
-  }}
+    transform: rotate(360deg);
+  }
+}
 
+
+  @keyframes slideleft {
+
+    
+  }

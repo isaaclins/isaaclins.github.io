@@ -17,3 +17,5 @@ added misc to github pages
 added misc to github pages again 
 psh 
 push 
+added minor but important changes 
+push 
