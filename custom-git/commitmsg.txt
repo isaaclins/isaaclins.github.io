@@ -21,3 +21,5 @@ added minor but important changes
 push 
 made the spin anim different, removed navbar boilerplatecode, tweaked things 
 removed unnecessary stuff 
+added row-cols-ls-x and made it to 4 
+push 
