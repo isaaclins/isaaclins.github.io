@@ -27,14 +27,14 @@
   </head>
   <body>
     <div class="header-start">
-      <div class="row text-center row-cols-lg-4">
-        <div class="col">
+      <div class="row text-center row-cols-lg-4 animate__animated ">
+        <div class="col home animate__animated animate__fadeInDown animate__delay-1s">
           <button
             class="transparent-button btn btn-custom icon"
             onclick="TODO"
           >
             <a
-              class=" navbartext fw-bold text-black btn btn-custom transparent-button headertextcustom"
+              class="navbartext fw-bold text-black btn btn-custom transparent-button headertextcustom"
               href="https://isaaclins.com/index.html"
             >
               Home
@@ -57,11 +57,11 @@
             </a>
           </button>
         </div>        
-        <div class="col">
+        <div class="col animate__animated about-me animate__fadeInDown animate__delay-2s">
                 <button class="transparent-button btn btn-custom icon">
                   <a
                     href="https://isaaclins.com/aboutme.html"
-                    class="navbartext fw-bold text-black btn btn-custom transparent-button"
+                    class=" navbartext fw-bold text-black btn btn-custom transparent-button"
                     >About me
                     <br />
                     <svg
@@ -80,7 +80,7 @@
                 </button>
          </div>            
 
-        <div class="col">
+        <div class="col animate__animated projects animate__fadeInDown animate__delay-2s ">
                 <button class="transparent-button btn btn-custom icon ">
                   <a
                   href="https://isaaclins.com/projects.html"
@@ -104,7 +104,7 @@
          </div>            
 
 
-        <div class="col" onclick="downloadResume()">
+        <div class="col animate__animated  download-my-resume animate__fadeInDown animate__delay-3s" onclick="downloadResume()">
                 <button
                   class="transparent-button btn btn-custom icon"
                   onclick="downloadResume()"
@@ -132,25 +132,90 @@
                 </button>
         </div>            
 
-      <div class="row">
-
-
-
-        <div class="bg-lighter p-4">
-         
-          </div>
         </div>
 
       
     </div>
-  </div>
+
+    <div class="container">
+      <div class="col">
+        <div class="col-md-3">
+          <p class="bigtext">About Me</p>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col-md-6 images">
+          <img
+            src="https://placehold.co/600x400"
+            class="img-fluid"
+            alt="Profile Picture"
+          />
+          <hr />
+          <img
+            src="https://placehold.co/600x800"
+            class="img-fluid"
+            alt="Profile Picture"
+          />
+          <hr />
+          <img
+            src="https://placehold.co/600x400"
+            class="img-fluid"
+            alt="Profile Picture"
+          />
+        </div>
+        <div class="col-md-6 aboutmetext">
+          <p class="F-sentence">I'm <strong>Isaac</strong>,</p>
+          <p class="S-sentence">an Application developer.</p>
+          <div class="container">
+            <p>
+              From an early age, I developed a keen interest in the field of
+              <strong>cybersecurity</strong>, and now I am pursuing my passion by
+              diving deep into various programming languages and technologies.
+            </p>
+            <p>
+              As part of my apprenticeship, I am gaining hands-on experience in a
+              range of essential languages such as<strong>
+                HTML, CSS, Java, Python, SQL, Batch, and JavaScript,</strong
+              >
+              with a focus on their application in the realm of cybersecurity.
+            </p>
+            <p>
+              <strong>Scripting</strong> has become a thrilling aspect of my
+              learning journey. I derive great satisfaction from crafting
+              efficient and robust scripts that automate tasks, enhance system
+              security, and improve overall productivity.
+            </p>
+            <p>
+              Although I am at the beginning of my career, my ultimate ambition is
+              to become a member of the esteemed <strong>Red Team</strong>, known
+              for their expertise in ethical hacking and vulnerability
+              assessments.
+            </p>
+            <p>
+              With my unwavering determination, I am actively working towards this
+              goal, honing my skills, and staying up to date with the latest
+              advancements in <strong>cybersecurity.</strong>
+            </p>
+            <p>
+              I am grateful for the opportunity to work at
+              <strong>Swisscom</strong>, where I can combine my passion for
+              programming with my fascination for cybersecurity. Each day brings
+              new challenges and learning experiences, which I embrace
+              wholeheartedly as stepping stones on my journey to become a
+              proficient and respected member of the Red Team.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
 
   
 
-    <div class="footer-end">
+    <div class="footer-end animate__animated " >
       <footer class="text-center py-4">
         <div class="container">
-          <div class="row row-cols-1 row-cols-lg-3">
+          <div class="row row-cols-1 row-cols-lg-3" >
             <div class="col">
               <p class="text text-muted my-2">
                 Copyright&nbsp;© 2023 isaaclins.com <br> made with 🖤<strong><a href="https://pages.github.com/" >GitHub Pages</a></strong> 🖤
@@ -214,6 +279,8 @@
       </footer>
     </div>
     <script>
+
+
       function downloadResume() {
         var link = document.createElement('a');
         link.href =
