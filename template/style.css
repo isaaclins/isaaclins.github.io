@@ -13,7 +13,9 @@
   --projects: #dc5757;
 }
 
-
+html{
+  max-width: 99%;
+}
 a,
 body,
 .navbartext,
@@ -53,8 +55,8 @@ footer {
 }
 
 .footer-icon {
-  width: 2vw !important;
-  height: 2vw !important;
+  width: 3vw !important;
+  height: 3vw !important;
 }
 
 .bs-icon-circle {
@@ -89,4 +91,10 @@ strong{
 .title {
   font-size: 3vw;
   animation-duration: 2s; /* don't forget to set a duration! */
+}
+.F-sentence{
+  font-size: 1.5vw;
+}
+.S-sentence{
+  font-size: 1vw;
 }
