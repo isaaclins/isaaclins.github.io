@@ -44,7 +44,7 @@ footer {
   backdrop-filter: blur(4px);
 }
 .navbartext {
-  font-size: 1.5vw;
+  font-size: 30px;
 }
 .bi-linkedin:hover {
   color: var(--linkedin) !important;
@@ -68,19 +68,14 @@ footer {
 .bs-icon-circle:hover {
   transform: scale(1.1);
 }
-.icon {
+.icon,.hoverbig {
   transition: transform 0.3s ease-in-out;
 }
 
-.icon:hover {
+.icon,.hoverbig:hover {
 
   transform: scale(1.125);
 }
-
-
-
-
-
 
 .text {
   font-size: 20px; 

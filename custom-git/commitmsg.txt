@@ -40,3 +40,4 @@ added imgs
 doing some minor changes 
 doing some minor changes 
 doing some minor changes 
+revamped basic stuff 
