@@ -55,42 +55,4 @@ footer {
 .outofbox {
   visibility: hidden;
 }
-.backgroundsvg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  pointer-events: none;
-  overflow: hidden;
-  visibility: hidden;
-}
 
-.backgroundsvg svg {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  animation: fluidDrop 10s linear infinite;
-  visibility: hidden;
-}
-@keyframes jump {
-  0% { transform: translate(-50%, -50%) scale(1.25, 0.75); }
-}
-
-@keyframes falling {
-  0% {
-    transform: translateY(-100%);
-  }
-  100% {
-    transform: translateY(0%);
-  }
-}
-@keyframes fluidDrop {
-  from {
-    top: 0px;
-  }
-  to {
-    top: 200%;
-  }
-}

@@ -32,3 +32,4 @@ push
 made the mailtotext smaller/bigger 
 HAB css ort gewechselt 
 removed the starting script 
+removed unnecessary tag 
