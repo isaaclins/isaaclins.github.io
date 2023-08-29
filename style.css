@@ -72,7 +72,7 @@ footer {
   backdrop-filter: blur(4px);
 }
 .navbartext {
-  font-size: 30px;
+  font-size: calc(15px + 1vw);
 }
 .bi-linkedin:hover {
   color: var(--linkedin) !important;
@@ -106,10 +106,10 @@ footer {
 }
 
 .text {
-  font-size: 20px; 
+  font-size: calc(10px + 1vw); 
 }
 .title {
-  font-size: 40px; 
+  font-size: calc(20px + 1vw); 
   animation-duration: 2s;
 }
 
