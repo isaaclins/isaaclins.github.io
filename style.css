@@ -7,15 +7,7 @@
 body {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-
 }
-
-
-.aboutmetext{
-  height: -100px;
-}
-
 .WIP { 
 /* CHANGE visible WITH hidden */
   visibility: hidden;
@@ -33,7 +25,7 @@ body {
 
 footer {
   position: absolute;
-  bottom: -100%;
+  bottom: 0%;
   left: 0;
   width: 100%;
 }
