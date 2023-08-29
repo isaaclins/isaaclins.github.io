@@ -40,7 +40,9 @@ footer {
 }
 
 html{
-  max-width: 99%;
+  max-width: 10%;
+  min-width: 100%;
+  overflow: hidden;
 }
 a,
 body,
