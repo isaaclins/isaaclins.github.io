@@ -31,3 +31,4 @@ changed size of icons
 push 
 made the mailtotext smaller/bigger 
 HAB css ort gewechselt 
+removed the starting script 
