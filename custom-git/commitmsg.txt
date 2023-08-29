@@ -38,3 +38,4 @@ removed the invisible carsd
 removed breathing effect of image 
 added imgs 
 doing some minor changes 
+doing some minor changes 
