@@ -8,10 +8,7 @@ body {
   display: flex;
   flex-direction: column;
 }
-.WIP { 
-/* CHANGE visible WITH hidden */
-  visibility: hidden;
-}
+
 #profilepic {
   height: 100px;
 }

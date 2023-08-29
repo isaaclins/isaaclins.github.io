@@ -35,3 +35,4 @@ removed the starting script
 removed unnecessary tag 
 reformatted 
 removed the invisible carsd 
+removed breathing effect of image 
