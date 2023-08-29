@@ -10,20 +10,12 @@ body {
 }
 
 #profilepic {
-  width: 150px; /* Original width */
-  height: 150px; /* Original height */
+  width: 200px; 
+  height: 200px;
   border-radius: 100%;
   overflow: hidden;
+  
 }
-
-
-
-.middle-pic {
-  top: 35%;
-}
-
-
-
 
 footer {
   position: absolute;
@@ -32,21 +24,91 @@ footer {
   width: 100%;
 }
 
-#headertextcustom {
-  text-decoration: none;
-  color: #000000;
-  position: relative;
-  position: middle;
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap');
+
+:root {
+  --LM: #f1f5f9;
+  --LMtext: #2a2f4f;
+  --LMtextlight: #5d6a7b;
+  --DM: #0f172a;
+  --DMtextlight: #758297;
+  --DMtext: #e2e8f0;
+  --linkedin: #0a66c2;
+  --githubLM: #0d1117;
+  --githubDM: #e6edf3;
+  --projects: #dc5757;
 }
 
-#headertextcustom :hover {
-  text-decoration: underline;
-  color: #000000;
-  position: relative;
-  position: middle;
+html{
+  max-width: 99%;
+}
+a,
+body,
+.navbartext,
+.text,
+.toggleiconn {
+  color: var(--LMtext) !important;
+}
+body,
+footer,
+header {
+  background-color: var(--LM);
+}
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+footer {
+  width: 100%;
+}
+.header-start {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(4px);
+}
+.navbartext {
+  font-size: 30px;
+}
+.bi-linkedin:hover {
+  color: var(--linkedin) !important;
 }
 
-.outofbox {
-  visibility: hidden;
+.bi-github:hover {
+  color: var(--githubLM) !important;
 }
+
+.footer-icon {
+  width: 60px !important;
+  height: 60px !important;
+}
+
+.bs-icon-circle {
+  transition-duration: 0.3s; /* Duration of the transition */
+  transition-delay: 0.2s; /* Delay before the transition starts */
+  transition: transform 0.3s ease-in-out;
+}
+
+.bs-icon-circle:hover {
+  transform: scale(1.1);
+}
+.icon,.hoverbig {
+  transition: transform 0.3s ease-in-out;
+}
+
+.icon,.hoverbig:hover {
+
+  transform: scale(1.125);
+}
+
+.text {
+  font-size: 20px; 
+}
+.title {
+  font-size: 40px; 
+  animation-duration: 2s;
+}
+
 
