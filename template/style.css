@@ -55,8 +55,8 @@ footer {
 }
 
 .footer-icon {
-  width: 3vw !important;
-  height: 3vw !important;
+  width: 60px !important;
+  height: 60px !important;
 }
 
 .bs-icon-circle {
@@ -80,21 +80,12 @@ footer {
 
 
 
-/*the things that about-me uses */
 
-.text{
-  font-size: 1.2vw;
-}
-strong{
-  font-size: 1.3vw;
+
+.text {
+  font-size: 20px; 
 }
 .title {
-  font-size: 3vw;
-  animation-duration: 2s; /* don't forget to set a duration! */
-}
-.F-sentence{
-  font-size: 1.5vw;
-}
-.S-sentence{
-  font-size: 1vw;
+  font-size: 40px; 
+  animation-duration: 2s;
 }
