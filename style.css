@@ -69,10 +69,10 @@ footer {
   position: sticky;
   top: 0;
   z-index: 100;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(calc(2px + 1vw));
 }
 .navbartext {
-  font-size: calc(15px + 1vw);
+  font-size: calc(15px + 0.5vw);
 }
 .bi-linkedin:hover {
   color: var(--linkedin) !important;
@@ -83,8 +83,8 @@ footer {
 }
 
 .footer-icon {
-  width: 60px !important;
-  height: 60px !important;
+  width: calc(30px + 1vw) !important;
+  height: calc(30px + 1vw) !important;
 }
 
 .bs-icon-circle {
@@ -92,7 +92,6 @@ footer {
   transition-delay: 0.2s; /* Delay before the transition starts */
   transition: transform 0.3s ease-in-out;
 }
-
 .bs-icon-circle:hover {
   transform: scale(1.1);
 }
@@ -112,5 +111,8 @@ footer {
   font-size: calc(20px + 1vw); 
   animation-duration: 2s;
 }
-
+.copyrighttext{
+  font-size: calc(5px + 1vw); 
+  animation-duration: 2s;
+}
 
