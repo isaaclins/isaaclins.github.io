@@ -139,17 +139,17 @@ footer {
 .image-container {
   position: relative;
   text-align: center;
-  width: 100%; /* adjust as needed */
-  height: 100px; /* adjust as needed */
+  width: 100%;
+  height: 100px;
 }
 .image-container img {
-  max-width: 2100vw;
-  max-height: 2100vw;
+  max-width: calc(300px + 2vw);
+  max-height: calc(300px + 2vw);
 }
 
-  .middle {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+.middle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
