@@ -1,3 +1,29 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap');
+  .text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+#profilepic {
+  width: 200px; 
+  height: 200px;
+  border-radius: 100%;
+  overflow: hidden;
+  
+}
+
+footer {
+  position: relative;
+  bottom: 0%;
+  left: 0;
+  width: 100%;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap');
 
 :root {
@@ -14,7 +40,10 @@
 }
 
 html{
-  max-width: 99%;
+  max-width: 10%;
+  min-width: 100%;
+  overflow-x: hidden;
+  overflow-y:scroll;
 }
 a,
 body,
@@ -41,10 +70,10 @@ footer {
   position: sticky;
   top: 0;
   z-index: 100;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(calc(2px + 1vw));
 }
 .navbartext {
-  font-size: 30px;
+  font-size: calc(15px + 0.5vw);
 }
 .bi-linkedin:hover {
   color: var(--linkedin) !important;
@@ -55,8 +84,8 @@ footer {
 }
 
 .footer-icon {
-  width: 60px !important;
-  height: 60px !important;
+  width: calc(30px + 1vw) !important;
+  height: calc(30px + 1vw) !important;
 }
 
 .bs-icon-circle {
@@ -64,7 +93,6 @@ footer {
   transition-delay: 0.2s; /* Delay before the transition starts */
   transition: transform 0.3s ease-in-out;
 }
-
 .bs-icon-circle:hover {
   transform: scale(1.1);
 }
@@ -78,9 +106,14 @@ footer {
 }
 
 .text {
-  font-size: 20px; 
+  font-size: calc(10px + 1vw); 
 }
 .title {
-  font-size: 40px; 
+  font-size: calc(20px + 1vw); 
   animation-duration: 2s;
 }
+.copyrighttext{
+  font-size: calc(5px + 1vw); 
+  animation-duration: 2s;
+}
+
