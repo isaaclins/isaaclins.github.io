@@ -110,7 +110,7 @@ footer {
   font-size: calc(10px + 0.5vw); 
 }
 .title {
-  font-size: calc(12px + 0.5vw); 
+  font-size: calc(10px + 0.5vw); 
   animation-duration: 2s;
 }
 .copyrighttext{
@@ -118,3 +118,38 @@ footer {
   animation-duration: 2s;
 }
 
+
+.image-container {
+  position: relative;
+  display: inline-block;
+  background-color: #000000;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.image-link {
+  display: block;
+}
+
+.rounded-image {
+  display: block;
+  border-radius: 10px;
+}
+
+.image-container {
+  position: relative;
+  text-align: center;
+  width: 100%; /* adjust as needed */
+  height: 100px; /* adjust as needed */
+}
+.image-container img {
+  max-width: 2100vw;
+  max-height: 2100vw;
+}
+
+  .middle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
