@@ -70,6 +70,7 @@ footer {
   top: 0;
   z-index: 100;
   backdrop-filter: blur(calc(2px + 1vw));
+  background-color: rgba(120, 120, 218, 0.026);
 }
 .navbartext {
   font-size: calc(15px + 0.5vw);
@@ -83,8 +84,8 @@ footer {
 }
 
 .footer-icon {
-  width: calc(30px + 1vw) !important;
-  height: calc(30px + 1vw) !important;
+  width: calc(15px + 1vw) !important;
+  height: calc(15px + 1vw) !important;
 }
 
 .bs-icon-circle {
@@ -105,14 +106,16 @@ footer {
 }
 
 .text {
-  font-size: calc(10px + 1vw); 
+  font-size: calc(10px + 0.5vw); 
 }
 .title {
-  font-size: calc(20px + 1vw); 
+  font-size: calc(12px + 0.5vw); 
   animation-duration: 2s;
 }
 .copyrighttext{
-  font-size: calc(5px + 1vw); 
+  font-size: calc(5px + 0.5vw); 
   animation-duration: 2s;
 }
+
+
 
