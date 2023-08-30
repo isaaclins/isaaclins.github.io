@@ -1,8 +1,3 @@
-window.onload = function () {
-  alert(
-    "Thank you for visiting! My Website is a WIP and therefore I'm asking you not to judge ;)"
-  );
-};
 
 var cursorSvg = document.getElementById('clickable-cursor-svg');
 
@@ -60,7 +55,7 @@ function downloadResume() {
 
 
 
-// Select the element you want to observe
+/* Select the element you want to observe
 const cardElement = document.querySelector('.CARDRIGHT');
 
 // Create a new Intersection Observer
@@ -99,3 +94,6 @@ observer.unobserve(entry.target); // Stop observing once the class is added
 myObserver.observe(myCardElement);
 
 
+*/
+// Random bullshit code I have to remove sometime in the future.
+// 30.08.2023
