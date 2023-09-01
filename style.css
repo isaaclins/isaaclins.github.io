@@ -106,14 +106,14 @@ footer {
 }
 
 .text {
-  font-size: calc(10px + 0.5vw); 
+  font-size: calc(12px + 0.5vw); 
 }
 .title {
-  font-size: calc(12px + 0.5vw); 
+  font-size: calc(16px + 0.5vw); 
   animation-duration: 2s;
 }
 .copyrighttext{
-  font-size: calc(5px + 0.5vw); 
+  font-size: calc(10px + 0.5vw); 
   animation-duration: 2s;
 }
 
