@@ -36,7 +36,6 @@ footer {
   --linkedin: #0a66c2;
   --githubLM: #0d1117;
   --githubDM: #e6edf3;
-  --projects: #dc5757;
 }
 
 html{
@@ -107,16 +106,17 @@ footer {
 }
 
 .text {
-  font-size: calc(10px + 0.5vw); 
+  font-size: calc(12px + 0.5vw); 
 }
 .title {
-  font-size: calc(10px + 0.5vw); 
+  font-size: calc(16px + 0.5vw); 
   animation-duration: 2s;
 }
 .copyrighttext{
-  font-size: calc(5px + 0.5vw); 
+  font-size: calc(10px + 0.5vw); 
   animation-duration: 2s;
 }
+
 
 
 .image-container {
@@ -152,4 +152,7 @@ footer {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+.image{
+  border-radius: 10px;
 }
