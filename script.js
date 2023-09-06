@@ -1,38 +1,13 @@
-
-var cursorSvg = document.getElementById('clickable-cursor-svg');
-
-document.addEventListener('mousemove', function (event) {
-  var x = event.clientX;
-  var y = event.clientY;
-
-  cursorSvg.style.left = x + 'px';
-  cursorSvg.style.top = y + 'px';
-
-  var windowWidth = window.innerWidth;
-  var windowHeight = window.innerHeight;
-  var svgWidth = cursorSvg.offsetWidth;
-  var svgHeight = cursorSvg.offsetHeight;
-  // Check if the SVG touches the window's border
-  if (
-    x <= 10 ||
-    x + svgWidth >= windowWidth ||
-    y <= 30 ||
-    y + svgHeight >= windowHeight
-  ) {
-    cursorSvg.style.display = 'none'; // Hide the SVG element
-  } else {
-    cursorSvg.style.display = 'block'; // Show the SVG element
-  }
-});
-
+// This event listener waits for the DOM (Document Object Model) to be fully loaded before executing the enclosed function.
 window.addEventListener('DOMContentLoaded', function () {
-  // Check if the user is accessing the website on a mobile device
+
+  // This line checks if the user's user agent (browser) matches any of the listed mobile device names using a regular expression test.
   var isMobile =
     /iPhone|iPad|iPod|Android|webOS|BlackBerry|IEMobile|Opera Mini/i.test(
       navigator.userAgent
     );
 
-  // Function to remove the element with id="clickable-cursor-svg"
+  // This function is defined to remove an HTML element with a specified ID.
   function removeElement(elementId) {
     var element = document.getElementById(elementId);
     if (element) {
@@ -40,60 +15,26 @@ window.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  // Remove the element if the user is on a mobile device
+  // If the user is on a mobile device (as determined earlier), this code removes an HTML element with the ID 'clickable-cursor-svg'.
   if (isMobile) {
     removeElement('clickable-cursor-svg');
   }
 });
 
+// This is a function definition for a function named 'downloadResume'.
 function downloadResume() {
+
+  // Create a new HTML anchor (link) element.
   var link = document.createElement('a');
+
+  // Set the 'href' attribute of the anchor to the URL of the resume PDF file.
   link.href = 'https://cdn.discordapp.com/attachments/1091090575484272720/1111530947981090866/resume.pdf';
+
+  // Set the 'download' attribute of the anchor to 'resume.pdf', which will prompt the user to download the linked file with that name.
   link.download = 'resume.pdf';
+
+  // Trigger a click event on the anchor element, which will initiate the download.
   link.click();
 }
 
-
-
-/* Select the element you want to observe
-const cardElement = document.querySelector('.CARDRIGHT');
-
-// Create a new Intersection Observer
-const observer = new IntersectionObserver(function(entries, observer) {
-entries.forEach(entry => {
-if (entry.isIntersecting) {
-// Add the desired class when the element is in view
-  entry.target.classList.add('animate__slideInRight');
-  entry.target.classList.remove('invisible');
-observer.unobserve(entry.target); // Stop observing once the class is added
-}
-});
-}, { threshold: 0.5 });
-
-// Start observing the element
-observer.observe(cardElement);
-
-
-const myCardElement = document.querySelector('.CARDLEFT');
-
-// Create a new Intersection Observer
-const myObserver = new IntersectionObserver(function(entries, observer) {
-entries.forEach(entry => {
-if (entry.isIntersecting) {
-// Add the desired class when the element is in view
-  entry.target.classList.add('animate__slideInLeft');
-  entry.target.classList.remove('invisible-card'); 
-observer.unobserve(entry.target); // Stop observing once the class is added
-} else{
-  entry.target.classList.add('invisible-card'); 
-}
-});
-}, { threshold: 0.5 });
-
-// Start observing the element
-myObserver.observe(myCardElement);
-
-
-*/
-// Random bullshit code I have to remove sometime in the future.
-// 30.08.2023
+// UPDATE: Commented on every line for people like me that forgets 
