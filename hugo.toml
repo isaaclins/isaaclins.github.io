@@ -1,10 +1,10 @@
-baseURL = "https://cshugo.mansoorbarri.com"
+baseURL = "https://isaaclins.com"
 languageCode = 'en-us'
 theme = "coming-soon"
 
 [params]
     title = "'WEBSITE IN DEVELOPMENT' -ISAAC LINS" 
-    description = "A simple countdown"
+    description = "Please be patient while I rip my veins out my wrist."
     favicon = ""
     message = "COMING SOON!" 
     release = "May 1, 2024" 
