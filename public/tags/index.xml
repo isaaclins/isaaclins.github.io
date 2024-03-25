@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Isaac Lins - Application Developer</title>
+    <link>http://localhost:1313/tags/</link>
+    <description>Recent content in Tags on Isaac Lins - Application Developer</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 22 Mar 2024 13:33:49 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CTF</title>
+      <link>http://localhost:1313/tags/ctf/</link>
+      <pubDate>Fri, 22 Mar 2024 08:10:30 +0100</pubDate>
+      <guid>http://localhost:1313/tags/ctf/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hacking</title>
+      <link>http://localhost:1313/tags/hacking/</link>
+      <pubDate>Fri, 22 Mar 2024 08:10:30 +0100</pubDate>
+      <guid>http://localhost:1313/tags/hacking/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>SHC</title>
+      <link>http://localhost:1313/tags/shc/</link>
+      <pubDate>Fri, 22 Mar 2024 08:10:30 +0100</pubDate>
+      <guid>http://localhost:1313/tags/shc/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>About Me</title>
+      <link>http://localhost:1313/tags/about-me/</link>
+      <pubDate>Wed, 20 Mar 2024 20:59:30 +0100</pubDate>
+      <guid>http://localhost:1313/tags/about-me/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Learnings</title>
+      <link>http://localhost:1313/tags/learnings/</link>
+      <pubDate>Wed, 20 Mar 2024 20:40:30 +0100</pubDate>
+      <guid>http://localhost:1313/tags/learnings/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>
