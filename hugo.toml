@@ -1,32 +1,16 @@
+baseURL = "https://cshugo.mansoorbarri.com"
 languageCode = 'en-us'
-title = 'Isaac Lins - Application Developer'
-theme = 'github-style'
-baseURL = "https://isaaclins.com/"
-pygmentsCodeFences = true
-pygmentsUseClasses = true
+theme = "coming-soon"
 
 [params]
-  author = "Isaac Lins"
-  description = "In solitude, where we are least alone."
-  github = "isaaclins"
-  linkedin = "isaac-lins-094612247"
-  email = "isaac.lins07@gmail.com"
-  url = "https://isaaclins.com"
-  keywords = "blog, google analytics"
-  rss = true
-  lastmod = true
-  favicon = "/images/github.png"
-  avatar = "/images/avatar.png"
-  headerIcon = "/images/GitHub-Mark-Light-32px.png"
-  location = "Switzerland, ZH"
-  userStatusEmoji = "😀"
-  [[params.links]]
-    title = "Link"
-    href = "https://github.com/isaaclins"
-
-[frontmatter]
-  lastmod = ["lastmod", ":fileModTime", ":default"]
-
-[services]
-  [services.googleAnalytics]
-    ID = "UA-123456-789"
+    title = "'WEBSITE IN DEVELOPMENT' -ISAAC LINS" 
+    description = "A simple countdown"
+    favicon = ""
+    message = "COMING SOON!" 
+    release = "May 1, 2024" 
+    background = "" 
+socialIcons = [
+{name = "email", url = "isaac.lins07@gmail.com"},         
+{name = "github", url = "https://github.com/isaaclins"},    
+{name = "linkedin", url = "https://www.linkedin.com/in/isaac-lins-094612247/"},  
+]

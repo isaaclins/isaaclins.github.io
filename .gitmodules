@@ -1,3 +1,6 @@
 [submodule "themes/github-style"]
 	path = themes/github-style
 	url = https://github.com/MeiK2333/github-style.git
+[submodule "themes/coming-soon"]
+	path = themes/coming-soon
+	url = https://github.com/mansoorbarri/coming-soon.git
