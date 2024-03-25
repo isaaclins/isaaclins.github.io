@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>CTF on Isaac Lins - Application Developer</title>
+    <title>CTF on </title>
     <link>http://localhost:1313/tags/ctf/</link>
-    <description>Recent content in CTF on Isaac Lins - Application Developer</description>
+    <description>Recent content in CTF on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 22 Mar 2024 13:33:49 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 22 Mar 2024 08:10:30 +0100</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/ctf/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>22/03/24 Progress on SHC</title>
