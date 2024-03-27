@@ -7,8 +7,9 @@
   name = "Blog"
   pageRef = "posts"
   weight = 10
+
 [[main]] 
-  name = "projects"
+  name = "Projects"
   pageRef = "projects"
   weight = 20
 
@@ -20,8 +21,15 @@
 [[main]]
     identifier = "linkedin"
     pre = "linkedin"
-    url="https://github.com/isaaclins"
+    url="https://www.linkedin.com/in/isaac-lins-094612247/"
     weight= 200
+[[main]]
+    name ="open Calculator"
+    identifier = "wand-magic-sparkles"
+    pre = "wand-magic-sparkles"
+    url="Calculator:///"
+    weight= 300
+
  [[footer]]
    name = "Contact me"
    url = "mailto://isaac.lins07@gmail.com"
