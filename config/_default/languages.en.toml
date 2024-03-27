@@ -1,6 +1,6 @@
 # config/_default/languages.en.toml
 
-title = "Home"
+title = "Isaac Lins | Portfolio"
 [author]
 name = "Isaac Lins"
 image = "img/author.jpg"
