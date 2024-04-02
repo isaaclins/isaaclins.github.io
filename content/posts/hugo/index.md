@@ -20,10 +20,20 @@ One of the best things about using a theme like Blowfish is that it allows you t
 
 ## How to set up Hugo with Blowfish
 
-I personally will not make a tutorial, but here is a tutorial I found that helped me out a lot!
+I personally will not make a tutorial, but here is one I found when making this site that helped me out a lot!
 
 {{< youtube -05mOdHmQVc >}}
 
 *Video by [Ken Harris](https://www.youtube.com/channel/UCfnWz18KwG5E5bRB7HVhIuA)*
 
 Thanks to this video, I've been able to make the website you're reading this from!
+
+## Challenges I've faced
+
+Some challenges I've faced are some themes I had installed somehow didn't work for me.
+I won't be naming any out of respect because I believe they had a lot of work put into them but in my opinion it's kind of sad that they didn't work. Either way I found blowfish and managed to move all original posts that I made and formatted them and it finally worked!
+
+## Future Plans
+
+I'd like to **stick with Blowfish**, just because its easy and I finally understand *how* it works and I probably won't be changing the theme any time soon, unless a better option appears out of thin air, which I don't think will happen.
+I really recommend **moving to Hugo** if you didn't yet, as the **learning curve is exponential** and pretty much self explanatory. It can be used pretty much everywhere where no back-end is needed.
