@@ -10,10 +10,10 @@ defaultAppearance = "dark" # valid options: light or dark
 autoSwitchAppearance = true
 
 enableSearch = true
-enableCodeCopy = false
+enableCodeCopy = true
 
 # mainSections = ["section1", "section2"]
-# robots = ""
+# robots = "helloooo"
 
 disableImageOptimization = false
 disableTextInHeader = false
@@ -23,7 +23,7 @@ defaultFeaturedImage = "background.svg" # used as default for featured images in
 
 highlightCurrentMenuArea = true
 smartTOC = true
-# smartTOCHideUnfocusedChildren = true
+smartTOCHideUnfocusedChildren = true
 
 [header]
   layout = "fixed-fill-blur" # valid options: basic, fixed, fixed-fill, fixed-gradient, fixed-fill-blur
@@ -44,7 +44,7 @@ smartTOC = true
   showMoreLinkDest = "/posts"
   cardView = false
   cardViewScreenWidth = false
-  layoutBackgroundBlur = false # only used when layout equals background
+  layoutBackgroundBlur = true # only used when layout equals background
 
 [article]
   showDate = true
@@ -67,7 +67,7 @@ smartTOC = true
   showPagination = true
   invertPagination = false
   showReadingTime = true
-  showTableOfContents = false
+  showTableOfContents = true
   # showRelatedContent = false
   # relatedContentLimit = 3
   showTaxonomies = false
