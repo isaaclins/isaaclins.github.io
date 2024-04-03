@@ -6,13 +6,19 @@ description: "Discord Python RAT (malware creation)"
 tags: ["template"]
 ---
 
+
+
 First of, I'd like to clarify some things.
-Thats why I've separated this Project into *N different sections*. If you get stuck somewhere along this journey, there will always be a Table of Contents on the right.
+This project is a **PoC (Proof of Concept)**. I didn't write the code for malicious intentions, but to see how far I can go with just my knowledge in Python and some help from friends.
+If you get stuck somewhere along this journey, there will always be a Table of Contents on the right.
 
 ## How did I start?
 
 I knew I wanted to create something using **Python**, as I've been working with it for some while now and wanted to test what I could create with it.
 I started with a GitHub repository in my account and started installing things locally.
+{{< alert "github" >}}
+Don't forget to [follow me](https://github.com/isaaclins) on GitHub.
+{{< /alert >}}
 
 {{< github repo="isaaclins/Discord_Python_RAT" >}}
 
@@ -29,7 +35,7 @@ async def on_message(message):
 async def on_ready():
 ```
 
-I figured that this code can also be used as a **Chat Logger** as I'm writing this
+I figured that this code can also be used as a **Chat Logger** as I'm writing this.
 
 After that I started to plan what I wanted the bot to be able to do.
 
@@ -94,5 +100,19 @@ Here I'll dump the most important code parts and explain it line by line.
 ## Sources
 
 - Hero image I found at [this blog](https://gettotext.com/beware-of-this-malware-on-discord-it-steals-your-bank-details-and-makes-purchases-without-your-knowledge/)
-- Here is my GitHub Repository. If you want to improve or change some code, Please follow the following article on how to submit a PULL REQUEST.
-{{< article link="/posts/welcome/" >}}
+- Here is my GitHub Repository. If you want to improve or change some code, Please follow the article below on how to submit a PR.
+
+{{< article link="/posts/pullrequest/" >}}
+
+## LEGAL
+
+{{< alert cardColor="#e63946" iconColor="#1d3557" textColor="#f1faee" >}}
+
+Copyright (c) 2024 Isaac Lins
+
+SlytherCord is a tool developed by Isaac Lins. This software is provided "AS IS", without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. In no event shall the author be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software.
+
+This documentation provides an overview of the Discord Python RAT and its available features. It is important to use these functionalities responsibly and in compliance with relevant laws and regulations. Always ensure that you have appropriate authorization before remotely administering systems.
+
+SlytherCord is intended for educational and responsible use only. The developer, Isaac Lins, takes no responsibility for any misuse of this tool. Unauthorized access to others' accounts, distribution of malware, or any other illegal activities are strictly prohibited. By using SlytherCord, you agree to comply with all applicable laws and regulations.
+{{< /alert >}}
