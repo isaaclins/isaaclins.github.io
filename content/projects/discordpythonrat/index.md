@@ -35,7 +35,7 @@ async def on_message(message):
 async def on_ready():
 ```
 
-I figured that this code can also be used as a **Chat Logger** as I'm writing this
+I figured that this code can also be used as a **Chat Logger** as I'm writing this.
 
 After that I started to plan what I wanted the bot to be able to do.
 
