@@ -1,26 +1,24 @@
+name: Push to Hugo branch
+
 on:
-    push:
-      branches:
-        - OFCL
-        
-  jobs:
-    build:
-      runs-on: ubuntu-latest
-  
-      steps:
-        - name: Checkout code
-          uses: actions/checkout@v2
-          with:
-            fetch-depth: 0
-  
-        - name: Set Git identity
-          run: |
-            git config --global user.email "isaac.lins07@gmail.com"
-            git config --global user.name "isaac's automation bot"
-  
-        - name: Push to Hugo branch
-          run: |
-            git checkout hugo
-            git merge --no-ff --allow-unrelated-histories OFCL -m "Merge changes"
-            git push origin hugo
-  
+  push:
+    branches:
+      - OFCL
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Login & Push to Hugo branch
+        run: |
+          git config --global user.email "isaac.lins07@gmail.com"
+          git config --global user.name "isaac's automation bot"
+          git checkout hugo
+          git merge --no-ff --allow-unrelated-histories OFCL -m "Merge changes"
+          git push origin hugo
