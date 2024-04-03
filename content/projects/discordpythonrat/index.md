@@ -94,3 +94,5 @@ Here I'll dump the most important code parts and explain it line by line.
 ## Sources
 
 - Hero image I found at [this blog](https://gettotext.com/beware-of-this-malware-on-discord-it-steals-your-bank-details-and-makes-purchases-without-your-knowledge/)
+- Here is my GitHub Repository. If you want to improve or change some code, Please follow the following article on how to submit a PULL REQUEST.
+{{< article link="/posts/welcome/" >}}
