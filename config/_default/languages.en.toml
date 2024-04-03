@@ -1,0 +1,13 @@
+# config/_default/languages.en.toml
+
+title = "Isaac Lins | Portfolio"
+[author]
+name = "Isaac Lins"
+image = "avatar.png"
+headline = "Application Developer"
+bio = "A little bit about me"
+links = [
+  { linkedin = "https://www.linkedin.com/in/isaac-lins-094612247/" },
+  { github = "https://github.com/isaaclins" },
+  { email = "mailto:isaac.lins07@gmail.com" }
+]
