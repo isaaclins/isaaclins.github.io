@@ -15,6 +15,7 @@ Hi, I'm Isaac. I build applications and break things on purpose to learn how the
 - **Develop:** I craft clean, efficient applications using Java, Python, JavaScript, and more.
 - **Secure:** I dive into cybersecurity, always exploring vulnerabilities and learning to defend against them.
 - **Innovate:** I enjoy experimenting and pushing the limits of what technology can do.
+- **[Blog](/blog/):** I share my thoughts and experiences on technology, cybersecurity, and more.
 
 ## My Work Mentality & Useful Sites
 
@@ -25,13 +26,14 @@ Hi, I'm Isaac. I build applications and break things on purpose to learn how the
 - [**KISS**](https://en.wikipedia.org/wiki/KISS_principle#References)
 - [**git commits**](https://cbea.ms/git-commit/)
 - [**User Inyerface**](https://userinyerface.com/index.html)
+
 ## Contact Me
 
 - **Email:** [contact@isaaclins.com](mailto:contact@isaaclins.com)
 - **GitHub:** [github.com/isaaclins](https://github.com/isaaclins)
 - **LinkedIn:** [Isaac Lins](https://www.linkedin.com/in/isaac-lins-094612247/)
 - **Resume:** [Download Resume](/resume.pdf)
- 
+
 If you're here, you know what you want.
 
 let's get to work.
