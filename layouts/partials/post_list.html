@@ -8,9 +8,9 @@
     {{- else -}}
         {{- if (eq .context.Kind "term") -}}
             {{- $posts = .context.Data.Pages -}}
-	{{- else -}}
+        {{- else -}}
             {{- $posts = site.RegularPages }}
-	{{- end -}}
+        {{- end -}}
     {{- end -}}
 {{- end -}}
 
@@ -26,27 +26,27 @@
         {{ $posts = (first .limit $posts ) }}
     {{ end }}
 
-        {{- range $post := $posts -}}
-
-            <!-- TODO -->            
-                <h2><a href="{{ $post.Permalink | relURL }}">{{ $post.Title }}</a></h2>
-                <ul>
-                    <li>DATE: {{- ($post.Date | time.Format site.Params.theme_config.date_format) }}</li>
-                <li>TAGS: [
+    {{- range $post := $posts -}}
+        <h2><a href="{{ $post.Permalink | relURL }}">{{ $post.Title }}</a></h2>
+        <ul>
+            <li>DATE: <span class="post-date">{{ $post.Date | time.Format site.Params.theme_config.date_format }}</span></li>
+            <li>TAGS: [<span class="post-tags-list">
             {{- if $post.Params.tags -}}
-            <span class="post-tags-list">
-                TAGS: [
                 {{- range $index, $tag := $post.Params.tags -}}
                     {{- if $index }}, {{ end -}}
                     <a href="{{ "/tags/" | relLangURL }}{{ $tag | urlize }}">{{ $tag }}</a>
                 {{- end -}}
                 ]
             </span>
+            </li>
+            <br>
+            </ul>
             {{- end -}}
+    {{ end }}
 
-        {{ end }}
-        {{- if and .show_more $limit_exceeded }}
-            <li><a href="{{ .show_more_url | relURL }}">{{ .show_more_text | default "Show more..." }}</a></li>
-        {{ end }}
 
+
+    {{- if and .show_more $limit_exceeded }}
+        <li><a href="{{ .show_more_url | relURL }}">{{ .show_more_text | default "Show more..." }}</a></li>
+    {{ end }}
 {{ end }}
