@@ -29,9 +29,10 @@
         {{- range $post := $posts -}}
 
             <!-- TODO -->            
-            
-            <h2><a href="{{ $post.Permalink | relURL }}">{{ $post.Title }}</a></h2>
-            {{- ($post.Date | time.Format site.Params.theme_config.date_format) }}
+                <h2><a href="{{ $post.Permalink | relURL }}">{{ $post.Title }}</a></h2>
+                <ul>
+                    <li>DATE: {{- ($post.Date | time.Format site.Params.theme_config.date_format) }}</li>
+                <li>TAGS: [
             {{- if $post.Params.tags -}}
             <span class="post-tags-list">
                 TAGS: [

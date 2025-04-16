@@ -270,7 +270,9 @@ details[open] summary {
     }
   }
 }
-
+li {
+  list-style-type: none;
+}
 .post-tags-list {
   font-size: 0.9rem;
   margin-left: 0.5rem;
