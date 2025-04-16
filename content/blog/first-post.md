@@ -6,8 +6,6 @@ tags = ["introduction", "technology"]
 categories = ["general"]
 +++
 
-# Welcome to My Blog!
-
 This is my first blog post. I've created this space to share my thoughts on technology, cybersecurity, and my journey in the tech industry.
 
 ## What to Expect
