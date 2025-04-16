@@ -25,14 +25,16 @@
     {{- if .limit }}
         {{ $posts = (first .limit $posts ) }}
     {{ end }}
-    <ul>
+
         {{- range $post := $posts -}}
-        <li>
-            <span>{{- ($post.Date | time.Format site.Params.theme_config.date_format) }}</span>
-            <a href="{{ $post.Permalink | relURL }}">{{ $post.Title }}</a>
+
+            <!-- TODO -->            
+            
+            <h2><a href="{{ $post.Permalink | relURL }}">{{ $post.Title }}</a></h2>
+            {{- ($post.Date | time.Format site.Params.theme_config.date_format) }}
             {{- if $post.Params.tags -}}
             <span class="post-tags-list">
-                [
+                TAGS: [
                 {{- range $index, $tag := $post.Params.tags -}}
                     {{- if $index }}, {{ end -}}
                     <a href="{{ "/tags/" | relLangURL }}{{ $tag | urlize }}">{{ $tag }}</a>
@@ -40,10 +42,10 @@
                 ]
             </span>
             {{- end -}}
-        </li>
+
         {{ end }}
         {{- if and .show_more $limit_exceeded }}
             <li><a href="{{ .show_more_url | relURL }}">{{ .show_more_text | default "Show more..." }}</a></li>
         {{ end }}
-    </ul>
+
 {{ end }}
