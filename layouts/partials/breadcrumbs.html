@@ -1,0 +1,19 @@
+{{ $url := replace .Permalink (printf "%s" .Site.BaseURL) "" }}
+{{ $urlParts := split $url "/" }}
+
+<div class="breadcrumbs">
+  <a href="{{ "/" | relURL }}">Home</a>
+  {{ range $index, $element := $urlParts }}
+    {{ if and (ne $element "") (ne $element "page") }}
+      {{ $path := "" }}
+      {{ range $i, $part := $urlParts }}
+        {{ if le $i $index }}
+          {{ if ne $part "" }}
+            {{ $path = printf "%s/%s" $path $part }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+      / <a href="{{ $path | relURL }}">{{ humanize $element }}</a>
+    {{ end }}
+  {{ end }}
+</div> 

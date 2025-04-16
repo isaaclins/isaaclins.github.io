@@ -1,21 +1,19 @@
-{{ define "main" }}
-{{ partial "back_link.html" .}}
+{{ define "main" }} {{ partial "breadcrumbs.html" . }} {{ partial
+"back_link.html" .}}
 
 <article>
-    <p class="post-meta">
-        <time datetime="{{ .Date }}">
-            {{ .Date | time.Format site.Params.theme_config.date_format }}
-        </time>
-    </p>
+  <p class="post-meta">
+    <time datetime="{{ .Date }}">
+      {{ .Date | time.Format site.Params.theme_config.date_format }}
+    </time>
+  </p>
 
-    <h1>{{ .Title }}</h1>
+  <h1>{{ .Title }}</h1>
 
-    {{ if .Params.toc }}
-        <aside {{ if .Params.tocBorder }} class="toc" {{ end }}>
-            {{ .TableOfContents }}
-        </aside>
-    {{ end }}
-
-    {{ .Content }}
+  {{ if .Params.toc }}
+  <aside {{ if .Params.tocBorder }} class="toc" {{ end }}>
+    {{ .TableOfContents }}
+  </aside>
+  {{ end }} {{ .Content }}
 </article>
 {{ end }}
