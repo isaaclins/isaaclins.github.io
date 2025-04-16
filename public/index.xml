@@ -6,14 +6,21 @@
     <description>Recent content in Isaac Lins on </description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 05 Jun 2023 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 16 Apr 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Welcome to My Blog</title>
-      <link>//localhost:1313/blog/first-post/</link>
-      <pubDate>Mon, 05 Jun 2023 09:00:00 +0000</pubDate>
-      <guid>//localhost:1313/blog/first-post/</guid>
-      <description>&lt;p&gt;This is my first blog post. I&amp;rsquo;ve created this space to share my thoughts on technology, cybersecurity, and my journey in the tech industry.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-to-expect&#34;&gt;What to Expect&lt;/h2&gt;&#xA;&lt;p&gt;In this blog, I&amp;rsquo;ll be covering topics like:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Cybersecurity insights and research&lt;/li&gt;&#xA;&lt;li&gt;Programming techniques and best practices&lt;/li&gt;&#xA;&lt;li&gt;Tech industry observations&lt;/li&gt;&#xA;&lt;li&gt;Personal projects and experiments&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;stay-connected&#34;&gt;Stay Connected&lt;/h2&gt;&#xA;&lt;p&gt;I&amp;rsquo;m excited to share my knowledge and experiences with you. Feel free to reach out on any of my social platforms if you have questions or topics you&amp;rsquo;d like me to cover.&lt;/p&gt;</description>
+      <title>Model Context Protocol what now?</title>
+      <link>//localhost:1313/blog/mcp/</link>
+      <pubDate>Wed, 16 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/blog/mcp/</guid>
+      <description>&lt;p&gt;You probably heard about MCP in the last few weeks.&lt;/p&gt;&#xA;&lt;p&gt;Let me tell you, it&amp;rsquo;s an amazing tool that&amp;rsquo;s shaking up the way AI systems connect with external data and tools.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-the-heck-is-mcp&#34;&gt;What the Heck is MCP?&lt;/h2&gt;&#xA;&lt;p&gt;MCP stands for &lt;strong&gt;Model Context Protocol&lt;/strong&gt;. Here&amp;rsquo;s the simple version:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;Purpose:&lt;/strong&gt;&lt;br&gt;&#xA;MCP is an open standard that lets AI models (like our trusty assistants) interact with different data sources and systems without the messy custom integrations you&amp;rsquo;d normally need. Instead of writing a new connector for every tool and every model (an annoying M×N problem), MCP makes it one simple connection per tool.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>TEMPLATE</title>
+      <link>//localhost:1313/blog/_template/</link>
+      <pubDate>Wed, 16 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/blog/_template/</guid>
+      <description>&lt;h1 id=&#34;markdown-examples&#34;&gt;Markdown Examples&lt;/h1&gt;&#xA;&lt;p&gt;This template demonstrates all the Markdown formatting options available for your blog posts.&lt;/p&gt;&#xA;&lt;h2 id=&#34;basic-formatting&#34;&gt;Basic Formatting&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Bold text&lt;/strong&gt; or &lt;strong&gt;also bold&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;em&gt;Italic text&lt;/em&gt; or &lt;em&gt;also italic&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;em&gt;&lt;strong&gt;Bold and italic&lt;/strong&gt;&lt;/em&gt; or &lt;em&gt;&lt;strong&gt;also bold and italic&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;del&gt;Strikethrough text&lt;/del&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;headings&#34;&gt;Headings&lt;/h2&gt;&#xA;&lt;h1 id=&#34;heading-1&#34;&gt;Heading 1&lt;/h1&gt;&#xA;&lt;h2 id=&#34;heading-2&#34;&gt;Heading 2&lt;/h2&gt;&#xA;&lt;h3 id=&#34;heading-3&#34;&gt;Heading 3&lt;/h3&gt;&#xA;&lt;h4 id=&#34;heading-4&#34;&gt;Heading 4&lt;/h4&gt;&#xA;&lt;h5 id=&#34;heading-5&#34;&gt;Heading 5&lt;/h5&gt;&#xA;&lt;h6 id=&#34;heading-6&#34;&gt;Heading 6&lt;/h6&gt;&#xA;&lt;h2 id=&#34;lists&#34;&gt;Lists&lt;/h2&gt;&#xA;&lt;h3 id=&#34;unordered-lists&#34;&gt;Unordered Lists&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Item 1&lt;/li&gt;&#xA;&lt;li&gt;Item 2&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Nested item 2.1&lt;/li&gt;&#xA;&lt;li&gt;Nested item 2.2&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Item 3&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;task-lists&#34;&gt;Task Lists&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Completed task&lt;/li&gt;&#xA;&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Incomplete task&lt;/li&gt;&#xA;&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Another task&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;links&#34;&gt;Links&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://example.com&#34;&gt;Link to external website&lt;/a&gt;&#xA;&lt;a href=&#34;//localhost:1313/blog/another-post&#34;&gt;Link to internal page&lt;/a&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
