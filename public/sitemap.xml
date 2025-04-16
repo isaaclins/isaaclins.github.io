@@ -14,15 +14,6 @@
     <loc>//localhost:1313/tags/</loc>
     <lastmod>2025-04-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/blog/_template/</loc>
-    <lastmod>2025-04-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/tags/template/</loc>
-    <lastmod>2025-04-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/tags/template2/</loc>
-    <lastmod>2025-04-16T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>//localhost:1313/blog/</loc>
     <lastmod>2023-06-01T00:00:00+00:00</lastmod>
   </url><url>
@@ -36,5 +27,9 @@
     <loc>//localhost:1313/tags/introduction/</loc>
   </url><url>
     <loc>//localhost:1313/tags/technology/</loc>
+  </url><url>
+    <loc>//localhost:1313/tags/template/</loc>
+  </url><url>
+    <loc>//localhost:1313/tags/template2/</loc>
   </url>
 </urlset>
