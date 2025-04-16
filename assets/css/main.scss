@@ -254,3 +254,32 @@ details[open] summary {
     }
   }
 }
+
+/* Tags */
+.post-tags {
+  font-size: 0.9rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+
+  a {
+    display: inline-block;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.post-tags-list {
+  font-size: 0.9rem;
+  margin-left: 0.5rem;
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

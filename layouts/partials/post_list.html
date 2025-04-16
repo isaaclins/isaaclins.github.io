@@ -30,6 +30,16 @@
         <li>
             <span>{{- ($post.Date | time.Format site.Params.theme_config.date_format) }}</span>
             <a href="{{ $post.Permalink | relURL }}">{{ $post.Title }}</a>
+            {{- if $post.Params.tags -}}
+            <span class="post-tags-list">
+                [
+                {{- range $index, $tag := $post.Params.tags -}}
+                    {{- if $index }}, {{ end -}}
+                    <a href="{{ "/tags/" | relLangURL }}{{ $tag | urlize }}">{{ $tag }}</a>
+                {{- end -}}
+                ]
+            </span>
+            {{- end -}}
         </li>
         {{ end }}
         {{- if and .show_more $limit_exceeded }}

@@ -7,6 +7,16 @@
       {{ .Date | time.Format site.Params.theme_config.date_format }}
     </time>
   </p>
+  
+  {{ if .Params.tags }}
+  <p class="post-tags">
+    Tags:
+    {{ range $index, $tag := .Params.tags }}
+      {{ if $index }}, {{ end }}
+      <a href="{{ "/tags/" | relLangURL }}{{ $tag | urlize }}">{{ $tag }}</a>
+    {{ end }}
+  </p>
+  {{ end }}
 
   <h1>{{ .Title }}</h1>
 
