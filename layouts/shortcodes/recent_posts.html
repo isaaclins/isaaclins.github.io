@@ -1,0 +1,13 @@
+{{ $pages := where .Site.RegularPages "Section" "blog" }}
+{{ $pages = first 5 $pages }}
+{{ if $pages }}
+  <h2>Blog</h2>
+  <ul>
+    {{ range $pages }}
+      - <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+    {{ end }}
+  </ul>
+{{ else }}
+  <h2>Blog</h2>
+  <p>No recent posts to display at the moment.</p>
+{{ end }} 
