@@ -89,15 +89,15 @@ jobs:
           echo "|-----|---------------|----------------|-------------|-----|"
           RESULTS_JSON='${{ steps.lighthouse_run.outputs.lighthouseCheckResults || '{"data":[]}' }}'
           echo "$RESULTS_JSON" | jq -r '.data[]? | select(.url) | ("| " + .url + " | " + (.scores.accessibility // "N/A" | tostring) + " | " + (.scores.bestPractices // "N/A" | tostring) + " | " + (.scores.performance // "N/A" | tostring) + " | " + (.scores.seo // "N/A" | tostring) + " |")'
-          ) > lighthousetest.md # Redirect output to file
-          echo "Lighthouse summary report generated: lighthousetest.md"
+          ) > README.md # Redirect output to file
+          echo "Lighthouse summary report generated: README.md"
 
       - name: Commit and Push Lighthouse Report
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "docs: Update Lighthouse accessibility report"
           branch: main # Or your default branch
-          file_pattern: lighthousetest.md
+          file_pattern: README.md
           commit_user_name: "GitHub Actions Bot"
           commit_user_email: "actions@github.com"
           commit_author: "GitHub Actions Bot <actions@github.com>"
