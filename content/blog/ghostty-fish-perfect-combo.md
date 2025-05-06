@@ -41,10 +41,10 @@ My benchmark? The visually striking [DOOM-fire-zig](https://github.com/const-voi
 Just look at this comparison:
 
 _DOOM-fire-zig running in default macOS Terminal_
-![DOOM-fire-zig running in default macOS Terminal](https://github.com/isaaclins/isaaclins.github.io/blob/main/assets/img/doom-fire-zig-default-terminal.png?raw=true)
+![DOOM-fire-zig running in default macOS Terminal](../../assets/img/doom-fire-zig-default-terminal.png?raw=true)
 
 _DOOM-fire-zig running in Ghostty_
-![DOOM-fire-zig running in Ghostty](https://github.com/isaaclins/isaaclins.github.io/blob/main/assets/img/doom-fire-zig-ghostty-terminal.png?raw=true)
+![DOOM-fire-zig running in Ghostty](../../assets/img/doom-fire-zig-ghostty-terminal.png?raw=true)
 
 While the FPS counter shows 278 FPS, the actual framerate is closer to 15 FPS in the default Terminal. Try it out yourself to see the difference!
 (macOS default terminal is a piece of shit and crashed after ~10 seconds of running the animation)
@@ -73,7 +73,7 @@ Feel free to explore and take inspiration!
 Here is a screenshot of my Fish shell prompt:
 
 _Fish shell prompt_
-![Fish shell prompt](https://github.com/isaaclins/isaaclins.github.io/blob/main/assets/img/fish-shell-prompt.png?raw=true)
+![Fish shell prompt](../../assets/img/fish-shell-prompt.png?raw=true)
 
 
 ## The Verdict: Stop Searching, Start Doing
