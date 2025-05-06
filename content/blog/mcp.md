@@ -2,7 +2,7 @@
 title = "Model Context Protocol what now?"
 date = 2025-04-16
 draft = false
-tags = ["Mcp", "Ai"]
+tags = ["MCP", "AI"]
 +++
 
 You probably heard about MCP in the last few weeks.

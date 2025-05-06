@@ -2,7 +2,7 @@
 title = "Cursor IDE: A Developer's Double-Edged Sword"
 date = 2025-05-06
 draft = false
-tags = ["Software", "Productivity", "AI"]
+tags = ["Software", "IDE", "AI"]
 +++
 
 Alright, let's talk about Cursor IDE. If you're a developer, you've probably heard of it. My journey with it? Well, it's been a bit of a rollercoaster, a classic love-hate story.
