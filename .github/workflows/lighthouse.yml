@@ -91,7 +91,7 @@ jobs:
             echo "|-----|---------------|----------------|-------------|-----|"
 
             # Generate data rows for each URL
-            echo "$RESULTS_JSON_CONTENT" | jq -r \'\'\'
+            echo "$RESULTS_JSON_CONTENT" | jq -r '
               .data[]? # Iterate over each item in the data array, gracefully handle if .data is null or item is null
               | select(.url) # Ensure the item has a URL
               | (
@@ -102,15 +102,15 @@ jobs:
                   (.scores.performance // "N/A" | tostring) + " | " +
                   (.scores.seo // "N/A" | tostring) + " |"
                 )
-            \'\'\'
+            '
 
             # Generate average row and final score line
-            echo "$RESULTS_JSON_CONTENT" | jq -r \'\'\'
+            echo "$RESULTS_JSON_CONTENT" | jq -r '
               # Pass the data array directly to this jq instance
               .data
               # Check if .data is a non-empty array
               | if (type != "array") or (length == 0) then
-                  "| Overall Average | N/A | N/A | N/A | N/A |\\n\\n# Average Score: N/A"
+                  "| Overall Average | N/A | N/A | N/A | N/A |\\\\n\\\\n# Average Score: N/A"
                 else
                   # Extract all valid numerical scores for each category from the .data array
                   [.[].scores.accessibility | select(type == "number")] as $acc_scores |
@@ -133,7 +133,7 @@ jobs:
                   (if ($seo_scores | length) > 0 then ($seo_scores | add / length) else null end) as $raw_avg_seo |
 
                   # Construct the Markdown table row for averages
-                  "| Overall Average | \\($avg_acc_str) | \\($avg_bp_str) | \\($avg_perf_str) | \\($avg_seo_str) |" as $avg_row_str |
+                  "| Overall Average | \\\\($avg_acc_str) | \\\\($avg_bp_str) | \\\\($avg_perf_str) | \\\\($avg_seo_str) |" as $avg_row_str |
 
                   # Collect all valid raw numerical averages (those that are not null)
                   ([$raw_avg_acc, $raw_avg_bp, $raw_avg_perf, $raw_avg_seo] | map(select(. != null))) as $valid_raw_category_averages |
@@ -146,9 +146,9 @@ jobs:
                    end) as $final_avg_score_str |
 
                   # Combine the average row and the final score line
-                  $avg_row_str + "\\n\\n# Average Score: \\($final_avg_score_str)"
+                  $avg_row_str + "\\\\n\\\\n# Average Score: \\\\($final_avg_score_str)"
                 end
-            \'\'\'
+            '
           ) > README.md # All echos inside () go to README.md
 
           # This echo goes to the workflow log, not the README.md
