@@ -40,11 +40,11 @@ Ghostty is _fast_. As a native macOS application, it feels incredibly responsive
 My benchmark? The visually striking [DOOM-fire-zig](https://github.com/const-void/DOOM-fire-zig) animation. Running this in the default macOS terminal was… okay. Running it in Ghostty? The difference was palpable. Smoother, faster, and just a joy to watch. This isn't just about fancy animations; this raw performance translates to every command you run, every log you tail, every process you monitor.
 Just look at this comparison:
 
-![DOOM-fire-zig running in default macOS Terminal](https://github.com/isaaclins/isaaclins.github.io/blob/main/assets/img/doom-fire-zig-default-terminal.png?raw=true)
 _DOOM-fire-zig running in default macOS Terminal_
+![DOOM-fire-zig running in default macOS Terminal](https://github.com/isaaclins/isaaclins.github.io/blob/main/assets/img/doom-fire-zig-default-terminal.png?raw=true)
 
-![DOOM-fire-zig running in Ghostty](https://github.com/isaaclins/isaaclins.github.io/blob/main/assets/img/doom-fire-zig-ghostty-terminal.png?raw=true)
 _DOOM-fire-zig running in Ghostty_
+![DOOM-fire-zig running in Ghostty](https://github.com/isaaclins/isaaclins.github.io/blob/main/assets/img/doom-fire-zig-ghostty-terminal.png?raw=true)
 
 While the FPS counter shows 278 FPS, the actual framerate is closer to 15 FPS in the default Terminal. Try it out yourself to see the difference!
 (macOS default terminal is a piece of shit and crashed after ~10 seconds of running the animation)
@@ -72,8 +72,9 @@ Feel free to explore and take inspiration!
 
 Here is a screenshot of my Fish shell prompt:
 
-![Fish shell prompt](https://github.com/isaaclins/isaaclins.github.io/blob/main/assets/img/fish-shell-prompt.png?raw=true)
 _Fish shell prompt_
+![Fish shell prompt](https://github.com/isaaclins/isaaclins.github.io/blob/main/assets/img/fish-shell-prompt.png?raw=true)
+
 
 ## The Verdict: Stop Searching, Start Doing
 
