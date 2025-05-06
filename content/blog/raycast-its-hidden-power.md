@@ -6,26 +6,28 @@ tags = ["Raycast", "Productivity", "MacOS", "Launcher", "Workflow"]
 +++
 
 I stumbled upon Raycast even before I owned a Mac and instantly fell in love with the concept.
-My friend [@k3ntaw](https://github.com/k3ntaw/) (shoutout to him!) showed it to me, and I immediately started searching for Windows alternatives (I was mainly on Windows at the time).
+My friend [**@k3ntaw**](https://github.com/k3ntaw/) (shoutout to him!) showed it to me, and I immediately started searching for Windows alternatives (I was mainly on Windows at the time).
 My quest led me down a couple of paths:
 
 ## Windows alternatives:
 
-### **PowerToys Run**: 
+### **PowerToys Run**:
+
 Initially promising, this turned out to be somewhat limited for my core need. A fast, efficient launcher. It felt like a classic case of [feature creep](https://en.wikipedia.org/wiki/Feature_creep); it tried to be a Swiss Army knife when all I needed was a sharp blade, leading to a clunkier experience than I wanted, packed with more than I was looking for in a simple launcher.
 
-### **Flow Launcher**: 
+### **Flow Launcher**:
+
 This was a strong contender. It was highly customizable with a plethora of plugins, and the ability to create your own was a big plus. The potential was huge, but diving into plugin development required a steeper learning curve and more time investment than I had available back then. It wasn't an easy feat, though very powerful for those who mastered it.
 
 ## Feature comparison:
 
-| Feature                           | ![PowerToys Run](/images/svg/powertoys.svg) | ![Flow Launcher](/images/svg/flow-launcher.svg) |
-| --------------------------------- | --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| Customization                     | ⚠️limited                                                                                                 | ⚠️limited (hard to make custom)                                                                               |
-| Plugin System                     | ⚠️limited                                                                                                 | ⚠️limited (hard to make custom)                                                                               |
-| Snippets                          | ❌                                                                                                        | ✅                                                                                                            |
-| Clipboard History                 | ✅                                                                                                        | ✅                                                                                                            |
-| Custom links with query insertion | ✅                                                                                                        | ✅                                                                                                            |
+| Feature                           | ![PowerToys Run](/images/svg/powertoys-run.svg) | ![Flow Launcher](/images/svg/flow-launcher.svg) |
+| --------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
+| Customization                     | ⚠️limited                                       | ✅                                              |
+| Plugin System                     | ⚠️limited                                       | ⚠️limited                                       |
+| Snippets                          | ❌                                              | ✅                                              |
+| Clipboard History                 | ✅                                              | ✅                                              |
+| Custom links with query insertion | ✅                                              | ✅                                              |
 
 Fast forward to getting my MacBook. I was aiming for a clean start, a minimalist setup.
 I initially tried Raycast, but seeing AI features integrated seemingly everywhere gave me pause.
