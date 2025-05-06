@@ -1,17 +1,17 @@
 ### Lighthouse Score Summary
 | URL | Accessibility | Best Practices | Performance | SEO |
 |-----|---------------|----------------|-------------|-----|
-| https://isaaclins.com/tags/customization/ | 89 | 96 | 77 | 90 |
+| https://isaaclins.com/tags/customization/ | 89 | 96 | 75 | 90 |
 | https://isaaclins.com/tags/fish/ | 89 | 96 | 100 | 90 |
 | https://isaaclins.com/tags/ghostty/ | 89 | 96 | 100 | 90 |
-| https://isaaclins.com/blog/ghostty-fish-perfect-combo/ | 90 | 96 | 70 | 100 |
+| https://isaaclins.com/blog/ghostty-fish-perfect-combo/ | 90 | 96 | 76 | 100 |
 | https://isaaclins.com/tags/launcher/ | 89 | 96 | 100 | 90 |
 | https://isaaclins.com/tags/m3/ | 89 | 96 | 100 | 90 |
-| https://isaaclins.com/tags/macos/ | 89 | 96 | 99 | 90 |
+| https://isaaclins.com/tags/macos/ | 89 | 96 | 100 | 90 |
 | https://isaaclins.com/blog/macos/ | 94 | 96 | 100 | 100 |
 | https://isaaclins.com/tags/productivity/ | 89 | 96 | 100 | 90 |
 | https://isaaclins.com/tags/raycast/ | 89 | 96 | 100 | 90 |
-| https://isaaclins.com/blog/raycast-its-hidden-power/ | 94 | 96 | 81 | 100 |
+| https://isaaclins.com/blog/raycast-its-hidden-power/ | 94 | 96 | 87 | 100 |
 | https://isaaclins.com/tags/ | 94 | 96 | 100 | 90 |
 | https://isaaclins.com/tags/terminal/ | 89 | 96 | 100 | 90 |
 | https://isaaclins.com/tags/workflow/ | 89 | 96 | 100 | 90 |
