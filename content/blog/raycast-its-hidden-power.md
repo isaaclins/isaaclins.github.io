@@ -32,8 +32,10 @@ This was a strong contender. It was highly customizable with a plethora of plugi
 Fast forward to getting my MacBook. I was aiming for a clean start, a minimalist setup.
 I initially tried Raycast, but seeing AI features integrated seemingly everywhere gave me pause.
 It felt a bit overwhelming, almost like the "AI taking over" memes in real life.
-
-![moistcritikal-screaming-ai-slowmotion.gif](/images/moistcritikal-screaming-ai-slowmotion.gif)
+|  |
+|------|
+| ![moistcritikal-screaming-ai-slowmotion.gif](/images/moistcritikal-screaming-ai-slowmotion.gif) |
+| |
 
 That wasn't the streamlined experience I was hoping for.
 
