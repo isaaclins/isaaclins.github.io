@@ -5,6 +5,9 @@ draft = false
 tags = ["Raycast", "Productivity", "MacOS", "Launcher", "Workflow"]
 +++
 
+![raycast.svg](/images/raycast.svg)
+
+
 I stumbled upon Raycast even before I owned a Mac and instantly fell in love with the concept.
 My friend [**@k3ntaw**](https://github.com/k3ntaw/) (shoutout to him!) showed it to me, and I immediately started searching for Windows alternatives (I was mainly on Windows at the time).
 My quest led me down a couple of paths:
