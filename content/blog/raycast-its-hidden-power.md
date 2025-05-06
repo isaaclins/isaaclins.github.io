@@ -15,21 +15,20 @@ My quest led me down a couple of paths:
 
 ### **PowerToys Run**:
 
-Initially promising, this turned out to be somewhat limited for my core need.
+Initially promising, but this turned out to be somewhat limited for my core need.
 
 A fast, efficient launcher.
 
-It felt like a classic case of [__feature creep__](https://en.wikipedia.org/wiki/Feature_creep). it tried to be a Swiss Army knife when all I needed was a sharp blade, leading to a clunkier experience than I wanted, packed with more than I was looking for in a simple launcher.
+It felt like a classic case of [__feature creep__](https://en.wikipedia.org/wiki/Feature_creep). It tried to be a Swiss Army knife when all I needed was a sharp blade, leading to a clunkier experience than I wanted, packed with more than I was looking for in a simple launcher.
 
 ### **Flow Launcher**:
 
 This was a strong contender.
 It was highly customizable with a plethora of plugins, and the ability to create your own was a big plus.
 
-The potential was huge, but diving into plugin development required a steeper learning curve and more time investment than I had available back then.
+The potential was huge, but diving into plugin development it had a steeper learning curve and needed more time investment than I had available back then.
 
-It wasn't an easy feat, though very powerful for those who mastered it.
-It was like raycast, but worse! 😃
+It was like Raycast, but worse! 😃
 
 ## Feature comparison:
 
@@ -41,7 +40,7 @@ It was like raycast, but worse! 😃
 | Clipboard History                 | ✅                                              | ✅                                              |
 | Custom links with query insertion | ✅                                              | ✅                                              |
 
-Fast forward to getting my MacBook. I was aiming for a clean start, a minimalist setup.
+Fast forward to me getting my MacBook. I was aiming for a clean start and a minimalist setup.
 I initially tried Raycast, but seeing AI features integrated seemingly everywhere gave me pause.
 
 It felt a bit overwhelming, almost like the "AI taking over" memes in real life.
@@ -55,7 +54,7 @@ That wasn't the streamlined experience I was hoping for.
 So, I decided to give Alfred a shot. Alfred has a solid reputation, but I quickly hit a wall.
 Many of its crucial customization features, the very things that make a launcher truly personal and powerful, were locked behind A $34 PAYWALL.
 
-(what the fuck do i look like im made of? gold????)
+(What the fuck do you think I'm made of? Pure gold????)
 
 For me, the core appeal of such a tool is deep personalization, and hitting a significant paywall for what felt like essential tweaks was a real turn-off.
 It felt like being charged for the steering wheel after buying the car.
@@ -84,10 +83,10 @@ For example, i used `:date` to create a snippet for the current date. Here are s
 and its very easy to create your own.
 Just select "Create Snippet" and you can create a snippet with a name and a shortcut.
 ![create snippet](/images/raycast-create-snippet.png?raw=true)
-in the snippet editor you can add a name, snippet text and a keyword.
-now when you type the keyword, the snippet will be inserted.
+In the snippet editor you can add a name, snippet text and a keyword.
+Now when you type the keyword, the snippet will be inserted.
 
-it can hold multiple lines of text and even variables.
+It can hold multiple lines of text and even variables.
 ![raycast-customized-snippet](/images/raycast-customized-snippet.png?raw=true)
 
 now whenever I type '`examplesnippet`' in any way, shape or form, the snippet will be inserted like this:

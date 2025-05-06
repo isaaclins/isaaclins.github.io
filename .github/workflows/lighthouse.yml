@@ -51,6 +51,8 @@ jobs:
     # This condition ensures 'urls' output from previous job is a non-empty array when this job runs
     if: fromJson(needs.build-and-get-urls.outputs.urls)[0] != null
     runs-on: ubuntu-latest
+    permissions: # Add this to grant write permissions for committing
+      contents: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -76,24 +78,31 @@ jobs:
           # Optional: Set budget to fail the check if scores are below thresholds
           # budgetPath: .github/lighthouse-budget.json
 
-      - name: Summarize Lighthouse Scores
+      - name: Generate Lighthouse Summary Report File
         # This condition makes the step always run, so you see the table even if some Lighthouse audits fail.
         if: always()
         shell: bash
         run: |
+          ( # Start subshell to redirect all output to file
           echo "### Lighthouse Score Summary"
           echo "| URL | Accessibility | Best Practices | Performance | SEO |"
           echo "|-----|---------------|----------------|-------------|-----|"
-          # Safely access the output, providing an empty JSON array string as a default if it's missing.
-          # This prevents errors if the lighthouse_run step fails to produce the output.
           RESULTS_JSON='${{ steps.lighthouse_run.outputs.lighthouseCheckResults || '{"data":[]}' }}'
-          # Use jq to parse the JSON and format each result as a Markdown table row.
-          # The .data[]? safely handles cases where RESULTS_JSON is an empty array or not an array.
-          # select(.url) ensures only objects with a 'url' field are processed.
-          # // \"N/A\" provides a default value if a score is missing, and tostring ensures it's a string for concatenation.
           echo "$RESULTS_JSON" | jq -r '.data[]? | select(.url) | ("| " + .url + " | " + (.scores.accessibility // "N/A" | tostring) + " | " + (.scores.bestPractices // "N/A" | tostring) + " | " + (.scores.performance // "N/A" | tostring) + " | " + (.scores.seo // "N/A" | tostring) + " |")'
+          ) > lighthousetest.md # Redirect output to file
+          echo "Lighthouse summary report generated: lighthousetest.md"
 
-      - name: Upload Lighthouse Reports
+      - name: Commit and Push Lighthouse Report
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "docs: Update Lighthouse accessibility report"
+          branch: main # Or your default branch
+          file_pattern: lighthousetest.md
+          commit_user_name: "GitHub Actions Bot"
+          commit_user_email: "actions@github.com"
+          commit_author: "GitHub Actions Bot <actions@github.com>"
+
+      - name: Upload Lighthouse Reports Artifact
         uses: actions/upload-artifact@v4
         with:
           name: lighthouse-reports # A single artifact for all reports
