@@ -86,12 +86,12 @@ jobs:
           echo "|-----|---------------|----------------|-------------|-----|"
           # Safely access the output, providing an empty JSON array string as a default if it's missing.
           # This prevents errors if the lighthouse_run step fails to produce the output.
-          RESULTS_JSON='${{ steps.lighthouse_run.outputs.lighthouseCheckResults || '[]' }}'
+          RESULTS_JSON='${{ steps.lighthouse_run.outputs.lighthouseCheckResults || '{"data":[]}' }}'
           # Use jq to parse the JSON and format each result as a Markdown table row.
-          # The ?.[] safely handles cases where RESULTS_JSON is an empty array or not an array.
+          # The .data[]? safely handles cases where RESULTS_JSON is an empty array or not an array.
           # select(.url) ensures only objects with a 'url' field are processed.
           # // \"N/A\" provides a default value if a score is missing.
-          echo "$RESULTS_JSON" | jq -r '.[]? | select(.url) | "| \(.url) | \(.accessibility // \"N/A\") | \(.bestPractices // \"N/A\") | \(.performance // \"N/A\") | \(.seo // \"N/A\") |"'
+          echo "$RESULTS_JSON" | jq -r '.data[]? | select(.url) | "| \(.url) | \(.scores.accessibility // \"N/A\") | \(.scores.bestPractices // \"N/A\") | \(.scores.performance // \"N/A\") | \(.scores.seo // \"N/A\") |"'
 
       - name: Upload Lighthouse Reports
         uses: actions/upload-artifact@v4
