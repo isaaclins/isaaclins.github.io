@@ -41,13 +41,13 @@ My benchmark? The visually striking [DOOM-fire-zig](https://github.com/const-voi
 Just look at this comparison:
 
 ![DOOM-fire-zig running in default macOS Terminal](https://github.com/isaaclins/isaaclins.github.io/blob/main/assets/img/doom-fire-zig-default-terminal.png?raw=true)
-*DOOM-fire-zig running in default macOS Terminal*
+_DOOM-fire-zig running in default macOS Terminal_
 
 ![DOOM-fire-zig running in Ghostty](https://github.com/isaaclins/isaaclins.github.io/blob/main/assets/img/doom-fire-zig-ghostty-terminal.png?raw=true)
-*DOOM-fire-zig running in Ghostty*
+_DOOM-fire-zig running in Ghostty_
 
 While the FPS counter shows 278 FPS, the actual framerate is closer to 15 FPS in the default Terminal. Try it out yourself to see the difference!
-
+(macOS default terminal is a piece of shit and crashed after ~10 seconds of running the animation)
 Fish shell shines with its user-friendliness, and customization is a prime example. Forget arcane syntax for aliases. Fish uses `abbr` (abbreviations), and they are a delight.
 
 Want `gcm` to expand to `git checkout main`?
@@ -64,18 +64,28 @@ This is subjective, I know. But the combination of Ghostty's clean interface and
 
 ## My Personal Configuration
 
-I've spent some time tailoring this setup to my specific needs. You can find my configuration files, including my Fish setup, in my `macOS-config` repository on GitHub: 
-- [https://github.com/isaaclins/macos-config](https://github.com/isaaclins/macos-config). 
+I've spent some time tailoring this setup to my specific needs. You can find my configuration files, including my Fish setup, in my `macOS-config` repository on GitHub:
+
+- [https://github.com/isaaclins/macos-config](https://github.com/isaaclins/macos-config).
 
 Feel free to explore and take inspiration!
 
 Here is a screenshot of my Fish shell prompt:
 
 ![Fish shell prompt](https://github.com/isaaclins/isaaclins.github.io/blob/main/assets/img/fish-shell-prompt.png?raw=true)
-*Fish shell prompt*
+_Fish shell prompt_
 
 ## The Verdict: Stop Searching, Start Doing
 
 If you're on macOS and looking to elevate your terminal experience from a mere utility to a powerful, enjoyable extension of your workflow, look no further. Ghostty and Fish are not just tools; they are a statement. A statement that says you value speed, efficiency, and a user experience that doesn't suck.
 
 Give them a try. Your command line will thank you.
+
+## Acknowledgements
+
+A huge thank you to the brilliant minds behind these tools:
+
+- **Ghostty:** Created by Mitchell Hashimoto and the contributors. Check out their work at [ghostty.org](https://ghostty.org) and on [GitHub](https://github.com/ghostty-org/ghostty).
+- **Fish Shell:** Developed by a dedicated community. Learn more at [fishshell.com](https://fishshell.com) and explore the code on [GitHub](https://github.com/fish-shell/fish-shell).
+
+Your contributions make the developer world a much better place!
