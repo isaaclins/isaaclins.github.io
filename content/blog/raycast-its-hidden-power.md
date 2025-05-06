@@ -27,7 +27,9 @@ My quest led me down a couple of paths:
 Fast forward to getting my MacBook. I was aiming for a clean start, a minimalist setup.
 I initially tried Raycast, but seeing AI features integrated seemingly everywhere gave me pause.
 It felt a bit overwhelming, almost like the "AI taking over" memes in real life.
-![funny anecdote with moistcritikal-screaming-ai-slowmotion.gif](https://github.com/isaaclins/isaaclins.github.io/blob/main/assets/img/moistcritikal-screaming-ai-slowmotion.gif)
+
+![moistcritikal-screaming-ai-slowmotion.gif](https://github.com/isaaclins/isaaclins.github.io/blob/main/assets/img/moistcritikal-screaming-ai-slowmotion.gif)
+
 That wasn't the streamlined experience I was hoping for.
 
 So, I decided to give Alfred a shot. Alfred has a solid reputation, but I quickly hit a wall.
@@ -94,7 +96,12 @@ Of course, its primary function. It seamlessly and quickly opens any application
 
 ### ChatGPT Integration via URL Query
 
-This is probably my most ingenious (if I may say so myself) use. I've set up a custom quicklink using the URL `https://chat.openai.com/?model=gpt-4&q={Query}&hints=search`. This allows me to type a query like "gpt explain python decorators" directly into Raycast, hit enter, and have it open in ChatGPT, ready to go. It's instant access to a powerful assistant without multiple clicks or navigating to the website first.
+This is probably my most ingenious (if I may say so myself) use. I've set up a custom quicklink using the URL 
+
+- `https://chat.openai.com/?model=gpt-4&q={Query}&hints=search`. 
+
+This allows me to type a query like "chat explain python decorators" directly into Raycast, hit enter, and have it open in ChatGPT, ready to go. It's instant access to a powerful assistant without multiple clicks or navigating to the website first.
+
 ![raycast-chatgpt-integration](https://github.com/isaaclins/isaaclins.github.io/blob/main/assets/img/raycast-chatgpt-integration.gif?raw=true)
 
 also one thing that I love is that if I want to share this with you, i can just export it:
@@ -104,7 +111,7 @@ its literally that easy.
 
 ### Clipboard History
 
-Free, robust, and easily accessible clipboard history is a lifesaver.
+Free, (LOOKING AT YOU, MACCY) robust, and easily accessible clipboard history is a lifesaver.
 No more losing that one link or piece of text I copied five minutes ago.
 It's a simple feature, but executed perfectly and available without an extra charge.
 (you can also pin a specific item to the top of the clipboard history)
