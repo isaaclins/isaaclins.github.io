@@ -5,8 +5,7 @@ draft = false
 tags = ["Raycast", "Productivity", "MacOS", "Launcher", "Workflow"]
 +++
 
-![raycast.svg](/images/raycast.svg)
-
+![raycast.svg](/images/svg/raycast.svg)
 
 I stumbled upon Raycast even before I owned a Mac and instantly fell in love with the concept.
 My friend [**@k3ntaw**](https://github.com/k3ntaw/) (shoutout to him!) showed it to me, and I immediately started searching for Windows alternatives (I was mainly on Windows at the time).
@@ -93,15 +92,13 @@ it can hold multiple lines of text and even variables.
 
 now whenever I type `examplesnippet` in any way, shape or form, the snippet will be inserted like this:
 
-
 This snippet pasted at May 6, 2025 at 17:25
 i can put:
+
 - **Bold text**
-- *Italic text*
+- _Italic text_
 - ~~Strike through text~~
 - [and even links](https://github.com/isaaclins/)
-
-
 
 ### Custom Quicklinks
 
@@ -123,11 +120,11 @@ This is probably my most ingenious (if I may say so myself) use. I've set up a c
 
 This allows me to type a query like "chat explain python decorators" directly into Raycast, hit enter, and have it open in ChatGPT, ready to go. It's instant access to a powerful assistant without multiple clicks or navigating to the website first.
 
-try it out for yourself! 
+try it out for yourself!
 
 clicking the link will open the chatgpt page with the query already typed in.
 
-[oooh click me! im a random link!](<https://chat.openai.com/?hints=search&q=Hey+there%21+Can+you+explain+how+to+use+ChatGPT+URL+parameters?>)
+[oooh click me! im a random link!](https://chat.openai.com/?hints=search&q=Hey+there%21+Can+you+explain+how+to+use+ChatGPT+URL+parameters?)
 
 also one thing that I love is that if I want to share this with you, i can just export it:
 
@@ -137,7 +134,7 @@ its literally that easy.
 
 ### Clipboard History
 
-*Free*, (LOOKING AT YOU, MACCY) robust, and easily accessible clipboard history is a lifesaver.
+_Free_, (LOOKING AT YOU, MACCY) robust, and easily accessible clipboard history is a lifesaver.
 No more losing that one link or piece of text I copied five minutes ago.
 It's a simple feature, but executed perfectly and available without an extra charge.
 (you can also pin a specific item to the top of the clipboard history)
@@ -158,7 +155,9 @@ Its hidden, non-AI power is truly transformative for productivity.
 # Also, its fucking free.
 
 ###### PS: I'm not affiliated with Raycast. I'm just a happy customer.
+
 #### Links:
+
 [Raycast](https://www.raycast.com/)
 [Flow Launcher](https://flowlauncher.com/)
 [PowerToys Run](https://github.com/microsoft/PowerToys)
