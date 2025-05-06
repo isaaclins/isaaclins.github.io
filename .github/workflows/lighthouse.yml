@@ -48,27 +48,36 @@ jobs:
 
   lighthouse-test:
     needs: build-and-get-urls
-    if: fromJson(needs.build-and-get-urls.outputs.urls)[0] != null # Run only if URLs were found
+    # This condition ensures 'urls' output from previous job is a non-empty array when this job runs
+    if: fromJson(needs.build-and-get-urls.outputs.urls)[0] != null
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        url: ${{ fromJson(needs.build-and-get-urls.outputs.urls) }}
-      fail-fast: false # Continue other tests even if one fails
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Run Lighthouse CI
+      - name: Prepare URLs for Lighthouse
+        id: prepare_lighthouse_urls
+        run: |
+          JSON_URL_ARRAY='${{ needs.build-and-get-urls.outputs.urls }}'
+          COMMA_SEPARATED_URLS=$(echo "$JSON_URL_ARRAY" | jq -r '. | join(",")')
+          echo "Lighthouse URLs: $COMMA_SEPARATED_URLS"
+          echo "LIGHTHOUSE_URL_LIST=$COMMA_SEPARATED_URLS" >> $GITHUB_ENV
+        shell: bash
+
+      - name: Create Lighthouse reports directory
+        run: mkdir -p ./lighthouse-reports
+
+      - name: Run Lighthouse CI for all pages
         uses: foo-software/lighthouse-check-action@master
         with:
-          urls: ${{ matrix.url }}
-          outputDirectory: ./lighthouse-reports/${{ strategy.job-index }} # Save reports in a unique directory per URL
+          urls: ${{ env.LIGHTHOUSE_URL_LIST }}
+          outputDirectory: ./lighthouse-reports
           # Optional: Set budget to fail the check if scores are below thresholds
           # budgetPath: .github/lighthouse-budget.json
 
-      - name: Upload Lighthouse Report
+      - name: Upload Lighthouse Reports
         uses: actions/upload-artifact@v4
         with:
-          name: lighthouse-report-${{ strategy.job-index }}
-          path: ./lighthouse-reports/${{ strategy.job-index }}
-          if-no-files-found: ignore # Don't fail if no reports are found (e.g., if lighthouse itself failed)
+          name: lighthouse-reports # A single artifact for all reports
+          path: ./lighthouse-reports
+          if-no-files-found: ignore
