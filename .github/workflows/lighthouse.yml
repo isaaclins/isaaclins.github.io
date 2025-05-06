@@ -83,13 +83,75 @@ jobs:
         if: always()
         shell: bash
         run: |
-          ( # Start subshell to redirect all output to file
-          echo "### Lighthouse Score Summary"
-          echo "| URL | Accessibility | Best Practices | Performance | SEO |"
-          echo "|-----|---------------|----------------|-------------|-----|"
-          RESULTS_JSON='${{ steps.lighthouse_run.outputs.lighthouseCheckResults || '{"data":[]}' }}'
-          echo "$RESULTS_JSON" | jq -r '.data[]? | select(.url) | ("| " + .url + " | " + (.scores.accessibility // "N/A" | tostring) + " | " + (.scores.bestPractices // "N/A" | tostring) + " | " + (.scores.performance // "N/A" | tostring) + " | " + (.scores.seo // "N/A" | tostring) + " |")'
-          ) > README.md # Redirect output to file
+          RESULTS_JSON_CONTENT='${{ steps.lighthouse_run.outputs.lighthouseCheckResults || '{"data":[]}' }}'
+
+          ( # Start subshell to redirect all output to README.md
+            echo "### Lighthouse Score Summary"
+            echo "| URL | Accessibility | Best Practices | Performance | SEO |"
+            echo "|-----|---------------|----------------|-------------|-----|"
+
+            # Generate data rows for each URL
+            echo "$RESULTS_JSON_CONTENT" | jq -r \'\'\'
+              .data[]? # Iterate over each item in the data array, gracefully handle if .data is null or item is null
+              | select(.url) # Ensure the item has a URL
+              | (
+                  "| " + .url + " | " +
+                  # Access scores, provide "N/A" if a score is null or missing, then convert to string
+                  (.scores.accessibility // "N/A" | tostring) + " | " +
+                  (.scores.bestPractices // "N/A" | tostring) + " | " +
+                  (.scores.performance // "N/A" | tostring) + " | " +
+                  (.scores.seo // "N/A" | tostring) + " |"
+                )
+            \'\'\'
+
+            # Generate average row and final score line
+            echo "$RESULTS_JSON_CONTENT" | jq -r \'\'\'
+              # Pass the data array directly to this jq instance
+              .data
+              # Check if .data is a non-empty array
+              | if (type != "array") or (length == 0) then
+                  "| Overall Average | N/A | N/A | N/A | N/A |\\n\\n# Average Score: N/A"
+                else
+                  # Extract all valid numerical scores for each category from the .data array
+                  [.[].scores.accessibility | select(type == "number")] as $acc_scores |
+                  [.[].scores.bestPractices | select(type == "number")] as $bp_scores |
+                  [.[].scores.performance | select(type == "number")] as $perf_scores |
+                  [.[].scores.seo | select(type == "number")] as $seo_scores |
+
+                  # Calculate average for accessibility, format as string (integer or "N/A")
+                  (if ($acc_scores | length) > 0 then ($acc_scores | add / length | floor | tostring) else "N/A" end) as $avg_acc_str |
+                  # Store raw numerical average for final calculation, or null if not calculable
+                  (if ($acc_scores | length) > 0 then ($acc_scores | add / length) else null end) as $raw_avg_acc |
+
+                  (if ($bp_scores | length) > 0 then ($bp_scores | add / length | floor | tostring) else "N/A" end) as $avg_bp_str |
+                  (if ($bp_scores | length) > 0 then ($bp_scores | add / length) else null end) as $raw_avg_bp |
+
+                  (if ($perf_scores | length) > 0 then ($perf_scores | add / length | floor | tostring) else "N/A" end) as $avg_perf_str |
+                  (if ($perf_scores | length) > 0 then ($perf_scores | add / length) else null end) as $raw_avg_perf |
+
+                  (if ($seo_scores | length) > 0 then ($seo_scores | add / length | floor | tostring) else "N/A" end) as $avg_seo_str |
+                  (if ($seo_scores | length) > 0 then ($seo_scores | add / length) else null end) as $raw_avg_seo |
+
+                  # Construct the Markdown table row for averages
+                  "| Overall Average | \\($avg_acc_str) | \\($avg_bp_str) | \\($avg_perf_str) | \\($avg_seo_str) |" as $avg_row_str |
+
+                  # Collect all valid raw numerical averages (those that are not null)
+                  ([$raw_avg_acc, $raw_avg_bp, $raw_avg_perf, $raw_avg_seo] | map(select(. != null))) as $valid_raw_category_averages |
+
+                  # Calculate the final average score from the valid category averages
+                  (if ($valid_raw_category_averages | length) > 0 then
+                      ($valid_raw_category_averages | add / length | floor | tostring)
+                   else
+                      "N/A"
+                   end) as $final_avg_score_str |
+
+                  # Combine the average row and the final score line
+                  $avg_row_str + "\\n\\n# Average Score: \\($final_avg_score_str)"
+                end
+            \'\'\'
+          ) > README.md # All echos inside () go to README.md
+
+          # This echo goes to the workflow log, not the README.md
           echo "Lighthouse summary report generated: README.md"
 
       - name: Commit and Push Lighthouse Report
