@@ -139,6 +139,9 @@ No more losing that one link or piece of text I copied five minutes ago.
 It's a simple feature, but executed perfectly and available without an extra charge.
 (you can also pin a specific item to the top of the clipboard history)
 
+
+## Final Thoughts
+
 Raycast has become an indispensable part of my daily workflow.
 I use it constantly. It's probably my most used application.
 Honestly, I can't imagine navigating my macOS without it.
