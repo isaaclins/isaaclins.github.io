@@ -5,5 +5,15 @@
 <h1>{{ .Title }}</h1>
 
 {{ .Content }}
-{{ partial "post_list.html" (dict "context" .)}}
+
+<ul>
+  {{ range .Data.Terms.ByCount }}
+    <li>
+      <a href="{{ .Page.Permalink | relURL }}">
+        {{ .Page.Title }}
+      </a>
+      ({{ .Count }} posts)
+    </li>
+  {{ end }}
+</ul>
 {{ end }}
