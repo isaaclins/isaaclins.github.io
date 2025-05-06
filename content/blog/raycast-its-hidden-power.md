@@ -90,8 +90,9 @@ now when you type the keyword, the snippet will be inserted.
 it can hold multiple lines of text and even variables.
 ![raycast-customized-snippet](/images/raycast-customized-snippet.png?raw=true)
 
-now whenever I type `examplesnippet` in any way, shape or form, the snippet will be inserted like this:
+now whenever I type '`examplesnippet`' in any way, shape or form, the snippet will be inserted like this:
 
+```
 This snippet pasted at May 6, 2025 at 17:25
 i can put:
 
@@ -99,6 +100,7 @@ i can put:
 - _Italic text_
 - ~~Strike through text~~
 - [and even links](https://github.com/isaaclins/)
+```
 
 ### Custom Quicklinks
 
@@ -139,7 +141,6 @@ No more losing that one link or piece of text I copied five minutes ago.
 It's a simple feature, but executed perfectly and available without an extra charge.
 (you can also pin a specific item to the top of the clipboard history)
 
-
 ## Final Thoughts
 
 Raycast has become an indispensable part of my daily workflow.
@@ -161,6 +162,8 @@ Its hidden, non-AI power is truly transformative for productivity.
 
 #### Links:
 
-[Raycast](https://www.raycast.com/)
-[Flow Launcher](https://flowlauncher.com/)
-[PowerToys Run](https://github.com/microsoft/PowerToys)
+| Tool          | Link                                             |
+| ------------- | ------------------------------------------------ |
+| Raycast       | [Website](https://www.raycast.com/)              |
+| Flow Launcher | [Website](https://flowlauncher.com/)             |
+| PowerToys Run | [GitHub](https://github.com/microsoft/PowerToys) |
