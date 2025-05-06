@@ -7,6 +7,10 @@
     {{- end -}}
 </header>
 {{ .Content }}
+
+{{/* Display recent posts using the partial template */}}
+{{ partial "recent_posts.html" . }}
+
 {{ partial "menu_item.html" (dict "context" . "collection" $.Site.Data.menu.entries) }}
 
 {{ end }}
