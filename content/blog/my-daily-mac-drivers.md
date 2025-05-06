@@ -1,6 +1,6 @@
 +++
 title = "My Daily Mac Drivers"
-date = "2024-07-26"  # Assuming current date, can be changed
+date = 2025-06-06
 draft = false
 tags = ["MacOS", "Productivity", "Software"]
 +++
