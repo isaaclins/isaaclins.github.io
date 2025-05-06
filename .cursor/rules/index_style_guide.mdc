@@ -1,0 +1,25 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Main Page & Site-Wide Writing Style
+
+This document outlines the significance of the main page, [`content/_index.md`](mdc:content/_index.md), and establishes its writing style as the standard across this Hugo project.
+
+## The Main Page: `content/_index.md`
+
+The file [`content/_index.md`](mdc:content/_index.md) serves as the primary landing page for the website. It introduces Isaac Lins, his work, and provides key contact information and useful links.
+
+## Core Writing Style
+
+The style of [`content/_index.md`](mdc:content/_index.md) should be adopted for all content to maintain consistency and a strong personal brand. Key characteristics include:
+
+-   **Tone:** Direct, confident, and engaging. Slightly informal but professional. Examples: "If you're here, you know what you want.", "let's get to work."
+-   **Structure:** Clear hierarchical structure using Markdown headings (`#`, `##`, etc.).
+-   **Emphasis:** Use bold (`**text**`) for emphasis on key terms or section titles.
+-   **Lists:** Employ bullet points for clarity and readability, especially for listing skills, links, or ideas.
+-   **Links:** Standard Markdown links `[Link Text](mdc:URL)` should be used for navigation and references.
+-   **Conciseness:** Get straight to the point.
+
+Adhering to this style ensures a cohesive voice throughout the website.
