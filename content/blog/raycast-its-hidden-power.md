@@ -12,6 +12,7 @@ My quest led me down a couple of paths:
 ## Windows alternatives:
 
 1.  **PowerToys Run**: Initially promising, this turned out to be somewhat limited for my core need – a fast, efficient launcher. It felt like a classic case of [feature creep](https://en.wikipedia.org/wiki/Feature_creep); it tried to be a Swiss Army knife when all I needed was a sharp blade, leading to a clunkier experience than I wanted, packed with more than I was looking for in a simple launcher.
+
 2.  **Flow Launcher**: This was a strong contender. It was highly customizable with a plethora of plugins, and the ability to create your own was a big plus. The potential was huge, but diving into plugin development required a steeper learning curve and more time investment than I had available back then. It wasn't an easy feat, though very powerful for those who mastered it.
 
 ## Feature comparison:
@@ -36,7 +37,6 @@ So, I decided to give Alfred a shot. Alfred has a solid reputation, but I quickl
 Many of its crucial customization features, the very things that make a launcher truly personal and powerful, were locked behind A $34 PAYWALL.
 
 (what the fuck do i look like im made of? gold????)
-
 
 For me, the core appeal of such a tool is deep personalization, and hitting a significant paywall for what felt like essential tweaks was a real turn-off.
 It felt like being charged for the steering wheel after buying the car.
@@ -96,9 +96,9 @@ Of course, its primary function. It seamlessly and quickly opens any application
 
 ### ChatGPT Integration via URL Query
 
-This is probably my most ingenious (if I may say so myself) use. I've set up a custom quicklink using the URL 
+This is probably my most ingenious (if I may say so myself) use. I've set up a custom quicklink using the URL
 
-- `https://chat.openai.com/?model=gpt-4&q={Query}&hints=search`. 
+- `https://chat.openai.com/?model=gpt-4&q={Query}&hints=search`.
 
 This allows me to type a query like "chat explain python decorators" directly into Raycast, hit enter, and have it open in ChatGPT, ready to go. It's instant access to a powerful assistant without multiple clicks or navigating to the website first.
 
