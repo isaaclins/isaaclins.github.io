@@ -90,8 +90,8 @@ jobs:
           # Use jq to parse the JSON and format each result as a Markdown table row.
           # The .data[]? safely handles cases where RESULTS_JSON is an empty array or not an array.
           # select(.url) ensures only objects with a 'url' field are processed.
-          # // \"N/A\" provides a default value if a score is missing.
-          echo "$RESULTS_JSON" | jq -r '.data[]? | select(.url) | "| \(.url) | \(.scores.accessibility // \"N/A\") | \(.scores.bestPractices // \"N/A\") | \(.scores.performance // \"N/A\") | \(.scores.seo // \"N/A\") |"'
+          # // \"N/A\" provides a default value if a score is missing, and tostring ensures it's a string for concatenation.
+          echo "$RESULTS_JSON" | jq -r '.data[]? | select(.url) | ("| " + .url + " | " + (.scores.accessibility // "N/A" | tostring) + " | " + (.scores.bestPractices // "N/A" | tostring) + " | " + (.scores.performance // "N/A" | tostring) + " | " + (.scores.seo // "N/A" | tostring) + " |")'
 
       - name: Upload Lighthouse Reports
         uses: actions/upload-artifact@v4
