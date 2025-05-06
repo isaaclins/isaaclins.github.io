@@ -19,7 +19,7 @@ Hi, I'm Isaac. I build applications and break things on purpose to learn how the
 I write about my experiences and thoughts on technology, software, and more.
 Here are some of my latest posts:
 
-> {{< recent_posts >}}
+{{< recent_posts >}}
 
 ## My Work Mentality & Useful Sites
 
