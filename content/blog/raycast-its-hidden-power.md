@@ -11,9 +11,11 @@ My quest led me down a couple of paths:
 
 ## Windows alternatives:
 
-1.  **PowerToys Run**: Initially promising, this turned out to be somewhat limited for my core need – a fast, efficient launcher. It felt like a classic case of [feature creep](https://en.wikipedia.org/wiki/Feature_creep); it tried to be a Swiss Army knife when all I needed was a sharp blade, leading to a clunkier experience than I wanted, packed with more than I was looking for in a simple launcher.
+### **PowerToys Run**: 
+Initially promising, this turned out to be somewhat limited for my core need. A fast, efficient launcher. It felt like a classic case of [feature creep](https://en.wikipedia.org/wiki/Feature_creep); it tried to be a Swiss Army knife when all I needed was a sharp blade, leading to a clunkier experience than I wanted, packed with more than I was looking for in a simple launcher.
 
-2.  **Flow Launcher**: This was a strong contender. It was highly customizable with a plethora of plugins, and the ability to create your own was a big plus. The potential was huge, but diving into plugin development required a steeper learning curve and more time investment than I had available back then. It wasn't an easy feat, though very powerful for those who mastered it.
+### **Flow Launcher**: 
+This was a strong contender. It was highly customizable with a plethora of plugins, and the ability to create your own was a big plus. The potential was huge, but diving into plugin development required a steeper learning curve and more time investment than I had available back then. It wasn't an easy feat, though very powerful for those who mastered it.
 
 ## Feature comparison:
 
@@ -44,7 +46,7 @@ Disappointed but determined, I circled back to Raycast, deciding to give it a mo
 And boy, was that the best decision I could have made.
 
 Switching back to Raycast (and promptly navigating the settings to turn off all the AI bells and whistles I didn't need) was a game-changer.
-After surveying the market and clearly defining my wants and needs – speed, deep customizability without a hefty price tag, a robust plugin system (even if I wasn't building them myself initially), and a clean interface – Raycast was the only application launcher that ticked all the boxes.
+After surveying the market and clearly defining my wants and needs. Speed, deep customizability without a hefty price tag, a robust plugin system (even if I wasn't building them myself initially), and a clean interface. Raycast was the only application launcher that ticked all the boxes.
 And I had a lot of them. It was a relief to find that beneath the initial AI-forward presentation, the core Raycast was exactly what I needed: powerful, fast, and, crucially, configurable to _my_ liking.
 
 Here's how I leverage Raycast's non-AI, core power daily:
@@ -117,7 +119,7 @@ It's a simple feature, but executed perfectly and available without an extra cha
 (you can also pin a specific item to the top of the clipboard history)
 
 Raycast has become an indispensable part of my daily workflow.
-I use it constantly – it's probably my most used application.
+I use it constantly. It's probably my most used application.
 Honestly, I can't imagine navigating my macOS without it.
 Looking back, it's amusing to think that I was essentially trying to recreate Raycast's powerful, native plugin-like system and quicklink capabilities using Flow Launcher on Windows.
 
