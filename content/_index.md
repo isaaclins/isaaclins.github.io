@@ -23,6 +23,8 @@ Here are some of my latest posts:
 
 ## My Work Mentality & Useful Sites
 
+- [**My Blog page**](https://isaaclins.com/blog)
+
 - [**How To Code**](https://gist.github.com/isaaclins/b4d4cdc3b12891d09f3b3cdd846adb3f)
 - [**NoHello**](https://nohello.net/en/)
 - [**Grugbrain.dev**](https://grugbrain.dev/)
