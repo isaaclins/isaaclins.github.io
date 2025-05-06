@@ -19,7 +19,7 @@ This was a strong contender. It was highly customizable with a plethora of plugi
 
 ## Feature comparison:
 
-| Feature                           | ![PowerToys Run](../../assets/img/svg/powertoys.svg) | ![Flow Launcher](../../assets/img/svg/flow-launcher.svg) |
+| Feature                           | ![PowerToys Run](/images/svg/powertoys.svg) | ![Flow Launcher](/images/svg/flow-launcher.svg) |
 | --------------------------------- | --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
 | Customization                     | ⚠️limited                                                                                                 | ⚠️limited (hard to make custom)                                                                               |
 | Plugin System                     | ⚠️limited                                                                                                 | ⚠️limited (hard to make custom)                                                                               |
@@ -31,7 +31,7 @@ Fast forward to getting my MacBook. I was aiming for a clean start, a minimalist
 I initially tried Raycast, but seeing AI features integrated seemingly everywhere gave me pause.
 It felt a bit overwhelming, almost like the "AI taking over" memes in real life.
 
-![moistcritikal-screaming-ai-slowmotion.gif](../../assets/img/moistcritikal-screaming-ai-slowmotion.gif)
+![moistcritikal-screaming-ai-slowmotion.gif](/images/moistcritikal-screaming-ai-slowmotion.gif)
 
 That wasn't the streamlined experience I was hoping for.
 
@@ -66,12 +66,12 @@ For example, i used `:date` to create a snippet for the current date. Here are s
 
 and its very easy to create your own.
 Just select "Create Snippet" and you can create a snippet with a name and a shortcut.
-![create snippet](../../assets/img/raycast-create-snippet.png?raw=true)
+![create snippet](/images/raycast-create-snippet.png?raw=true)
 in the snippet editor you can add a name, snippet text and a keyword.
 now when you type the keyword, the snippet will be inserted.
 
 it can hold multiple lines of text and even variables.
-![raycast-customized-snippet](../../assets/img/raycast-customized-snippet.png?raw=true)
+![raycast-customized-snippet](/images/raycast-customized-snippet.png?raw=true)
 
 now whenever I type `examplesnippet` in any way, shape or form, the snippet will be inserted like this:
 
@@ -89,12 +89,12 @@ i can put:
 This is where Raycast truly shines for me. For example, I can just type `g` and hit enter to open GitHub instantly, `cur` to open cursor on my last project, or `ctrl+command+t` to open the terminal. This is a huge timesaver and streamlines my navigation significantly.
 
 ive made a lot of custom quicklinks, here are some of them:
-![raycast-configuration](../../assets/img/raycast-configuration.png?raw=true)
+![raycast-configuration](/images/raycast-configuration.png?raw=true)
 
 ### Application Launcher
 
 Of course, its primary function. It seamlessly and quickly opens any application on my Mac with a few keystrokes, far faster than Spotlight for me.
-![raycast-application-launcher](../../assets/img/raycast-application-launcher.png?raw=true)
+![raycast-application-launcher](/images/raycast-application-launcher.png?raw=true)
 
 ### ChatGPT Integration via URL Query
 
@@ -104,7 +104,7 @@ This is probably my most ingenious (if I may say so myself) use. I've set up a c
 
 This allows me to type a query like "chat explain python decorators" directly into Raycast, hit enter, and have it open in ChatGPT, ready to go. It's instant access to a powerful assistant without multiple clicks or navigating to the website first.
 
-![raycast-chatgpt-integration](../../assets/img/raycast-chatgpt-integration.gif?raw=true)
+![raycast-chatgpt-integration](/images/raycast-chatgpt-integration.gif?raw=true)
 
 also one thing that I love is that if I want to share this with you, i can just export it:
 [raycast-export](https://ray.so/quicklinks/shared?quicklinks=%7B%22link%22:%22https:%5C/%5C/chat.openai.com%5C/?model%3Dgpt-4%26q%3D%7Bargument%20name%3D%5C%22Argument%5C%22%7D%26hints%3Dsearch%22,%22name%22:%22Ask%20ChatGPT%22%7D)

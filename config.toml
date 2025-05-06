@@ -2,7 +2,13 @@
   [module.hugoVersion]
     extended = true
     min      = "0.41.0"
+[[module.mounts]]
+source = 'static'
+target = 'static'
 
+[[module.mounts]]
+source = 'images'
+target = 'static/images'
 [markup]
   [markup.goldmark]
     [markup.goldmark.parser]
