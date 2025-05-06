@@ -21,9 +21,9 @@ Here's the current squad of apps that make my Mac work for _me_:
 
 ### **Raycast**
 
-> - **What it is:** A supercharged command palette and launcher. ([raycast.com](https://www.raycast.com/))
-> - **What it does:** Replaces Spotlight on steroids. Launches apps, calculates things, searches files, runs scripts, controls system settings, manages clipboard history, snippets, and a ton more through its extension ecosystem.
-> - **Why I use it:** It's faster than fumbling through menus or multiple apps. Everything I need is a few keystrokes away. The extensibility means I can integrate pretty much any workflow into it.
+- **What it is:** A supercharged command palette and launcher. ([raycast.com](https://www.raycast.com/))
+- **What it does:** Replaces Spotlight on steroids. Launches apps, calculates things, searches files, runs scripts, controls system settings, manages clipboard history, snippets, and a ton more through its extension ecosystem.
+- **Why I use it:** It's faster than fumbling through menus or multiple apps. Everything I need is a few keystrokes away. The extensibility means I can integrate pretty much any workflow into it.
 >   I've delved deeper into Raycast over at [my post on Raycast's Hidden Power](/blog/raycast-its-hidden-power/).
 
 ### **Latest**
@@ -88,9 +88,9 @@ Here's the current squad of apps that make my Mac work for _me_:
 
 ### **Ghostty**
 
-> - **What it is:** A GPU-accelerated terminal emulator. ([ghostty.org](https://ghostty.org/))
-> - **What it does:** Provides a fast, modern terminal experience. These usually focus on performance, customizability, and sometimes unique features compared to the built-in Terminal.app.
-> - **Why I use it:** As a developer, I live in the terminal. Ghostty (or any good alternative like iTerm2, Kitty, WezTerm, etc.) offers better performance, more features (like multiplexing, better font rendering, true color) than the default. A good terminal is non-negotiable.
+- **What it is:** A GPU-accelerated terminal emulator. ([ghostty.org](https://ghostty.org/))
+- **What it does:** Provides a fast, modern terminal experience. These usually focus on performance, customizability, and sometimes unique features compared to the built-in Terminal.app.
+- **Why I use it:** As a developer, I live in the terminal. Ghostty (or any good alternative like iTerm2, Kitty, WezTerm, etc.) offers better performance, more features (like multiplexing, better font rendering, true color) than the default. A good terminal is non-negotiable.
 >   I've delved deeper into Ghostty over at [my post on the Ghostty & Fish Combo](/blog/ghostty-fish-perfect-combo/).
 
 ### **AppCleaner**
