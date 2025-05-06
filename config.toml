@@ -9,6 +9,7 @@ target = 'static'
 [[module.mounts]]
 source = 'images'
 target = 'static/images'
+
 [markup]
   [markup.goldmark]
     [markup.goldmark.parser]
