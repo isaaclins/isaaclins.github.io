@@ -64,7 +64,10 @@ This is subjective, I know. But the combination of Ghostty's clean interface and
 
 ## My Personal Configuration
 
-I've spent some time tailoring this setup to my specific needs. You can find my configuration files, including my Fish setup, in my `macos-config` repository on GitHub: [https://github.com/isaaclins/macos-config](https://github.com/isaaclins/macos-config). Feel free to explore and take inspiration!
+I've spent some time tailoring this setup to my specific needs. You can find my configuration files, including my Fish setup, in my `macOS-config` repository on GitHub: 
+- [https://github.com/isaaclins/macos-config](https://github.com/isaaclins/macos-config). 
+
+Feel free to explore and take inspiration!
 
 Here is a screenshot of my Fish shell prompt:
 
