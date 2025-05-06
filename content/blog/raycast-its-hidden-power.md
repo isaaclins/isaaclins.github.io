@@ -162,7 +162,7 @@ Its hidden, non-AI power is truly transformative for productivity.
 
 #### Links:
 
-| Tool                                                    |
+| Credits                                                   |
 | ------------------------------------------------------- |
 | [Raycast](https://www.raycast.com/)                     |
 | [Flow Launcher](https://flowlauncher.com/)              |
