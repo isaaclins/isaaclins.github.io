@@ -18,15 +18,15 @@ Hi, I'm Isaac. I build applications and break things on purpose to learn how the
 
 ## Blog
 
+Testing: {{ .Site.Title }}
+
 I write about my experiences and thoughts on technology, cybersecurity, and more.
 Here are some of my latest posts:
 
 {{ range first 5 (where .Site.RegularPages "Section" "blog") }}
+
 - [{{ .Title }}]({{ .Permalink }})
-{{ end }}
-
-
-
+  {{ end }}
 
 ## My Work Mentality & Useful Sites
 

@@ -2,7 +2,7 @@
 title = "My macOS Journey with an M3 MacBook"
 date = 2025-05-06
 draft = false
-tags = ["MacOS", "M3", "Customization"]
+tags = ["MacOS", "Customization"]
 +++
 
 I recently took the plunge and bought a second-hand MacBook Pro M3. The price was a real head-turner – around 1200 CHF for a machine with only 6 battery cycles. It felt almost too good to be true! I've dedicated a good three days (and I'm still tinkering) to customizing it and getting a feel for the Apple ecosystem. Here are my initial impressions.

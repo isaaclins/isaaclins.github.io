@@ -2,7 +2,7 @@
 title = "Raycast. It's Hidden Power"
 date = 2025-05-06
 draft = false
-tags = ["Raycast", "Productivity", "MacOS", "Launcher", "Workflow"]
+tags = ["Raycast", "Software", "MacOS", "Poweruser"]
 +++
 
 ![raycast.svg](/images/svg/raycast.svg)
