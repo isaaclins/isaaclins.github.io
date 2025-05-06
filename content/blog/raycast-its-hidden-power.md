@@ -158,12 +158,12 @@ Its hidden, non-AI power is truly transformative for productivity.
 
 # Also, its fucking free.
 
-###### PS: I'm not affiliated with Raycast. I'm just a happy customer.
+<sup><sup>PS: I'm not affiliated with Raycast. I'm just a happy customer.</sup></sup>
 
 #### Links:
 
-| Tool          | Link                                             |
-| ------------- | ------------------------------------------------ |
-| Raycast       | [Website](https://www.raycast.com/)              |
-| Flow Launcher | [Website](https://flowlauncher.com/)             |
-| PowerToys Run | [GitHub](https://github.com/microsoft/PowerToys) |
+| Tool                                                    |
+| ------------------------------------------------------- |
+| [Raycast](https://www.raycast.com/)                     |
+| [Flow Launcher](https://flowlauncher.com/)              |
+| [PowerToys Run](https://github.com/microsoft/PowerToys) |
