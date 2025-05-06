@@ -16,6 +16,13 @@ Hi, I'm Isaac. I build applications and break things on purpose to learn how the
 - **Secure:** I dive into cybersecurity, always exploring vulnerabilities and learning to defend against them.
 - **Innovate:** I enjoy experimenting and pushing the limits of what technology can do.
 
+## Blog
+
+I write about my experiences and thoughts on technology, software, and more.
+Here are some of my latest posts:
+
+{{< recent_posts >}}
+
 ## My Work Mentality & Useful Sites
 
 - [**How To Code**](https://gist.github.com/isaaclins/b4d4cdc3b12891d09f3b3cdd846adb3f)
