@@ -18,8 +18,6 @@ Hi, I'm Isaac. I build applications and break things on purpose to learn how the
 
 ## Blog
 
-Testing: {{ .Site.Title }}
-
 I write about my experiences and thoughts on technology, cybersecurity, and more.
 Here are some of my latest posts:
 
