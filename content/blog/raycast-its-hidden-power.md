@@ -31,7 +31,11 @@ It felt a bit overwhelming, almost like the "AI taking over" memes in real life.
 That wasn't the streamlined experience I was hoping for.
 
 So, I decided to give Alfred a shot. Alfred has a solid reputation, but I quickly hit a wall.
-Many of its crucial customization features, the very things that make a launcher truly personal and powerful, were locked behind a $34 Powerpack.
+Many of its crucial customization features, the very things that make a launcher truly personal and powerful, were locked behind A $34 PAYWALL.
+
+(what the fuck do i look like im made of? gold????)
+
+
 For me, the core appeal of such a tool is deep personalization, and hitting a significant paywall for what felt like essential tweaks was a real turn-off.
 It felt like being charged for the steering wheel after buying the car.
 Disappointed but determined, I circled back to Raycast, deciding to give it a more thorough, patient look.
@@ -78,7 +82,7 @@ i can put:
 
 ### Custom Quicklinks
 
-This is where Raycast truly shines for me. For example, I can just type `g` and hit enter to open GitHub instantly, `cur` to open cursor on my last project, or `p` ctrl+command+t to open the terminal. This is a huge timesaver and streamlines my navigation significantly.
+This is where Raycast truly shines for me. For example, I can just type `g` and hit enter to open GitHub instantly, `cur` to open cursor on my last project, or `ctrl+command+t` to open the terminal. This is a huge timesaver and streamlines my navigation significantly.
 
 ive made a lot of custom quicklinks, here are some of them:
 ![raycast-configuration](https://github.com/isaaclins/isaaclins.github.io/blob/main/assets/img/raycast-configuration.png?raw=true)
