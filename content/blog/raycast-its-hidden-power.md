@@ -13,11 +13,21 @@ My quest led me down a couple of paths:
 
 ### **PowerToys Run**:
 
-Initially promising, this turned out to be somewhat limited for my core need. A fast, efficient launcher. It felt like a classic case of [feature creep](https://en.wikipedia.org/wiki/Feature_creep); it tried to be a Swiss Army knife when all I needed was a sharp blade, leading to a clunkier experience than I wanted, packed with more than I was looking for in a simple launcher.
+Initially promising, this turned out to be somewhat limited for my core need.
+
+A fast, efficient launcher.
+
+It felt like a classic case of [feature creep](https://en.wikipedia.org/wiki/Feature_creep). it tried to be a Swiss Army knife when all I needed was a sharp blade, leading to a clunkier experience than I wanted, packed with more than I was looking for in a simple launcher.
 
 ### **Flow Launcher**:
 
-This was a strong contender. It was highly customizable with a plethora of plugins, and the ability to create your own was a big plus. The potential was huge, but diving into plugin development required a steeper learning curve and more time investment than I had available back then. It wasn't an easy feat, though very powerful for those who mastered it.
+This was a strong contender.
+It was highly customizable with a plethora of plugins, and the ability to create your own was a big plus.
+
+The potential was huge, but diving into plugin development required a steeper learning curve and more time investment than I had available back then.
+
+It wasn't an easy feat, though very powerful for those who mastered it.
+It was like raycast, but worse! 😃
 
 ## Feature comparison:
 
@@ -31,8 +41,9 @@ This was a strong contender. It was highly customizable with a plethora of plugi
 
 Fast forward to getting my MacBook. I was aiming for a clean start, a minimalist setup.
 I initially tried Raycast, but seeing AI features integrated seemingly everywhere gave me pause.
+
 It felt a bit overwhelming, almost like the "AI taking over" memes in real life.
-|  |
+| |
 |------|
 | ![moistcritikal-screaming-ai-slowmotion.gif](/images/moistcritikal-screaming-ai-slowmotion.gif) |
 | |
@@ -79,14 +90,15 @@ it can hold multiple lines of text and even variables.
 
 now whenever I type `examplesnippet` in any way, shape or form, the snippet will be inserted like this:
 
-```
+
 This snippet pasted at May 6, 2025 at 17:25
 i can put:
 - **Bold text**
 - *Italic text*
 - ~~Strike through text~~
 - [and even links](https://github.com/isaaclins/)
-```
+
+
 
 ### Custom Quicklinks
 
@@ -108,16 +120,21 @@ This is probably my most ingenious (if I may say so myself) use. I've set up a c
 
 This allows me to type a query like "chat explain python decorators" directly into Raycast, hit enter, and have it open in ChatGPT, ready to go. It's instant access to a powerful assistant without multiple clicks or navigating to the website first.
 
-![raycast-chatgpt-integration](/images/raycast-chatgpt-integration.gif?raw=true)
+try it out for yourself! 
+
+clicking the link will open the chatgpt page with the query already typed in.
+
+[oooh click me! im a random link!](<https://chat.openai.com/?hints=search&q=Hey+there%21+Can+you+explain+how+to+use+ChatGPT+URL+parameters?>)
 
 also one thing that I love is that if I want to share this with you, i can just export it:
+
 [raycast-export](https://ray.so/quicklinks/shared?quicklinks=%7B%22link%22:%22https:%5C/%5C/chat.openai.com%5C/?model%3Dgpt-4%26q%3D%7Bargument%20name%3D%5C%22Argument%5C%22%7D%26hints%3Dsearch%22,%22name%22:%22Ask%20ChatGPT%22%7D)
-and import it to your raycast.
+
 its literally that easy.
 
 ### Clipboard History
 
-Free, (LOOKING AT YOU, MACCY) robust, and easily accessible clipboard history is a lifesaver.
+*Free*, (LOOKING AT YOU, MACCY) robust, and easily accessible clipboard history is a lifesaver.
 No more losing that one link or piece of text I copied five minutes ago.
 It's a simple feature, but executed perfectly and available without an extra charge.
 (you can also pin a specific item to the top of the clipboard history)
@@ -125,14 +142,20 @@ It's a simple feature, but executed perfectly and available without an extra cha
 Raycast has become an indispensable part of my daily workflow.
 I use it constantly. It's probably my most used application.
 Honestly, I can't imagine navigating my macOS without it.
+
 Looking back, it's amusing to think that I was essentially trying to recreate Raycast's powerful, native plugin-like system and quicklink capabilities using Flow Launcher on Windows.
 
 **It's like I knew the recipe and the taste I wanted before I even had all the right ingredients or the best kitchen to cook in.**
 
 If you're on a Mac and haven't dived deep into Raycast, or if you, like me, were initially put off by the AI features (which you can largely ignore or disable), I highly recommend giving it another look.
-Take the time to explore its extensions and configure it to your needs.
+
+Take the time to explore Raycast's extensions and configure it to your needs.
 Its hidden, non-AI power is truly transformative for productivity.
 
-## Also, its fucking free.
+# Also, its fucking free.
 
 ###### PS: I'm not affiliated with Raycast. I'm just a happy customer.
+#### Links:
+[Raycast](https://www.raycast.com/)
+[Flow Launcher](https://flowlauncher.com/)
+[PowerToys Run](https://github.com/microsoft/PowerToys)
