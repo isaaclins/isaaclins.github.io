@@ -1,0 +1,74 @@
+name: Lighthouse CI
+
+on:
+  push:
+    branches:
+      - main # Or your default branch
+  workflow_dispatch: # Allows manual triggering
+
+jobs:
+  build-and-get-urls:
+    runs-on: ubuntu-latest
+    outputs:
+      urls: ${{ steps.get_urls.outputs.urls }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "latest" # Or your specific Hugo version
+          extended: true
+
+      - name: Build site
+        run: hugo --minify
+
+      - name: List public directory (for debugging)
+        run: ls -R public
+
+      - name: Install yq (for parsing XML)
+        run: sudo wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq && sudo chmod +x /usr/bin/yq
+
+      - name: Extract URLs from sitemap
+        id: get_urls
+        run: |
+          SITEMAP_PATH="public/sitemap.xml"
+          BASE_URL="https://isaaclins.com" # Your website's base URL
+          if [ -f "$SITEMAP_PATH" ]; then
+            # Extract URLs, ensure they are absolute, and create a JSON array string
+            URLS=$(yq -p=xml -o=json '.urlset.url[].loc' "$SITEMAP_PATH" | jq -r --arg BASE_URL "$BASE_URL" 'if type == "array" then .[] else . end | if test("^/") then $BASE_URL + . else . end' | jq -R . | jq -s .)
+            echo "Found URLs: $URLS"
+            echo "urls=$URLS" >> $GITHUB_OUTPUT
+          else
+            echo "sitemap.xml not found at $SITEMAP_PATH!"
+            echo "urls=[]" >> $GITHUB_OUTPUT # Output empty array if sitemap not found
+          fi
+        shell: bash
+
+  lighthouse-test:
+    needs: build-and-get-urls
+    if: fromJson(needs.build-and-get-urls.outputs.urls)[0] != null # Run only if URLs were found
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        url: ${{ fromJson(needs.build-and-get-urls.outputs.urls) }}
+      fail-fast: false # Continue other tests even if one fails
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run Lighthouse CI
+        uses: foo-software/lighthouse-check-action@master
+        with:
+          urls: ${{ matrix.url }}
+          outputDirectory: ./lighthouse-reports/${{ strategy.job-index }} # Save reports in a unique directory per URL
+          # Optional: Set budget to fail the check if scores are below thresholds
+          # budgetPath: .github/lighthouse-budget.json
+
+      - name: Upload Lighthouse Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-report-${{ strategy.job-index }}
+          path: ./lighthouse-reports/${{ strategy.job-index }}
+          if-no-files-found: ignore # Don't fail if no reports are found (e.g., if lighthouse itself failed)
