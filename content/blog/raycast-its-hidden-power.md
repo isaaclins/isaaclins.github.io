@@ -8,7 +8,7 @@ tags = ["Raycast", "Productivity", "MacOS", "Launcher", "Workflow"]
 ![raycast.svg](/images/svg/raycast.svg)
 
 I stumbled upon Raycast even before I owned a Mac and instantly fell in love with the concept.
-My friend [__@k3ntaw__](https://github.com/k3ntaw/) (shoutout to him!) showed it to me, and I immediately started searching for Windows alternatives (I was mainly on Windows at the time).
+My friend [**@k3ntaw**](https://github.com/k3ntaw/) (shoutout to him!) showed it to me, and I immediately started searching for Windows alternatives (I was mainly on Windows at the time).
 My quest led me down a couple of paths:
 
 ## Windows alternatives:
@@ -19,7 +19,7 @@ Initially promising, but this turned out to be somewhat limited for my core need
 
 A fast, efficient launcher.
 
-It felt like a classic case of [__feature creep__](https://en.wikipedia.org/wiki/Feature_creep). It tried to be a Swiss Army knife when all I needed was a sharp blade, leading to a clunkier experience than I wanted, packed with more than I was looking for in a simple launcher.
+It felt like a classic case of [**feature creep**](https://en.wikipedia.org/wiki/Feature_creep). It tried to be a Swiss Army knife when all I needed was a sharp blade, leading to a clunkier experience than I wanted, packed with more than I was looking for in a simple launcher.
 
 ### **Flow Launcher**:
 
@@ -125,11 +125,11 @@ try it out for yourself!
 
 clicking the link will open the chatgpt page with the query already typed in.
 
-[__oooh click me! im a random link!__](https://chat.openai.com/?hints=search&q=Hey+there%21+Can+you+explain+how+to+use+ChatGPT+URL+parameters?)
+[**oooh click me! im a random link!**](https://chat.openai.com/?hints=search&q=Hey+there%21+Can+you+explain+how+to+use+ChatGPT+URL+parameters?)
 
 also one thing that I love is that if I want to share this with you, i can just export it:
 
-[__raycast-export__](https://ray.so/quicklinks/shared?quicklinks=%7B%22link%22:%22https:%5C/%5C/chat.openai.com%5C/?model%3Dgpt-4%26q%3D%7Bargument%20name%3D%5C%22Argument%5C%22%7D%26hints%3Dsearch%22,%22name%22:%22Ask%20ChatGPT%22%7D)
+[**raycast-export**](https://ray.so/quicklinks/shared?quicklinks=%7B%22link%22:%22https:%5C/%5C/chat.openai.com%5C/?model%3Dgpt-4%26q%3D%7Bargument%20name%3D%5C%22Argument%5C%22%7D%26hints%3Dsearch%22,%22name%22:%22Ask%20ChatGPT%22%7D)
 
 its literally that easy.
 
@@ -159,9 +159,10 @@ Its hidden, non-AI power is truly transformative for productivity.
 
 #### Links:
 
-| Credits                                                   |
-| ------------------------------------------------------- |
-| [__Raycast__](https://www.raycast.com/)                     |
-| [__Flow Launcher__](https://flowlauncher.com/)              |
-| [__PowerToys Run__](https://github.com/microsoft/PowerToys) |
+| Credits                                                     |
+| ----------------------------------------------------------- |
+| [**Raycast**](https://www.raycast.com/)                     |
+| [**Flow Launcher**](https://flowlauncher.com/)              |
+| [**PowerToys Run**](https://github.com/microsoft/PowerToys) |
+
 PS: I'm not affiliated with Raycast. I'm just a happy customer.

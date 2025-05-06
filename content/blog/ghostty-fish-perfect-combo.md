@@ -27,7 +27,7 @@ That's it. Seriously. Make it your default shell, and you're halfway to terminal
 
 ### Installing Ghostty
 
-Ghostty's installation is just as breezy. Head over to their official download page: [__ghostty.org/download__](https://ghostty.org/download).
+Ghostty's installation is just as breezy. Head over to their official download page: [**ghostty.org/download**](https://ghostty.org/download).
 
 You'll find a universal binary that works flawlessly on both Apple Silicon and Intel machines (macOS 13+ required). Download, drag to Applications, and you're golden. No complicated configs, no dependency hell. Just pure, unadulterated terminal goodness.
 
@@ -74,7 +74,6 @@ Here is a screenshot of my Fish shell prompt:
 
 _Fish shell prompt_
 ![Fish shell prompt](/images/fish-shell-prompt.png?raw=true)
-
 
 ## The Verdict: Stop Searching, Start Doing
 

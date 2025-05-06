@@ -36,9 +36,9 @@ Overall, despite these few drawbacks, my experience with the M3 MacBook Pro has 
 After setting up my MacBook during my holiday break, returning to Windows at work was... enlightening, to say the least. I hadn't realized just how inefficient my Windows workflow was until I experienced the keyboard-first approach of macOS.
 
 The contrast is stark:
+
 - **Windows' Mouse Dependency:** Microsoft's ecosystem seems built around mouse interactions first, keyboard shortcuts second. Simple tasks often require multiple clicks through menus when they could be single keyboard commands.
 - **Lost Productivity:** Tasks that I'd streamlined on macOS with tools like Raycast suddenly felt clunky and time-consuming on Windows.
 - **Context Switching Overhead:** Moving between my personal MacBook and work Windows machine has made the efficiency gap even more apparent.
 
 I'm actually planning to make a case to my workplace about using my MacBook for work. It's not just about preference – it's about productivity. When you're used to a keyboard-first environment that prioritizes efficiency, going back to a mouse-dependent workflow feels like working with one hand up your ass.
-
