@@ -4,7 +4,7 @@
   <h2>Blog</h2>
   <ul>
     {{ range $pages }}
-      - <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+      <li><a href="{{ .Permalink }}">- {{ .Title }}</a></li>
     {{ end }}
   </ul>
 {{ else }}
