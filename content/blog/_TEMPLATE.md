@@ -1,7 +1,7 @@
 +++
 title = "TEMPLATE"
 date = 2025-04-16
-draft = true
+draft = false
 tags = ["TEMPLATE", "TEMPLATE2"]
 +++
 
