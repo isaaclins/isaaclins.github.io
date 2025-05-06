@@ -40,6 +40,6 @@ target = 'static/images'
 [params]
   [params.theme_config]
     appearance        = "auto"
-    date_format       = "2006-01-02"
+    date_format       = "01/02/2006"
     isListGroupByDate = true
     isShowFooter      = true
