@@ -68,12 +68,30 @@ jobs:
         run: mkdir -p ./lighthouse-reports
 
       - name: Run Lighthouse CI for all pages
+        id: lighthouse_run
         uses: foo-software/lighthouse-check-action@master
         with:
           urls: ${{ env.LIGHTHOUSE_URL_LIST }}
           outputDirectory: ./lighthouse-reports
           # Optional: Set budget to fail the check if scores are below thresholds
           # budgetPath: .github/lighthouse-budget.json
+
+      - name: Summarize Lighthouse Scores
+        # This condition makes the step always run, so you see the table even if some Lighthouse audits fail.
+        if: always()
+        shell: bash
+        run: |
+          echo "### Lighthouse Score Summary"
+          echo "| URL | Accessibility | Best Practices | Performance | SEO |"
+          echo "|-----|---------------|----------------|-------------|-----|"
+          # Safely access the output, providing an empty JSON array string as a default if it's missing.
+          # This prevents errors if the lighthouse_run step fails to produce the output.
+          RESULTS_JSON='${{ steps.lighthouse_run.outputs.lighthouseCheckResults || '[]' }}'
+          # Use jq to parse the JSON and format each result as a Markdown table row.
+          # The ?.[] safely handles cases where RESULTS_JSON is an empty array or not an array.
+          # select(.url) ensures only objects with a 'url' field are processed.
+          # // \"N/A\" provides a default value if a score is missing.
+          echo "$RESULTS_JSON" | jq -r '.[]? | select(.url) | "| \(.url) | \(.accessibility // \"N/A\") | \(.bestPractices // \"N/A\") | \(.performance // \"N/A\") | \(.seo // \"N/A\") |"'
 
       - name: Upload Lighthouse Reports
         uses: actions/upload-artifact@v4
