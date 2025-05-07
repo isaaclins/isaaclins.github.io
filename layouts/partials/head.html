@@ -13,7 +13,7 @@
     {{ end }}
   </title>
 
-  <link rel="shortcut icon" type="image/x-icon" href="{{ $.Site.Params.favicon | default " /favicon.ico" | relURL }}" />
+  <link rel="shortcut icon" type="image/x-icon" href="{{ $.Site.Params.favicon | default " images/icon/favicon.ico" | relURL }}" />
   {{ $options := (dict "outputStyle" "compressed" "enableSourceMap" (not hugo.IsProduction)) }}
   {{ $sass := resources.Get "css/main.scss" }}
   {{ $style := $sass | css.Sass $options | resources.Fingerprint "sha512" }}
