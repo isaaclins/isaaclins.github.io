@@ -39,7 +39,7 @@ The style of [`content/_index.md`](mdc:content/_index.md) should be adopted for 
 - **Be honest and opinionated**. Say what you think, even if it's blunt.
 - Call out bad UX, paywalls, or bloat unapologetically.
 - Use metaphors and analogies to explain concepts.
-  - _"It felt like being charged for the steering wheel after buying the car."_
+  Example: _"It felt like being charged for the steering wheel after buying the car."_
 - Highlight personal workflows and real-world examples.
 - Make room for tangents and personality.
 
@@ -49,7 +49,7 @@ The style of [`content/_index.md`](mdc:content/_index.md) should be adopted for 
 - Be okay with **lowercase informality** in places (`ive`, `its`) when it fits the voice.
 - Use **sentence fragments** and **short paragraphs** for rhythm.
 - Swearing is okay, sparingly and for effect.
-  - _"What the fuck do you think I'm made of?"_
+  Example : _"What the fuck do you think I'm made of?"_
 
 ## 5. Visuals & Media
 
@@ -57,17 +57,17 @@ The style of [`content/_index.md`](mdc:content/_index.md) should be adopted for 
 - Use humor in image captions and filenames.
   - _moistcritikal-screaming-ai-slowmotion.gif_
 - Embed links with fun text:
-  - `[**oooh click me! im a random link!**](mdc:#)`
+  Example: `[**oooh click me! im a random link!**](mdc:#)`
 
 ## 6. Ending
 
 - Wrap up with a personal reflection or final thought.
 - Encourage readers to explore or try the tool themselves.
 - Add a humorous or punchy final note:
-  - _"Also, it's fucking free."_
+  Example: _"Also, it's fucking free."_
 
 ## 7. Meta & Attribution
 
 - Include a "Links" or "Credits" table if you reference tools.
 - Make it clear you’re not affiliated (if relevant).
-  - _"I'm not affiliated with Raycast. I'm just a happy customer."_
+  Example: _"I'm not affiliated with Raycast. I'm just a happy customer."_
