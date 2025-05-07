@@ -15,9 +15,25 @@ I'm not gonna lie, I started out slower than a dial-up modem. Took me a painstak
 
 Then, something clicked. You can see it clear as day on this graph here:
 
-![My CTF Dominance](/images/skills-battle-graph.png)
 
-See that light blue line? That's me, `isaaclins`. After that initial crawl, around the 10:00 mark, things changed. Instead of hitting a wall or getting exponentially slower like a lot of the others, I just... exploded. I knocked out **three challenges back-to-back in about 20 minutes**. Flag after flag after flag. Turns out, that first super slow flag? It was one of the hardest ones. And thanks to the "first blood" style scoring. more points for flags fewer people capture. that initial pain paid off, big time. I shot up the leaderboard, leaving a good chunk of the competition eating my dust.
+
+See that red line? That's me, `isaaclins`. After that initial crawl, around the 10:00 mark, things changed. Instead of hitting a wall or getting exponentially slower like a lot of the others, I just... exploded. 
+
+![My REAL CTF Dominance](/images/skills-battle-graph-with-points.png)
+
+
+`There was a 1096 point difference between me and the second place. `
+
+
+I knocked out **three challenges back-to-back in about 20 minutes**. Flag after flag after flag. Turns out, that first super slow flag? It was one of the hardest ones. And thanks to the "first blood" style scoring. more points for flags fewer people capture. that initial pain paid off, big time. I shot up the leaderboard, leaving a good chunk of the competition eating my dust.
+
+
+I ended up tying for first place with FOUR OTHER COMPETITORS.
+
+I was the first to solve the last challenge, but they were all close.
+
+![My CTF Dominance](/images/skills-battle-graph.png)
+__(I'm the blue line)__
 
 ## The Unfair Advantage: My Setup
 
