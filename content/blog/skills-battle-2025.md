@@ -11,9 +11,7 @@ Alright, let's cut to the chase. The Skills Battle CTF. You know, that competiti
 
 I'm not gonna lie, I started out slower than a dial-up modem. Took me a painstaking **45 minutes for a single flag**. I was all over the place, distracted. I needed to lock in, and fast. My position on the graph? Buried at the bottom.
 
-## Flipping the Script: The Surge
-
-Then, something clicked.
+## Flipping the Script
 
 After that initial crawl, around the 10:00 mark, things changed. Instead of hitting a wall or getting exponentially slower like a lot of the others, I put my older brother on the game. 
 
