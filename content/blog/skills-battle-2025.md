@@ -54,8 +54,10 @@ I genuinely enjoy CTFs. They're a blast. But I've gotta be honest: I wouldn't ha
 
 I've tried it with and without AI, and while it's more rewarding without, it's just not feasible to do without it.
 
-**TLDR; I didn't just win; I leveraged AI to redefine what "winning" looked like. Call it P2W, call it smarts, call it whatever – it worked.**
+**TLDR; I didn't just win; I leveraged AI to redefine what "winning" looked like. Call it P2W, call it smarts, call it whatever. It worked.**
 
+
+> ![DHTP-HTG.png](/images/DHTP-HTG.png)
 Huge thanks to the Skills Battle organizers and everyone involved. It was a hell of a ride.
 
 FIRST PLACE BABYYYY
