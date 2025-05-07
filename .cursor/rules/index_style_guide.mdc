@@ -15,12 +15,59 @@ The file [`content/_index.md`](mdc:content/_index.md) serves as the primary land
 
 The style of [`content/_index.md`](mdc:content/_index.md) should be adopted for all content to maintain consistency and a strong personal brand. Key characteristics include:
 
-- **Tone:** Very direct, confident, but engaging. Slightly informal, yet professional. No bullshit, straight to the point. Examples: "If you're here, you know what you want.", "let's get to work."
-- **Structure:** Clear hierarchical structure using Markdown headings (`#`, `##`, etc.).
-- **Emphasis:** Use bold (`**text**`) for emphasis on key terms or section titles.
-- **Lists:** Employ bullet points for clarity and readability, especially for listing skills, links, or ideas.
-- **Links:** Standard Markdown links `@Link Texte used for navigation and references.
-- **Conciseness:** Get straight to the point.
-- **Wording:** You can curse, but make it Human. Example: 'what do you think im made of? fucking gold??'. Write alot, dont cut down. keep in mind, it should be read and uderstood by a human, so dont use too complex words.
+## 1. Voice & Tone
 
-Adhering to this style ensures a cohesive voice throughout the website.
+- Use **first-person perspective** ("I", "my", "me").
+- Maintain a **casual, friendly, and conversational tone**.
+- Write as if you're talking to a technically inclined friend.
+- Embrace humor, sarcasm, and playfulness.
+- Use **internet lingo, memes, and casual phrasing**, but dont try too hard.
+
+## 2. Structure & Formatting
+
+- Use **clear section headers** (`##`, `###`) to break up content.
+- Include:
+  - **Tables** for quick comparisons.
+  - **Bullet points** and **lists** for clarity.
+  - **Code blocks** (```) for technical examples.
+  - **Screenshots/GIFs** for visual support.
+- Embed **links** directly in context.
+- Use **bold**, _italics_, and `inline code` for emphasis and technical clarity.
+
+## 3. Content Style
+
+- **Be honest and opinionated**. Say what you think, even if it's blunt.
+- Call out bad UX, paywalls, or bloat unapologetically.
+- Use metaphors and analogies to explain concepts.
+  - _"It felt like being charged for the steering wheel after buying the car."_
+- Highlight personal workflows and real-world examples.
+- Make room for tangents and personality.
+
+## 4. Language & Grammar
+
+- Prefer **contractions** ("it's", "don't", "you're").
+- Be okay with **lowercase informality** in places (`ive`, `its`) when it fits the voice.
+- Use **sentence fragments** and **short paragraphs** for rhythm.
+- Swearing is okay, sparingly and for effect.
+  - _"What the fuck do you think I'm made of?"_
+
+## 5. Visuals & Media
+
+- Include **custom images, diagrams, and GIFs** to break up text.
+- Use humor in image captions and filenames.
+  - _moistcritikal-screaming-ai-slowmotion.gif_
+- Embed links with fun text:
+  - `[**oooh click me! im a random link!**](mdc:#)`
+
+## 6. Ending
+
+- Wrap up with a personal reflection or final thought.
+- Encourage readers to explore or try the tool themselves.
+- Add a humorous or punchy final note:
+  - _"Also, it's fucking free."_
+
+## 7. Meta & Attribution
+
+- Include a "Links" or "Credits" table if you reference tools.
+- Make it clear you’re not affiliated (if relevant).
+  - _"I'm not affiliated with Raycast. I'm just a happy customer."_
