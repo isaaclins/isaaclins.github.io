@@ -1,11 +1,11 @@
 +++
 title = "My Daily Mac Drivers"
-date = 2025-05-06
+date = 2025-05-07
 draft = false
 tags = ["MacOS", "Productivity", "Software"]
 +++
 
-If you're a Mac user looking to get more shit done, you're in the right place. I'm constantly tweaking my setup for peak efficiency, and over the years, I've landed on a set of apps that I genuinely can't live without. These are the tools that run daily, keeping my workflow smooth and my Mac purring like a kitten that just got a fat bowl of cream.
+If you're a Mac user looking to get more shit done, you're in the right place. I'm constantly tweaking my setup for peak efficiency, and in the last few days, I've decided on a set of apps that I genuinely couldn't live without. These are the tools that run daily, keeping my workflow smooth and upgrading to a poweruser
 
 Let's dive into the arsenal.
 
