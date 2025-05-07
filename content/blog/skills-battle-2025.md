@@ -1,6 +1,6 @@
 +++
 title = "How I Demolished the Skills Battle CTF (Thanks, AI!)"
-date = 2024-07-27 # Assuming current date, please update if needed
+date = 2025-05-07
 draft = false
 tags = ["CTF", "AI", "Productivity", "Cybersecurity"]
 +++
