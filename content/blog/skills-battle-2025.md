@@ -72,4 +72,3 @@ I've tried it with and without AI, and while it's more rewarding without, it's j
 Huge thanks to the Skills Battle organizers and everyone involved. It was a hell of a ride.
 
 FIRST PLACE BABYYYY
-
