@@ -9,7 +9,7 @@ Alright, let's cut to the chase. The Skills Battle CTF. You know, that competiti
 
 ## The Slow Burn Start
 
-I'm not gonna lie, I started out slower than a dial-up modem. Took me a painstaking **45 minutes for a single flag**. I was all over the place, distracted. I needed to lock in, and pronto. My position on the graph? Buried at the bottom with the slowpokes.
+I'm not gonna lie, I started out slower than a dial-up modem. Took me a painstaking **45 minutes for a single flag**. I was all over the place, distracted. I needed to lock in, and fast. My position on the graph? Buried at the bottom with the slowpokes.
 
 ## Flipping the Script: The Surge
 
