@@ -42,7 +42,11 @@ The crazy part? I didn't even sweat writing these Cursor rules. I just typed som
 
 This whole experience got me thinking. CTFs? They're leaning into a new kind of "pay-to-win." But hold on, it's not about just throwing more money at a bigger AI model or feeding it endless files hoping it'll magically spit out flags. Nah, that's not the play.
 
-The _real_ edge comes from how you use these tools. It's about figuring out: **"How can I explain this problem to the AI so _it_ can then understand the path to the solution, or even explain parts of the solution, back to _me_?"** You make the AI an extension of your own thought process, a powerful collaborator. You leverage it to break down complexity, to automate the grunt work, to see patterns you might miss. _That's_ how you break the pattern of diminishing returns in a high-pressure environment.
+The _real_ edge comes from how you use these tools. It's about figuring out: 
+
+**"How can I explain this problem to the AI so _it_ can then understand the path to the solution, or even explain parts of the solution, back to _me_?"** 
+
+You make the AI an extension of your own thought process, a powerful collaborator. You leverage it to break down complexity, to automate the grunt work, to see patterns you might miss. _That's_ how you break the pattern of diminishing returns in a high-pressure environment.
 
 ## Wrapping Up
 
@@ -54,6 +58,5 @@ I've tried it with and without AI, and while it's more rewarding without, it's j
 
 Huge thanks to the Skills Battle organizers and everyone involved. It was a hell of a ride.
 
----
 FIRST PLACE BABYYYY
----
+
