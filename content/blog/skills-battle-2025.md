@@ -1,5 +1,5 @@
 +++
-title = "How I Demolished the Skills Battle CTF (Thanks, AI!)"
+title = "Are CTF's Pay2Win?"
 date = 2025-05-07
 draft = false
 tags = ["CTF", "AI", "Productivity", "Cybersecurity"]
