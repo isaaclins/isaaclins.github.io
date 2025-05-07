@@ -55,10 +55,11 @@ The extensibility means I can integrate pretty much any workflow into it.
 
 
 >- **What it does:** 
->Scans your installed applications (especially non-App Store ones) and tells you if there are new 
-> versions available.
+> > Scans your installed applications (especially non-App Store ones) and tells you if there are new 
+> >versions available.
+
 >**Why I use it:** Keeps my software fresh without me having to manually check every damn website or wait for a built-in 
-> updater to decide it's time. Security and new features, baby.
+> > updater to decide it's time. Security and new features, baby.
 
 ### **battery** (the app, not the icon)
 
