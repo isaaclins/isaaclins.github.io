@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode | default "en" }}">
+<head>
+    <title>Redirecting to Latest Post</title>
+    {{ $latestInBlogSection := first 1 (where .Site.RegularPages.ByDate.Reverse "Section" "blog") }}
+
+    {{ if $latestInBlogSection }}
+        {{ $post := index $latestInBlogSection 0 }}
+        <link rel="canonical" href="{{ $post.Permalink }}"/>
+        <meta http-equiv="refresh" content="0; url={{ $post.Permalink }}">
+        <script type="text/javascript">
+            window.location.href = "{{ $post.Permalink }}";
+        </script>
+    {{ else }}
+        {{/* Fallback: Redirect to homepage if no blog posts are found */}}
+        <link rel="canonical" href="{{ .Site.BaseURL }}"/>
+        <meta http-equiv="refresh" content="0; url={{ .Site.BaseURL }}">
+        <script type="text/javascript">
+            window.location.href = "{{ .Site.BaseURL }}";
+        </script>
+    {{ end }}
+    <meta name="robots" content="noindex, follow">
+</head>
+<body>
+    {{ if $latestInBlogSection }}
+        {{ $post := index $latestInBlogSection 0 }}
+        <p>Redirecting to our latest post: <a href="{{ $post.Permalink }}">{{ $post.Title | default "here" }}</a>.</p>
+        <p>If you are not redirected automatically, please <a href="{{ $post.Permalink }}">click here</a>.</p>
+    {{ else }}
+        <p>No blog posts found. Redirecting to the <a href="{{ .Site.BaseURL }}">homepage</a>.</p>
+        <p>If you are not redirected automatically, please <a href="{{ .Site.BaseURL }}">click here</a>.</p>
+    {{ end }}
+</body>
+</html> 
