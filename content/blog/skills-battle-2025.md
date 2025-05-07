@@ -57,7 +57,7 @@ The _real_ edge comes from how you use these tools. It's about figuring out:
 
 **"How can I explain this problem to the AI so _it_ can then understand the path to the solution, or even explain parts of the solution, back to _me_?"** 
 
-You make the AI an extension of your own thought process, a powerful collaborator. You leverage it to break down complexity, to automate the grunt work, to see patterns you might miss. _That's_ how you break the pattern of diminishing returns in a high-pressure environment.
+You make the AI an extension of your own thought process, a powerful collaborator. You leverage it to break down complexity, to automate the grunt work, to see patterns you might miss. _That's_ how you break the pattern of stupid answers in a high-pressure environment.
 
 ## Wrapping Up
 
