@@ -46,7 +46,7 @@ The extensibility means I can integrate pretty much any workflow into it.
 
   > I've delved deeper into Raycast over at [my post on Raycast's Hidden Power](/blog/raycast-its-hidden-power/).
 
-### **Latest**
+> ### **Latest**
 
 ![Latest icon](/images/svg/latest.svg)
 
