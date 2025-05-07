@@ -5,7 +5,7 @@ draft = false
 tags = ["CTF", "AI", "Productivity", "Cybersecurity"]
 +++
 
-Alright, let's cut to the chase. The Skills Battle CTF – you know, that competitive shindig for us IT folks. My boss nudged me, said it'd be a "good idea." So, I figured, why the hell not? Threw my hat in the ring, not expecting much.
+Alright, let's cut to the chase. The Skills Battle CTF. You know, that competitive shindig for us IT folks. My boss nudged me, said it'd be a "good idea." So, I figured, why the hell not? Threw my hat in the ring, not expecting much.
 
 ## The Slow Burn Start
 
@@ -16,7 +16,6 @@ I'm not gonna lie, I started out slower than a dial-up modem. Took me a painstak
 Then, something clicked. You can see it clear as day on this graph here:
 
 ![My CTF Dominance](/images/skills-battle-graph.png)
-_(skills-battle-graph.png)_
 
 See that light blue line? That's me, `isaaclins`. After that initial crawl, around the 10:00 mark, things changed. Instead of hitting a wall or getting exponentially slower like a lot of the others, I just... exploded. I knocked out **three challenges back-to-back in about 20 minutes**. Flag after flag after flag. Turns out, that first super slow flag? It was one of the hardest ones. And thanks to the "first blood" style scoring. more points for flags fewer people capture. that initial pain paid off, big time. I shot up the leaderboard, leaving a good chunk of the competition eating my dust.
 
@@ -54,3 +53,7 @@ I've tried it with and without AI, and while it's more rewarding without, it's j
 **TLDR; I didn't just win; I leveraged AI to redefine what "winning" looked like. Call it P2W, call it smarts, call it whatever – it worked.**
 
 Huge thanks to the Skills Battle organizers and everyone involved. It was a hell of a ride.
+
+---
+FIRST PLACE BABYYYY
+---
