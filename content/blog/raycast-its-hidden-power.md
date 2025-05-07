@@ -8,8 +8,14 @@ tags = ["Raycast", "Software", "MacOS", "Poweruser"]
 ![raycast.svg](/images/svg/raycast.svg)
 
 I stumbled upon Raycast even before I owned a Mac and instantly fell in love with the concept.
-My friend [**@k3ntaw**](https://github.com/k3ntaw/) (shoutout to him!) showed it to me, and I immediately started searching for Windows alternatives (I was mainly on Windows at the time).
+My friend [**@k3ntaw**](https://github.com/k3ntaw/) (shoutout to him!) showed it to me, and I immediately started searching for Windows Application Launchers (I was mainly on Windows at the time).
 My quest led me down a couple of paths:
+
+## What is an Application Launcher?
+
+At its core, an application launcher is a tool designed to help you find and start applications on your computer with lightning speed. Think of it as a supercharged search bar for your entire system. Instead of clicking through folders or scrolling through menus, you simply type a few letters of what you're looking for an app, a file, a command and the launcher brings it right up.
+
+The real magic, though, isn't just about opening apps. Modern launchers, like Raycast, often pack a much bigger punch. They can search files, execute system commands, run scripts, manage your clipboard history, expand text snippets, and even integrate with other services and websites through extensions or plugins. Essentially, they become a central command hub for your digital life, streamlining your workflow and shaving off precious seconds (or even minutes) from countless daily tasks. If you're all about efficiency and prefer keeping your hands on the keyboard, a good application launcher is a game-changer.
 
 ## Windows alternatives:
 
