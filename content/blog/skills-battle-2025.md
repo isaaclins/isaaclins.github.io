@@ -1,5 +1,5 @@
 +++
-title = "Are CTF's Pay2Win?"
+title = "Are CTFs Pay2Win?"
 date = 2025-05-07
 draft = false
 tags = ["CTF", "AI", "Productivity", "Cybersecurity"]
@@ -51,7 +51,7 @@ The crazy part? I didn't even sweat writing these Cursor rules. I just typed som
 
 ## The New "Pay-to-Win": Smarter, Not Harder
 
-This whole experience got me thinking. CTFs? They're leaning into a new kind of "pay-to-win." But hold on, it's not about just throwing more money at a bigger AI model or feeding it endless files hoping it'll magically spit out flags. Nah, that's not the play.
+This whole experience got me thinking. CTFs are leaning into a new kind of "pay-to-win." But hold on, it's not about just throwing more money at a bigger AI model or feeding it endless files hoping it'll magically spit out flags. Nah, that's not the play.
 
 The _real_ edge comes from how you use these tools. It's about figuring out: 
 
