@@ -1,7 +1,7 @@
 +++
 title = "My Daily Mac Software"
 date = 2025-05-08
-draft = false
+draft = true
 tags = ["MacOS", "Productivity", "Software"]
 +++
 
