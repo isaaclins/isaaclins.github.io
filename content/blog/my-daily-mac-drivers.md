@@ -1,17 +1,21 @@
 +++
-title = "My Daily Mac Drivers"
-date = 2025-05-07
+title = "My Daily Mac Software"
+date = 2025-05-08
 draft = false
 tags = ["MacOS", "Productivity", "Software"]
+toc = true
 +++
 
-If you're a Mac user looking to get more shit done, you're in the right place. I'm constantly tweaking my setup for peak efficiency, and in the last few days, I've decided on a set of apps that I genuinely couldn't live without. These are the tools that run daily, keeping my workflow smooth and upgrading to a poweruser
+If you're a Mac user (or even a Windows or Linux user) looking to get more shit done, you're in the right place. I'm constantly tweaking my setup for peak efficiency, and in the last few days, I've decided on a set of apps that I genuinely couldn't live without. These are the tools that run daily, keeping my workflow smooth and upgrading to a poweruser.
 
 Let's dive into the arsenal.
 
 ## The Lineup
 
 Here's the current squad of apps that make my Mac work for _me_:
+
+I made a list of all the apps I use on my Mac. I'm going to go through each one and explain what I use them for.
+
 
 ### **Hammerspoon**
 
