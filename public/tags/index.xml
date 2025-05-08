@@ -6,34 +6,83 @@
     <description>Recent content in Tags on </description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 16 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 08 May 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="//localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Ai</title>
+      <title>MacOS</title>
+      <link>//localhost:1313/tags/macos/</link>
+      <pubDate>Thu, 08 May 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/macos/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Productivity</title>
+      <link>//localhost:1313/tags/productivity/</link>
+      <pubDate>Thu, 08 May 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/productivity/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Software</title>
+      <link>//localhost:1313/tags/software/</link>
+      <pubDate>Thu, 08 May 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/software/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>AI</title>
       <link>//localhost:1313/tags/ai/</link>
-      <pubDate>Wed, 16 Apr 2025 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 07 May 2025 00:00:00 +0000</pubDate>
       <guid>//localhost:1313/tags/ai/</guid>
       <description></description>
     </item>
     <item>
-      <title>Mcp</title>
+      <title>CTF</title>
+      <link>//localhost:1313/tags/ctf/</link>
+      <pubDate>Wed, 07 May 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/ctf/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cybersecurity</title>
+      <link>//localhost:1313/tags/cybersecurity/</link>
+      <pubDate>Wed, 07 May 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/cybersecurity/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Customization</title>
+      <link>//localhost:1313/tags/customization/</link>
+      <pubDate>Tue, 06 May 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/customization/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>IDE</title>
+      <link>//localhost:1313/tags/ide/</link>
+      <pubDate>Tue, 06 May 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/ide/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Poweruser</title>
+      <link>//localhost:1313/tags/poweruser/</link>
+      <pubDate>Tue, 06 May 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/poweruser/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Raycast</title>
+      <link>//localhost:1313/tags/raycast/</link>
+      <pubDate>Tue, 06 May 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/raycast/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>MCP</title>
       <link>//localhost:1313/tags/mcp/</link>
       <pubDate>Wed, 16 Apr 2025 00:00:00 +0000</pubDate>
       <guid>//localhost:1313/tags/mcp/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Introduction</title>
-      <link>//localhost:1313/tags/introduction/</link>
-      <pubDate>Mon, 05 Jun 2023 09:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/introduction/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Technology</title>
-      <link>//localhost:1313/tags/technology/</link>
-      <pubDate>Mon, 05 Jun 2023 09:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/technology/</guid>
       <description></description>
     </item>
   </channel>

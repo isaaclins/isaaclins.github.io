@@ -17,6 +17,8 @@ The file [`content/blog/_TEMPLATE.md`](mdc:content/blog/_TEMPLATE.md) is the off
 -   **Markdown Examples:** It serves as a quick reference for various Markdown elements (headings, lists, links, code blocks, etc.).
 -   **Consistency:** Using this template for every new blog post under the `content/blog/` directory is crucial for maintaining a uniform look and feel across the blog.
 
+- When creating a new blog post or a content page that is likely to be long or have multiple sections, consider adding a Table of Contents by inserting the `{{< toc >}}` shortcode near the beginning of the content, typically after an introductory paragraph.
+
 To create a new blog post:
 1.  Duplicate [`content/blog/_TEMPLATE.md`](mdc:content/blog/_TEMPLATE.md).
 2.  Rename the duplicated file appropriately (e.g., `my-new-post.md`).
