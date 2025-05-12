@@ -37,7 +37,7 @@ Here are some of my latest posts:
 - **Email:** [contact@isaaclins.com](mailto:contact@isaaclins.com)
 - **GitHub:** [github.com/isaaclins](https://github.com/isaaclins)
 - **LinkedIn:** [Isaac Lins](https://www.linkedin.com/in/isaac-lins-094612247/)
-- **Resume:** [Download Resume](/resume.pdf)
+- **Resume:** TBD
 
 If you're here, you know what you want.
 
