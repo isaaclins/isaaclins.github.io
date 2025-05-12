@@ -1,7 +1,7 @@
 +++
 title = "Are CTFs Pay2Win?"
 date = 2025-05-07
-draft = false
+draft = true
 tags = ["CTF", "AI", "Productivity", "Cybersecurity"]
 +++
 
