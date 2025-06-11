@@ -1,7 +1,7 @@
 +++
 title = "Are CTFs Pay2Win?"
 date = 2025-05-07
-draft = true
+draft = false
 tags = ["CTF", "AI", "Productivity", "Cybersecurity"]
 +++
 
@@ -13,13 +13,11 @@ I'm not gonna lie, I started out slower than a dial-up modem. Took me a painstak
 
 ## Flipping the Script
 
-After that initial crawl, around the 10:00 mark, things changed. Instead of hitting a wall or getting exponentially slower like a lot of the others, I put my older brother on the game. 
+After that initial crawl, around the 10:00 mark, things changed. Instead of hitting a wall or getting exponentially slower like a lot of the others, I put my older brother on the game.
 
 ![My REAL CTF Dominance](/images/skills-battle-graph-with-points.png)
 
-
-There was a `1096 point difference` between me and the second place. 
-
+There was a `1096 point difference` between me and the second place.
 
 I knocked out **three challenges back-to-back in about 20 minutes**. Flag after flag after flag. Turns out, that first super slow flag? It was one of the hardest ones. And thanks to the "first blood" style scoring. more points for flags fewer people capture. that initial pain paid off, big time. I shot up the leaderboard, leaving a good chunk of the competition eating my dust.
 
@@ -28,7 +26,7 @@ I ended up tying for first place with FOUR OTHER COMPETITORS.
 I was the first to solve the second to last challenge, but they were all close.
 
 ![My CTF Dominance](/images/skills-battle-graph.png)
-__(I'm the blue line)__
+**(I'm the blue line)**
 
 ## The Unfair Advantage: My Setup
 
@@ -53,9 +51,9 @@ The crazy part? I didn't even sweat writing these Cursor rules. I just typed som
 
 This whole experience got me thinking. CTFs are leaning into a new kind of "pay-to-win." But it's not about just throwing more money at a bigger AI model or feeding it endless files hoping it'll magically spit out flags.
 
-The _real_ edge comes from how you use these tools. It's about figuring out: 
+The _real_ edge comes from how you use these tools. It's about figuring out:
 
-**"How can I explain this problem to the AI so _it_ can then understand the path to the solution, or even explain parts of the solution, back to _me_?"** 
+**"How can I explain this problem to the AI so _it_ can then understand the path to the solution, or even explain parts of the solution, back to _me_?"**
 
 You make the AI an extension of your own thought process, a powerful collaborator. You leverage it to break down complexity, to automate the grunt work, to see patterns you might miss. _That's_ how you break the pattern of stupid answers in a high-pressure environment.
 
