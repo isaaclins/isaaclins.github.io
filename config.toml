@@ -38,6 +38,8 @@ target = 'static/images'
     ordered    = false
 
 [params]
+  [params.features]
+    mermaid = true
   [params.theme_config]
     appearance        = "auto"
     date_format       = "01/02/2006"
