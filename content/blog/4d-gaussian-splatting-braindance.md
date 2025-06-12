@@ -13,7 +13,7 @@ But here's the thing: what if I told you we're inching closer to that kind of im
 
 Let's break it down. Traditional 3D rendering is like building a Lego city and walking around it. 4DGS? It's like building a Lego city that morphs, dances, and explodes in real time—while you're still walking through it.
 
-4DGS is a new way to represent and render **dynamic scenes**—think moving people, shifting lights, exploding cars—in real time, at high resolution. Instead of rendering each frame separately (like a flipbook), 4DGS encodes both space (3D) and time (the 4th D) into a single, efficient model.
+4DGS is a new way to represent and render **dynamic scenes**. Think moving people, shifting lights, exploding cars—in real time, at high resolution. Instead of rendering each frame separately (like a flipbook), 4DGS encodes both space (3D) and time (the 4th D) into a single, efficient model.
 
 > TL;DR: 4DGS lets you render entire moving scenes, not just static objects, and it does it _fast_.
 
