@@ -78,12 +78,3 @@ Give the stack 5-10 years and the line between BD fiction and reality gets _real
 
 4D Gaussian Splatting turns hours-long volumetric capture into lunch-break training and spits out frames faster than your monitor refreshes. Stack it with audio, haptics, and biometric streams, and Braindance stops being dystopian fiction—it becomes an SDK.
 
----
-
-### 📸 Image Game Plan
-
-1. **After the Braindance intro paragraph**: insert an image/gif from Edgerunners showcasing a BD session.
-2. **Below the 4DGS pipeline diagram**: screenshot from the official 4DGS real-time viewer comparing ground truth vs. splatted render.
-3. **In the "What Can We Do Today?" list**: place a short looping gif of a captured human turning in VR.
-
-(Images go in `images/` or `images/gif/` as per repo convention.)
