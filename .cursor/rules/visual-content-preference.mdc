@@ -7,8 +7,9 @@ alwaysApply: true
 
 The primary audience for this content prefers visual explanations over dense text. To cater to this preference, please adhere to the following guidelines:
 
-1.  **Prioritize Mermaid Diagrams:** Whenever explaining a process, workflow, architecture, or any concept that can be visualized, a Mermaid diagram is mandatory.
+1.  **Prioritize Mermaid Diagrams:** Whenever explaining a process, workflow, architecture, or any concept that can be visualized, at least 2 Mermaid diagrams are mandatory.
 2.  **Use Images Liberally:** Complement explanations with screenshots, illustrations, or any relevant images. Visual aids break up text and improve comprehension.
 3.  **Post-Creation Image Placement:** After generating the initial text and diagrams for a blog post, your final step should always be to suggest specific locations for images that would enhance the content. For example: "After the section on 'X', an image illustrating 'Y' would be beneficial."
+4.  **Use Images to Break Up Text:** Use images to break up text and improve comprehension.
 
 This ensures our content is engaging and easy to digest for our visually-oriented audience.

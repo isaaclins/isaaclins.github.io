@@ -3,24 +3,18 @@ description:
 globs: 
 alwaysApply: true
 ---
-# Main Page & Site-Wide Writing Style
 
-This documnificance of the main page, [`content/_index.md`](mdc:content/_index.md), and establishes its writing style as the standard acrt.
+# Core Writing Style
 
-## The Main Page: `content/_index.md`
+The style of [`content/raycast-its-hidden-power.md`](mdc:content/raycast-its-hidden-power.md) is one which should be adopted for all content to maintain consistency and a strong personal brand. Key characteristics include:
 
-The file [`content/_index.md`](mdc:content/_index.md) serves as the primary landing page for the website. It introduces Isaac Lins, his wo contact information and useful links.
-
-## Core Writing Style
-
-The style of [`content/_index.md`](mdc:content/_index.md) should be adopted for all content to maintain consistency and a strong personal brand. Key characteristics include:
-
-- **Tone:** Very direct, confident, but engaging. Slightly informal, yet professional. No bullshit, straight to the point. Examples: "If you're here, you know what you want.", "let's get to work."
-- **Structure:** Clear hierarchical structure using Markdown headings (`#`, `##`, etc.).
-- **Emphasis:** Use bold (`**text**`) for emphasis on key terms or section titles.
-- **Lists:** Employ bullet points for clarity and readability, especially for listing skills, links, or ideas.
-- **Links:** Standard Markdown links `@Link Texte used for navigation and references.
-- **Conciseness:** Get straight to the point.
-- **Wording:** You can curse, but make it Human. Example: 'what do you think im made of? fucking gold??'. Write alot, dont cut down. keep in mind, it should be read and uderstood by a human, so dont use too complex words.
+- Direct and Blunt: Say exactly what you think, no hedging.
+- Conversational: Talks like you’re speaking to a friend, not writing an essay.
+- Confident and Opinionated: Make bold statements, often with “hot takes.”
+- Humorous and Sarcastic: Use jokes, memes, and sarcasm liberally.
+- Curse (when appropriate): Not afraid to drop a “shit” or “fuck” for emphasis.
+- Analogies & Pop Culture: Explain things using relatable, sometimes absurd analogies.
+- Call to Action: Tell the reader/viewer what to do, often in a “stop wasting time” tone.
+- Break the Fourth Wall: Talk directly to the reader (“You’re still here? Go build something.”)
 
 Adhering to this style ensures a cohesive voice throughout the website.

@@ -3,21 +3,20 @@ description:
 globs: 
 alwaysApply: true
 ---
-# Blog Post Creation: Using the Template
 
-This guide explains the role and usage of the blog post template, [`content/blog/_TEMPLATE.md`](mdc:content/blog/_TEMPLATE.md).
+# Blog Post Creation: Using the Template
 
 ## The Blog Template: `content/blog/_TEMPLATE.md`
 
 The file [`content/blog/_TEMPLATE.md`](mdc:content/blog/_TEMPLATE.md) is the official starting point for all new blog posts. It ensures consistency in front matter and provides a comprehensive example of Markdown formatting options.
 
-### Key Features & Usage
+### Key Features
 
 -   **Front Matter:** The template includes essential front matter fields like `title`, `date`, `draft`, and `tags`. New posts should populate these fields accurately.
--   **Markdown Examples:** It serves as a quick reference for various Markdown elements (headings, lists, links, code blocks, etc.).
+-   **Markdown & Mermaid Examples:** It serves as a quick reference for various Mermaid and Markdown elements (headings, lists, links, code blocks, etc. / diagrams, tables, etc.).
 -   **Consistency:** Using this template for every new blog post under the `content/blog/` directory is crucial for maintaining a uniform look and feel across the blog.
 
-- When creating a new blog post or a content page that is likely to be long or have multiple sections, consider adding a Table of Contents by inserting the `{{< toc >}}` shortcode near the beginning of the content, typically after an introductory paragraph.
+
 
 To create a new blog post:
 1.  Duplicate [`content/blog/_TEMPLATE.md`](mdc:content/blog/_TEMPLATE.md).
