@@ -1,7 +1,7 @@
 +++
 title = "4D Gaussian Splatting: The Tech That Could Make Braindance Real"
 date = 2024-07-15
-draft = true
+draft = false
 tags = ["4DGS", "Computer Vision", "AI"]
 +++
 
