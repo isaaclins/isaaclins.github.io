@@ -1,6 +1,6 @@
 +++
 title = "TEMPLATE"
-date = 2025-04-16
+date = 2025-06-13
 draft = true
 tags = ["TEMPLATE", "TEMPLATE2"]
 +++
