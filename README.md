@@ -1,15 +1,15 @@
 ### Lighthouse Score Summary
 | URL | Accessibility | Best Practices | Performance | SEO |
 |-----|---------------|----------------|-------------|-----|
-| https://isaaclins.com/blog/4d-gaussian-splatting-braindance/ | 83 | 79 | 40 | 100 |
+| https://isaaclins.com/blog/4d-gaussian-splatting-braindance/ | 83 | 79 | 51 | 100 |
 | https://isaaclins.com/tags/4dgs/ | 89 | 96 | 62 | 90 |
 | https://isaaclins.com/tags/ai/ | 89 | 96 | 62 | 90 |
 | https://isaaclins.com/tags/computer-vision/ | 89 | 96 | 62 | 90 |
 | https://isaaclins.com/tags/ | 89 | 96 | 62 | 90 |
-| https://isaaclins.com/blog/skills-battle-2025/ | 88 | 79 | 53 | 100 |
+| https://isaaclins.com/blog/skills-battle-2025/ | 88 | 79 | 54 | 100 |
 | https://isaaclins.com/tags/ctf/ | 89 | 96 | 62 | 90 |
 | https://isaaclins.com/tags/cybersecurity/ | 89 | 96 | 62 | 90 |
-| https://isaaclins.com/latest/ | 83 | 79 | 53 | 100 |
+| https://isaaclins.com/latest/ | 83 | 79 | 54 | 100 |
 | https://isaaclins.com/tags/productivity/ | 89 | 96 | 62 | 90 |
 | https://isaaclins.com/blog/cursor-ide-a-developers-double-edged-sword/ | 86 | 79 | 62 | 100 |
 | https://isaaclins.com/tags/customization/ | 89 | 96 | 62 | 90 |
@@ -19,13 +19,13 @@
 | https://isaaclins.com/blog/macos/ | 94 | 79 | 62 | 100 |
 | https://isaaclins.com/tags/poweruser/ | 89 | 96 | 62 | 90 |
 | https://isaaclins.com/tags/raycast/ | 89 | 96 | 62 | 90 |
-| https://isaaclins.com/blog/raycast-its-hidden-power/ | 89 | 79 | 51 | 100 |
+| https://isaaclins.com/blog/raycast-its-hidden-power/ | 89 | 79 | 52 | 100 |
 | https://isaaclins.com/tags/software/ | 89 | 96 | 62 | 90 |
 | https://isaaclins.com/tags/mcp/ | 89 | 96 | 62 | 90 |
 | https://isaaclins.com/blog/mcp/ | 94 | 79 | 62 | 100 |
 | https://isaaclins.com/blog/ | 89 | 96 | 62 | 90 |
 | https://isaaclins.com/ | 94 | 96 | 62 | 80 |
-| https://isaaclins.com/categories/ | 94 | 96 | 56 | 90 |
-| Overall Average | 89 | 90 | 59 | 92 |
+| https://isaaclins.com/categories/ | 94 | 96 | 62 | 90 |
+| Overall Average | 89 | 90 | 60 | 92 |
 
 # Average Score: 83
