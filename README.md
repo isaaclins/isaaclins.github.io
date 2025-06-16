@@ -14,7 +14,7 @@
 | https://isaaclins.com/blog/4d-gaussian-splatting-braindance/ | 83 | 79 | 54 | 100 |
 | https://isaaclins.com/tags/4dgs/ | 89 | 96 | 62 | 90 |
 | https://isaaclins.com/tags/computer-vision/ | 89 | 96 | 62 | 90 |
-| https://isaaclins.com/blog/skills-battle-2025/ | 88 | 79 | 53 | 100 |
+| https://isaaclins.com/blog/skills-battle-2025/ | 88 | 79 | 54 | 100 |
 | https://isaaclins.com/tags/ctf/ | 89 | 96 | 62 | 90 |
 | https://isaaclins.com/tags/cybersecurity/ | 89 | 96 | 62 | 90 |
 | https://isaaclins.com/latest/ | 95 | 79 | 61 | 100 |
@@ -27,7 +27,7 @@
 | https://isaaclins.com/blog/macos/ | 94 | 79 | 62 | 100 |
 | https://isaaclins.com/tags/poweruser/ | 89 | 96 | 62 | 90 |
 | https://isaaclins.com/tags/raycast/ | 89 | 96 | 62 | 90 |
-| https://isaaclins.com/blog/raycast-its-hidden-power/ | 89 | 79 | 55 | 100 |
+| https://isaaclins.com/blog/raycast-its-hidden-power/ | 89 | 79 | 53 | 100 |
 | https://isaaclins.com/tags/software/ | 89 | 96 | 62 | 90 |
 | https://isaaclins.com/tags/mcp/ | 89 | 96 | 62 | 90 |
 | https://isaaclins.com/blog/mcp/ | 94 | 79 | 62 | 100 |
