@@ -1,5 +1,5 @@
 +++
-title = "What the Fuck is Functional Programming in Java?"
+title = "What is Functional Programming in Java?"
 date = 2025-06-14
 draft = false
 tags = ["Java", "Functional Programming", "Software Development"]
@@ -239,7 +239,7 @@ But you absolutely should be using these functional features.
 
 - **Use immutability** wherever possible. Records make this a no-brainer.
 - **Favor pure functions**. Isolate side effects to the "edges" of your application.
-- **Embrace the Stream API**. Stop writing `for` loops to process collections. It's 2024, for Christ's sake.
+- **Embrace the Stream API**. Stop writing `for` loops to process collections. It's about time, for Christ's sake.
 - **Use `Optional`** as return types for methods that might not find anything.
 
 Functional programming isn't an all-or-nothing cult. It's a set of powerful tools. Learn them, use them wisely, and write better, more robust Java code. Now stop reading and go refactor something.
