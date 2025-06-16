@@ -51,7 +51,7 @@ public class MutableUser {
 }
 ```
 
-This looks fine until you pass this object to three different methods, and one of them changes the name without you realizing it. Now you've got a bug that'll take you three hours and a litre of coffee to find.
+This looks fine until you pass this object to three different methods, and one of them changes the name without you realizing it. Now you've got a bug that'll take you three hours and seven redbulls to find.
 
 #### The "Functional Way" (Immutable)
 
