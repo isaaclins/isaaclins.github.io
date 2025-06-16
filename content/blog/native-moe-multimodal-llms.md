@@ -1,6 +1,6 @@
 +++
 title = "Your AI is a Frankenstein's Monster"
-date = 2025-06-17
+date = 2025-06-16
 draft = false
 tags = ["AI", "LLM", "Tech"]
 +++
