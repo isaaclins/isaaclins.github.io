@@ -1,23 +1,23 @@
 ### Lighthouse Score Summary
 | URL | Accessibility | Best Practices | Performance | SEO |
 |-----|---------------|----------------|-------------|-----|
-| https://isaaclins.com/tags/ai/ | 89 | 96 | 61 | 90 |
-| https://isaaclins.com/blog/ai-deep-dive/ | 90 | 79 | 59 | 100 |
-| https://isaaclins.com/tags/llm/ | 89 | 96 | 62 | 90 |
-| https://isaaclins.com/tags/ | 89 | 96 | 62 | 90 |
-| https://isaaclins.com/tags/tech/ | 89 | 96 | 62 | 90 |
-| https://isaaclins.com/blog/native-moe-multimodal-llms/ | 95 | 79 | 61 | 100 |
-| https://isaaclins.com/tags/functional-programming/ | 89 | 96 | 62 | 90 |
+| https://isaaclins.com/tags/functional-programming/ | 89 | 96 | 61 | 90 |
 | https://isaaclins.com/tags/java/ | 89 | 96 | 62 | 90 |
 | https://isaaclins.com/tags/software-development/ | 89 | 96 | 62 | 90 |
+| https://isaaclins.com/tags/ | 89 | 96 | 62 | 90 |
 | https://isaaclins.com/blog/functional-programming-java/ | 91 | 79 | 61 | 100 |
-| https://isaaclins.com/blog/4d-gaussian-splatting-braindance/ | 83 | 79 | 54 | 100 |
+| https://isaaclins.com/tags/ai/ | 89 | 96 | 62 | 90 |
+| https://isaaclins.com/blog/ai-deep-dive/ | 90 | 79 | 60 | 100 |
+| https://isaaclins.com/tags/llm/ | 89 | 96 | 62 | 90 |
+| https://isaaclins.com/tags/tech/ | 89 | 96 | 62 | 90 |
+| https://isaaclins.com/blog/native-moe-multimodal-llms/ | 95 | 79 | 61 | 100 |
+| https://isaaclins.com/blog/4d-gaussian-splatting-braindance/ | 83 | 79 | 53 | 100 |
 | https://isaaclins.com/tags/4dgs/ | 89 | 96 | 62 | 90 |
 | https://isaaclins.com/tags/computer-vision/ | 89 | 96 | 62 | 90 |
-| https://isaaclins.com/blog/skills-battle-2025/ | 88 | 79 | 54 | 100 |
+| https://isaaclins.com/blog/skills-battle-2025/ | 88 | 79 | 53 | 100 |
 | https://isaaclins.com/tags/ctf/ | 89 | 96 | 62 | 90 |
 | https://isaaclins.com/tags/cybersecurity/ | 89 | 96 | 62 | 90 |
-| https://isaaclins.com/latest/ | 95 | 79 | 61 | 100 |
+| https://isaaclins.com/latest/ | 91 | 79 | 61 | 100 |
 | https://isaaclins.com/tags/productivity/ | 89 | 96 | 62 | 90 |
 | https://isaaclins.com/blog/cursor-ide-a-developers-double-edged-sword/ | 86 | 79 | 62 | 100 |
 | https://isaaclins.com/tags/customization/ | 89 | 96 | 62 | 90 |
@@ -27,12 +27,12 @@
 | https://isaaclins.com/blog/macos/ | 94 | 79 | 62 | 100 |
 | https://isaaclins.com/tags/poweruser/ | 89 | 96 | 62 | 90 |
 | https://isaaclins.com/tags/raycast/ | 89 | 96 | 62 | 90 |
-| https://isaaclins.com/blog/raycast-its-hidden-power/ | 89 | 79 | 53 | 100 |
+| https://isaaclins.com/blog/raycast-its-hidden-power/ | 89 | 79 | 55 | 100 |
 | https://isaaclins.com/tags/software/ | 89 | 96 | 62 | 90 |
 | https://isaaclins.com/tags/mcp/ | 89 | 96 | 62 | 90 |
 | https://isaaclins.com/blog/mcp/ | 94 | 79 | 62 | 100 |
 | https://isaaclins.com/blog/ | 89 | 96 | 62 | 90 |
-| https://isaaclins.com/ | 94 | 96 | 62 | 80 |
+| https://isaaclins.com/ | 94 | 96 | 61 | 80 |
 | https://isaaclins.com/categories/ | 94 | 96 | 62 | 90 |
 | Overall Average | 89 | 90 | 60 | 93 |
 
