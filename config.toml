@@ -45,3 +45,10 @@ target = 'static/images'
     date_format       = "01/02/2006"
     isListGroupByDate = true
     isShowFooter      = true
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+[outputs]
+  section = ["HTML", "RSS", "JSON"]

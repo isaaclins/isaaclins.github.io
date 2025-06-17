@@ -2,18 +2,21 @@
 {{ $urlParts := split $url "/" }}
 
 <div class="breadcrumbs">
-  <a href="{{ "/" | relURL }}">Home</a>
-  {{ range $index, $element := $urlParts }}
-    {{ if and (ne $element "") (ne $element "page") }}
-      {{ $path := "" }}
-      {{ range $i, $part := $urlParts }}
-        {{ if le $i $index }}
-          {{ if ne $part "" }}
-            {{ $path = printf "%s/%s" $path $part }}
-          {{ end }}
-        {{ end }}
+  <div>
+    <a href="{{ "/" | relURL }}">Home</a>
+    {{ range .Ancestors.Reverse }}
+      {{ if not .IsHome }}
+        / <a href="{{ .Permalink }}">{{ .Title }}</a>
       {{ end }}
-      / <a href="{{ $path | relURL }}">{{ humanize $element }}</a>
     {{ end }}
+    {{ if not .IsHome }}
+        / <a href="{{ .Permalink }}">{{ if .IsPage }}{{ .File.BaseFileName | humanize }}{{ else }}{{ .Title }}{{ end }}</a>
+    {{ end }}
+  </div>
+
+  {{ if or (eq .Section "blog") (eq .Type "blog") }}
+  <div id="search-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+  </div>
   {{ end }}
 </div> 

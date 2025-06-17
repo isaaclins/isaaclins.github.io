@@ -4,8 +4,17 @@
     <body a="{{ $.Site.Params.theme_config.appearance | default "auto" }}">
         <main class="page-content" aria-label="Content">
             <div class="w">
+                {{ if or (eq .Section "blog") (eq .Type "blog") }}
+                <div id="search-popup" class="search-popup">
+                    <div class="search-popup-content">
+                        <span class="search-popup-close">&times;</span>
+                        <input type="text" id="search-query" placeholder="Search posts..." />
+                        <div id="search-results"></div>
+                    </div>
+                </div>
+                {{ end }}
                 {{- block "main" . }}{{- end }}
-                {{ partial "footer.html" }}
+                {{ partial "footer.html" . }}
             </div>
         </main>
     </body>

@@ -1,0 +1,13 @@
+[
+  {{- $pages := .Pages -}}
+  {{- range $index, $page := $pages -}}
+    {
+      "title": "{{ .Title }}",
+      "url": "{{ .Permalink }}",
+      "date": "{{ .Date.Format "2006-01-02" }}",
+      "tags": {{ .Params.tags | jsonify }},
+      "content": {{ .Plain | jsonify }}
+    }
+    {{- if ne (add $index 1) (len $pages) -}},{{- end -}}
+  {{- end -}}
+] 
