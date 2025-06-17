@@ -51,7 +51,7 @@ graph TD
     E --> F;
 
     F --> G["5. Push to repository"];
-    G --> H["🎉 6. Go home 🎉"];
+    G --> H["🎉 6. Submit the repo link 🎉"];
 ```
 
 The "predefined rules" aren't complicated. It's basically a master prompt in Cursor that says: *"Hey, here's a PDF. Rip it apart. Find the tasks. The code needs to look like *this*. The comments need to be formatted like *that*. The final output should be a clean, well-documented project. Go."*
