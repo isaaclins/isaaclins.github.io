@@ -3,7 +3,7 @@ title = "How a Single Bad Line of Code Took Down the Internet"
 date = 2025-06-17
 draft = false
 tags = ["Google", "Cloud", "Outage", "Postmortem", "Bug", "Software-development", "Null-Pointer"]
-complexity = "easy"
+complexity = "medium"
 +++
 
 On Thursday, June 12th, the internet had a bit of a seizure. For about three hours, huge chunks of the web just... stopped working. Spotify, Google, AWS, Cloudflare—all the big players were flashing error messages. My own site went down, which I learned from my inbox being promptly flooded with about 100 "site down" alerts in 20 minutes. Not a great look.

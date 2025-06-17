@@ -3,7 +3,7 @@ title = "AI is Just Spicy Autocomplete, And You're Falling For It"
 date = 2025-06-16
 draft = false
 tags = ["AI", "LLM", "Tech"]
-complexity = "easy"
+complexity = "hard"
 
 +++
 
@@ -86,6 +86,7 @@ Okay, but computers don't understand words. They understand numbers. So how does
 Through a process called **embedding**. Every word, phrase, or token is mapped to a giant list of numbers called a **vector**. This isn't just a random assignment; the mapping is done in a way that captures semantic meaning.
 
 > note: semantic meaning means the meaning of the word in the context of the sentence.
+>
 > > For example: "baby" is a word that refers to a very young child, so if I say "My baby is hungry", the word "baby" has a semantic meaning of a young child. but if I say "I have a baby cat", the word "baby" has a semantic meaning of a young cat, depending on the context.
 
 Words with similar meanings will have similar vectors. They'll be "close" to each other in this high-dimensional vector space.
@@ -273,7 +274,6 @@ So next time someone asks you what AI is, you can tell them:
 No. Fuck no.
 
 Have you even been reading this post?
-
 
 An LLM is a pattern-matching machine of unimaginable scale. It has learned the statistical relationships between words in human language. It can generate text that is grammatically correct, contextually relevant, and sometimes even insightful.
 
