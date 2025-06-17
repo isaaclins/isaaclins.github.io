@@ -86,6 +86,16 @@ Netflix didn't stop with Chaos Monkey. They built a whole suite of tools they ca
 
 It's a whole ecosystem built around the idea of proactive, aggressive self-testing.
 
+## And Then There's Chaos Kong
+
+If Chaos Monkey is a drill sergeant testing one soldier, Chaos Kong is the ultimate test: taking the entire military base offline.
+
+Chaos Kong is the next level of chaos engineering. It doesn't just terminate a single server; it simulates the failure of an entire AWS region.
+
+Think about that. Netflix got so good at surviving the failure of individual servers that they started practicing for the failure of entire geographic areas. They built their systems to be so resilient that they can migrate all of their traffic from one region (say, US-East) to another (like US-West) automatically, with no noticeable impact on the user.
+
+This is the holy grail of resiliency. It's how you survive massive, widespread outages that would take down lesser companies for hours or even days. It's the ultimate expression of the chaos philosophy: don't just prepare for a server to die, prepare for a whole chunk of the internet to vanish.
+
 ## The Payoff & Your First Step
 
 The benefits are huge. You build a system that is genuinely tough, not just "looks good on paper." You force developers to think about failure from day one.
