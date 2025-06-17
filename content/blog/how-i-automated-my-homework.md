@@ -64,7 +64,7 @@ That was all the confirmation I needed. My automation pipeline wasn't just a tim
 
 As he started explaining the very concepts my AI had already mastered for me, I patiently waited for him to finish his sentence, then my hand went up. I told him I'd already finished the assignment and asked if I could head home since I had other things to do.
 
-He gave me that classic "is this kid for real?" look. After a moment of stunned silence, he asked if I was serious. I sent him the link to the repository.
+He gave me that classic "is this kid for real?" look. After a moment of stunned silence, he asked if I was serious. I told him that I had submitted the assignment and sent him the link to the repository.
 
 You could see his expression shift from disbelief to grudging acceptance as he scrolled through the perfectly formatted code and diagrams my workflow had generated. He muttered that it looked good and admitted that if everything was done, there was nothing left for me to do. He told me I could go.
 
