@@ -4,7 +4,7 @@
     <body a="{{ $.Site.Params.theme_config.appearance | default "auto" }}">
         <main class="page-content" aria-label="Content">
             <div class="w">
-                {{ if or (eq .Section "blog") (eq .Type "blog") }}
+                {{ if and .IsSection (eq .Section "blog") }}
                 <div id="search-popup" class="search-popup">
                     <div class="search-popup-content">
                         <span class="search-popup-close">&times;</span>
