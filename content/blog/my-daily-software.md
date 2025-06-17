@@ -51,9 +51,9 @@ I'm a software developer, so I use a lot of tools to help me get my work done. I
 | Alfred        | ❌    | ✅                  | ❌                    | ❌                  | ⭐⭐       |
 | Cerebro       | ✅    | ✅                  | ✅                    | ✅                  | ⭐⭐       |
 | Spotlight     | ✅    | ✅                  | ❌                    | ❌                  | ⭐         |
-| LaunchBar     | ❌    | ✅                  | ❌                    | ❌                  | ⭐⭐   |
-| Ulauncher     | ✅    | ❌                  | ❌                    | ✅                  | ⭐⭐   |
-| Albert        | ✅    | ✅                  | ✅                    | ✅                  | ⭐⭐⭐    |
-| Listary       | ❌    | ❌                  | ✅                    | ❌                  | ⭐⭐⭐   |
+| LaunchBar     | ❌    | ✅                  | ❌                    | ❌                  | ⭐⭐       |
+| Ulauncher     | ✅    | ❌                  | ❌                    | ✅                  | ⭐⭐       |
+| Albert        | ✅    | ✅                  | ✅                    | ✅                  | ⭐⭐⭐     |
+| Listary       | ❌    | ❌                  | ✅                    | ❌                  | ⭐⭐⭐     |
 
 #### Installation Guide
