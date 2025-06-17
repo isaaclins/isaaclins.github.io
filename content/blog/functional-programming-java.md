@@ -1,6 +1,6 @@
 +++
 title = "What is Functional Programming in Java?"
-date = 2025-06-14
+date = 2025-06-17
 draft = false
 tags = ["Java", "Functional Programming", "Software Development"]
 +++
