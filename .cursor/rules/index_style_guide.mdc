@@ -3,12 +3,11 @@ description:
 globs: 
 alwaysApply: true
 ---
-
 # Core Writing Style
 
 The style of [`content/raycast-its-hidden-power.md`](mdc:content/raycast-its-hidden-power.md) is one which should be adopted for all content to maintain consistency and a strong personal brand. Key characteristics include:
 
-- Direct and Blunt: Say exactly what you think, no hedging.
+- Direct and Blunt, but humble: Say exactly what you think, no hedging.
 - Conversational: Talks like you’re speaking to a friend, not writing an essay.
 - Confident and Opinionated: Make bold statements, often with “hot takes.”
 - Humorous and Sarcastic: Use jokes, memes, and sarcasm liberally.
