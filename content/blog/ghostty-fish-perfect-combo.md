@@ -3,6 +3,7 @@ title = "Ghostty X Fish. The Perfect Combination"
 date = 2025-05-06
 draft = false
 tags = [ "MacOS", "Software", "Poweruser" ]
+complexity = "easy"
 +++
 
 If you're like me, always on the hunt for the perfect development environment, you know the thrill of finding tools that just _click_. For a long time, I tweaked and prodded, swapped and searched. Then, I stumbled upon a combination so potent, so seamless, it didn't just improve my workflow—it **eradicated** everything that came before it. I'm talking about Ghostty and Fish shell. Buckle up, because this is a game-changer.

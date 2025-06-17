@@ -3,6 +3,8 @@ title = "AI is Just Spicy Autocomplete, And You're Falling For It"
 date = 2025-06-16
 draft = false
 tags = ["AI", "LLM", "Tech"]
+complexity = "easy"
+
 +++
 
 > NOTE: TAKE THIS POST WITH A GRAIN OF SALT.

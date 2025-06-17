@@ -6,6 +6,7 @@
       "url": "{{ .Permalink }}",
       "date": "{{ .Date.Format "2006-01-02" }}",
       "tags": {{ .Params.tags | jsonify }},
+      "complexity": "{{ .Params.complexity }}",
       "content": {{ .Plain | jsonify }}
     }
     {{- if ne (add $index 1) (len $pages) -}},{{- end -}}

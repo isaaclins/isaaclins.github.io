@@ -3,6 +3,7 @@ title = "What is Functional Programming in Java?"
 date = 2025-06-17
 draft = false
 tags = ["Java", "Functional Programming", "Software Development"]
+complexity = "easy"
 +++
 
 You've probably heard the term "functional programming" thrown around by some senior dev who talks about monads and referential transparency like it's the goddamn weather. You nod along, thinking, "Yeah, cool, streams and lambdas," but deep down, you're pretty sure it's just some academic circlejerk that has nothing to do with your day-to-day job of gluing together Spring Boot annotations.

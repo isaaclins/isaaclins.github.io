@@ -3,6 +3,7 @@ title = "Are CTFs Pay2Win?"
 date = 2025-05-07
 draft = false
 tags = ["CTF", "AI", "Productivity", "Cybersecurity"]
+complexity = "easy"
 +++
 
 Alright, let's cut to the chase. The Skills Battle CTF. You know, that competitive shindig for us IT folks. My boss nudged me, said it'd be a "good idea." So, I figured, why the hell not? Threw my hat in the ring, not expecting much.

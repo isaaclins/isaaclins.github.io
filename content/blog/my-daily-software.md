@@ -3,6 +3,7 @@ title = "My Daily Software"
 date = 2025-05-08
 draft = true
 tags = ["MacOS", "Productivity", "Software"]
+complexity = "easy"
 +++
 
 ## Introduction

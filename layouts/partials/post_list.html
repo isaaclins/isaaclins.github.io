@@ -36,15 +36,16 @@
                     {{- if $index }}, {{ end -}}
                     <a href="{{ "/tags/" | relLangURL }}{{ $tag | urlize }}">{{ $tag }}</a>
                 {{- end -}}
+            {{- end -}}
                 ]
             </span>
             </li>
+            {{- if $post.Params.complexity }}
+            <li>COMPLEXITY: <span class="post-complexity">{{ $post.Params.complexity }}</span></li>
+            {{- end }}
             <br>
             </ul>
             {{- end -}}
-    {{ end }}
-
-
 
     {{- if and .show_more $limit_exceeded }}
         <li><a href="{{ .show_more_url | relURL }}">{{ .show_more_text | default "Show more..." }}</a></li>

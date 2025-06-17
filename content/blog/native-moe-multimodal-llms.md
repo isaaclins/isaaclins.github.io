@@ -3,6 +3,7 @@ title = "Your AI is a Frankenstein's Monster"
 date = 2025-06-16
 draft = false
 tags = ["AI", "LLM", "Tech"]
+complexity = "easy"
 +++
 
 Most of the "multimodal" AI models you're hearing about are a complete hack. They're like Frankenstein's monster. A bunch of different parts stitched together, pretending to be a single, coherent being. They can handle text, sure. They can look at a picture, yeah. But do they _truly_ understand the connection between a picture of a cat and the word "cat"?

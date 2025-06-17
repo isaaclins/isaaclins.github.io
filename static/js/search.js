@@ -14,7 +14,7 @@
         .then(response => response.json())
         .then(data => {
             const options = {
-                keys: ['title', 'content', 'tags'],
+                keys: ['title', 'content', 'tags', 'complexity'],
                 includeScore: true,
                 threshold: 0.3,
                 minMatchCharLength: 2,
@@ -73,7 +73,12 @@
                     tagsHTML = `<div class="search-result-tags">Tags: ${item.tags.join(', ')}</div>`;
                 }
 
-                li.innerHTML = `<a href="${item.url}">${item.title}</a>${tagsHTML}`;
+                let complexityHTML = '';
+                if (item.complexity) {
+                    complexityHTML = `<div class="search-result-complexity">Complexity: ${item.complexity}</div>`;
+                }
+
+                li.innerHTML = `<a href="${item.url}">${item.title}</a>${tagsHTML}${complexityHTML}`;
                 ul.appendChild(li);
             });
             searchResults.appendChild(ul);

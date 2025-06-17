@@ -3,6 +3,7 @@ title = "Netflix's Chaos Monkey: Let's Break Things on Purpose"
 date = 2025-06-17
 draft = false
 tags = ["chaos-engineering", "devops", "software"]
+complexity = "easy"
 +++
 
 Imagine your website is a massive, complex castle. You've got walls, towers, and soldiers everywhere. You _think_ it's impenetrable. But what if one of your own guards, every single day, randomly knocked out a support beam just to see if the wall still stands?

@@ -49,6 +49,7 @@ target = 'static/images'
 [taxonomies]
   category = "categories"
   tag = "tags"
+  complexity = "complexity"
 
 [outputs]
   section = ["HTML", "RSS", "JSON"]

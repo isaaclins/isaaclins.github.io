@@ -3,6 +3,7 @@ title = "I Automated My Homework and Left Class 2 Hours Early. You Can Too."
 date = 2025-06-17
 draft = false
 tags = ["Java", "Functional Programming", "AI", "Productivity", "Cursor", "Poweruser"]
+complexity = "easy"
 +++
 
 Last week, I walked out of my Functional Programming class a full two hours before anyone else.

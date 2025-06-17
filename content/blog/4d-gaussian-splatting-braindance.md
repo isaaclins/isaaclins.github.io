@@ -3,6 +3,7 @@ title = "4D Gaussian Splatting: The Tech That Could Make Braindance Real"
 date = 2025-06-12
 draft = false
 tags = ["4DGS", "Computer Vision", "AI"]
+complexity = "easy"
 +++
 
 I just finished Cyberpunk 2077, and let me tell you; Braindance is the coolest (and creepiest) tech in that game. For the uninitiated: imagine strapping on a headset and reliving someone else's memories, sights, sounds, and all. It's like VR, but on steroids, laced with a shot of existential dread.

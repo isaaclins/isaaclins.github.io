@@ -18,6 +18,13 @@
   </p>
   {{ end }}
 
+  {{ if .Params.complexity }}
+  <p class="post-complexity">
+    Complexity:
+    <a href="{{ "/complexity/" | relLangURL }}{{ .Params.complexity | urlize }}">{{ .Params.complexity }}</a>
+  </p>
+  {{ end }}
+
   <h1>{{ .Title }}</h1>
 
   {{ if .Params.toc }}
