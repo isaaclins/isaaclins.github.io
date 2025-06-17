@@ -41,7 +41,7 @@
             </span>
             </li>
             {{- if $post.Params.complexity }}
-            <li>COMPLEXITY: <span class="post-complexity">{{ $post.Params.complexity }}</span></li>
+            <li>COMPLEXITY: <span class="post-complexity"><a href="{{ "/complexity/" | relLangURL }}{{ $post.Params.complexity | urlize }}">{{ $post.Params.complexity }}</a></span></li>
             {{- end }}
             <br>
             </ul>
