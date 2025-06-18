@@ -3,7 +3,7 @@ title= "So Long, Arc. Did The Browser Company Sell Its Soul for Dia?"
 date= 2025-06-18
 draft= false
 tags= ["tech", "browsers", "ai", "arc", "dia", "review"]
-complexity= "baby"
+complexity= "easy"
 +++
 
 Remember Arc? The browser that felt like a breath of fresh air? The one with the slick vertical tabs, the "Spaces" that actually made sense, and a design that made you _want_ to browse the web? Yeah, well, The Browser Company, in its infinite wisdom, decided to kill it.
