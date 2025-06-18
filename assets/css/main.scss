@@ -386,3 +386,20 @@ li {
   color: #999;
   margin-top: 4px;
 }
+
+// Divider between ToC entries using '---'
+.toc ul {
+  padding-left: 0; // remove default indentation
+}
+
+.toc li {
+  list-style-type: none; // hide bullets since we're adding our own divider
+}
+
+.toc li:not(:first-child)::before {
+  content: "---";
+  display: block;
+  opacity: 0.6;
+  margin: 0.4rem 0;
+  text-align: center;
+}
