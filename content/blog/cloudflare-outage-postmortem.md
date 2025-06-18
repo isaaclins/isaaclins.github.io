@@ -4,7 +4,6 @@ date = 2025-06-17
 draft = false
 tags = ["Cloudflare", "Outage", "Postmortem", "SysAdmin"]
 complexity = "medium"
-
 +++
 
 Yep, it happened. On June 12, 2025, Cloudflare—the company that's supposed to _prevent_ your website from going down, went down. Hard. For 2 hours and 28 minutes, a significant chunk of their services were on a coffee break, taking a portion of the internet with them.
