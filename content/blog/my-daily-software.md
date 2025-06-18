@@ -4,6 +4,7 @@ date = 2025-06-18
 draft = true
 tags = ["MacOS", "Productivity", "Software"]
 complexity = "easy"
+toc = true
 +++
 
 ## Introduction
@@ -137,7 +138,7 @@ You can download Ghostty from the [official website](https://ghostty.org/).
 
 Raycast is what macOS Spotlight should have been. It's an application launcher and command palette on steroids.
 
-Ive  made a [post about Raycast](blog/raycast-its-hidden-power/), so you can check that out for more information.
+Ive made a [post about Raycast](blog/raycast-its-hidden-power/), so you can check that out for more information.
 
 ![Raycast Launcher](/images/raycast-application-launcher.png)
 

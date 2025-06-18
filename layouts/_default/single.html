@@ -28,9 +28,10 @@
   <h1>{{ .Title }}</h1>
 
   {{ if .Params.toc }}
-  <aside {{ if .Params.tocBorder }} class="toc" {{ end }}>
+  <aside class="toc {{ if .Params.tocBorder }}toc-border{{ end }}">
     {{ .TableOfContents }}
   </aside>
-  {{ end }} {{ .Content }}
+  {{ end }}
+  {{ .Content }}
 </article>
 {{ end }}

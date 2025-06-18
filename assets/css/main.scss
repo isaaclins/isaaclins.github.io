@@ -235,8 +235,29 @@ details[open] summary {
   padding: 4rem 2rem;
 }
 
+// TOC – fixed on the right side of the viewport
 .toc {
+  position: fixed;
+  top: 4rem; // leave space for any fixed headers
+  left: 1rem;
+  max-width: 260px;
+  max-height: 80vh;
+  overflow: auto;
   padding: 1rem;
+  font-size: 0.85rem;
+  z-index: 999; // stay above content
+}
+
+// Optional border when "tocBorder" param is enabled
+.toc-border {
+  border: thin solid currentColor;
+}
+
+// Hide the floating ToC on very small screens where it would overlap content
+@media (max-width: 768px) {
+  .toc {
+    display: none;
+  }
 }
 
 /* Breadcrumbs */
