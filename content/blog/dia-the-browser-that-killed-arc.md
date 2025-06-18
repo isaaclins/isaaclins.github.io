@@ -67,7 +67,7 @@ As the review so brilliantly points out:
 
 > "That's literally the only feature that they have... so if 60 to 63% of their users are not using the literal only thing that this browser has, that's not great."
 
-He's not wrong. It's like celebrating that 40% of people who own a fork use it to eat. WHAT IS EVERYONE ELSE DOING? When your browser's entire identity is a single feature and a majority of your users _aren't using it_, you don't have a success story; you have a identity crisis.
+He's not wrong. It's like celebrating that 40% of people who own a fork use it to eat. WHAT IS EVERYONE ELSE DOING? When your browser's entire identity is a single feature and a majority of your users _aren't using it_, you don't have a success story; you have an identity crisis.
 
 ## So, Should You Switch?
 
