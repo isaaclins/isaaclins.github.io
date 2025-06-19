@@ -3,21 +3,32 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   {{ if .IsPage }}
-  <meta name="description" content="{{ .Summary }}"> {{ end }}
+  <meta name="description" content="{{ .Summary }}" />
+  {{ end }}
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://isaaclins.com" />
+  <meta property="og:title" content="isaaclins.com" />
+  <meta
+    property="og:description"
+    content="Welcome! This is a blogpost page about tech news, and what interest me personally the most."
+  />
+
+  <!-- <meta property="og:image" content="https://some-image.png" /> --->
 
   <title>
-    {{ if not .IsHome }}
-    {{ .Title }}
-    {{ else }}
-    {{ $.Site.Title }}
-    {{ end }}
+    {{ if not .IsHome }} {{ .Title }} {{ else }} {{ $.Site.Title }} {{ end }}
   </title>
 
-  <link rel="shortcut icon" type="image/x-icon" href="{{ $.Site.Params.favicon | default "favicon.ico" | relURL }}" />
-  {{ $options := (dict "outputStyle" "compressed" "enableSourceMap" (not hugo.IsProduction)) }}
-  {{ $sass := resources.Get "css/main.scss" }}
-  {{ $style := $sass | css.Sass $options | resources.Fingerprint "sha512" }}
-  <link rel="stylesheet" href="{{ $style.Permalink | relURL }}" integrity="{{ $style.Data.Integrity }}" />
-  {{ if .Params.mathjax }} {{ partial "mathjax.html" . }} {{ end }}
-  {{- if .Site.Params.features.mermaid -}}{{- partial "mermaid.html" . -}}{{- end -}}
+  <link rel="shortcut icon" type="image/x-icon" href="{{ $.Site.Params.favicon |
+  default "favicon.ico" | relURL }}" /> {{ $options := (dict "outputStyle"
+  "compressed" "enableSourceMap" (not hugo.IsProduction)) }} {{ $sass :=
+  resources.Get "css/main.scss" }} {{ $style := $sass | css.Sass $options |
+  resources.Fingerprint "sha512" }}
+  <link
+    rel="stylesheet"
+    href="{{ $style.Permalink | relURL }}"
+    integrity="{{ $style.Data.Integrity }}"
+  />
+  {{ if .Params.mathjax }} {{ partial "mathjax.html" . }} {{ end }} {{- if
+  .Site.Params.features.mermaid -}}{{- partial "mermaid.html" . -}}{{- end -}}
 </head>
