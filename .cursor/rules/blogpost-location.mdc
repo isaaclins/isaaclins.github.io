@@ -1,0 +1,15 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Blog Post Location Rule
+
+When a new blog post is requested, the location depends on the type of post.
+
+- For a standard blog post, requested with a prompt like "make a new blogpost about X", the new file should be created in the `content/blog/` directory. The template for these posts is [`_TEMPLATE.md`](mdc:content/blog/_TEMPLATE.md).
+
+- For a "How?" series blog post, requested with a prompt like "make a new 'how?' blogpost", the new file should be created in the `content/how/` directory. These posts explain technical concepts.
+
+The main page for "How?" posts is [`_index.md`](mdc:content/how/_index.md).
+The main page for standard blog posts is [`_index.md`](mdc:content/blog/_index.md).
