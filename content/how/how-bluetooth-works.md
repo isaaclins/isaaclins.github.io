@@ -1,7 +1,7 @@
 +++
 title = "How Does Bluetooth Work?"
 date = 2025-06-21
-draft = false
+draft = true
 tags = ["Bluetooth", "How?", "Networking", "Hardware"]
 complexity = "easy"
 toc = true
