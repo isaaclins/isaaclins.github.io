@@ -1,0 +1,76 @@
+name: build-test
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Ensure only one run per branch at a time
+concurrency:
+  group: "build-test-${{ github.ref }}"
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: 0.140.2
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Install Hugo CLI
+        run: |
+          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
+          && sudo dpkg -i ${{ runner.temp }}/hugo.deb
+
+      - name: Verify Hugo Version
+        run: hugo version
+
+      - name: Install Dart Sass
+        run: sudo snap install dart-sass
+
+      - name: Check Dart Sass Version
+        run: dart-sass --version
+
+      - name: Build site (production settings)
+        env:
+          HUGO_ENVIRONMENT: production
+          HUGO_ENV: production
+        run: |
+          hugo \
+            --gc \
+            --minify
+
+      # ------------------------
+      # BEGIN PAGE VALIDATION
+      # ------------------------
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install html5validator
+        run: pip install --no-cache-dir html5validator
+
+      - name: Validate generated HTML with html5validator
+        run: html5validator --root public --also-check-css --also-check-svg --log-level ERROR
+
+      # Optionally upload the generated site as an artifact for debugging
+      - name: Upload built site artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: built-site
+          path: public
+          if-no-files-found: ignore
