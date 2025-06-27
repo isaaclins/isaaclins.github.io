@@ -26,7 +26,7 @@ Hi, I'm Isaac. I build applications and break things on purpose to learn how the
 - [**NoHello**](https://nohello.net/en/)
 - [**Grugbrain.dev**](https://grugbrain.dev/)
 - [**Websites & Opinion**](https://motherfuckingwebsite.com/)
-- [**KISS**](https://en.wikipedia.org/wiki/KISS_principle#References)
+- [**KISS**](https://en.wikipedia.org/wiki/KISS_principle)
 - [**git commits**](https://cbea.ms/git-commit/)
 - [**User Inyerface**](https://userinyerface.com/index.html)
 
