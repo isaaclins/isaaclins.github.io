@@ -2,6 +2,10 @@
 <html lang="{{ $.Site.LanguageCode }}">
     {{- partial "head.html" . -}}
     <body a="{{ $.Site.Params.theme_config.appearance | default "auto" }}">
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T9PQL3KL" height="0" width="0"
+                style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
         <main class="page-content" aria-label="Content">
             <div class="w">
                 {{ if and .IsSection (eq .Section "blog") }}
