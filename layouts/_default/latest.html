@@ -22,10 +22,6 @@
     <meta name="robots" content="noindex, follow">
 </head>
 <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T9PQL3KL" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
     {{ if $latestInBlogSection }}
         {{ $post := index $latestInBlogSection 0 }}
         <p>Redirecting to our latest post: <a href="{{ $post.Permalink }}">{{ $post.Title | default "here" }}</a>.</p>
