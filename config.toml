@@ -1,3 +1,8 @@
+baseURL = "https://isaaclins.com"
+languageCode = "en-us"
+title = "Isaac Lins"
+enableRobotsTXT = true
+
 [module]
   [module.hugoVersion]
     extended = true
@@ -38,6 +43,15 @@ target = 'static/images'
     ordered    = false
 
 [params]
+  # SEO Parameters
+  author = "Isaac Lins"
+  description = "A blog about tech, programming, and whatever interests me. Deep dives into software, tools, and the digital world."
+  tagline = "Tech, Code, and Digital Chaos"
+  default_og_image = "/images/pfp.png"
+  # twitter_handle = "your_twitter_handle" # Uncomment and add your Twitter handle
+  author_url = "https://isaaclins.com"
+  logo = "/images/logo.png"
+  
   [params.features]
     mermaid = true
   [params.theme_config]

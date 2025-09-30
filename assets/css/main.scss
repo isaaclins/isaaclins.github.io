@@ -403,3 +403,8 @@ li {
   margin: 0.4rem 0;
   text-align: center;
 }
+
+img.thick-border {
+  border: 4px solid currentColor;
+  border-radius: 18px;
+}

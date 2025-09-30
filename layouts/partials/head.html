@@ -16,36 +16,146 @@
     })(window, document, "script", "dataLayer", "GTM-T9PQL3KL");
   </script>
   <!-- End Google Tag Manager -->
+
+  <!-- Basic Meta Tags -->
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  {{ if .IsPage }}
-  <meta name="description" content="{{ .Summary }}" />
+  
+  <!-- SEO Meta Tags -->
+  {{ $description := .Summary }}
+  {{ if .Params.description }}
+    {{ $description = .Params.description }}
+  {{ else if .Site.Params.description }}
+    {{ $description = .Site.Params.description }}
   {{ end }}
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://isaaclins.com" />
-  <meta property="og:title" content="isaaclins.com" />
-  <meta
-    property="og:description"
-    content="Welcome! This is a blogpost page about tech news, and what interest me personally the most."
-  />
-
-  <!-- <meta property="og:image" content="https://some-image.png" /> --->
-
+  <meta name="description" content="{{ $description }}" />
+  
+  {{ with .Params.tags }}
+    <meta name="keywords" content="{{ delimit . ", " }}" />
+  {{ end }}
+  
+  {{ with .Site.Params.author }}
+    <meta name="author" content="{{ . }}" />
+  {{ end }}
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="{{ .Permalink }}" />
+  
+  <!-- Title -->
   <title>
-    {{ if not .IsHome }} {{ .Title }} {{ else }} {{ $.Site.Title }} {{ end }}
+    {{ if not .IsHome }}{{ .Title }} | {{ $.Site.Title }}{{ else }}{{ $.Site.Title }}{{ if .Site.Params.tagline }} - {{ .Site.Params.tagline }}{{ end }}{{ end }}
   </title>
-
-  <link rel="shortcut icon" type="image/x-icon" href="{{ $.Site.Params.favicon |
-  default "favicon.ico" | relURL }}" /> {{ $options := (dict "outputStyle"
-  "compressed" "enableSourceMap" (not hugo.IsProduction)) }} {{ $sass :=
-  resources.Get "css/main.scss" }} {{ $style := $sass | css.Sass $options |
-  resources.Fingerprint "sha512" }}
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />
+  <meta property="og:url" content="{{ .Permalink }}" />
+  <meta property="og:title" content="{{ if not .IsHome }}{{ .Title }}{{ else }}{{ $.Site.Title }}{{ end }}" />
+  <meta property="og:description" content="{{ $description }}" />
+  <meta property="og:site_name" content="{{ $.Site.Title }}" />
+  
+  {{ if .Params.image }}
+    <meta property="og:image" content="{{ .Params.image | absURL }}" />
+  {{ else if .Site.Params.default_og_image }}
+    <meta property="og:image" content="{{ .Site.Params.default_og_image | absURL }}" />
+  {{ end }}
+  
+  {{ if .IsPage }}
+    {{ with .Date }}
+      <meta property="article:published_time" content="{{ .Format "2006-01-02T15:04:05Z07:00" }}" />
+    {{ end }}
+    {{ with .Lastmod }}
+      <meta property="article:modified_time" content="{{ .Format "2006-01-02T15:04:05Z07:00" }}" />
+    {{ end }}
+    {{ with .Params.tags }}
+      {{ range . }}
+        <meta property="article:tag" content="{{ . }}" />
+      {{ end }}
+    {{ end }}
+    {{ with .Site.Params.author }}
+      <meta property="article:author" content="{{ . }}" />
+    {{ end }}
+  {{ end }}
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  {{ with .Site.Params.twitter_handle }}
+    <meta name="twitter:site" content="@{{ . }}" />
+    <meta name="twitter:creator" content="@{{ . }}" />
+  {{ end }}
+  <meta name="twitter:title" content="{{ if not .IsHome }}{{ .Title }}{{ else }}{{ $.Site.Title }}{{ end }}" />
+  <meta name="twitter:description" content="{{ $description }}" />
+  {{ if .Params.image }}
+    <meta name="twitter:image" content="{{ .Params.image | absURL }}" />
+  {{ else if .Site.Params.default_og_image }}
+    <meta name="twitter:image" content="{{ .Site.Params.default_og_image | absURL }}" />
+  {{ end }}
+  
+  <!-- JSON-LD Structured Data for Blog Posts -->
+  {{ if and .IsPage (in .Section "blog") }}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "{{ .Title }}",
+    "description": "{{ $description }}",
+    "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
+    {{ with .Lastmod }}"dateModified": "{{ .Format "2006-01-02T15:04:05Z07:00" }}",{{ end }}
+    "author": {
+      "@type": "Person",
+      "name": "{{ .Site.Params.author | default "Isaac Lins" }}"
+      {{ with .Site.Params.author_url }},"url": "{{ . }}"{{ end }}
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "{{ .Site.Title }}",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{ .Site.Params.logo | default "/images/logo.png" | absURL }}"
+      }
+    },
+    {{ if .Params.image }}"image": "{{ .Params.image | absURL }}",{{ end }}
+    "url": "{{ .Permalink }}",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "{{ .Permalink }}"
+    }
+    {{ with .Params.tags }},"keywords": [{{ range $i, $tag := . }}{{ if $i }}, {{ end }}"{{ $tag }}"{{ end }}]{{ end }}
+  }
+  </script>
+  {{ end }}
+  
+  <!-- JSON-LD Structured Data for Website -->
+  {{ if .IsHome }}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "{{ .Site.Title }}",
+    "url": "{{ .Permalink }}",
+    {{ with .Site.Params.description }}"description": "{{ . }}",{{ end }}
+    "author": {
+      "@type": "Person",
+      "name": "{{ .Site.Params.author | default "Isaac Lins" }}"
+    }
+  }
+  </script>
+  {{ end }}
+  
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="{{ $.Site.Params.favicon | default "favicon.ico" | relURL }}" />
+  
+  <!-- Styles -->
+  {{ $options := (dict "outputStyle" "compressed" "enableSourceMap" (not hugo.IsProduction)) }}
+  {{ $sass := resources.Get "css/main.scss" }}
+  {{ $style := $sass | css.Sass $options | resources.Fingerprint "sha512" }}
   <link
     rel="stylesheet"
     href="{{ $style.Permalink | relURL }}"
     integrity="{{ $style.Data.Integrity }}"
   />
-  {{ if .Params.mathjax }} {{ partial "mathjax.html" . }} {{ end }} {{- if
-  .Site.Params.features.mermaid -}}{{- partial "mermaid.html" . -}}{{- end -}}
+  
+  <!-- MathJax and Mermaid -->
+  {{ if .Params.mathjax }}{{ partial "mathjax.html" . }}{{ end }}
+  {{- if and .IsPage (findRE "```mermaid" .RawContent) -}}{{- partial "mermaid.html" . -}}{{- end -}}
 </head>
