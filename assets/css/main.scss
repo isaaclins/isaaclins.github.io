@@ -408,3 +408,234 @@ img.thick-border {
   border: 4px solid currentColor;
   border-radius: 18px;
 }
+
+// -------------- MOBILE TAP TARGETS -------------- //
+// Ensure interactive elements meet mobile accessibility guidelines
+// Using rem/em for responsive scaling
+
+@media (max-width: 768px) {
+  // Tag links need adequate tap target size
+  .post-tags a,
+  .post-tags-list a {
+    display: inline-block;
+    min-height: 2.75em;
+    padding: 0.5em 0.75em;
+    margin: 0.25em;
+  }
+
+  // Search icon
+  #search-icon {
+    min-width: 3rem;
+    min-height: 3rem;
+    padding: 0.75rem;
+  }
+
+  // Search popup close button
+  .search-popup-close {
+    min-width: 3rem;
+    min-height: 3rem;
+    padding: 0.75rem;
+  }
+
+  // Search input
+  #search-query {
+    min-height: 3rem;
+    padding: 0.75rem;
+    font-size: 1rem; // Prevents zoom on iOS
+  }
+
+  // Ensure buttons have proper sizing
+  button,
+  input[type="submit"],
+  input[type="button"] {
+    min-height: 3rem;
+    min-width: 3rem;
+    padding: 0.75rem 1rem;
+  }
+
+  // Details/summary elements
+  details summary {
+    min-height: 2.75em;
+    padding: 0.625em;
+    cursor: pointer;
+  }
+}
+
+// -------------- MOBILE RESPONSIVE IMPROVEMENTS -------------- //
+// Make the site more responsive on mobile devices without drastically changing desktop
+
+@media (max-width: 768px) {
+  // Reduce body font size slightly for better mobile readability
+  body {
+    font-size: 0.875rem; // 14px if base is 16px
+    line-height: 1.5;
+  }
+
+  // Adjust content wrapper padding for mobile
+  .w {
+    padding: 2rem 1rem; // Less padding on mobile to maximize content space
+  }
+
+  // Improve heading sizes for mobile
+  h1 {
+    font-size: 1.8rem;
+    line-height: 1.3;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    line-height: 1.3;
+    margin-top: 2rem;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+  }
+
+  // Make code blocks more readable on mobile
+  pre {
+    font-size: 0.75rem; // 12px if base is 16px
+    padding: 0.75em;
+  }
+
+  code:not(pre > code) {
+    font-size: 85%;
+  }
+
+  // Improve blockquote spacing
+  blockquote {
+    padding: 0.75rem;
+    margin: 1rem 0;
+  }
+
+  // RESPONSIVE TABLE SOLUTION: Transform tables into card-style layout
+  // This is much better than horizontal scrolling for content-heavy tables
+  table {
+    display: block;
+    border: none;
+  }
+
+  thead {
+    display: none; // Hide table headers on mobile
+  }
+
+  tbody {
+    display: block;
+  }
+
+  tr {
+    display: block;
+    margin-bottom: 1.5rem;
+    border: 1px solid currentColor;
+    padding: 1rem;
+    border-radius: 0.5rem; // 8px
+  }
+
+  td {
+    display: block;
+    text-align: left !important;
+    border: none;
+    padding: 0.5rem 0;
+  }
+
+  // Add labels to table cells using data attributes
+  td:before {
+    content: attr(data-label);
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.25rem;
+    opacity: 0.7;
+  }
+
+  // Special handling for icon column in tables
+  td:first-child {
+    text-align: center !important;
+    padding: 1rem 0;
+  }
+
+  td:first-child img {
+    max-width: 5rem; // 80px
+    margin: 0 auto;
+  }
+
+  // Special styling for rating cells (star emojis)
+  td:nth-child(2):before {
+    content: "Rating: ";
+  }
+
+  // Make "More Information" links into prominent buttons
+  td:last-child {
+    text-align: center !important;
+    padding-top: 1rem;
+  }
+
+  td:last-child a {
+    display: inline-block;
+    padding: 0.625rem 1.25rem; // 10px 20px
+    border: 1px solid currentColor;
+    border-radius: 0.25rem; // 4px
+    margin: 0.5rem auto; // 8px
+    text-decoration: none;
+  }
+
+  // Improve image sizing on mobile
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  // Adjust post meta information for mobile
+  .post-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  // Make breadcrumbs more compact
+  .breadcrumbs {
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+  }
+
+  // Improve search popup on mobile
+  .search-popup-content {
+    width: 95%;
+    margin: 20% auto;
+    padding: 0.9375rem; // 15px
+  }
+}
+
+// Tablet breakpoint (between mobile and desktop)
+@media (min-width: 769px) and (max-width: 1024px) {
+  .w {
+    max-width: 90%;
+    padding: 3rem 1.5rem;
+  }
+
+  body {
+    font-size: 0.9375rem; // 15px
+  }
+}
+
+// Small phones (very narrow screens)
+@media (max-width: 480px) {
+  body {
+    font-size: 0.8125rem; // 13px
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  .w {
+    padding: 1.5rem 0.75rem;
+  }
+
+  pre {
+    font-size: 0.6875rem; // 11px
+  }
+}
