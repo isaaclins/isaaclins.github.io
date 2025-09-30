@@ -144,6 +144,7 @@
   
   <!-- Favicon -->
   <link rel="shortcut icon" type="image/x-icon" href="{{ $.Site.Params.favicon | default "favicon.ico" | relURL }}" />
+  <link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | relURL }}" />
   
   <!-- Styles -->
   {{ $options := (dict "outputStyle" "compressed" "enableSourceMap" (not hugo.IsProduction)) }}
