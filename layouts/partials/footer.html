@@ -10,5 +10,7 @@
     {{ end }}
 {{ end }}
 
+{{ if and .IsSection (eq .Section "blog") }}
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
 <script src="/js/search.js"></script>
+{{ end }}

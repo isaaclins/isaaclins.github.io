@@ -4,12 +4,20 @@ date = 2025-06-13
 draft = true
 tags = ["TEMPLATE", "TEMPLATE2"]
 complexity = "easy"
+description = "A compelling, concise description for SEO (under 160 characters). This will appear in search results."
+image = "/images/your-featured-image.png"
 +++
 
 in this example post, I'm going to show you how to use markdown to format your posts.
 notice that the title is "TEMPLATE" and the date is 2025-04-16. use the current date in the format YYYY-MM-DD.
 also notice that the draft is set to true. this means that the post is not published yet.
 after you're done editing, set the draft to false.
+
+**SEO Fields Explained:**
+
+- **description**: This is what appears in Google search results and social media shares. Keep it under 160 characters and make it compelling!
+- **image**: Optional featured image for the post. This will be used in social media previews (Open Graph/Twitter Cards). If not set, the site will use the default image.
+- **tags**: These become keywords for SEO and help categorize your content.
 
 ## Basic Formatting
 
