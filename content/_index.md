@@ -10,7 +10,7 @@ Hi, I'm Isaac. I build applications and break things on purpose to learn how the
 
 ## What I Do
 
-- **Develop:** I craft clean, efficient applications using Java, Python, JavaScript, and more.
+- **Develop:** I craft clean, efficient applications using multiple languages and frameworks.
 - **Secure:** I dive into cybersecurity, always exploring vulnerabilities and learning to defend against them.
 - **Innovate:** I enjoy experimenting and pushing the limits of what technology can do.
 
@@ -22,8 +22,8 @@ Hi, I'm Isaac. I build applications and break things on purpose to learn how the
 - [**How To Code**](https://gist.github.com/isaaclins/b4d4cdc3b12891d09f3b3cdd846adb3f)
 - [**NoHello**](https://nohello.net/en/)
 - [**Grugbrain.dev**](https://grugbrain.dev/)
-- [**Websites & Opinion**](https://motherfuckingwebsite.com/)
-- [**KISS**](https://en.wikipedia.org/wiki/KISS_principle)
+- [**Websites & Opinion**](https://bettermotherfuckingwebsite.com/)
+- [**KISS**](https://en.wikipedia.org/wiki/KISS_principle) 
 - [**git commits**](https://cbea.ms/git-commit/)
 - [**User Inyerface**](https://userinyerface.com/index.html)
 
