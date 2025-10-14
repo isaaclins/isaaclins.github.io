@@ -5,7 +5,6 @@ draft = true
 tags = ["TEMPLATE", "TEMPLATE2"]
 complexity = "easy"
 description = "A compelling, concise description for SEO (under 160 characters). This will appear in search results."
-image = "/images/your-featured-image.png"
 +++
 
 in this example post, I'm going to show you how to use markdown to format your posts.

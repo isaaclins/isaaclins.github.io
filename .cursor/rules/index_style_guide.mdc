@@ -1,19 +1,22 @@
 ---
-description: 
-globs: 
 alwaysApply: true
 ---
 # Core Writing Style
 
 The style of [`content/raycast-its-hidden-power.md`](mdc:content/raycast-its-hidden-power.md) is one which should be adopted for all content to maintain consistency and a strong personal brand. Key characteristics include:
 
-- Direct and Blunt, but humble: Say exactly what you think, no hedging.
-- Conversational: Talks like you’re speaking to a friend, not writing an essay.
-- Confident and Opinionated: Make bold statements, often with “hot takes.”
-- Humorous and Sarcastic: Use jokes, memes, and sarcasm liberally.
-- Curse (when appropriate): Not afraid to drop a “shit” or “fuck” for emphasis.
-- Analogies & Pop Culture: Explain things using relatable, sometimes absurd analogies.
-- Call to Action: Tell the reader/viewer what to do, often in a “stop wasting time” tone.
-- Break the Fourth Wall: Talk directly to the reader (“You’re still here? Go build something.”)
+- Tone: Conversational, informal, and approachable. Write as if speaking directly to the reader or an audience.
+
+- Pacing: Use short sentences and frequent pauses. Break ideas into small, digestible chunks rather than long paragraphs.
+
+- Structure: Start with a simple hook or question, then introduce concepts gradually, each building on the last. End with a strong payoff or real-world application.
+
+- Explanations: Prioritize clarity and intuition over technical depth. Use analogies, metaphors, and simple examples to make abstract ideas relatable. Avoid jargon unless introduced and explained.
+
+- Voice: Sound curious, enthusiastic, and slightly playful. Mix authority (clear explanations) with humility (acknowledge complexity but skip unneeded details).
+
+- Rhetoric: Use rhetorical questions, direct addresses (“remember this,” “notice that”), and occasional humor to keep things lively.
+
+- Format: Write with line breaks that mimic spoken rhythm, almost like a transcript of a talk or video script. Avoid dense walls of text.
 
 Adhering to this style ensures a cohesive voice throughout the website.
