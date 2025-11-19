@@ -15,12 +15,12 @@ Cloudflare sneezed on November 18 and half the internet reached for the tissues.
 
 ### The play-by-play (UTC)
 
-- **11:48** – Incident declared; dashboards, APIs, and security services start flaking out.
-- **13:09** – Cloudflare disables [WARP](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/warp/) in London to stem the bleeding, because nothing says "global network" like turning off the always-on device client that funnels traffic into their network.[^status]
-- **13:35** – Access and WARP begin crawling back, but application traffic is still tripping over itself.
-- **14:42** – Dashboard comes back, yet bot scores and Zero Trust checks are still drunk.
-- **14:57** – Fix deployed; engineers babysit the network like it's a Windows 98 defrag window.
-- **19:28** – Final update: everything's stable, nothing to see here, move along.
+- **11:48** - Incident declared; dashboards, APIs, and security services start flaking out.
+- **13:09** - Cloudflare disables [WARP](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/warp/) in London to stem the bleeding, because nothing says "global network" like turning off the always-on device client that funnels traffic into their network.[^status]
+- **13:35** - Access and WARP begin crawling back, but application traffic is still tripping over itself.
+- **14:42** - Dashboard comes back, yet bot scores and Zero Trust checks are still drunk.
+- **14:57** - Fix deployed; engineers babysit the network like it's a Windows 98 defrag window.
+- **19:28** - Final update: everything's stable, nothing to see here, move along.
 
 #### Timeline (chart)
 
@@ -84,10 +84,10 @@ Cloudflare sits between your users and everything remotely interesting. When the
 
 ### So what now?
 
-1. **Audit fail-safes** – Make sure your Zero Trust stack can fall back to another identity provider or sandbox vendor when Cloudflare sneezes.
-2. **Add third-party monitors** – If all your heartbeats ride through 1.1.1.1 (Cloudflare's public DNS), you're checking your pulse with Cloudflare's hand.
-3. **Script status exports** – Pull their status API into your own logging so you can correlate future oopsies without waiting for a blog post.
-4. **Rehearse the "Cloudflare is down" play** – Have a runbook for bypassing CDN, shifting DNS, or flipping to a secondary tunnel. And actually rehearse it; muscle memory beats panic.
+1. **Audit fail-safes** - Make sure your Zero Trust stack can fall back to another identity provider or sandbox vendor when Cloudflare sneezes.
+2. **Add third-party monitors** - If all your heartbeats ride through 1.1.1.1 (Cloudflare's public DNS), you're checking your pulse with Cloudflare's hand.
+3. **Script status exports** - Pull their status API into your own logging so you can correlate future oopsies without waiting for a blog post.
+4. **Rehearse the "Cloudflare is down" play** - Have a runbook for bypassing CDN, shifting DNS, or flipping to a secondary tunnel. And actually rehearse it; muscle memory beats panic.
 
 ```mermaid
 flowchart TD
@@ -104,4 +104,4 @@ flowchart TD
 
 You're still here? Go build the boring automation that lets you sleep when the internet's favorite hall monitor calls in sick.
 
-[^status]: Cloudflare Status – _Cloudflare Global Network experiencing issues_ (Nov 18, 2025) [https://www.cloudflarestatus.com/incidents/8gmgl950y3h7](https://www.cloudflarestatus.com/incidents/8gmgl950y3h7)
+[^status]: Cloudflare Status - _Cloudflare Global Network experiencing issues_ (Nov 18, 2025) [https://www.cloudflarestatus.com/incidents/8gmgl950y3h7](https://www.cloudflarestatus.com/incidents/8gmgl950y3h7)
