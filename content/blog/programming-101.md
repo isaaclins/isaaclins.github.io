@@ -2,7 +2,7 @@
 title = "Programming 101"
 date = 2025-06-18
 draft = true
-tags = ["Programming"]
+tags = ["Dev"]
 complexity = "easy"
 +++
 

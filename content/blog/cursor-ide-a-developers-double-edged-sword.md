@@ -2,7 +2,7 @@
 title = "Cursor IDE: A Developer's Double-Edged Sword"
 date = 2025-05-06
 draft = false
-tags = ["Software", "IDE", "AI"]
+tags = ["Dev", "AI"]
 complexity = "easy"
 +++
 

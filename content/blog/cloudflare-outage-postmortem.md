@@ -2,7 +2,7 @@
 title = "So, Cloudflare Shit the Bed. What Now?"
 date = 2025-06-17
 draft = false
-tags = ["Cloudflare", "Outage", "Postmortem", "SysAdmin"]
+tags = ["Ops"]
 complexity = "medium"
 +++
 

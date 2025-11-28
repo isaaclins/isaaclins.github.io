@@ -2,7 +2,7 @@
 title = "Cloudflare Took a Sick Day"
 date = 2025-11-19
 draft = false
-tags = ["Cloudflare", "Incident Response", "Zero Trust", "SRE"]
+tags = ["Ops", "Security"]
 complexity = "medium"
 description = "Cloudflare's Nov 18 outage knocked dashboards, WARP, and Access offline worldwide—here's what broke and how to harden your own stack."
 +++

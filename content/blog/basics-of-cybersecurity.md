@@ -2,7 +2,7 @@
 title = "Blue Team: The Basics of Cybersecurity"
 date = 2025-09-30
 draft = false
-tags = ["Cybersecurity", "TDR", "Career", "Network", "Blue Team"]
+tags = ["Security", "Tech"]
 complexity = "hard"
 +++
 

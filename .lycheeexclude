@@ -1,0 +1,29 @@
+# Lychee link checker exclusions
+# These URLs are excluded from broken link checks
+
+# LinkedIn blocks automated requests
+linkedin\.com
+
+# Local development
+localhost
+127\.0\.0\.1
+0\.0\.0\.0
+
+# Email links
+^mailto:
+
+# Private/internal links
+^file://
+
+# Some sites block bots aggressively
+twitter\.com
+x\.com
+
+# GitHub rate limits can cause false positives
+# Uncomment if you hit rate limits often:
+# github\.com
+
+# Example domains
+example\.com
+example\.org
+example\.net

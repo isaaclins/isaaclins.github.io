@@ -2,7 +2,7 @@
 title = "Ghostty X Fish. The Perfect Combination"
 date = 2025-05-06
 draft = false
-tags = [ "MacOS", "Software", "Poweruser" ]
+tags = ["Productivity"]
 complexity = "easy"
 +++
 

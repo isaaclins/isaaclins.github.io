@@ -2,7 +2,7 @@
 title = "Raycast. It's Hidden Power"
 date = 2025-05-06
 draft = false
-tags = ["Raycast", "Software", "MacOS", "Poweruser"]
+tags = ["Productivity"]
 complexity = "easy"
 +++
 

@@ -2,7 +2,7 @@
 title = "Why You Can't Run ChatGPT on Your Toaster (Yet)"
 date = 2025-09-29
 draft = false
-tags = ["AI", "Tech", "Explained", "LLM"]
+tags = ["AI"]
 complexity = "hard"
 toc = true
 +++

@@ -2,7 +2,7 @@
 title = "My macOS Journey with an M3 MacBook"
 date = 2025-05-06
 draft = false
-tags = ["MacOS", "Customization"]
+tags = ["Productivity"]
 complexity = "easy"
 +++
 

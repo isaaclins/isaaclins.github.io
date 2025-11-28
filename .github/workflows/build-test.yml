@@ -67,6 +67,36 @@ jobs:
       - name: Validate generated HTML with html5validator
         run: html5validator --root public --also-check-css --also-check-svg --log-level ERROR
 
+      # ------------------------
+      # BROKEN LINK CHECK
+      # ------------------------
+      - name: Check for broken links (lychee)
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --base public
+            --verbose
+            --no-progress
+            --accept 200,204,206,301,302,307,308
+            --exclude-file .lycheeexclude
+            --timeout 30
+            'public/**/*.html'
+          fail: true
+
+      # ------------------------
+      # SPELL CHECK
+      # ------------------------
+      - name: Setup Node.js for cspell
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install cspell
+        run: npm install -g cspell@latest
+
+      - name: Run spell check on content
+        run: cspell "content/**/*.md" --config .cspell.json
+
       # Optionally upload the generated site as an artifact for debugging
       - name: Upload built site artifact
         uses: actions/upload-artifact@v4

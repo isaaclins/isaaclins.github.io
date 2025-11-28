@@ -2,7 +2,7 @@
 title = "Model Context Protocol: The One Remote to Rule Them All"
 date = 2025-06-18
 draft = false
-tags = ["MCP", "AI", "Standards", "Architecture"]
+tags = ["Dev", "AI"]
 complexity = "medium"
 +++
 

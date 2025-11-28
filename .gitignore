@@ -6,4 +6,18 @@ resources/*
 .cursor
 ~ ⋖,^><
 
+# Node.js (for cspell and other tools)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Pre-commit cache
+.pre-commit-cache/
+
 

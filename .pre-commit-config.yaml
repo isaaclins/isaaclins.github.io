@@ -1,0 +1,67 @@
+# Pre-commit hooks for isaaclins.github.io
+# Install: pip install pre-commit && pre-commit install
+# Run manually: pre-commit run --all-files
+
+default_language_version:
+  python: python3
+
+repos:
+  # General file hygiene
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+        args: [--markdown-linebreak-ext=md]
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-toml
+      - id: check-json
+      - id: check-added-large-files
+        args: ["--maxkb=2000"] # Warn on files > 2MB
+      - id: check-merge-conflict
+      - id: detect-private-key
+      - id: mixed-line-ending
+        args: ["--fix=lf"]
+
+  # Markdown linting
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.42.0
+    hooks:
+      - id: markdownlint
+        args: ["--config", ".markdownlint.json", "--fix"]
+        exclude: '^content/blog/_TEMPLATE\.md$'
+
+  # Spell checking
+  - repo: https://github.com/streetsidesoftware/cspell-cli
+    rev: v8.16.0
+    hooks:
+      - id: cspell
+        args: ["--config", ".cspell.json"]
+        files: '^content/.*\.md$'
+        exclude: '^content/blog/_TEMPLATE\.md$'
+
+  # Check for broken internal links in markdown
+  - repo: local
+    hooks:
+      - id: check-frontmatter
+        name: Validate Hugo frontmatter
+        entry: python3 scripts/validate-frontmatter.py
+        language: python
+        files: '^content/.*\.md$'
+        exclude: '^content/blog/_TEMPLATE\.md$'
+        pass_filenames: true
+
+      - id: check-image-paths
+        name: Check image paths exist
+        entry: python3 scripts/check-image-paths.py
+        language: python
+        files: '^content/.*\.md$'
+        pass_filenames: true
+
+      - id: no-draft-in-main
+        name: Warn about draft posts
+        entry: python3 scripts/check-draft-status.py
+        language: python
+        files: '^content/.*\.md$'
+        exclude: '^content/blog/_TEMPLATE\.md$'
+        pass_filenames: true

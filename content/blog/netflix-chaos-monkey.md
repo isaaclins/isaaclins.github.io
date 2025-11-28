@@ -2,7 +2,7 @@
 title = "Netflix's Chaos Monkey: Let's Break Things on Purpose"
 date = 2025-06-17
 draft = false
-tags = ["chaos-engineering", "devops", "software"]
+tags = ["Ops"]
 complexity = "medium"
 +++
 

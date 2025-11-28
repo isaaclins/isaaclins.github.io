@@ -2,7 +2,7 @@
 title = "How a Single Bad Line of Code Took Down the Internet"
 date = 2025-06-17
 draft = false
-tags = ["Google", "Cloud", "Outage", "Postmortem", "Bug", "Software-development", "Null-Pointer"]
+tags = ["Ops"]
 complexity = "medium"
 +++
 

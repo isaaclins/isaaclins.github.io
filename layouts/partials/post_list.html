@@ -7,7 +7,7 @@
         {{- $posts = .context.Pages -}}
     {{- else -}}
         {{- if (eq .context.Kind "term") -}}
-            {{- $posts = .context.Data.Pages -}}
+            {{- $posts = .context.Pages -}}
         {{- else -}}
             {{- $posts = site.RegularPages }}
         {{- end -}}

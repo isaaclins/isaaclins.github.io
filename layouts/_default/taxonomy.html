@@ -6,14 +6,38 @@
 
 {{ .Content }}
 
-<ul>
-  {{ range .Data.Terms.ByCount }}
-    <li>
-      <a href="{{ .Page.Permalink | relURL }}">
-        {{ .Page.Title }}
-      </a>
-      ({{ .Count }} posts)
-    </li>
+{{ if eq .Kind "term" }}
+  {{/* This is a term page (e.g., /tags/ops/) - show posts with this tag */}}
+  {{ range .Pages }}
+  <h2><a href="{{ .Permalink | relURL }}">{{ .Title }}</a></h2>
+  <ul>
+      <li>DATE: <span class="post-date">{{ .Date | time.Format site.Params.theme_config.date_format }}</span></li>
+      <li>TAGS: [<span class="post-tags-list">
+      {{- if .Params.tags -}}
+          {{- range $index, $tag := .Params.tags -}}
+              {{- if $index }}, {{ end -}}
+              <a href="{{ "/tags/" | relLangURL }}{{ $tag | urlize }}">{{ $tag }}</a>
+          {{- end -}}
+      {{- end -}}
+          ]
+      </span>
+      </li>
+      {{- if .Params.complexity }}
+      <li>COMPLEXITY: <span class="post-complexity"><a href="{{ "/complexity/" | relLangURL }}{{ .Params.complexity | urlize }}">{{ .Params.complexity }}</a></span></li>
+      {{- end }}
+  </ul>
   {{ end }}
-</ul>
+{{ else }}
+  {{/* This is a taxonomy page (e.g., /tags/) - list all terms */}}
+  <ul>
+    {{ range .Data.Terms.ByCount }}
+      <li>
+        <a href="{{ .Page.Permalink | relURL }}">
+          {{ .Page.Title }}
+        </a>
+        ({{ .Count }} posts)
+      </li>
+    {{ end }}
+  </ul>
+{{ end }}
 {{ end }}

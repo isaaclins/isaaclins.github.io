@@ -1,0 +1,101 @@
+name: optimize-images
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "images/**"
+      - "static/**/*.png"
+      - "static/**/*.jpg"
+      - "static/**/*.jpeg"
+      - "static/**/*.gif"
+  pull_request:
+    paths:
+      - "images/**"
+      - "static/**/*.png"
+      - "static/**/*.jpg"
+      - "static/**/*.jpeg"
+      - "static/**/*.gif"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install sharp-cli
+        run: npm install -g sharp-cli
+
+      - name: Install image optimization tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y optipng jpegoptim gifsicle
+
+      - name: Optimize PNG images
+        run: |
+          find images static -type f -name "*.png" ! -name "*.min.png" -exec optipng -o5 {} \; 2>/dev/null || true
+
+      - name: Optimize JPEG images
+        run: |
+          find images static -type f \( -name "*.jpg" -o -name "*.jpeg" \) -exec jpegoptim --strip-all --max=85 {} \; 2>/dev/null || true
+
+      - name: Optimize GIF images
+        run: |
+          find images static -type f -name "*.gif" -exec gifsicle --batch --optimize=3 {} \; 2>/dev/null || true
+
+      - name: Generate WebP versions for large images
+        run: |
+          # Create WebP versions for images larger than 100KB
+          for img in $(find images static -type f \( -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" \) -size +100k 2>/dev/null); do
+            webp_path="${img%.*}.webp"
+            if [ ! -f "$webp_path" ]; then
+              echo "Converting $img to WebP..."
+              sharp -i "$img" -o "$webp_path" -- resize 1920 --withoutEnlargement true 2>/dev/null || true
+            fi
+          done
+
+      - name: Check for changes
+        id: changes
+        run: |
+          git add -A
+          if git diff --staged --quiet; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit optimized images
+        if: steps.changes.outputs.has_changes == 'true' && github.event_name == 'push'
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "perf: optimize images automatically"
+          file_pattern: "images/** static/**"
+          commit_user_name: "GitHub Actions Bot"
+          commit_user_email: "actions@github.com"
+          commit_author: "GitHub Actions Bot <actions@github.com>"
+
+      - name: Report optimization results
+        if: github.event_name == 'pull_request'
+        run: |
+          echo "## 📊 Image Optimization Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "The following images were analyzed for optimization:" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Type | Count |" >> $GITHUB_STEP_SUMMARY
+          echo "|------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| PNG | $(find images static -name '*.png' 2>/dev/null | wc -l) |" >> $GITHUB_STEP_SUMMARY
+          echo "| JPEG | $(find images static \( -name '*.jpg' -o -name '*.jpeg' \) 2>/dev/null | wc -l) |" >> $GITHUB_STEP_SUMMARY
+          echo "| GIF | $(find images static -name '*.gif' 2>/dev/null | wc -l) |" >> $GITHUB_STEP_SUMMARY
+          echo "| WebP | $(find images static -name '*.webp' 2>/dev/null | wc -l) |" >> $GITHUB_STEP_SUMMARY

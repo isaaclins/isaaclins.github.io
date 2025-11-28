@@ -2,7 +2,7 @@
 title = "I Automated My Homework and Left Class 2 Hours Early. You Can Too."
 date = 2025-06-17
 draft = false
-tags = ["Java", "Functional Programming", "AI", "Productivity", "Cursor", "Poweruser"]
+tags = ["Dev", "Productivity", "AI"]
 complexity = "easy"
 +++
 

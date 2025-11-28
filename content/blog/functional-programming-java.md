@@ -2,7 +2,7 @@
 title = "What is Functional Programming in Java?"
 date = 2025-06-17
 draft = false
-tags = ["Java", "Functional Programming", "Software Development"]
+tags = ["Dev"]
 complexity = "medium"
 +++
 
