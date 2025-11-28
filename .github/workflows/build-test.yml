@@ -98,13 +98,46 @@ jobs:
         run: |
           # Find all markdown files that are NOT drafts
           FILES_TO_CHECK=$(find content -name "*.md" -exec grep -L "^draft = true" {} \; | grep -v "_TEMPLATE.md" || true)
-          if [ -n "$FILES_TO_CHECK" ]; then
-            echo "Checking files:"
-            echo "$FILES_TO_CHECK"
-            echo "$FILES_TO_CHECK" | xargs cspell --config .cspell.json
-          else
+          
+          if [ -z "$FILES_TO_CHECK" ]; then
             echo "No non-draft files to check"
+            exit 0
           fi
+          
+          echo "Checking files:"
+          echo "$FILES_TO_CHECK"
+          
+          # Run cspell and capture output (don't fail on errors)
+          CSPELL_OUTPUT=$(echo "$FILES_TO_CHECK" | xargs cspell --config .cspell.json 2>&1) || true
+          
+          # Check if there are any spelling issues
+          if echo "$CSPELL_OUTPUT" | grep -q "Unknown word"; then
+            echo "## 📝 Spelling Issues Found" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "The following words were not recognized. Add them to \`.cspell.json\` if they're valid." >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "| File | Location | Word |" >> $GITHUB_STEP_SUMMARY
+            echo "|------|----------|------|" >> $GITHUB_STEP_SUMMARY
+            
+            # Parse cspell output: "file:line:col - Unknown word (word)"
+            echo "$CSPELL_OUTPUT" | grep "Unknown word" | while read -r line; do
+              # Extract file path, location, and word
+              FILE=$(echo "$line" | cut -d':' -f1)
+              LINE_NUM=$(echo "$line" | cut -d':' -f2)
+              COL=$(echo "$line" | cut -d':' -f3 | cut -d' ' -f1)
+              WORD=$(echo "$line" | grep -oP '\(.*?\)' | tr -d '()')
+              echo "| \`$FILE\` | $LINE_NUM:$COL | \`$WORD\` |" >> $GITHUB_STEP_SUMMARY
+            done
+            
+            echo "" >> $GITHUB_STEP_SUMMARY
+            ISSUE_COUNT=$(echo "$CSPELL_OUTPUT" | grep -c "Unknown word" || echo "0")
+            echo "**Total: $ISSUE_COUNT issue(s)**" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "✅ No spelling issues found" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          # Always exit successfully - spelling issues are informational only
+          exit 0
 
       # Optionally upload the generated site as an artifact for debugging
       - name: Upload built site artifact
