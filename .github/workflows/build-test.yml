@@ -74,11 +74,11 @@ jobs:
         uses: lycheeverse/lychee-action@v2
         with:
           args: >-
-            --root-dir public
+            --root-dir ${{ github.workspace }}/public
             --verbose
             --no-progress
             --accept 200,204,206,301,302,307,308
-            --exclude-file .lycheeexclude
+            --exclude-path node_modules
             --timeout 30
             'public/**/*.html'
           fail: true
