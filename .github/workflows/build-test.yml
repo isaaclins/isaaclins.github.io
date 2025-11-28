@@ -74,7 +74,7 @@ jobs:
         uses: lycheeverse/lychee-action@v2
         with:
           args: >-
-            --base public
+            --root-dir public
             --verbose
             --no-progress
             --accept 200,204,206,301,302,307,308
