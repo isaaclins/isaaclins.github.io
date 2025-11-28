@@ -94,8 +94,17 @@ jobs:
       - name: Install cspell
         run: npm install -g cspell@latest
 
-      - name: Run spell check on content
-        run: cspell "content/**/*.md" --config .cspell.json
+      - name: Run spell check on content (skip drafts)
+        run: |
+          # Find all markdown files that are NOT drafts
+          FILES_TO_CHECK=$(find content -name "*.md" -exec grep -L "^draft = true" {} \; | grep -v "_TEMPLATE.md" || true)
+          if [ -n "$FILES_TO_CHECK" ]; then
+            echo "Checking files:"
+            echo "$FILES_TO_CHECK"
+            echo "$FILES_TO_CHECK" | xargs cspell --config .cspell.json
+          else
+            echo "No non-draft files to check"
+          fi
 
       # Optionally upload the generated site as an artifact for debugging
       - name: Upload built site artifact
