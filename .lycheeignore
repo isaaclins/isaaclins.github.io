@@ -18,6 +18,11 @@ localhost
 # Some sites block bots aggressively
 twitter\.com
 x\.com
+reddit\.com
+bettermotherfuckingwebsite\.com
+
+# Our own domain (can't verify during build, points to prod)
+isaaclins\.com
 
 # GitHub rate limits can cause false positives
 # Uncomment if you hit rate limits often:
