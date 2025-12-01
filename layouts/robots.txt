@@ -1,0 +1,107 @@
+# ============================================
+# ROBOTS.TXT - WELCOME GOOGLE, BING & FRIENDS
+# Isaac Lins - isaaclins.com
+# ============================================
+
+# Welcome all search engine crawlers!
+User-agent: *
+Allow: /
+
+# Sitemap location -> CRITICAL for indexing
+Sitemap: {{ .Site.BaseURL }}sitemap.xml
+
+# RSS Feed -> Additional content discovery
+Sitemap: {{ .Site.BaseURL }}feed.xml
+
+# ============================================
+# SPECIFIC BOT INSTRUCTIONS
+# ============================================
+
+# Google -> Full access, please crawl everything!
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Google Images -> Index all images, I dont care
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+
+# Yahoo
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
+
+# Yandex
+User-agent: Yandex
+Allow: /
+Crawl-delay: 2
+
+# Baidu
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 2
+
+# Apple
+User-agent: Applebot
+Allow: /
+
+# Facebook
+User-agent: facebookexternalhit
+Allow: /
+
+# Twitter
+User-agent: Twitterbot
+Allow: /
+
+# LinkedIn
+User-agent: LinkedInBot
+Allow: /
+
+# ============================================
+# BLOCK BAD BOTS & SCRAPERS
+# ============================================
+
+# Block AI scrapers that don't respect content
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+# Block aggressive scrapers
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# ============================================
+# HOST DIRECTIVE
+# ============================================
+Host: {{ .Site.BaseURL }}
+
