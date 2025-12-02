@@ -1,0 +1,22 @@
+{{- $pages := where .Site.RegularPages "Type" "!=" "page" -}}
+{{- $pages = where $pages ".Params.noindex" "!=" true -}}
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "{{ .Site.Title }} - All Content",
+  "description": "{{ .Site.Params.description }}",
+  "numberOfItems": {{ len $pages }},
+  "itemListElement": [
+    {{- range $index, $page := $pages }}
+    {{- if $index }},{{ end }}
+    {
+      "@type": "ListItem",
+      "position": {{ add $index 1 }},
+      "url": "{{ $page.Permalink }}",
+      "name": "{{ $page.Title }}",
+      "description": "{{ $page.Summary | plainify | truncate 160 }}"
+    }
+    {{- end }}
+  ]
+}
+
