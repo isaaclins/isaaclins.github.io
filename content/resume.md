@@ -72,11 +72,11 @@ _Aug 2022 – Nov 2023_
 
 **Programming Languages:**
 
-- Python (Advanced), Java (Proficient), JavaScript/TypeScript (Proficient), SQL (Proficient), Shell (Bash, Powershell), Dart, C++
+- Python (Advanced), Java (Proficient), JavaScript/TypeScript (Proficient), SQL (Proficient), Shell (Bash, Powershell), Dart, 
 
 **Frameworks & Technologies:**
 
-- Next.js, React Native, Flutter, Node.js, SpringBoot, Docker, Git, APIs, JWT
+- Next.js, React Native, Flutter, Node.js, SpringBoot, Docker, Git, JWT
 
 **Databases:**
 

@@ -1,0 +1,391 @@
+{{ define "main" }}
+
+<style>
+/* Resume-specific styles */
+.resume-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid currentColor;
+}
+
+.resume-name {
+  font-size: 2.2rem;
+  margin-bottom: 0.3rem;
+  letter-spacing: 0.1em;
+}
+
+.resume-tagline {
+  font-size: 1rem;
+  opacity: 0.8;
+  margin-bottom: 0.75rem;
+}
+
+.resume-contact {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.2rem;
+  font-size: 0.85rem;
+}
+
+.resume-contact a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.section-title {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 0.3rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.experience-item {
+  margin-bottom: 1rem;
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: baseline;
+  margin-bottom: 0.2rem;
+}
+
+.experience-title {
+  font-weight: bold;
+}
+
+.experience-date {
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+.experience-description {
+  font-size: 0.9rem;
+  margin: 0.2rem 0 0 0;
+}
+
+.experience-description ul {
+  margin: 0.2rem 0;
+  padding-left: 1.2rem;
+}
+
+.experience-description li {
+  margin: 0.1rem 0;
+}
+
+.skills-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.5rem 0;
+}
+
+.skill-tag {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border: 1px solid currentColor;
+  font-size: 0.8rem;
+}
+
+.two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.highlight-inline {
+  border: 1px solid currentColor;
+  padding: 0.5rem 1rem;
+  margin: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.download-section {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid currentColor;
+  text-align: center;
+}
+
+.download-btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid currentColor;
+  font-family: monospace;
+  font-size: 1rem;
+  cursor: pointer;
+  background: transparent;
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.download-btn:hover {
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .resume-name { font-size: 1.6rem; }
+  .resume-contact { flex-direction: column; gap: 0.5rem; }
+  .experience-header { flex-direction: column; gap: 0.15rem; }
+  .two-column { grid-template-columns: 1fr; }
+  .highlight-inline { flex-direction: column; text-align: center; gap: 0.3rem; }
+}
+
+/* ========== PRINT STYLES FOR 1-PAGE PDF ========== */
+@media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  
+  @page {
+    size: A4;
+    margin: 10mm;
+  }
+  
+  html, body {
+    font-size: 9pt !important;
+    line-height: 1.25 !important;
+    color: #000 !important;
+    background: #fff !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+  
+  body {
+    padding: 0 !important;
+  }
+  
+  .w {
+    max-width: 100% !important;
+    padding: 5mm 10mm !important;
+    margin: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+  }
+  
+  .page-content {
+    min-height: 0 !important;
+    height: auto !important;
+  }
+  
+  a {
+    color: #000 !important;
+    text-decoration: none !important;
+  }
+  
+  /* Hide non-essential elements */
+  .download-section,
+  .no-print,
+  .mermaid,
+  pre.mermaid,
+  footer,
+  .site-footer,
+  hr {
+    display: none !important;
+  }
+  
+  /* Hide everything after the resume article */
+  .resume ~ * {
+    display: none !important;
+  }
+  
+  /* Target the footer content specifically */
+  .w > *:not(.resume):not(article) {
+    display: none !important;
+  }
+  
+  /* Compact header */
+  .resume-header {
+    margin-bottom: 8pt;
+    padding-bottom: 6pt;
+    border-bottom: 1pt solid #000;
+  }
+  
+  .resume-name {
+    font-size: 16pt;
+    margin-bottom: 2pt;
+  }
+  
+  .resume-tagline {
+    font-size: 9pt;
+    margin-bottom: 6pt;
+  }
+  
+  /* FIX: Keep contact links horizontal */
+  .resume-contact {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 15pt !important;
+    font-size: 8pt;
+  }
+  
+  .resume-contact a {
+    display: inline !important;
+  }
+  
+  /* Compact sections */
+  .section-title {
+    font-size: 10pt;
+    margin-top: 10pt;
+    margin-bottom: 4pt;
+    padding-bottom: 2pt;
+    page-break-after: avoid;
+  }
+  
+  /* Compact experience items */
+  .experience-item {
+    margin-bottom: 6pt;
+    page-break-inside: avoid;
+  }
+  
+  .experience-header {
+    margin-bottom: 1pt;
+    flex-direction: row !important;
+  }
+  
+  .experience-title {
+    font-size: 9pt;
+  }
+  
+  .experience-date {
+    font-size: 8pt;
+  }
+  
+  .experience-description {
+    font-size: 8pt;
+    margin: 1pt 0 0 0;
+  }
+  
+  .experience-description ul {
+    margin: 1pt 0;
+    padding-left: 12pt;
+  }
+  
+  .experience-description li {
+    margin: 0;
+  }
+  
+  /* Compact skills */
+  .skills-inline {
+    gap: 3pt;
+    margin: 3pt 0;
+  }
+  
+  .skill-tag {
+    padding: 1pt 4pt;
+    font-size: 7.5pt;
+    border-width: 0.5pt;
+  }
+  
+  /* Two column layout for print */
+  .two-column {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8pt;
+  }
+  
+  /* Compact highlight */
+  .highlight-inline {
+    padding: 4pt 8pt;
+    margin: 6pt 0;
+    font-size: 8pt;
+    border-width: 0.5pt;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+  }
+  
+  /* Paragraphs */
+  p {
+    margin: 3pt 0;
+    font-size: 8pt;
+  }
+  
+  /* Lists */
+  ul, ol {
+    margin: 2pt 0;
+    padding-left: 12pt;
+  }
+  
+  li {
+    margin: 1pt 0;
+    font-size: 8pt;
+  }
+  
+  h2, h3, h4 {
+    margin-top: 8pt;
+    margin-bottom: 3pt;
+  }
+  
+  /* Hide print-only to save space */
+  .print-only {
+    display: none !important;
+  }
+  
+  /* Prevent empty second page */
+  .resume {
+    page-break-after: avoid;
+    page-break-inside: avoid;
+    overflow: hidden;
+  }
+  
+  article {
+    overflow: hidden;
+    height: auto !important;
+  }
+  
+  main, .page-content, .w, article, .resume {
+    page-break-after: avoid !important;
+    page-break-before: avoid !important;
+  }
+}
+
+/* Hide print-only on screen */
+@media screen {
+  .print-only {
+    display: none;
+  }
+}
+</style>
+
+<article class="resume">
+  <header class="resume-header">
+    <h1 class="resume-name">ISAAC LINS</h1>
+    <p class="resume-tagline">Application Developer · Security Enthusiast · Switzerland</p>
+    <div class="resume-contact">
+      <a href="https://isaaclins.com">isaaclins.com</a>
+      <a href="https://github.com/isaaclins">github.com/isaaclins</a>
+      <a href="https://linkedin.com/in/isaac-lins-094612247">linkedin.com/in/isaac-lins-094612247</a>
+    </div>
+  </header>
+
+  {{ .Content }}
+
+  <div class="download-section no-print">
+    <button class="download-btn" onclick="window.print()">
+      [ Download as PDF ]
+    </button>
+    <p style="font-size: 0.8rem; margin-top: 0.75rem; opacity: 0.7;">
+      Select "Save as PDF" in the print dialog
+    </p>
+  </div>
+</article>
+
+{{ end }}
