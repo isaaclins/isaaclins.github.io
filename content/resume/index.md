@@ -41,7 +41,7 @@ Built backend for music app: Java APIs, MySQL databases, PI-Planning methodology
 
 {{< project-row title1="YADRMS" desc1="Remote management system using Discord as C2 channel. Next.js frontend, Python backend, JWT auth." link1="https://github.com/isaaclins/YADRMS" title2="Home Server + LLM" desc2="Self-hosted server with Ollama LLM integration, file uploads, user management with JWT." link2="https://github.com/isaaclins/ollama-model-api" >}}
 
-{{< project-row title1="Mobile Apps" desc1="Cross-platform apps in Flutter & React Native. Finance tools, productivity apps." link1="https://github.com/isaaclins/flutter-templates" title2="Discord RAT" desc2="Educational remote access tool for live hacking presentations. Python, Discord API." link2="https://github.com/isaaclins/Discord-Python-RAT" >}}
+{{< project-row title1="PowerUserMail" desc1="Blazing fast, keyboard-first email client for macOS. Command palette, vim-like shortcuts, SwiftUI. Free Superhuman alternative." link1="https://github.com/isaaclins/powerusermail" title2="Psst" desc2="Fast, native Spotify client written in Rust. No Electron, cross-platform GUI. Contributor to open-source fork." link2="https://github.com/isaaclins/psst" >}}
 
 {{< section-title "Education & Certificates" >}}
 
