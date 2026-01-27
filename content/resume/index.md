@@ -11,12 +11,12 @@ description = "Resume of Isaac Lins - Application Developer at Swisscom, 1st Pla
 
 {{< section-title "Experience" >}}
 
-{{< experience title="Application Developer" company="Swisscom" date="Current" >}}
-Enterprise application development. System migrations (40+ machines RHEL7→RHEL9, databases with 2M+ entries).
+{{< experience title="Blue Team Security Analyst" company="Swisscom" date="Oct 2025 - Current" >}}
+Alert triage and incident response using SIEM, EDR, NDR, XDR, and SOAR platforms. Threat detection and analysis.
 {{< /experience >}}
 
-{{< experience title="Blue Team Security Analyst" company="Swisscom" date="2025 - current" >}}
-Alert triage and incident response using SIEM, EDR, NDR, XDR, and SOAR platforms. Threat detection and analysis.
+{{< experience title="Application Developer" company="Swisscom" date="Jan 2024 - Oct 2025" >}}
+Enterprise application development. System migrations (40+ machines RHEL7 to RHEL9, databases with 2M+ entries).
 {{< /experience >}}
 
 {{< experience title="Live Hacking Presenter" company="Marcus Beyer (GSE)" date="Aug 2023 – Jan 2024" >}}
@@ -43,7 +43,10 @@ Built backend for music app: Java APIs, MySQL databases, PI-Planning methodology
 
 {{< project-row title1="Mobile Apps" desc1="Cross-platform apps in Flutter & React Native. Finance tools, productivity apps." link1="https://github.com/isaaclins/flutter-templates" title2="Discord RAT" desc2="Educational remote access tool for live hacking presentations. Python, Discord API." link2="https://github.com/isaaclins/Discord-Python-RAT" >}}
 
-{{< section-title "Education" >}}
+{{< section-title "Education & Certificates" >}}
 
-{{< experience title="Informatiker EFZ (Application Development)" company="BBW Winterthur" date="Current" >}}
+{{< experience title="Informatiker EFZ (Application Development)" company="BBW Winterthur" date="2026" >}}
+{{< /experience >}}
+
+{{< experience title="English C2 Proficiency" company="Cambridge" date="2026" >}}
 {{< /experience >}}
