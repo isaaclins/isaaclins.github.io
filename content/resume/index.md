@@ -2,6 +2,7 @@
 title = "Isaac Lins - Resume"
 date = 2025-01-27
 draft = false
+type = "resume"
 layout = "single"
 description = "Resume of Isaac Lins - Application Developer at Swisscom, 1st Place Skills Battle 2025 Cybersecurity"
 +++
