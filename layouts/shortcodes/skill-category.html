@@ -1,0 +1,10 @@
+<div>
+<strong>{{ .Get "title" }}</strong>
+<div class="skills-inline">
+{{- $raw := .Get "items" -}}
+{{- $items := split $raw ", " -}}
+{{- range $items -}}
+<span class="skill-tag">{{ strings.TrimSpace . }}</span>
+{{- end -}}
+</div>
+</div>

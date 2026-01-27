@@ -1,0 +1,14 @@
+<div class="two-column">
+<div>
+<strong>{{ .Get "title1" }}</strong>
+<div class="skills-inline">
+{{- range split (.Get "items1") ", " -}}<span class="skill-tag">{{ . }}</span>{{- end -}}
+</div>
+</div>
+<div>
+<strong>{{ .Get "title2" }}</strong>
+<div class="skills-inline">
+{{- range split (.Get "items2") ", " -}}<span class="skill-tag">{{ . }}</span>{{- end -}}
+</div>
+</div>
+</div>

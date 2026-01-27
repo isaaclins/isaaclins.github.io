@@ -1,0 +1,20 @@
+<div class="two-column">
+<div class="experience-item">
+<div class="experience-header">
+<span class="experience-title">{{ .Get "title1" }}</span>
+</div>
+<div class="experience-description">
+{{ .Get "desc1" }}
+{{ with .Get "link1" }}<br><a href="{{ . }}">{{ . | replaceRE "https?://" "" }}</a>{{ end }}
+</div>
+</div>
+<div class="experience-item">
+<div class="experience-header">
+<span class="experience-title">{{ .Get "title2" }}</span>
+</div>
+<div class="experience-description">
+{{ .Get "desc2" }}
+{{ with .Get "link2" }}<br><a href="{{ . }}">{{ . | replaceRE "https?://" "" }}</a>{{ end }}
+</div>
+</div>
+</div>

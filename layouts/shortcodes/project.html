@@ -1,0 +1,9 @@
+<div class="experience-item">
+<div class="experience-header">
+<span class="experience-title">{{ .Get "title" }}</span>
+</div>
+<div class="experience-description">
+{{ .Inner | markdownify }}
+{{ with .Get "link" }}<br><a href="{{ . }}">{{ . | replaceRE "https?://" "" }}</a>{{ end }}
+</div>
+</div>
