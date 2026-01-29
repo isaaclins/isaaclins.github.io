@@ -34,8 +34,6 @@ graph TD
     end
     A -- "Way too big!" --> B(💥)
     C -- "Can't fit!" --> B
-    style A fill:#ff9999,stroke:#333,stroke-width:2px
-    style C fill:#99ccff,stroke:#333,stroke-width:2px
 ```
 
 <br/>
