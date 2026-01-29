@@ -72,9 +72,6 @@ graph LR
         WiFi[📡 WiFi Signal on Ch. 6]
         Microwave[🔥 Microwave on Ch. 11]
     end
-
-    style WiFi fill:#ff0000,stroke:#333
-    style Microwave fill:#ff0000,stroke:#333
 ```
 
 > The devices hop between frequencies so rapidly that they simply avoid the noisy channels used by other devices like WiFi routers or microwaves.

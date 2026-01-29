@@ -33,9 +33,6 @@ graph TD;
         E["Call 'Alice'"] --> F["Ring, Ring!<br/>(Success)"];
         G["Call 'Bob'"] --> H["Phone App Crashes!<br/>(Null Pointer Dereference)"];
     end
-
-    style D fill:#f00,stroke:#333,stroke-width:2px;
-    style H fill:#f00,stroke:#333,stroke-width:2px;
 ```
 
 In Google's case, a critical service tried to use one of these "empty contacts" and crashed itself into oblivion.
@@ -113,7 +110,6 @@ graph TD
         E[Restart] --> B;
         F[Restart] --> B;
         G[Restart] --> B;
-        style B fill:#f00
     end
 ```
 
@@ -125,7 +121,6 @@ graph TD
         H[Restart] --> I{Wait 1s} --> J((Database));
         K[Restart] --> L{Wait 3s} --> J;
         M[Restart] --> N{Wait 5s} --> J;
-        style J fill:#9f9
     end
 ```
 
