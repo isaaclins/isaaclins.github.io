@@ -392,9 +392,154 @@ body[a="dark"] .resume a {
       [ Download as PDF ]
     </button>
     <p style="font-size: 0.8rem; margin-top: 0.75rem; opacity: 0.7;">
-      Select "Save as PDF" in the print dialog
+      Select "DF" in the print dialog
     </p>
   </div>
 </article>
+
+<style>
+/* Toast notification styles */
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: #000000;
+  color: #ffffff;
+  padding: 1rem 1.25rem;
+  border: thin solid #ffffff;
+  opacity: 0;
+  transform: translateY(1rem);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  max-width: 360px;
+  font-family: monospace;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toast-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.toast-title {
+  font-weight: normal;
+  font-size: 14px;
+  margin-bottom: 0.25rem;
+}
+
+.toast-message {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.toast-email {
+  color: #79a8ff;
+  text-decoration: none;
+}
+
+.toast-email:hover {
+  text-decoration: underline;
+}
+
+.toast-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  font-family: monospace;
+  font-size: 16px;
+  padding: 0;
+  opacity: 0.7;
+}
+
+.toast-close:hover {
+  opacity: 1;
+}
+
+body[a="light"] .toast {
+  background: #ffffff;
+  color: #000000;
+  border-color: #000000;
+}
+
+body[a="light"] .toast-email {
+  color: #3548cf;
+}
+
+body[a="light"] .toast-close {
+  color: #000000;
+}
+
+@media (prefers-color-scheme: light) {
+  body[a="auto"] .toast {
+    background: #ffffff;
+    color: #000000;
+    border-color: #000000;
+  }
+  
+  body[a="auto"] .toast-email {
+    color: #3548cf;
+  }
+  
+  body[a="auto"] .toast-close {
+    color: #000000;
+  }
+}
+
+@media print {
+  .toast {
+    display: none !important;
+  }
+}
+</style>
+
+<div id="toast" class="toast">
+  <button class="toast-close" onclick="hideToast()">[x]</button>
+  <div class="toast-content">
+    <div class="toast-title">// thank you for your interest</div>
+    <div class="toast-message">
+      feel free to reach out at <a href="mailto:contact@isaaclins.com" class="toast-email">contact@isaaclins.com</a> if you have any questions.
+    </div>
+  </div>
+</div>
+
+<script>
+// Show toast after printing
+addEventListener("afterprint", (event) => {
+  showToast();
+});
+
+onafterprint = (event) => {
+  showToast();
+};
+
+function showToast() {
+  const toast = document.getElementById('toast');
+  if (!toast) return;
+  
+  toast.classList.add('show');
+  
+  setTimeout(() => {
+    hideToast();
+  }, 6000);
+}
+
+function hideToast() {
+  const toast = document.getElementById('toast');
+  if (toast) {
+    toast.classList.remove('show');
+  }
+}
+</script>
 
 {{ end }}
