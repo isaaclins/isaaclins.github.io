@@ -23,7 +23,7 @@ Enterprise application development. System migrations (40+ machines RHEL7 to RHE
 Developed and presented live hacking demos (Phishing, Botnets, RAT) for Government & Enterprise audiences.
 {{< /experience >}}
 
-{{< experience title="Automation Engineer" company="Jetmir Aliu" date="Jun – Aug 2023" >}}
+{{< experience title="Automation Engineer" company="Jetmir Aliu" date="Jun 2023 – Aug 2023" >}}
 Automated IT workflows using UiPath Studio, reducing manual intervention.
 {{< /experience >}}
 
