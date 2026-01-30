@@ -38,7 +38,6 @@ graph TD
     end
 
     subgraph "The Single Point of Failure"
-        style SPoF fill:#cc0000,stroke:#333,stroke-width:2px
         ThirdParty[Vendor's Storage Backend]
     end
 

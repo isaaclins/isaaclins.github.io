@@ -67,7 +67,7 @@ flowchart LR
     Dash --> KV
     Bots --> KV
 
-    style KV fill:#ffe5a3,stroke:#ff9933,stroke-width:2px
+
 ```
 
 If that sounds familiar, it's because we already talked about their June faceplant and the danger of trusting a single service hub too much.
@@ -99,7 +99,6 @@ flowchart TD
     F --> G[Verify with external monitors]
     B -- No --> H[Keep polling]
 
-    style E fill:#c8e6ff,stroke:#3399ff,stroke-width:2px
 ```
 
 You're still here? Go build the boring automation that lets you sleep when the internet's favorite hall monitor calls in sick.
