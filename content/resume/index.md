@@ -4,10 +4,10 @@ date = 2025-01-27
 draft = false
 type = "resume"
 layout = "single"
-description = "Resume of Isaac Lins - Application Developer at Swisscom, 1st Place Skills Battle 2025 Cybersecurity"
+description = "Resume of Isaac Lins - Application Developer at Swisscom, 1st Place IT Skills Battle 2025"
 +++
 
-{{< highlight title="1st Place — Swiss Skills Battle 2025 (Cybersecurity)" subtitle="National champion in competitive cybersecurity" >}}
+{{< highlight title="1st Place — IT Skills Battle 2025 (Cybersecurity)" subtitle="National champion in competitive cybersecurity" >}}
 
 {{< section-title "Experience" >}}
 
