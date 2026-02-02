@@ -11,23 +11,23 @@ description = "Resume of Isaac Lins - Application Developer at Swisscom, 1st Pla
 
 {{< section-title "Experience" >}}
 
-{{< experience title="Blue Team Security Analyst" company="Swisscom" date="Oct 2025 - Current" >}}
-Alert triage and incident response using SIEM, EDR, NDR, XDR, and SOAR platforms. Threat detection and analysis.
+{{< experience title="Blue Team Security Analyst" company="Swisscom AG" date="Oct 2025 - Current" >}}
+Alert triage and incident response using SIEM, EDR, NDR, XDR, and SOAR platforms. Threat detection and analysis for over 50 Tenants.
 {{< /experience >}}
 
-{{< experience title="Application Developer" company="Swisscom" date="Jan 2024 - Oct 2025" >}}
-Enterprise application development. System migrations (40+ machines RHEL7 to RHEL9, databases with 2M+ entries).
+{{< experience title="Application Developer" company="Swisscom AG" date="Jan 2024 - Oct 2025" >}}
+Enterprise application development. Massive system migrations (40+ machines RHEL7 to RHEL9, databases with 2M+ entries).
 {{< /experience >}}
 
-{{< experience title="Live Hacking Presenter" company="Marcus Beyer (GSE)" date="Aug 2023 – Jan 2024" >}}
-Developed and presented live hacking demos (Phishing, Botnets, RAT) for Government & Enterprise audiences.
+{{< experience title="Live Hacking Presenter" company="Swisscom AG" date="Aug 2023 – Jan 2024" >}}
+Developed and presented educational live hacking demos (Phishing, RAT, Botnets) for Government & Enterprise audiences.
 {{< /experience >}}
 
-{{< experience title="Automation Engineer" company="Jetmir Aliu" date="Jun 2023 – Aug 2023" >}}
+{{< experience title="Automation Engineer" company="Swisscom AG" date="Jun 2023 – Aug 2023" >}}
 Automated IT workflows using UiPath Studio, reducing manual intervention.
 {{< /experience >}}
 
-{{< experience title="Backend Developer" company="Plato" date="Nov 2022 – May 2023" >}}
+{{< experience title="Backend Developer" company="Swisscom AG" date="Nov 2022 – May 2023" >}}
 Built backend for music app: Java APIs, MySQL databases, PI-Planning methodology.
 {{< /experience >}}
 
@@ -35,7 +35,7 @@ Built backend for music app: Java APIs, MySQL databases, PI-Planning methodology
 
 {{< skill-row title1="Languages" items1="Python, Java, TypeScript, SQL, Bash" title2="Frameworks" items2="Next.js, React Native, Flutter, Spring Boot" >}}
 
-{{< skill-row title1="Infrastructure" items1="Docker, Git, Linux/RHEL, CI/CD" title2="Security" items2="Offensive Security, CTF, Pentesting" >}}
+{{< skill-row title1="Infrastructure" items1="Docker, Git, Linux/RHEL, CI/CD" title2="Security" items2="Defensive Security, CTF, Pentesting, Offensive Security" >}}
 
 {{< section-title "Projects" >}}
 
@@ -45,8 +45,8 @@ Built backend for music app: Java APIs, MySQL databases, PI-Planning methodology
 
 {{< section-title "Education & Certificates" >}}
 
-{{< experience title="Informatiker EFZ (Application Development)" company="BBW Winterthur" date="2026" >}}
+{{< experience title="Informatiker EFZ (Application Developer)" company="Swisscom AG" date="Aug 2022 - now" >}}
 {{< /experience >}}
 
-{{< experience title="English C2 Proficiency" company="Cambridge" date="2026" >}}
+{{< experience title="English C2 Proficiency" company="Cambridge" date="Jan 2026" link="/resume/certificates/cambridge-C2.pdf" >}}
 {{< /experience >}}

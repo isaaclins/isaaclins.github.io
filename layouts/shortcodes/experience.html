@@ -1,7 +1,11 @@
 <div class="experience-item">
 <div class="experience-header">
-<span class="experience-title">{{ .Get "title" }}{{ with .Get "company" }} — {{ . }}{{ end }}</span>
+<span class="experience-title">
+{{ with .Get "link" }}<a href="{{ . }}" target="_blank" rel="noopener">{{ end }}
+{{ .Get "title" }}{{ with .Get "company" }} — {{ . }}{{ end }}
+{{ with .Get "link" }}</a>{{ end }}
+</span>
 {{ with .Get "date" }}<span class="experience-date">{{ . }}</span>{{ end }}
 </div>
-{{ with .Inner }}<div class="experience-description">{{ . | markdownify }}</div>{{ end }}
+{{ with .Inner }}<div class="experience-description">{{ . | markdownify }}</div>{{ end }}   
 </div>
