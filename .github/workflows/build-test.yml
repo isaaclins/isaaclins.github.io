@@ -141,7 +141,7 @@ jobs:
 
       # Optionally upload the generated site as an artifact for debugging
       - name: Upload built site artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: built-site
           path: public
