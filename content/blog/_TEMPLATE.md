@@ -4,6 +4,7 @@ date = 2025-06-13
 draft = true
 tags = ["TEMPLATE", "TEMPLATE2"]
 complexity = "easy"
+mathjax = true
 description = "A compelling, concise description for SEO (under 160 characters). This will appear in search results."
 +++
 
@@ -435,3 +436,215 @@ sequenceDiagram
 **Best for:** Showing how different parts of a system interact with each other over time. It's great for visualizing the flow of messages or calls between objects or components.
 
 That's the gist of it. Now go write something awesome.
+
+## Hugo Shortcodes Reference (Live Examples)
+
+Hugo shortcodes are special snippets that extend markdown. Here are **live examples** of all available shortcodes:
+
+---
+
+### Table of Contents
+
+Generates an automatic table of contents based on headings in your post.
+
+{{< toc >}}
+
+---
+
+### Details (Collapsible Section)
+
+Creates a collapsible/expandable section. Great for FAQs or hiding lengthy content.
+
+{{< details summary="Click me to expand (closed by default)" >}}
+🎉 Surprise! This content was hidden until you clicked.
+You can put **markdown** here too!
+- List items work
+- So does `inline code`
+{{< /details >}}
+
+{{< details summary="I start open!" open="true" >}}
+This section is expanded by default because `open="true"` was set.
+{{< /details >}}
+
+---
+
+### Highlight Inline
+
+Creates an inline highlight box with a title and subtitle.
+
+{{< highlight title="Pro Tip" subtitle="This is a highlighted inline box for important info!" >}}
+
+{{< highlight title="Warning" subtitle="Use this to draw attention to critical information." >}}
+
+---
+
+### Image (Advanced)
+
+For more control over images than standard markdown.
+
+{{< image src="/images/svg/raycast.svg" alt="Raycast Logo" width="100" height="100" style="background: #1a1a2e; padding: 10px; border-radius: 8px;" >}}
+
+---
+
+### Math: Inline (texi)
+
+Einstein's famous equation inline: {{< texi "E = mc^2" >}} — pretty neat!
+
+The quadratic formula is {{< texi "x = \\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}" >}} for solving quadratics.
+
+---
+
+### Math: Display/Block (texd)
+
+Block-level math for when you need it big and centered:
+
+{{< texd "\\int_{a}^{b} f(x) \\, dx = F(b) - F(a)" >}}
+
+{{< texd "\\sum_{n=1}^{\\infty} \\frac{1}{n^2} = \\frac{\\pi^2}{6}" >}}
+
+---
+
+### Recent Posts
+
+Displays the 5 most recent blog posts:
+
+{{< recent_posts >}}
+
+---
+
+### Section Title
+
+Creates a styled section heading:
+
+{{< section-title "This is a Section Title" >}}
+
+---
+
+### Experience
+
+For resume/CV style experience entries:
+
+{{< experience title="Senior Developer" company="Awesome Tech Inc." date="2023 - Present" link="https://github.com" >}}
+- Led development of core platform features
+- Mentored junior developers
+- Improved CI/CD pipeline efficiency by 40%
+{{< /experience >}}
+
+{{< experience title="Junior Developer" company="Startup Co." date="2021 - 2023" >}}
+- Built RESTful APIs with Node.js
+- Implemented frontend features with React
+{{< /experience >}}
+
+---
+
+### Project
+
+For showcasing individual projects:
+
+{{< project title="My Awesome Project" link="https://github.com/isaaclins" >}}
+A full-stack application that does amazing things. Built with Go, React, and PostgreSQL.
+{{< /project >}}
+
+---
+
+### Projects (Container)
+
+A wrapper for multiple project items in a two-column layout:
+
+{{< projects >}}
+{{< project title="Project Alpha" link="https://github.com" >}}
+A machine learning toolkit for data analysis.
+{{< /project >}}
+
+{{< project title="Project Beta" link="https://github.com" >}}
+A CLI tool for automating deployments.
+{{< /project >}}
+{{< /projects >}}
+
+---
+
+### Project Row
+
+Display two projects side-by-side in a single shortcode:
+
+{{< project-row 
+  title1="Left Project" 
+  desc1="This project handles all the left-side operations with efficiency." 
+  link1="https://github.com/isaaclins"
+  title2="Right Project" 
+  desc2="This project manages right-side processing beautifully." 
+  link2="https://github.com/isaaclins" 
+>}}
+
+---
+
+### Skill Category
+
+Display a category of skills with tags:
+
+{{< skill-category title="Programming Languages" items="Python, JavaScript, Go, Rust, TypeScript" >}}
+
+{{< skill-category title="Tools & Platforms" items="Docker, Kubernetes, AWS, GitHub Actions, Linux" >}}
+
+---
+
+### Skills (Container)
+
+A wrapper for multiple skill categories in a two-column layout:
+
+{{< skills >}}
+{{< skill-category title="Frontend" items="React, Vue, Svelte, TailwindCSS" >}}
+{{< skill-category title="Backend" items="Node.js, Django, FastAPI, Express" >}}
+{{< /skills >}}
+
+---
+
+### Skill Row
+
+Display two skill categories side-by-side:
+
+{{< skill-row 
+  title1="Databases"
+  items1="PostgreSQL, MongoDB, Redis, SQLite"
+  title2="DevOps" 
+  items2="Docker, Terraform, Ansible, CI/CD" 
+>}}
+
+---
+
+## Built-in Hugo Shortcodes
+
+Hugo also provides some built-in shortcodes:
+
+### YouTube
+
+Embed a YouTube video:
+
+{{< youtube dQw4w9WgXcQ >}}
+
+---
+
+### Figure
+
+Enhanced image with caption:
+
+{{< figure src="/images/svg/raycast.svg" title="Raycast Logo" caption="This is the Raycast application logo" alt="Raycast SVG" >}}
+
+---
+
+### Syntax Highlighting
+
+For syntax highlighting with line numbers, use fenced code blocks (Hugo's built-in `highlight` shortcode conflicts with our custom highlight shortcode):
+
+```python {linenos=table,hl_lines=[2,4]}
+def hello():
+    print("Line 2 is highlighted!")
+    print("Normal line here")
+    print("Line 4 is also highlighted!")
+    return True
+```
+
+---
+
+That covers all the shortcodes! Now you can see exactly what each one looks like when rendered.
+

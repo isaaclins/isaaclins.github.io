@@ -646,3 +646,65 @@ img.thick-border {
   justify-content: center;
   margin: 2rem 0;
 }
+
+// Skill tags and related shortcodes
+.skills-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.5rem 0;
+}
+
+.skill-tag {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border: 1px solid currentColor;
+  font-size: 0.8rem;
+}
+
+.two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.highlight-inline {
+  border: 1px solid currentColor;
+  padding: 0.5rem 1rem;
+  margin: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.experience-item {
+  margin-bottom: 1rem;
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.experience-title {
+  font-weight: bold;
+}
+
+.experience-date {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.experience-description {
+  margin-top: 0.5rem;
+}
+
+.section-title {
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 0.3rem;
+  margin-top: 2rem;
+}
