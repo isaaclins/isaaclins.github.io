@@ -3,7 +3,7 @@ title = "Notepad Can Run Code Now. No, Not Like That."
 date = 2026-02-11
 draft = false
 tags = ["Security", "Ops"]
-complexity = "medium"
+complexity = "easy"
 description = "Microsoft added Markdown to Notepad and accidentally shipped an 8.8 CVSS remote code execution vulnerability. Here's how CVE-2026-20841 works."
 +++
 
