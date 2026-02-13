@@ -167,7 +167,7 @@ jobs:
           commit_author: "GitHub Actions Bot <actions@github.com>"
 
       - name: Upload Lighthouse Reports Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: lighthouse-reports # A single artifact for all reports
           path: ./lighthouse-reports
