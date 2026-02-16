@@ -21,6 +21,9 @@ x\.com
 reddit\.com
 bettermotherfuckingwebsite\.com
 
+# Notepad++ site is often slow and times out during CI
+notepad-plus-plus\.org
+
 # Our own domain (can't verify during build, points to prod)
 isaaclins\.com
 

@@ -63,7 +63,7 @@ I'm not going to go into detail about how it works, but I'll just say that it's 
 
 ### How to Install
 
-You can download Cursor directly from their [website](https://cursor.sh/) or install it using Homebrew.
+You can download Cursor directly from their [website](https://cursor.com/) or install it using Homebrew.
 
 ```bash
 brew install --cask cursor
