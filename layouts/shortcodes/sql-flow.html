@@ -1,0 +1,640 @@
+{{- $id := .Get "id" | default (printf "sql-flow-%d" now.UnixNano) -}}
+{{- $benignPayload := .Get "benign" | default "admin" -}}
+{{- $maliciousPayload := .Get "malicious" | default "' OR 1=1 --" -}}
+
+<!-- Flow Visualizer Styles (scoped to this component) -->
+<style>
+.flow-visualizer-wrapper {
+  margin: 2rem -2rem;
+  width: calc(100% + 4rem);
+}
+
+.flow-mobile-fallback {
+  display: none;
+  text-align: center;
+  padding: 2rem;
+  border: 2px dashed currentColor;
+  border-radius: 8px;
+}
+
+.flow-mobile-fallback .flow-mobile-emoji {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.flow-mobile-fallback p {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .flow-visualizer-wrapper {
+    margin: 2rem 0;
+    width: 100%;
+  }
+  
+  .flow-visualizer {
+    display: none !important;
+  }
+  
+  .flow-mobile-fallback {
+    display: block;
+  }
+}
+
+.flow-visualizer {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid currentColor;
+  border-radius: 8px;
+  padding: 1.5rem 2rem;
+}
+
+/* Controls */
+.flow-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-end;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.flow-control-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.flow-control-row label {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.flow-dropdown {
+  background: transparent;
+  border: 1px solid #5ba4e6;
+  color: inherit;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: inherit;
+  min-width: 120px;
+  cursor: pointer;
+}
+
+.flow-dropdown:focus {
+  outline: none;
+  border-color: #7fbfff;
+  box-shadow: 0 0 0 2px rgba(91, 164, 230, 0.3);
+}
+
+.flow-dropdown option {
+  background: #1a1a1a;
+  color: #fff;
+}
+
+.flow-payload-display {
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Mono', monospace;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  min-width: 200px;
+}
+
+.flow-submit-btn {
+  background: #5ba4e6;
+  border: none;
+  color: #000;
+  padding: 0.5rem 1.25rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+}
+
+.flow-submit-btn:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.flow-submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Flow Diagram - Compact boxes */
+.flow-diagram {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.flow-box {
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  padding: 1rem 1rem;
+  text-align: center;
+  transition: border-color 0.3s, box-shadow 0.3s, background 0.3s;
+  min-width: 80px;
+  max-width: 140px;
+  flex: 1 1 0;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.flow-box.active {
+  border-color: #5ba4e6;
+  box-shadow: 0 0 15px rgba(91, 164, 230, 0.4);
+  background: rgba(91, 164, 230, 0.1);
+}
+
+/* Arrow pointing down from the detail-source box */
+.flow-box.detail-source::after {
+  content: '';
+  position: absolute;
+  bottom: -22px;
+  left: 50%;
+  margin-left: -1px;
+  width: 2px;
+  height: 18px;
+  background: #e6985b;
+}
+
+.flow-box.detail-source::before {
+  content: '';
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  margin-left: -5px;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 8px solid #e6985b;
+}
+
+.flow-box-execution {
+  border-color: rgba(230, 152, 91, 0.5);
+}
+
+.flow-box-execution.active {
+  border-color: #e6985b;
+  box-shadow: 0 0 15px rgba(230, 152, 91, 0.4);
+  background: rgba(230, 152, 91, 0.1);
+}
+
+.flow-box-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.flow-box-label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.flow-arrow {
+  font-size: 1.25rem;
+  opacity: 0.3;
+  transition: opacity 0.3s, color 0.3s;
+  flex-shrink: 0;
+}
+
+.flow-arrow.active {
+  opacity: 1;
+  color: #5ba4e6;
+}
+
+/* Detail Panel */
+.flow-detail-wrapper {
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+  display: none;
+}
+
+.flow-detail-wrapper.visible {
+  display: block;
+}
+
+.flow-detail-panel {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  text-align: center;
+  font-size: 1rem;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Mono', monospace;
+  background: rgba(0, 0, 0, 0.2);
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+/* SQL Injection highlighting */
+.sql-injection {
+  background: rgba(230, 91, 91, 0.3);
+  color: #ff6b6b;
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+.sql-comment {
+  color: #888;
+  font-style: italic;
+}
+
+/* Step Controller */
+.flow-step-controller {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.flow-step-info {
+  flex: 1;
+}
+
+.flow-step-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+
+.flow-step-description {
+  font-size: 0.9rem;
+  opacity: 0.85;
+  line-height: 1.5;
+}
+
+.flow-next-btn {
+  background: transparent;
+  border: 2px solid currentColor;
+  color: inherit;
+  padding: 0.6rem 1.25rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  white-space: nowrap;
+}
+
+.flow-next-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+/* Result Display */
+.flow-result {
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.flow-result-title {
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+}
+
+.flow-result-title.danger {
+  color: #ff6b6b;
+}
+
+.flow-result-title.safe {
+  color: #6bff8a;
+}
+
+.flow-result-content {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.flow-result-content p {
+  margin: 0 0 0.5rem 0;
+}
+
+.flow-result-content p:last-child {
+  margin-bottom: 0;
+}
+</style>
+
+<div class="flow-visualizer-wrapper">
+  <!-- Mobile Fallback -->
+  <div class="flow-mobile-fallback">
+    <span class="flow-mobile-emoji">:O</span>
+    <p>We've noticed your screen is <strong>TOO SMALL</strong> for this content. Sorry!</p>
+  </div>
+
+  <!-- Desktop Interactive Flow -->
+  <div class="flow-visualizer" id="{{ $id }}" data-type="sql">
+    <!-- Controls -->
+    <div class="flow-controls">
+      <div class="flow-control-row">
+        <label for="{{ $id }}-dropdown">Payload Type:</label>
+        <select id="{{ $id }}-dropdown" class="flow-dropdown">
+          <option value="benign" data-payload="{{ $benignPayload }}">Benign</option>
+          <option value="malicious" data-payload="{{ $maliciousPayload }}">Malicious</option>
+        </select>
+      </div>
+      <div class="flow-control-row">
+        <label>Current Payload:</label>
+        <div class="flow-payload-display" id="{{ $id }}-payload-display">{{ $benignPayload }}</div>
+      </div>
+      <button class="flow-submit-btn" id="{{ $id }}-submit">Submit Payload</button>
+    </div>
+
+    <!-- Flow Diagram - Compact boxes only -->
+    <div class="flow-diagram" id="{{ $id }}-diagram">
+      <div class="flow-box" data-step="browser" id="{{ $id }}-browser">
+        <div class="flow-box-icon">🌐</div>
+        <div class="flow-box-label">Browser</div>
+      </div>
+      
+      <div class="flow-arrow" data-step="arrow1" id="{{ $id }}-arrow1">→</div>
+      
+      <div class="flow-box" data-step="server" id="{{ $id }}-server">
+        <div class="flow-box-icon">🖥️</div>
+        <div class="flow-box-label">Server</div>
+      </div>
+      
+      <div class="flow-arrow" data-step="arrow2" id="{{ $id }}-arrow2">→</div>
+      
+      <div class="flow-box flow-box-execution" data-step="execution" id="{{ $id }}-execution">
+        <div class="flow-box-icon">⚡</div>
+        <div class="flow-box-label">SQL Query</div>
+      </div>
+      
+      <div class="flow-arrow" data-step="arrow3" id="{{ $id }}-arrow3">→</div>
+      
+      <div class="flow-box" data-step="database" id="{{ $id }}-database">
+        <div class="flow-box-icon">🗄️</div>
+        <div class="flow-box-label">Database</div>
+      </div>
+    </div>
+
+    <!-- Detail Panel -->
+    <div class="flow-detail-wrapper" id="{{ $id }}-detail-wrapper">
+      <div class="flow-detail-panel" id="{{ $id }}-detail-panel"></div>
+    </div>
+
+    <!-- Step Controller -->
+    <div class="flow-step-controller" id="{{ $id }}-controller" style="display: none;">
+      <div class="flow-step-info">
+        <div class="flow-step-title" id="{{ $id }}-step-title">Step 1: Send Payload</div>
+        <div class="flow-step-description" id="{{ $id }}-step-desc">Click to begin the flow...</div>
+      </div>
+      <button class="flow-next-btn" id="{{ $id }}-next">Next Step →</button>
+    </div>
+
+    <!-- Result Display -->
+    <div class="flow-result" id="{{ $id }}-result" style="display: none;">
+      <div class="flow-result-title" id="{{ $id }}-result-title"></div>
+      <div class="flow-result-content" id="{{ $id }}-result-content"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  const id = '{{ $id }}';
+  const container = document.getElementById(id);
+  if (!container) return;
+
+  const dropdown = document.getElementById(`${id}-dropdown`);
+  const payloadDisplay = document.getElementById(`${id}-payload-display`);
+  const submitBtn = document.getElementById(`${id}-submit`);
+  const controller = document.getElementById(`${id}-controller`);
+  const nextBtn = document.getElementById(`${id}-next`);
+  const stepTitle = document.getElementById(`${id}-step-title`);
+  const stepDesc = document.getElementById(`${id}-step-desc`);
+  const resultDiv = document.getElementById(`${id}-result`);
+  const resultTitle = document.getElementById(`${id}-result-title`);
+  const resultContent = document.getElementById(`${id}-result-content`);
+  
+  const detailWrapper = document.getElementById(`${id}-detail-wrapper`);
+  const detailPanel = document.getElementById(`${id}-detail-panel`);
+
+  const boxes = {
+    browser: document.getElementById(`${id}-browser`),
+    server: document.getElementById(`${id}-server`),
+    execution: document.getElementById(`${id}-execution`),
+    database: document.getElementById(`${id}-database`),
+    arrow1: document.getElementById(`${id}-arrow1`),
+    arrow2: document.getElementById(`${id}-arrow2`),
+    arrow3: document.getElementById(`${id}-arrow3`)
+  };
+
+  let currentStep = 0;
+  let payload = '{{ $benignPayload }}';
+  let isMalicious = false;
+
+  function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  function getSteps() {
+    if (isMalicious) {
+      return [
+        {
+          title: "Step 1: Attacker Enters Malicious Input",
+          description: "Instead of a normal username, the attacker types: <code>' OR 1=1 --</code><br><br>This isn't just text—it's crafted SQL code designed to break out of the query.",
+          highlight: ["browser"],
+          detailSource: "browser",
+          detail: `Input: <span class="sql-injection">' OR 1=1 --</span>`
+        },
+        {
+          title: "Step 2: Browser Sends the Payload",
+          description: "The browser doesn't know or care that this is malicious. It just sends the data to the server as a normal form submission.",
+          highlight: ["browser", "arrow1"],
+          detailSource: "browser",
+          detail: `POST /login → username=<span class="sql-injection">' OR 1=1 --</span>`
+        },
+        {
+          title: "Step 3: Server Receives the Payload",
+          description: "The server blindly trusts the input and stores it in a variable. It has no idea it just accepted SQL code disguised as a username.",
+          highlight: ["server"],
+          detailSource: "server",
+          detail: `$username = "<span class="sql-injection">' OR 1=1 --</span>"`
+        },
+        {
+          title: "Step 4: The Dangerous Query is Built",
+          description: "Here's where it breaks. The server concatenates the input directly into SQL:<br><br>• The <code>'</code> closes the username string early<br>• <code>OR 1=1</code> makes the WHERE clause always true<br>• <code>--</code> comments out the rest, ignoring the trailing quote<br><br><strong>Note:</strong> Using <code>\"</code> wouldn't work here because SQL uses single quotes <code>'</code> for strings!",
+          highlight: ["server", "arrow2", "execution"],
+          detailSource: "execution",
+          detail: `SELECT * FROM users WHERE username = '<span class="sql-injection">' OR 1=1 <span class="sql-comment">--</span></span>'`
+        },
+        {
+          title: "Step 5: Database Executes the Poisoned Query",
+          description: "The database sees:<br><code>WHERE username = '' OR 1=1</code><br><br>Since <code>1=1</code> is ALWAYS true, this returns <strong>every single row</strong> in the users table. The attacker just bypassed authentication entirely.",
+          highlight: ["execution", "arrow3", "database"],
+          detailSource: "database",
+          detail: `<span style="color: #ff6b6b;">⚠️ Returns ALL users (authentication bypassed!)</span>`
+        }
+      ];
+    } else {
+      return [
+        {
+          title: "Step 1: User Enters Username",
+          description: "A legitimate user types their username into the login form. Nothing suspicious here.",
+          highlight: ["browser"],
+          detailSource: "browser",
+          detail: `Input: "${escapeHtml(payload)}"`
+        },
+        {
+          title: "Step 2: Browser Sends Request",
+          description: "The browser sends an HTTP POST request with the username as form data.",
+          highlight: ["browser", "arrow1"],
+          detailSource: "browser",
+          detail: `POST /login → username=${escapeHtml(payload)}`
+        },
+        {
+          title: "Step 3: Server Receives Data",
+          description: "The server receives the input and stores it in a variable. So far, so good.",
+          highlight: ["server"],
+          detailSource: "server",
+          detail: `$username = "${escapeHtml(payload)}"`
+        },
+        {
+          title: "Step 4: Query is Constructed",
+          description: "The server builds an SQL query by inserting the username. With normal input, this works fine—the query searches for exactly the user named \"admin\".",
+          highlight: ["server", "arrow2", "execution"],
+          detailSource: "execution",
+          detail: `SELECT * FROM users WHERE username = '${escapeHtml(payload)}'`
+        },
+        {
+          title: "Step 5: Database Executes Query",
+          description: "The database runs the query and returns the matching user (if they exist). This is the expected, safe behavior.",
+          highlight: ["execution", "arrow3", "database"],
+          detailSource: "database",
+          detail: `<span style="color: #6bff8a;">✓ Returns user "${escapeHtml(payload)}" (if exists)</span>`
+        }
+      ];
+    }
+  }
+
+  function clearHighlights() {
+    Object.values(boxes).forEach(box => {
+      box.classList.remove('active');
+      box.classList.remove('detail-source');
+    });
+    detailPanel.innerHTML = '';
+  }
+
+  function setHighlights(elements, detailSource, detailContent) {
+    clearHighlights();
+    elements.forEach(el => {
+      if (boxes[el]) boxes[el].classList.add('active');
+    });
+    
+    if (detailSource && boxes[detailSource]) {
+      boxes[detailSource].classList.add('detail-source');
+    }
+    
+    if (detailContent) {
+      detailPanel.innerHTML = detailContent;
+    }
+  }
+
+  function showResult() {
+    detailWrapper.classList.remove('visible');
+    resultDiv.style.display = 'block';
+    if (isMalicious) {
+      resultTitle.textContent = '🚨 SQL Injection Successful!';
+      resultTitle.className = 'flow-result-title danger';
+      resultContent.innerHTML = `
+        <p>The attacker bypassed authentication completely! The query returned <strong>all users</strong> instead of checking for a specific one.</p>
+        <p><strong>Why it worked:</strong></p>
+        <ul style="margin: 0.5rem 0; padding-left: 1.5rem;">
+          <li>The <code>'</code> closed the string literal early</li>
+          <li><code>OR 1=1</code> made the condition always true</li>
+          <li><code>--</code> commented out the rest of the query</li>
+        </ul>
+        <p><strong>Why <code>"</code> wouldn't work:</strong> SQL uses single quotes for strings. Double quotes are for identifiers (column names), so <code>" OR 1=1 --</code> would just be treated as a weird username.</p>
+      `;
+    } else {
+      resultTitle.textContent = '✅ Normal Query Executed';
+      resultTitle.className = 'flow-result-title safe';
+      resultContent.innerHTML = `
+        <p>The query executed normally, searching for a user named "<strong>${escapeHtml(payload)}</strong>".</p>
+        <p>This is expected behavior. But notice—the code is still vulnerable! It only worked safely because the input didn't contain SQL metacharacters.</p>
+      `;
+    }
+    nextBtn.textContent = 'Reset ↺';
+  }
+
+  function reset() {
+    currentStep = 0;
+    clearHighlights();
+    controller.style.display = 'none';
+    resultDiv.style.display = 'none';
+    detailWrapper.classList.remove('visible');
+    submitBtn.disabled = false;
+    nextBtn.textContent = 'Next Step →';
+  }
+
+  function runStep() {
+    const steps = getSteps();
+    
+    if (currentStep >= steps.length) {
+      showResult();
+      return;
+    }
+
+    const step = steps[currentStep];
+    stepTitle.textContent = step.title;
+    stepDesc.innerHTML = step.description;
+    
+    detailWrapper.classList.add('visible');
+    setHighlights(step.highlight, step.detailSource, step.detail);
+  }
+
+  // Dropdown change
+  dropdown.addEventListener('change', function() {
+    const selected = this.options[this.selectedIndex];
+    payload = selected.dataset.payload;
+    payloadDisplay.textContent = payload;
+    isMalicious = this.value === 'malicious';
+    reset();
+  });
+
+  // Submit button
+  submitBtn.addEventListener('click', function() {
+    isMalicious = dropdown.value === 'malicious';
+    submitBtn.disabled = true;
+    controller.style.display = 'flex';
+    detailWrapper.classList.add('visible');
+    currentStep = 0;
+    runStep();
+  });
+
+  // Next step button
+  nextBtn.addEventListener('click', function() {
+    const steps = getSteps();
+    if (currentStep >= steps.length) {
+      reset();
+      return;
+    }
+    currentStep++;
+    runStep();
+  });
+})();
+</script>
