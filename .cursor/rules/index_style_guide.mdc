@@ -1,7 +1,7 @@
 ---
-description: when writing a new blogpost
-alwaysApply: false
+alwaysApply: true
 ---
+
 # Core Writing Style
 
 The style of [`content/raycast-its-hidden-power.md`](mdc:content/raycast-its-hidden-power.md) is one which should be adopted for all content to maintain consistency and a strong personal brand. Key characteristics include:
@@ -11,11 +11,10 @@ The style of [`content/raycast-its-hidden-power.md`](mdc:content/raycast-its-hid
 - Conversational: Talks like you’re speaking to a friend, not writing an essay.
 - Learning-focused: Assume the reader wants to learn something new.
 - Linked Ideas: Connect concepts together to build a bigger picture.
-- Link to other posts: Reference other articles/posts for deeper dives if possible or relevant, try to use internal links when possible (other posts from isaaclins). 
+- Link to other posts: Reference other articles/posts for deeper dives if possible or relevant, try to use internal links when possible (other posts from isaaclins).
 - Humorous and Sarcastic: Use jokes, memes, and sarcasm liberally.
 - Analogies & Pop Culture: Explain things using relatable, sometimes absurd analogies.
 - Call to Action: Tell the reader/viewer what to do, often in a “stop wasting time” tone.
 - Break the Fourth Wall: Talk directly to the reader (“You’re still here? Go build something.”)$
-
 
 Adhering to this style ensures a cohesive voice throughout the website.

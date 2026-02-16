@@ -1,11 +1,11 @@
 ---
-description: 
-globs: 
-alwaysApply: true
+description: when writing a new blogpost
+alwaysApply: false
 ---
+
 # Visual Content Mandate: See, Don't Read
 
 The primary audience for this content prefers visual explanations over dense text. To cater to this preference, please adhere to the following guidelines:
 
- **Prioritize Mermaid Diagrams:** Whenever explaining a process, workflow, architecture, or any concept that can be visualized,MULTIPLE Mermaid diagrams are mandatory.
+**Prioritize Mermaid Diagrams:** Whenever explaining a process, workflow, architecture, or any concept that can be visualized,MULTIPLE Mermaid diagrams are mandatory.
 This ensures our content is engaging and easy to digest for our visually-oriented audience.

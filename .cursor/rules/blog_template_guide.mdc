@@ -1,7 +1,6 @@
 ---
-description: 
-globs: 
-alwaysApply: true
+description: when writing a new blogpost
+alwaysApply: false
 ---
 
 # Blog Post Creation: Using the Template
@@ -12,13 +11,12 @@ The file [`content/blog/_TEMPLATE.md`](mdc:content/blog/_TEMPLATE.md) is the off
 
 ### Key Features
 
--   **Front Matter:** The template includes essential front matter fields like `title`, `date`, `draft`, and `tags`. New posts should populate these fields accurately.
--   **Markdown & Mermaid Examples:** It serves as a quick reference for various Mermaid and Markdown elements (headings, lists, links, code blocks, etc. / diagrams, tables, etc.).
--   **Consistency:** Using this template for every new blog post under the `content/blog/` directory is crucial for maintaining a uniform look and feel across the blog.
-
-
+- **Front Matter:** The template includes essential front matter fields like `title`, `date`, `draft`, and `tags`. New posts should populate these fields accurately.
+- **Markdown & Mermaid Examples:** It serves as a quick reference for various Mermaid and Markdown elements (headings, lists, links, code blocks, etc. / diagrams, tables, etc.).
+- **Consistency:** Using this template for every new blog post under the `content/blog/` directory is crucial for maintaining a uniform look and feel across the blog.
 
 To create a new blog post:
+
 1.  Duplicate [`content/blog/_TEMPLATE.md`](mdc:content/blog/_TEMPLATE.md).
 2.  Rename the duplicated file appropriately (e.g., `my-new-post.md`).
 3.  Update the front matter.

@@ -1,8 +1,8 @@
 ---
-description: 
-globs: 
-alwaysApply: true
+description: when writing a new blogpost with HOW something is made
+alwaysApply: false
 ---
+
 # Blog Post Location Rule
 
 When a new blog post is requested, the location depends on the type of post.
