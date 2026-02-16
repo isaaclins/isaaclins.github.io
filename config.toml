@@ -58,7 +58,7 @@ target = 'static/images'
     mermaid = true
   [params.theme_config]
     appearance        = "auto"
-    date_format       = "01/02/2006"
+    date_format       = "Jan 2, 2006"
     isListGroupByDate = true
     isShowFooter      = true
 
