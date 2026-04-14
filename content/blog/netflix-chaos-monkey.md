@@ -63,7 +63,7 @@ It's like being a boxer. You don't prepare for a championship fight by avoiding 
 Chaos Monkey isn't just smashing things randomly. It's methodical and sophisticated. Think of it like a drill sergeant making a surprise inspection of the barracks.
 
 1.  **The Roster (Configuration):** The sergeant is given a list of barracks to inspect. You tell Chaos Monkey which applications are in-bounds for testing and, crucially, when. (e.g., only during business hours, when your engineers are on deck).
-2.  **The Inspection (Scanning):** The sergeant walks the grounds to see which barracks are on the list. Chaos Monkey scans the system (using a tool like [Spinnaker](https://spinnaker.io/)) to find all the live servers for those applications.
+2.  **The Inspection (Scanning):** The sergeant walks the grounds to see which barracks are on the list. Chaos Monkey scans the system (using a tool like Spinnaker) to find all the live servers for those applications.
 3.  **The Point (Selection):** The sergeant randomly points at a soldier and says, "You! Drop and give me twenty!" Chaos Monkey randomly selects one server from the group.
 4.  **The Test (Termination):** The soldier has to perform. Chaos Monkey makes a call to the cloud provider (like AWS) and terminates that server instance. Instantly.
 
@@ -113,4 +113,4 @@ Stop waiting for the next fire. Light a match, and see how well your system hand
 
 - [Netflix Chaos Monkey](https://netflix.github.io/chaosmonkey/)
 - [Chaos Engineering](https://principlesofchaos.org/)
-- [Spinnaker](https://spinnaker.io/)
+- Spinnaker

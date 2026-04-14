@@ -293,7 +293,7 @@ It's perfect for timeboxing tasks or reminding yourself to take a break. It's si
 
 ### How to Install
 
-Horo is available on the [Mac App Store](https://apps.apple.com/us/app/horo-menu-bar-timer/id1438692231?mt=12).
+Horo is available on the Mac App Store.
 
 ### Alternatives
 
@@ -345,7 +345,7 @@ It's fast, powerful, and has all the features you'd expect: tabs, keyboard short
 
 ### How to Install
 
-You can get it from the [Mac App Store](https://apps.apple.com/us/app/nimble-commander/id948243168) or directly from the [developer's website](https://magnumbytes.com/).
+You can get it from the Mac App Store or directly from the [developer's website](https://magnumbytes.com/).
 
 ### Alternatives
 
@@ -393,7 +393,7 @@ This app replaces the ugly default macOS notch with something that looks like it
 
 ### How to Install
 
-MediaMate is available on the [Mac App Store](https://apps.apple.com/us/app/mediamate/id1594950333).
+MediaMate is available on the Mac App Store.
 
 ### Alternatives
 
