@@ -109,7 +109,8 @@ body[a="dark"] .resume a {
   gap: 1rem;
 }
 
-.highlight-inline {
+.highlight-inline,
+.resume-print-photo-frame {
   border: 1px solid currentColor;
   padding: 0.5rem 1rem;
   margin: 1rem 0;
@@ -117,6 +118,37 @@ body[a="dark"] .resume a {
   justify-content: space-between;
   align-items: center;
   font-size: 0.9rem;
+}
+
+.resume-print-photo-frame {
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+
+.resume-print-top {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.resume-print-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  text-align: right;
+}
+
+.resume-print-photo-frame img {
+  display: block;
+  max-width: 7.5rem;
+  max-height: 7.5rem;
+  object-fit: cover;
 }
 
 .download-section {
@@ -150,7 +182,8 @@ body[a="dark"] .resume a {
   .resume-contact { flex-direction: column; gap: 0.5rem; }
   .experience-header { flex-direction: column; gap: 0.15rem; }
   .two-column { grid-template-columns: 1fr; }
-  .highlight-inline { flex-direction: column; text-align: center; gap: 0.3rem; }
+  .highlight-inline,
+  .resume-print-photo-frame { flex-direction: column; text-align: center; gap: 0.3rem; }
 }
 
 /* ========== PRINT STYLES FOR 1-PAGE PDF ========== */
@@ -235,19 +268,33 @@ body[a="dark"] .resume a {
     font-size: 9pt;
     margin-bottom: 6pt;
   }
-  
-  /* FIX: Keep contact links horizontal */
-  .resume-contact {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-    gap: 15pt !important;
-    font-size: 8pt;
+
+  .resume-print-only {
+    display: block !important;
   }
-  
-  .resume-contact a {
-    display: inline !important;
+
+  .resume-print-top {
+    display: flex !important;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10pt;
+    margin-bottom: 8pt;
+  }
+
+  .resume-print-links {
+    display: flex !important;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4pt;
+    font-size: 8pt;
+    text-align: right;
+  }
+
+  .resume-print-photo-frame img {
+    max-width: 26mm;
+    max-height: 26mm;
+    object-fit: cover;
   }
   
   /* Compact sections */
@@ -312,13 +359,24 @@ body[a="dark"] .resume a {
   }
   
   /* Compact highlight */
-  .highlight-inline {
-    padding: 4pt 8pt;
-    margin: 6pt 0;
+  .highlight-inline,
+  .resume-print-photo-frame {
     font-size: 8pt;
     border-width: 0.5pt;
     flex-direction: row !important;
+  }
+
+  .highlight-inline {
+    padding: 4pt 8pt;
+    margin: 6pt 0;
     justify-content: space-between !important;
+  }
+
+  .resume-print-photo-frame {
+    padding: 0 !important;
+    margin: 0 !important;
+    flex-shrink: 0;
+    justify-content: center !important;
   }
   
   /* Paragraphs */
@@ -371,14 +429,30 @@ body[a="dark"] .resume a {
   .print-only {
     display: none;
   }
+
+  .resume-print-only {
+    display: none !important;
+  }
 }
 </style>
 
 <article class="resume">
+  <div class="resume-print-only">
+    <div class="resume-print-top">
+      <div class="resume-print-photo-frame">
+        <img src="{{ "resume/resume-image.png" | relURL }}" alt="Isaac Lins" width="120" height="120" />
+      </div>
+      <div class="resume-print-links">
+        <a href="https://isaaclins.com">isaaclins.com</a>
+        <a href="https://github.com/isaaclins">github.com/isaaclins</a>
+        <a href="https://linkedin.com/in/isaac-lins-094612247">linkedin.com/in/isaac-lins-094612247</a>
+      </div>
+    </div>
+  </div>
   <header class="resume-header">
     <h1 class="resume-name">ISAAC LINS</h1>
     <p class="resume-tagline">Application Developer · Security Enthusiast · Switzerland</p>
-    <div class="resume-contact">
+    <div class="resume-contact no-print">
       <a href="https://isaaclins.com">isaaclins.com</a>
       <a href="https://github.com/isaaclins">github.com/isaaclins</a>
       <a href="https://linkedin.com/in/isaac-lins-094612247">linkedin.com/in/isaac-lins-094612247</a>
