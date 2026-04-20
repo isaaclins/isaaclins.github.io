@@ -5,6 +5,7 @@ draft = false
 type = "resume"
 layout = "single"
 description = "Resume of Isaac Lins - Application Developer at Swisscom, 1st Place IT Skills Battle 2025"
+outputs = ["HTML", "RSS"]
 +++
 
 {{< highlight title="1st Place — IT Skills Battle 2025 (Cybersecurity)" subtitle="National champion in competitive cybersecurity" >}}
@@ -48,5 +49,5 @@ Built backend for music app: Java APIs, MySQL databases, PI-Planning methodology
 {{< experience title="Informatiker EFZ (Application Developer)" company="Swisscom AG" date="Aug 2022 - now" >}}
 {{< /experience >}}
 
-{{< experience title="English C2 Proficiency" company="Cambridge" date="Jan 2026" link="/resume/certificates/cambridge-C2.pdf" >}}
+{{< experience title="English C2 Proficiency" company="Cambridge" date="Jan 2026" link="https://isaaclins.com/resume/certificates/cambridge-C2.pdf" >}}
 {{< /experience >}}

@@ -1,0 +1,283 @@
+{{ define "main" }}
+
+<style>
+.motivation-tool {
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+.motivation-tool-header {
+  margin-bottom: 1.5rem;
+}
+
+.motivation-tool-header h1 {
+  font-size: 1.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.motivation-tool-header .content {
+  font-size: 0.95rem;
+  opacity: 0.85;
+  line-height: 1.5;
+}
+
+.motivation-tool-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .motivation-tool-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.motivation-tool-sidebar {
+  border: 1px solid currentColor;
+  padding: 1rem 1.25rem;
+}
+
+.motivation-tool-sidebar h2 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0 0 1rem 0;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid currentColor;
+}
+
+.motivation-field {
+  margin-bottom: 1rem;
+}
+
+.motivation-field label {
+  display: block;
+  font-size: 0.8rem;
+  margin-bottom: 0.25rem;
+  opacity: 0.9;
+}
+
+.motivation-field input,
+.motivation-field textarea {
+  width: 100%;
+  box-sizing: border-box;
+  font: inherit;
+  padding: 0.4rem 0.5rem;
+  border: 1px solid currentColor;
+  background: transparent;
+  color: inherit;
+}
+
+.motivation-field textarea {
+  min-height: 4.5rem;
+  resize: vertical;
+}
+
+.motivation-tool-preview-wrap {
+  border: 1px solid currentColor;
+  padding: 1rem 1.25rem;
+  min-height: 12rem;
+}
+
+.motivation-tool-preview-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.75rem;
+  opacity: 0.7;
+}
+
+.motivation-tool-preview {
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.motivation-tool-actions {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 2px solid currentColor;
+  text-align: center;
+}
+
+.motivation-download-btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid currentColor;
+  font-family: monospace;
+  font-size: 1rem;
+  cursor: pointer;
+  background: transparent;
+  color: inherit;
+}
+
+.motivation-download-btn:hover {
+  transform: translateY(-2px);
+}
+
+.motivation-tool-hint {
+  font-size: 0.8rem;
+  margin-top: 0.75rem;
+  opacity: 0.7;
+}
+
+/* Letter typography inside preview */
+.motivation-letter {
+  font-family: ui-serif, Georgia, "Times New Roman", serif;
+}
+
+.motivation-letter-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+}
+
+.motivation-letter-sender,
+.motivation-letter-date {
+  white-space: pre-wrap;
+}
+
+.motivation-letter-date {
+  text-align: right;
+}
+
+.motivation-letter-recipient {
+  margin-bottom: 1.25rem;
+  white-space: pre-wrap;
+}
+
+.motivation-letter-subject {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.motivation-letter-body p {
+  margin: 0 0 0.85rem 0;
+}
+
+.motivation-letter-salutation {
+  margin-bottom: 0.85rem;
+}
+
+.motivation-letter-closing {
+  margin-top: 1.25rem;
+  margin-bottom: 0.35rem;
+}
+
+.motivation-letter-name {
+  margin-top: 0;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 18mm;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .motivation-tool {
+    max-width: none;
+  }
+
+  .motivation-tool-grid {
+    display: block;
+  }
+
+  .motivation-tool-preview-wrap {
+    border: none;
+    padding: 0;
+    min-height: 0;
+  }
+
+  .motivation-tool-preview {
+    font-size: 11pt;
+    line-height: 1.35;
+  }
+
+  .motivation-letter-meta {
+    margin-bottom: 16pt;
+  }
+}
+</style>
+
+<article class="motivation-tool">
+  <header class="motivation-tool-header no-print">
+    <h1>{{ .Title }}</h1>
+    <div class="content">{{ .Content }}</div>
+  </header>
+
+  <div class="motivation-tool-grid">
+    <div class="motivation-tool-sidebar no-print">
+      <form id="motivation-form" autocomplete="on">
+        <h2>Angaben</h2>
+
+        <div class="motivation-field">
+          <label for="mot-absender-name">Ihr Name</label>
+          <input type="text" id="mot-absender-name" name="absenderName" />
+        </div>
+        <div class="motivation-field">
+          <label for="mot-absender-strasse">Strasse, Nr.</label>
+          <input type="text" id="mot-absender-strasse" name="absenderStrasse" />
+        </div>
+        <div class="motivation-field">
+          <label for="mot-absender-ort">PLZ Ort</label>
+          <input type="text" id="mot-absender-ort" name="absenderOrt" />
+        </div>
+        <div class="motivation-field">
+          <label for="mot-empfaenger-firma">Firma / Organisation</label>
+          <input type="text" id="mot-empfaenger-firma" name="empfaengerFirma" />
+        </div>
+        <div class="motivation-field">
+          <label for="mot-empfaenger-adresse">Adresse Empfänger (optional, mehrzeilig)</label>
+          <textarea id="mot-empfaenger-adresse" name="empfaengerAdresse" rows="3"></textarea>
+        </div>
+        <div class="motivation-field">
+          <label for="mot-datum">Ort, Datum</label>
+          <input type="text" id="mot-datum" name="datum" placeholder="z. B. Zürich, 18. April 2026" />
+        </div>
+        <div class="motivation-field">
+          <label for="mot-stelle">Stellenbezeichnung</label>
+          <input type="text" id="mot-stelle" name="stelle" placeholder="z. B. Applikationsentwickler:in" />
+        </div>
+        <div class="motivation-field">
+          <label for="mot-anrede">Anrede</label>
+          <input type="text" id="mot-anrede" name="anrede" value="Sehr geehrte Damen und Herren" />
+        </div>
+        <div class="motivation-field">
+          <label for="mot-motivation">Motivation für diese Stelle</label>
+          <textarea id="mot-motivation" name="motivation" rows="5"></textarea>
+        </div>
+        <div class="motivation-field">
+          <label for="mot-bezug">Bezug zum Unternehmen</label>
+          <textarea id="mot-bezug" name="bezug" rows="4"></textarea>
+        </div>
+        <div class="motivation-field">
+          <label for="mot-erfahrung">Relevante Erfahrung und Kompetenzen</label>
+          <textarea id="mot-erfahrung" name="erfahrung" rows="5"></textarea>
+        </div>
+      </form>
+    </div>
+
+    <div class="motivation-tool-preview-wrap">
+      <div class="motivation-tool-preview-label no-print">Vorschau</div>
+      <div id="motivation-preview" class="motivation-tool-preview motivation-letter" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <div class="motivation-tool-actions no-print">
+    <button type="button" id="motivation-print-btn" class="motivation-download-btn">[ Download PDF ]</button>
+    <p class="motivation-tool-hint">Im Druckdialog «Als PDF speichern» wählen.</p>
+  </div>
+</article>
+
+<script src="{{ "js/motivationsschreiben.js" | relURL }}" defer></script>
+{{ end }}
