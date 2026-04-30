@@ -14,7 +14,7 @@ jobs:
       urls: ${{ steps.get_urls.outputs.urls }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
@@ -56,7 +56,7 @@ jobs:
       contents: write
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Prepare URLs for Lighthouse
         id: prepare_lighthouse_urls
