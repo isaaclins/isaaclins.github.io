@@ -10,7 +10,7 @@ outputs = ["HTML", "RSS"]
 
 {{< highlight title="1st Place — IT Skills Battle 2025 (Cybersecurity)" subtitle="National champion in competitive cybersecurity" >}}
 
-{{< section-title "Experience" >}}
+{{< section-title "Work Experience" >}}
 
 {{< experience title="Blue Team Security Analyst" company="Swisscom AG" date="Oct 2025 - Current" >}}
 Alert triage and incident response using SIEM, EDR, NDR, XDR, and SOAR platforms. Threat detection and analysis for over 50 Tenants.
@@ -38,11 +38,11 @@ Built backend for music app: Java APIs, MySQL databases, PI-Planning methodology
 
 {{< skill-row title1="Infrastructure" items1="Docker, Git, Linux/RHEL, CI/CD" title2="Security" items2="Defensive Security, CTF, Pentesting, Offensive Security" >}}
 
-{{< section-title "Projects" >}}
+{{< section-title "Personal Projects" >}}
 
-{{< project-row title1="YADRMS" desc1="Remote management system using Discord as C2 channel. Next.js frontend, Python backend, JWT auth." link1="https://github.com/isaaclins/YADRMS" title2="Home Server + LLM" desc2="Self-hosted server with Ollama LLM integration, file uploads, user management with JWT." link2="https://github.com/isaaclins/ollama-model-api" >}}
+{{< project-row title1="Restaurant Application" desc1="Scalable Restaurant application. Microservices system for online ordering which contains a customizable website, Kitchen Display System and a backend with SMTP control. " link1="https://github.com/isaaclins/restaurant-application" title2="Home Server + LLM" desc2="Self-hosted server with Ollama LLM integration, file uploads, user management with JWT." link2="https://github.com/isaaclins/ollama-model-api" >}}
 
-{{< project-row title1="PowerUserMail" desc1="Blazing fast, keyboard-first email client for macOS. Command palette, vim-like shortcuts, SwiftUI. Free Superhuman alternative." link1="https://github.com/isaaclins/powerusermail" title2="Psst" desc2="Fast, native Spotify client written in Rust. No Electron, cross-platform GUI. Contributor to open-source fork." link2="https://github.com/isaaclins/psst" >}}
+{{< project-row title1="PowerUserMail" desc1="Blazing fast, keyboard-first email client for macOS. Command palette, vim-like shortcuts, SwiftUI. Free Superhuman alternative." link1="https://github.com/isaaclins/powerusermail" title2="Spotiglass" desc2="Native macOS Spotify client in SwiftUI. OAuth PKCE, Spotify Web API, Web Playback SDK in WKWebView, Keychain-backed sessions." link2="https://github.com/isaaclins/spotiglass" >}}
 
 {{< section-title "Education & Certificates" >}}
 
