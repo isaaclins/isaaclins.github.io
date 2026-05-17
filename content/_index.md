@@ -31,7 +31,7 @@ Hi, I'm Isaac. I build applications and break things on purpose to learn how the
 
 - **Email:** [contact@isaaclins.com](mailto:contact@isaaclins.com)
 - **GitHub:** [github.com/isaaclins](https://github.com/isaaclins)
-- **LinkedIn:** [Isaac Lins](https://www.linkedin.com/in/isaac-lins-094612247/)
+- **LinkedIn:** [Isaac Lins](https://www.linkedin.com/in/isaaclinsdotcom/)
 - **Resume:** [View My Resume](/resume)
 
 If you're here, you know what you want.
