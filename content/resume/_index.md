@@ -20,7 +20,7 @@ Alert triage and incident response using SIEM, EDR, NDR, XDR, and SOAR platforms
 Enterprise application development. Massive system migrations (40+ machines RHEL7 to RHEL9, databases with 2M+ entries).
 {{< /experience >}}
 
-{{< experience title="Live Hacking Presenter" company="Swisscom AG" date="Aug 2023 – Jan 2024" >}}
+{{< experience title="Red Team Internal Hacking Presenter" company="Swisscom AG" date="Aug 2023 – Jan 2024" >}}
 Developed and presented educational live hacking demos (Phishing, RAT, Botnets) for Government & Enterprise audiences.
 {{< /experience >}}
 
