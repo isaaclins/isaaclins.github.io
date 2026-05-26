@@ -41,6 +41,10 @@ If a project saved you time, a coffee funds bugfixes, docs, and releases: [**buy
 - **LinkedIn:** [Isaac Lins](https://www.linkedin.com/in/isaaclinsdotcom/)
 - **Resume:** [View My Resume](/resume)
 
+## Support open-source work
+
+I ship macOS tools and write-ups in the open ([Spotiglass](https://github.com/isaaclins/spotiglass), [PowerUserMail](https://github.com/isaaclins/powerusermail), and more). If something saved you time, a coffee funds the next evening of fixes, CI, and docs — [buymeacoffee.com/isaaclins](https://buymeacoffee.com/isaaclins).
+
 If you're here, you know what you want.
 
 let's get to work.
