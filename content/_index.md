@@ -34,6 +34,10 @@ If a project saved you time, a coffee funds bugfixes, docs, and releases: [**buy
 - [**git commits**](https://cbea.ms/git-commit/)
 - [**User Inyerface**](https://userinyerface.com/index.html)
 
+## Support open source
+
+I ship macOS tools in the open ([Spotiglass](https://github.com/isaaclins/spotiglass), [PowerUserMail](https://github.com/isaaclins/powerusermail)). If something saved you time, [buy me a coffee](https://buymeacoffee.com/isaaclins) — it funds bugfixes, CI, and releases.
+
 ## Contact Me
 
 - **Email:** [contact@isaaclins.com](mailto:contact@isaaclins.com)
