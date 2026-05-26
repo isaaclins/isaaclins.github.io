@@ -35,4 +35,6 @@ None of that is a secret in the official app either. They just hide it behind ma
 
 Fork it, break it, build something meaner: [isaaclins/spotiglass](https://github.com/isaaclins/spotiglass). `docs/` tells you how to wire the Developer Dashboard client ID and the loopback redirect.
 
+If Spotiglass saves you from the official client, [buy me a coffee](https://buymeacoffee.com/isaaclins) — it keeps releases and docs moving.
+
 Go listen to something loud.
