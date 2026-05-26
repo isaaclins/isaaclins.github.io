@@ -27,6 +27,13 @@ Hi, I'm Isaac. I build applications and break things on purpose to learn how the
 - [**git commits**](https://cbea.ms/git-commit/)
 - [**User Inyerface**](https://userinyerface.com/index.html)
 
+## Open source I ship
+
+- [**Spotiglass**](https://github.com/isaaclins/spotiglass) — native macOS Spotify client (SwiftUI)
+- [**PowerUserMail**](https://github.com/isaaclins/powerusermail) — keyboard-first email for macOS
+
+If a project saved you time, a coffee funds fixes, docs, and releases: [buymeacoffee.com/isaaclins](https://buymeacoffee.com/isaaclins)
+
 ## Contact Me
 
 - **Email:** [contact@isaaclins.com](mailto:contact@isaaclins.com)
