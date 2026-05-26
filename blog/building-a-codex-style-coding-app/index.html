@@ -1,0 +1,49 @@
+<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Build a Codex-style AI coding app with tool calling, file edits, and an agent loop in about 200 lines."><meta name=keywords content="AI,Coding Agents,Dev"><meta name=author content="Isaac Lins"><link rel=canonical href=https://isaaclins.com/blog/building-a-codex-style-coding-app/><title>Building a Codex-Style Coding App | Isaac Lins</title><meta property="og:type" content="article"><meta property="og:url" content="https://isaaclins.com/blog/building-a-codex-style-coding-app/"><meta property="og:title" content="Building a Codex-Style Coding App"><meta property="og:description" content="Build a Codex-style AI coding app with tool calling, file edits, and an agent loop in about 200 lines."><meta property="og:site_name" content="Isaac Lins"><meta property="og:image" content="https://isaaclins.com/images/pfp.png"><meta property="article:published_time" content="2026-04-14T00:00:00Z"><meta property="article:modified_time" content="2026-04-14T00:00:00Z"><meta property="article:tag" content="AI"><meta property="article:tag" content="Coding Agents"><meta property="article:tag" content="Dev"><meta property="article:author" content="Isaac Lins"><meta name=twitter:card content="summary_large_image"><meta name=twitter:title content="Building a Codex-Style Coding App"><meta name=twitter:description content="Build a Codex-style AI coding app with tool calling, file edits, and an agent loop in about 200 lines."><meta name=twitter:image content="https://isaaclins.com/images/pfp.png"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Building a Codex-Style Coding App","description":"Build a Codex-style AI coding app with tool calling, file edits, and an agent loop in about 200 lines.","datePublished":"2026-04-14T00:00:00Z","dateModified":"2026-04-14T00:00:00Z","author":{"@type":"Person","name":"Isaac Lins","url":"https:\/\/isaaclins.com"},"publisher":{"@type":"Organization","name":"Isaac Lins","logo":{"@type":"ImageObject","url":"https:\/\/isaaclins.com\/images\/logo.png"}},"url":"https:\/\/isaaclins.com\/blog\/building-a-codex-style-coding-app\/","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/isaaclins.com\/blog\/building-a-codex-style-coding-app\/"},"keywords":["AI","Coding Agents","Dev"]}</script><link rel="shortcut icon" type=image/x-icon href=/favicon.ico><link rel=apple-touch-icon href=/apple-touch-icon.png><link rel=stylesheet href=/css/main.7939c593cbb93812a0d255f36b441bc1eb6a60da6b99693d2ce3149b7f58a55a4ace5688a066cd2d3d7b106582d995ad461242a1e13b6dce9c782e2db2c3d2ed.css integrity="sha512-eTnFk8u5OBKg0lXza0QbwetqYNprmWk9LOMUm39YpVpKzlaIoGbNLT17EGWC2ZWtRhJCoeE7bc6ceC4tssPS7Q=="><script src=https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js></script><script>mermaid.initialize({startOnLoad:!0,theme:"dark"})</script></head><body a=auto><main class=page-content aria-label=Content><div class=w><div class=breadcrumbs><div><a href=/>Home</a>
+/ <a href=https://isaaclins.com/blog/>Blog</a>
+/ <a href=https://isaaclins.com/blog/building-a-codex-style-coding-app/>Building a codex style coding app</a></div></div><a href=/></a><article><p class=post-meta><time datetime="2026-04-14 00:00:00 +0000 UTC">Apr 14, 2026</time></p><p class=post-tags>Tags:
+<a href=/tags/ai>AI</a>
+,
+<a href=/tags/coding-agents>Coding Agents</a>
+,
+<a href=/tags/dev>Dev</a></p><p class=post-complexity>Complexity:
+<a href=/complexity/medium>medium</a></p><h1>Building a Codex-Style Coding App</h1><p>AI coding assistants feel like black magic until you peek under the hood.</p><p>Then you realize the &ldquo;magic&rdquo; is mostly a loop:</p><ol><li>User asks for something.</li><li>Model asks for a tool.</li><li>Runtime executes tool.</li><li>Tool result goes back to model.</li><li>Repeat until done.</li></ol><p>Congrats. You now understand the core of modern coding agents.</p><p>This post is heavily inspired by Theo from t4.gg, specifically this video:
+<a href="https://www.youtube.com/watch?v=I82j7AzMU80">Building a Codex-Style Coding App (Theo)</a>.</p><p>This post is also inspired by Mihail Eric&rsquo;s write-up on building a functional coding agent in around 200 lines, and yes, the emperor really does have no clothes:
+<a href=https://www.mihaileric.com/The-Emperor-Has-No-Clothes/>The Emperor Has No Clothes: How to Code Claude Code in 200 Lines of Code</a>.</p><h2 id=the-core-loop-no-hype-version>The Core Loop (No Hype Version)</h2><p>You don&rsquo;t need a 400-slide architecture deck. You need one clean loop.</p><div class=mermaid>sequenceDiagram
+participant User as User
+participant Agent as LLM_Agent
+participant Runtime as Tool_Runtime
+participant Files as Local_Files
+User->>Agent: "Create hello.py"
+Agent->>Runtime: tool_call edit_file(path,new_str)
+Runtime->>Files: Write file
+Files-->>Runtime: Success
+Runtime-->>Agent: tool_result(status=ok)
+Agent-->>User: "Done. File created."</div><p>The model never directly edits your filesystem. It requests actions. Your runtime performs them. That&rsquo;s the safety boundary.</p><h2 id=three-tools-are-enough-to-start>Three Tools Are Enough to Start</h2><p>For an MVP, you only need:</p><ul><li><code>read_file</code>: lets the model inspect code before changing it.</li><li><code>list_files</code>: lets it navigate your project without guessing paths.</li><li><code>edit_file</code>: lets it create or patch files.</li></ul><p>Yes, production tools add shell, search, web, diffs, approvals, and guardrails. But these three get you surprisingly far before things get spicy.</p><h2 id=minimal-architecture>Minimal Architecture</h2><p>Here&rsquo;s the whole thing at a high level:</p><div class=mermaid>flowchart TD
+userInput[User_Input] --> convo[Conversation_History]
+convo --> llm[LLM_Call]
+llm --> parse[Parse_Tool_Invocations]
+parse -->|No tool call| answer[Return_Assistant_Response]
+parse -->|"Tool call(s)"| exec[Execute_Tool]
+exec --> result[Tool_Result_JSON]
+result --> convo</div><p>If you can implement this graph, you can build a Codex-style app.</p><h2 id=the-important-parts-you-cant-skip>The Important Parts You Can&rsquo;t Skip</h2><h3 id=1-tool-registry>1) Tool registry</h3><p>Map tool names to actual functions. Keep it boring and explicit.</p><h3 id=2-clear-tool-descriptions>2) Clear tool descriptions</h3><p>Your model chooses tools using the metadata you provide. Weak descriptions = confused model = cursed output.</p><h3 id=3-deterministic-tool-call-format>3) Deterministic tool call format</h3><p>Use strict JSON for tool args. Parse hard, fail loud, retry safely.</p><h3 id=4-conversation-state>4) Conversation state</h3><p>Every tool result should go back into the same message history. If you drop context, your agent gets amnesia and starts hallucinating paths.</p><h2 id=mvp-vs-real-world-agent>MVP vs Real-World Agent</h2><div class=mermaid>flowchart LR
+subgraph mvp[MVP_Agent]
+m1[read_file]
+m2[list_files]
+m3[edit_file]
+m4[single_loop]
+end
+subgraph prod[Production_Agent]
+p1[sandboxed_shell]
+p2[code_search]
+p3[approval_gates]
+p4[streaming_ui]
+p5[error_recovery]
+p6[context_summarization]
+p7[policy_enforcement]
+end</div><p>MVP gets you a demo.
+Production gets you reliability, safety, and fewer 3am incidents.</p><h2 id=common-mistakes-that-will-hurt-you>Common Mistakes (That Will Hurt You)</h2><ul><li>Letting <code>edit_file</code> do blind replacements without checking unique matches.</li><li>Allowing arbitrary shell commands before implementing approvals.</li><li>Forgetting path normalization and accidentally writing outside project root.</li><li>Returning vague tool errors (&ldquo;failed&rdquo;) instead of structured details.</li><li>Skipping request IDs, then suffering in logs when something loops forever.</li></ul><h2 id=a-practical-build-plan>A Practical Build Plan</h2><p>If you&rsquo;re building this today:</p><ol><li>Implement <code>read_file</code>, <code>list_files</code>, <code>edit_file</code>.</li><li>Add a strict tool invocation parser.</li><li>Implement the nested loop: call model -> execute tools -> append results -> repeat.</li><li>Add guardrails (path scope, max iterations, timeout).</li><li>Add UX sugar (streaming output, better errors, dry-run mode).</li></ol><p>Do not start with multi-agent orchestration. That&rsquo;s like installing a spoiler on a bike.</p><h2 id=why-this-matters>Why This Matters</h2><p>The big unlock is not &ldquo;AI writes code.&rdquo;
+The unlock is &ldquo;models can reliably operate tools inside a constrained runtime.&rdquo;</p><p>That turns an LLM from a chat box into an operator.</p><p>And once you get that, you stop treating coding agents like wizardry and start treating them like systems engineering.</p><h2 id=final-take>Final Take</h2><p>Building a Codex-style coding app is not easy, but the core is simple.
+Simple is good. Simple ships.</p><p>Start with the 200-line mental model, then harden it one guardrail at a time.
+Stop overcomplicating it. Go build the thing.</p><h2 id=credits>Credits</h2><ul><li>Major inspiration:
+<a href="https://www.youtube.com/watch?v=I82j7AzMU80">Theo at t4.gg - YouTube video</a></li><li>Original inspiration and technical walkthrough:
+<a href=https://www.mihaileric.com/The-Emperor-Has-No-Clothes/>The Emperor Has No Clothes: How to Code Claude Code in 200 Lines of Code</a></li></ul></article><hr><p>© 2026 Isaac Lins. All rights reserved.<br><a href=https://www.linkedin.com/in/isaaclinsdotcom/>LinkedIn</a> | <a href=https://github.com/isaaclins>GitHub</a> | <a href=mailto:contact@isaaclins.com>Mail</a> | <a href=https://buymeacoffee.com/isaaclins>Buy me a coffee</a></p></div></main></body></html>

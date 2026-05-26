@@ -1,0 +1,110 @@
+<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="A blog about tech, programming, and whatever interests me. Deep dives into software, tools, and the digital world."><meta name=keywords content="AI"><meta name=author content="Isaac Lins"><link rel=canonical href=https://isaaclins.com/blog/ai-deep-dive-explained/><title>AI is Just Spicy Autocomplete, And You're Falling For It | Isaac Lins</title><meta property="og:type" content="article"><meta property="og:url" content="https://isaaclins.com/blog/ai-deep-dive-explained/"><meta property="og:title" content="AI is Just Spicy Autocomplete, And You're Falling For It"><meta property="og:description" content="A blog about tech, programming, and whatever interests me. Deep dives into software, tools, and the digital world."><meta property="og:site_name" content="Isaac Lins"><meta property="og:image" content="https://isaaclins.com/images/pfp.png"><meta property="article:published_time" content="2025-06-16T00:00:00Z"><meta property="article:modified_time" content="2025-06-16T00:00:00Z"><meta property="article:tag" content="AI"><meta property="article:author" content="Isaac Lins"><meta name=twitter:card content="summary_large_image"><meta name=twitter:title content="AI is Just Spicy Autocomplete, And You're Falling For It"><meta name=twitter:description content="A blog about tech, programming, and whatever interests me. Deep dives into software, tools, and the digital world."><meta name=twitter:image content="https://isaaclins.com/images/pfp.png"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"AI is Just Spicy Autocomplete, And You\u0027re Falling For It","description":"A blog about tech, programming, and whatever interests me. Deep dives into software, tools, and the digital world.","datePublished":"2025-06-16T00:00:00Z","dateModified":"2025-06-16T00:00:00Z","author":{"@type":"Person","name":"Isaac Lins","url":"https:\/\/isaaclins.com"},"publisher":{"@type":"Organization","name":"Isaac Lins","logo":{"@type":"ImageObject","url":"https:\/\/isaaclins.com\/images\/logo.png"}},"url":"https:\/\/isaaclins.com\/blog\/ai-deep-dive-explained\/","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/isaaclins.com\/blog\/ai-deep-dive-explained\/"},"keywords":["AI"]}</script><link rel="shortcut icon" type=image/x-icon href=/favicon.ico><link rel=apple-touch-icon href=/apple-touch-icon.png><link rel=stylesheet href=/css/main.7939c593cbb93812a0d255f36b441bc1eb6a60da6b99693d2ce3149b7f58a55a4ace5688a066cd2d3d7b106582d995ad461242a1e13b6dce9c782e2db2c3d2ed.css integrity="sha512-eTnFk8u5OBKg0lXza0QbwetqYNprmWk9LOMUm39YpVpKzlaIoGbNLT17EGWC2ZWtRhJCoeE7bc6ceC4tssPS7Q=="><script src=https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js></script><script>mermaid.initialize({startOnLoad:!0,theme:"dark"})</script></head><body a=auto><main class=page-content aria-label=Content><div class=w><div class=breadcrumbs><div><a href=/>Home</a>
+/ <a href=https://isaaclins.com/blog/>Blog</a>
+/ <a href=https://isaaclins.com/blog/ai-deep-dive-explained/>Ai deep dive explained</a></div></div><a href=/></a><article><p class=post-meta><time datetime="2025-06-16 00:00:00 +0000 UTC">Jun 16, 2025</time></p><p class=post-tags>Tags:
+<a href=/tags/ai>AI</a></p><p class=post-complexity>Complexity:
+<a href=/complexity/hard>hard</a></p><h1>AI is Just Spicy Autocomplete, And You're Falling For It</h1><aside class=toc><nav id=TableOfContents><ul><li><a href=#what-the-hell-is-ai-really-the-simple-version>What the Hell is AI, Really? (The Simple Version)</a></li><li><a href=#how-it-thinks-the-toddler-brain-analogy>How It &ldquo;Thinks&rdquo; (The Toddler Brain Analogy)</a></li><li><a href=#the-magic-ingredients-embeddings-and-vectors>The Magic Ingredients: Embeddings and Vectors</a></li><li><a href=#the-real-game-changer-transformers>The Real Game-Changer: Transformers</a><ul><li><a href=#the-translation-team-encoder--decoder>The Translation Team: Encoder & Decoder</a></li><li><a href=#the-secret-sauce-self-attention-the-cocktail-party-problem>The Secret Sauce: Self-Attention (The Cocktail Party Problem)</a></li></ul></li><li><a href=#so-is-it-intelligent>So, is it &ldquo;Intelligent&rdquo;?</a></li><li><a href=#papers-i-found-helpful>Papers I found helpful</a></li></ul></nav></aside><blockquote><p>NOTE: TAKE THIS POST WITH A GRAIN OF SALT.</p></blockquote><p>You&rsquo;ve heard &ldquo;AI&rdquo; thrown around more than &ldquo;synergy&rdquo; in a corporate brainstorming session. Every startup is &ldquo;AI-powered&rdquo;, every app has an &ldquo;AI assistant&rdquo;, and your goddamn toaster is probably next. But if you ask most people what AI actually is, they&rsquo;ll either mumble something about Skynet or point to ChatGPT like it&rsquo;s some digital messiah.</p><p>It&rsquo;s not. It&rsquo;s spicy autocomplete. A hyper-advanced version of the thing that tries to finish your sentences in Google Search, and half the time it&rsquo;s hilariously wrong. You&rsquo;re being sold a magic black box, but it&rsquo;s just math. A shit-ton of math, but still just math.</p><p>This post is for you, the person who&rsquo;s tired of the buzzwords and the hand-waving. We&rsquo;re going to rip the lid off this thing and see the gears, wires, and probabilistic sludge inside. Buckle up.</p><h2 id=what-the-hell-is-ai-really-the-simple-version>What the Hell is AI, Really? (The Simple Version)</h2><p>At its core, modern AI, specifically the Large Language Models (LLMs) you interact with, is a prediction engine. Its entire job is to answer one question: <strong>&ldquo;Given this sequence of words, what&rsquo;s the most likely next word?&rdquo;</strong></p><p>That&rsquo;s it. That&rsquo;s the whole game.</p><p>Imagine you force-fed a toddler the entire internet. Every Wikipedia article, every Reddit comment, every deranged blog post, every line of code on GitHub. Now, you ask that toddler a question. It&rsquo;s not going to &ldquo;understand&rdquo; you. It has no concept of truth, or feelings, or the real world. It&rsquo;s just going to regurgitate a sequence of words that statistically resembles the patterns it saw in its training data.</p><p>Sometimes, the result is coherent, even brilliant. Other times, it confidently tells you that a horse has six legs and lays eggs. Because somewhere, in the dark corners of the internet it consumed, that pattern seemed plausible.</p><h2 id=how-it-thinks-the-toddler-brain-analogy>How It &ldquo;Thinks&rdquo; (The Toddler Brain Analogy)</h2><p>To do this prediction trick, AI uses something called a <strong>Neural Network</strong>. It&rsquo;s loosely, and I mean <em>very</em> loosely, inspired by the human brain. Think of it less as a brain and more as a gigantic, complicated light switch panel.</p><p>Here&rsquo;s a simplified view. You give it input (words), a bunch of internal &ldquo;neuron&rdquo; layers flicker on and off, and it produces an output (the next word).</p><div class=mermaid>graph TD
+subgraph Input Layer
+A[Word 1]
+B[Word 2]
+C[Word 3]
+end
+subgraph Hidden Layer 1
+H1_1((( neuron )))
+H1_2((( neuron )))
+H1_3((( neuron )))
+end
+subgraph Hidden Layer 2
+H2_1((( neuron )))
+H2_2((( neuron )))
+end
+subgraph Output Layer
+O[Next Word]
+end
+A --> H1_1;
+A --> H1_2;
+A --> H1_3;
+B --> H1_1;
+B --> H1_2;
+B --> H1_3;
+C --> H1_1;
+C --> H1_2;
+C --> H1_3;
+H1_1 --> H2_1;
+H1_1 --> H2_2;
+H1_2 --> H2_1;
+H1_2 --> H2_2;
+H1_3 --> H2_1;
+H1_3 --> H2_2;
+H2_1 --> O;
+H2_2 --> O;</div><p>Each connection in that mess has a &ldquo;weight&rdquo;. A number that determines how much influence one neuron has on the next. The &ldquo;learning&rdquo; process is just a brute-force method of adjusting these trillions of weights until the network gets good at predicting the next word in a sentence. It&rsquo;s less &ldquo;intelligence&rdquo; and more &ldquo;tuning a ridiculously complex instrument.&rdquo;</p><h2 id=the-magic-ingredients-embeddings-and-vectors>The Magic Ingredients: Embeddings and Vectors</h2><p>Okay, but computers don&rsquo;t understand words. They understand numbers. So how does, for example, the concept of a &ldquo;king&rdquo; become something a neural network can process?</p><p>Through a process called <strong>embedding</strong>. Every word, phrase, or token is mapped to a giant list of numbers called a <strong>vector</strong>. This isn&rsquo;t just a random assignment; the mapping is done in a way that captures semantic meaning.</p><blockquote><p>note: semantic meaning means the meaning of the word in the context of the sentence.</p><blockquote><p>For example: &ldquo;baby&rdquo; is a word that refers to a very young child, so if I say &ldquo;My baby is hungry&rdquo;, the word &ldquo;baby&rdquo; has a semantic meaning of a young child. but if I say &ldquo;I have a baby cat&rdquo;, the word &ldquo;baby&rdquo; has a semantic meaning of a young cat, depending on the context.</p></blockquote></blockquote><p>Words with similar meanings will have similar vectors. They&rsquo;ll be &ldquo;close&rdquo; to each other in this high-dimensional vector space.</p><div class=mermaid>graph TD
+subgraph Text World
+T1["The quick brown fox"]
+end
+subgraph Embedding Model
+E{"Embedding Model (e.g., BERT)"}
+end
+subgraph Vector Space
+V1["[0.1, -0.4, 0.8, ...]"]
+V2["[0.12, -0.39, 0.78, ...]"]
+V3["[0.9, 0.2, -0.1, ...]"]
+V4["[0.88, 0.22, -0.15, ...]"]
+end
+T1 --> E;
+E --> V1 & V2 & V3 & V4;
+subgraph Similarity
+S1("V(quick) ≈ V(fast)")
+S2("V(king) - V(man) + V(woman) ≈ V(queen)")
+end
+V1 -- "quick" --> S1
+V2 -- "brown" --> S1
+V3 -- "fox" --> S2</div><p>This is the entire basis for &ldquo;semantic search&rdquo; and RAG (Retrieval-Augmented Generation). You turn your documents into vectors, store them in a <strong>vector database</strong>, and when a query comes in, you embed the query and find the most similar vectors in your database. It&rsquo;s just finding the closest points on a multidimensional graph. No &ldquo;understanding&rdquo; required.</p><h2 id=the-real-game-changer-transformers>The Real Game-Changer: Transformers</h2><p>The breakthrough that led to the AI you see today wasn&rsquo;t just about making bigger neural networks. It was a new design called the <strong>Transformer</strong>. The geeks who wrote the paper called it &ldquo;Attention Is All You Need,&rdquo; which is a ballsy title, but they weren&rsquo;t wrong.</p><p>Before Transformers, models read text like you&rsquo;d read a book: one word at a time, from left to right. This was slow as hell and they&rsquo;d often forget the beginning of a long sentence by the time they reached the end. Sound familiar?</p><p>Transformers changed the game by processing <strong>all words in a sentence at once</strong>. The secret sauce is a mechanism called <strong>Self-Attention</strong>. It&rsquo;s how the model figures out which words are most important to &ldquo;pay attention to&rdquo; for understanding the context.</p><p>When it sees the sentence, &ldquo;The cat didn&rsquo;t cross the street because <strong>it</strong> was tired,&rdquo; self-attention helps the model know that &ldquo;<strong>it</strong>&rdquo; refers to the <strong>cat</strong>, not the street. A small feat for you, a giant leap for machine-kind.</p><h3 id=the-translation-team-encoder--decoder>The Translation Team: Encoder & Decoder</h3><p>Think of a Transformer as a two-part team for translating ideas.</p><ol><li><p><strong>The Encoder (The Reader):</strong> Its job is to read the input sentence (&ldquo;The cat sat&rdquo;) and fully digest it. It doesn&rsquo;t just read the words; it builds a rich, contextual understanding of what the sentence <em>means</em>. It&rsquo;s like reading a phrase and getting the &ldquo;vibe&rdquo; or &ldquo;gist&rdquo; of it. This &ldquo;gist&rdquo; is a set of numbers packed with context.</p></li><li><p><strong>The Decoder (The Writer):</strong> Its job is to take that &ldquo;gist&rdquo; from the Encoder and start writing the output, one word at a time. To decide on the next word, it looks at the Encoder&rsquo;s gist and all the words it has already written.</p></li></ol><p>This structure is why these models are so good at not just predicting the next word, but also at tasks like translation and summarization.</p><p>Let&rsquo;s visualize this simplified flow. Don&rsquo;t worry about the gory details, just get the concept.</p><div class=mermaid>graph TD
+subgraph "Transformer Model"
+direction LR
+Input["Input Text<br>'The cat sat'"]
+subgraph Encoder
+E["Reads & Understands<br>(Creates a contextual 'gist')"]
+end
+subgraph Decoder
+D["Writes & Generates<br>(Uses 'gist' to predict next word)"]
+end
+Output["Output Text<br>'on the mat'"]
+Input --> E --> D --> Output
+end</div><h3 id=the-secret-sauce-self-attention-the-cocktail-party-problem>The Secret Sauce: Self-Attention (The Cocktail Party Problem)</h3><p>Okay, so how does this &ldquo;attention&rdquo; thing actually work? How does the model know which words are important?</p><p>Imagine you&rsquo;re at a loud cocktail party. You&rsquo;re trying to have a conversation. To make sense of anything, your brain is constantly doing three things:</p><ol><li>Deciding what you want to focus on (your question).</li><li>Scanning the room to see who is talking about that topic.</li><li>Listening to what those specific people are saying, while tuning out the rest.</li></ol><p>Self-Attention does the same thing, but with words in a sentence. For every single word, it runs this &ldquo;cocktail party&rdquo; calculation to build context. To do this, it creates three pieces of information for each word: <strong>Query</strong>, <strong>Key</strong>, and <strong>Value</strong>.</p><ul><li><strong>Query (Q):</strong> This is your internal question. For the word it&rsquo;s currently processing, the Query is like asking, &ldquo;What information do I need to understand my own role in this sentence?&rdquo;</li><li><strong>Key (K):</strong> This is every other word&rsquo;s &ldquo;topic.&rdquo; It&rsquo;s like a label that each word holds up, saying, &ldquo;Here&rsquo;s the kind of information I have!&rdquo;</li><li><strong>Value (V):</strong> This is the actual meaning or substance of that word. It&rsquo;s what the word is actually &ldquo;saying.&rdquo;</li></ul><p>The process is a three-step dance. Let&rsquo;s use our sentence: <code>"the tired cat"</code>. We&rsquo;re trying to figure out the context for the word <code>"tired"</code>.</p><p><strong>Step 1: The &lsquo;Query&rsquo; Meets the &lsquo;Keys&rsquo;</strong></p><p>First, the model&rsquo;s <strong>Query</strong> for <code>"tired"</code> goes around and checks the <strong>Key</strong> of every other word (including itself). It&rsquo;s asking, &ldquo;How relevant are you to me?&rdquo; It does this with a quick mathematical calculation (a dot product, for you nerds) that spits out a <strong>score</strong>. A high score means high relevance.</p><div class=mermaid>graph TD
+subgraph "Step 1: Scoring Relevance"
+Q_tired("Query from 'tired'<br>'I'm an adjective, who am I describing?'")
+K_the("Key from 'the'<br>'I'm a determiner.'")
+K_tired("Key from 'tired'<br>'I'm a state of being.'")
+K_cat("Key from 'cat'<br>'I'm a noun, an animal.'")
+Score1["Score: 10<br>(not very relevant)"]
+Score2["Score: 85<br>(very relevant)"]
+Score3["Score: 92<br>(super relevant!)"]
+Q_tired -->|"dot product"| K_the --> Score1
+Q_tired -->|"dot product"| K_tired --> Score2
+Q_tired -->|"dot product"| K_cat --> Score3
+end</div><p>The model learns that <code>"cat"</code> is highly relevant to <code>"tired"</code>. Shocker, I know.</p><p><strong>Step 2: Get the Weights (Who to Listen To)</strong></p><p>The raw scores are messy. The model cleans them up by plugging them into a <strong>Softmax</strong> function. All this does is turn the scores into clean percentages that add up to 100%. These are the &ldquo;attention weights.&rdquo;</p><p>Now, <code>"tired"</code> knows exactly how much attention to pay to every other word. It knows to listen mostly to <code>"cat"</code> and itself, and pretty much ignore <code>"the"</code>.</p><div class=mermaid>graph TD
+subgraph "Step 2: Calculating Attention Weights"
+Scores["Raw Scores<br>[10, 85, 92]"]
+Softmax[Softmax Function]
+Weights["Attention Weights<br>the: 2%<br>tired: 48%<br>cat: 50%"]
+Scores --> Softmax --> Weights
+end</div><p><strong>Step 3: Create the Final Context (The Payoff)</strong></p><p>The final step is to create a new, context-rich representation for <code>"tired"</code>. It does this by taking the <strong>Value</strong> (the actual substance) of every word and multiplying it by its attention weight.</p><p>It takes 2% of the <code>"the"</code> Value, 48% of the <code>"tired"</code> Value, and 50% of the <code>"cat"</code> Value. It then sums them all up.</p><div class=mermaid>graph TD
+subgraph "Step 3: Creating a Context-Rich Word"
+direction LR
+subgraph "Weighted Values"
+V_the("Value('the')")
+V_tired("Value('tired')")
+V_cat("Value('cat')")
+W_the("2%")
+W_tired("48%")
+W_cat("50%")
+end
+Sum["SUM<br>(Weighted Values)"]
+Z_tired["New representation for 'tired'<br>(Now packed with context!)"]
+V_the -- "x" --> W_the
+V_tired -- "x" --> W_tired
+V_cat -- "x" --> W_cat
+W_the --> Sum
+W_tired --> Sum
+W_cat --> Sum
+Sum --> Z_tired
+end</div><p>The result is a new vector for <code>"tired"</code> that is now deeply aware of its relationship with <code>"cat"</code>. This happens for every single word, in parallel. And it happens in multiple &ldquo;heads,&rdquo; which is just doing this whole party trick several times with different Q, K, and V matrices to let the model focus on different types of relationships simultaneously. It&rsquo;s a ridiculously complex and computationally expensive way to build context, but it works.</p><p>So next time someone asks you what AI is, you can tell them:</p><blockquote><p>AI is just a fancy autocomplete.</p></blockquote><blockquote><p>Like when I ask you &ldquo;The sky is&mldr;&rdquo;, you say &ldquo;blue&rdquo;.</p></blockquote><h2 id=so-is-it-intelligent>So, is it &ldquo;Intelligent&rdquo;?</h2><p>No. Fuck no.</p><p>Have you even been reading this post?</p><p>An LLM is a pattern-matching machine of unimaginable scale. It has learned the statistical relationships between words in human language. It can generate text that is grammatically correct, contextually relevant, and sometimes even insightful.</p><p>But it doesn&rsquo;t <em>know</em> anything. It has no beliefs, no desires, no consciousness. It&rsquo;s a mirror reflecting the vast ocean of text it was trained on. When you ask it to be creative, it&rsquo;s just finding a new, statistically plausible path through the patterns it has memorized.</p><p>Stop worshipping the algorithm. It&rsquo;s a tool. A powerful one, for sure, but a tool nonetheless. It&rsquo;s a calculator for words. Use it, leverage it, but for the love of God, don&rsquo;t mistake it for a thinking being.</p><p>Now stop reading this and go build something useful with it.</p><h2 id=papers-i-found-helpful>Papers I found helpful</h2><ul><li><a href=https://jalammar.github.io/illustrated-transformer/>The Illustrated Transformer - jalammar</a></li></ul></article><hr><p>© 2026 Isaac Lins. All rights reserved.<br><a href=https://www.linkedin.com/in/isaaclinsdotcom/>LinkedIn</a> | <a href=https://github.com/isaaclins>GitHub</a> | <a href=mailto:contact@isaaclins.com>Mail</a> | <a href=https://buymeacoffee.com/isaaclins>Buy me a coffee</a></p></div></main></body></html>

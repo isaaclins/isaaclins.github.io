@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Security on Isaac Lins</title><link>https://isaaclins.com/tags/security/</link><description>Recent content in Security on Isaac Lins</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 11 Feb 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://isaaclins.com/tags/security/index.xml" rel="self" type="application/rss+xml"/><item><title>Notepad Can Run Code Now. No, Not Like That.</title><link>https://isaaclins.com/blog/notepad-markdown-rce/</link><pubDate>Wed, 11 Feb 2026 00:00:00 +0000</pubDate><guid>https://isaaclins.com/blog/notepad-markdown-rce/</guid><description>&lt;p&gt;Remember when Notepad was just&amp;hellip; Notepad?&lt;/p&gt;
+&lt;p&gt;A simple, lightweight, no-nonsense text editor. The one app on your Windows machine that you &lt;em&gt;knew&lt;/em&gt; couldn&amp;rsquo;t hurt you. No macros. No scripting engine. No plugins. Just plain text on a screen.&lt;/p&gt;
+&lt;p&gt;Well. Microsoft decided to change that.&lt;/p&gt;
+&lt;p&gt;And now Notepad can execute arbitrary code on your machine.&lt;/p&gt;
+&lt;p&gt;Let that sink in.&lt;/p&gt;
+&lt;h2 id="a-quick-history-lesson"&gt;A Quick History Lesson&lt;/h2&gt;
+&lt;p&gt;In 2024, Microsoft killed WordPad. Gone. Removed from Windows 11 24H2.&lt;sup id="fnref:1"&gt;&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref"&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;</description></item><item><title>Notepad++ Got Hijacked by State Hackers. Your Text Editor.</title><link>https://isaaclins.com/blog/notepad-plus-plus-hijack/</link><pubDate>Mon, 02 Feb 2026 00:00:00 +0000</pubDate><guid>https://isaaclins.com/blog/notepad-plus-plus-hijack/</guid><description>&lt;p&gt;Let that sink in for a second. &lt;code&gt;Notepad++&lt;/code&gt;, the &lt;code&gt;open-source text editor&lt;/code&gt; that&amp;rsquo;s been on every Windows dev&amp;rsquo;s machine since 2003, was &lt;code&gt;silently hijacked&lt;/code&gt; for six months.&lt;/p&gt;
+&lt;p&gt;They weren&amp;rsquo;t after military secrets or nuclear codes. They targeted the update mechanism of a &lt;strong&gt;text editor&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;If you&amp;rsquo;ve been running Notepad++ and clicked &amp;ldquo;yes&amp;rdquo; on an update prompt between June and December 2025, you might want to sit down for this one.&lt;/p&gt;</description></item><item><title>Cloudflare Took a Sick Day</title><link>https://isaaclins.com/blog/cloudflare-nov-18-2025-outage/</link><pubDate>Wed, 19 Nov 2025 00:00:00 +0000</pubDate><guid>https://isaaclins.com/blog/cloudflare-nov-18-2025-outage/</guid><description>&lt;p&gt;&lt;img src="https://isaaclins.com/images/redditpost-chatgpt-challenges.cloudflare.com-being-down.png" alt="r/chatgpt; what the heck is this -&amp;gt; image of challenges.cloudflare.com being down"&gt;&lt;/p&gt;
+&lt;p&gt;(&lt;a href="https://www.reddit.com/r/ChatGPT/comments/1p0a5ef/what_the_heck_is_this/"&gt;source&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;Cloudflare sneezed on November 18 and half the internet reached for the tissues. At &lt;strong&gt;11:48 UTC&lt;/strong&gt; they flagged an &amp;ldquo;internal service degradation&amp;rdquo; that spiraled into dashboard failures, busted API calls, and Zero Trust policies (the &amp;ldquo;never trust, always verify&amp;rdquo; gatekeeper Cloudflare uses) locking out legit users.&lt;sup id="fnref:1"&gt;&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref"&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;h3 id="the-play-by-play-utc"&gt;The play-by-play (UTC)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;11:48&lt;/strong&gt; - Incident declared; dashboards, APIs, and security services start flaking out.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;13:09&lt;/strong&gt; - Cloudflare disables &lt;a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/warp/"&gt;WARP&lt;/a&gt; in London to stem the bleeding, because nothing says &amp;ldquo;global network&amp;rdquo; like turning off the always-on device client that funnels traffic into their network.&lt;sup id="fnref1:1"&gt;&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref"&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;13:35&lt;/strong&gt; - Access and WARP begin crawling back, but application traffic is still tripping over itself.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;14:42&lt;/strong&gt; - Dashboard comes back, yet bot scores and Zero Trust checks are still drunk.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;14:57&lt;/strong&gt; - Fix deployed; engineers babysit the network like it&amp;rsquo;s a Windows 98 defrag window.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;19:28&lt;/strong&gt; - Final update: everything&amp;rsquo;s stable, nothing to see here, move along.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="timeline-chart"&gt;Timeline (chart)&lt;/h4&gt;
+&lt;div class="mermaid"&gt;
+ timeline
+ title Nov 18, 2025 Cloudflare Outage (UTC)
+ 11h48 : "Incident declared" : "Internal degradation announced"
+ 13h09 : "WARP cut in London" : "Zero Trust impact widens"
+ 13h35 : "Partial recovery" : "Access and WARP stabilize"
+ 14h42 : "Dashboards revived" : "Bots still tipsy"
+ 14h57 : "Fix shipped" : "Network under babysitting"
+ 19h28 : "All clear" : "Monitoring mode engaged"
+&lt;/div&gt; 
+&lt;h3 id="what-actually-hurt"&gt;What actually hurt&lt;/h3&gt;
+&lt;p&gt;Cloudflare&amp;rsquo;s post says &amp;ldquo;internal service degradation&amp;rdquo; but the real pain showed up in the chain reaction:&lt;/p&gt;</description></item><item><title>Blue Team: The Basics of Cybersecurity</title><link>https://isaaclins.com/blog/basics-of-cybersecurity/</link><pubDate>Tue, 30 Sep 2025 00:00:00 +0000</pubDate><guid>https://isaaclins.com/blog/basics-of-cybersecurity/</guid><description>&lt;p&gt;So yeah, I&amp;rsquo;m working in cybersecurity now. Specifically in the &amp;lsquo;Blue Team&amp;rsquo; at my company.&lt;/p&gt;
+&lt;p&gt;My day-to-day? Staring at screens full of alerts, trying to figure out which ones actually matter. Is this a real threat or did someone just click on a sketchy email again? Most days it&amp;rsquo;s the email.&lt;/p&gt;
+&lt;p&gt;When I started, everyone was throwing around acronyms like I should already know them. XDR, NDR, EDR, SOAR, SIEM&amp;hellip; it was overwhelming. Still is, honestly.&lt;/p&gt;</description></item><item><title>Are CTFs Pay2Win?</title><link>https://isaaclins.com/blog/skills-battle-2025/</link><pubDate>Wed, 07 May 2025 00:00:00 +0000</pubDate><guid>https://isaaclins.com/blog/skills-battle-2025/</guid><description>&lt;p&gt;Alright, let&amp;rsquo;s cut to the chase. The Skills Battle CTF. You know, that competitive shindig for us IT folks. My boss nudged me, said it&amp;rsquo;d be a &amp;ldquo;good idea.&amp;rdquo; So, I figured, why the hell not? Threw my hat in the ring, not expecting much.&lt;/p&gt;
+&lt;h2 id="the-slow-burn-start"&gt;The Slow Burn Start&lt;/h2&gt;
+&lt;p&gt;I&amp;rsquo;m not gonna lie, I started out slower than a dial-up modem. Took me a painstaking &lt;strong&gt;45 minutes for a single flag&lt;/strong&gt;. I was all over the place, distracted. I needed to lock in, and fast. My position on the graph? Buried at the bottom.&lt;/p&gt;</description></item></channel></rss>
