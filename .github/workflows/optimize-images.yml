@@ -78,7 +78,7 @@ jobs:
 
       - name: Commit optimized images
         if: steps.changes.outputs.has_changes == 'true' && github.event_name == 'push'
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: "perf: optimize images automatically"
           file_pattern: "images/** static/**"
