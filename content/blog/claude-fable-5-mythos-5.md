@@ -1,7 +1,7 @@
 +++
 title = "Claude Fable 5 and Mythos 5: what Anthropic actually shipped"
 date = 2026-06-09
-draft = true
+draft = false
 tags = ["AI", "Security"]
 complexity = "medium"
 description = "Claude Fable 5 and Mythos 5 explained: Anthropic's new Mythos class models, what they can do, the safeguards behind them, and what they cost."
