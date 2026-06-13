@@ -1,0 +1,106 @@
+{{- /*
+  Social-card preview page. One per regular page via the `twitterpreview`
+  output format (see config.toml [outputs].page). Shows how the page unfurls
+  as an X / Open Graph "summary_large_image" card, using the same banner that
+  layouts/partials/og_image.html bakes into the meta tags.
+
+  URLs (work on `hugo server` and in production):
+    /<page-url>twitterpreview.html  — this preview page
+    /<page-url>twitterpreview.png   — the raw 1200x630 banner (published below)
+*/ -}}
+{{- $title := cond .IsHome site.Title .Title -}}
+{{- $desc := or .Params.description .Summary site.Params.description "" | plainify | htmlUnescape | truncate 200 -}}
+{{- $host := (urls.Parse site.BaseURL).Host -}}
+{{- $generated := false -}}
+{{- $imgURL := "" -}}
+{{- with .Params.image -}}
+  {{- $imgURL = . | relURL -}}
+{{- else -}}
+  {{- with partial "og_image.html" $ -}}
+    {{- $png := resources.Copy (printf "%stwitterpreview.png" $.RelPermalink | strings.TrimPrefix "/") . -}}
+    {{- $imgURL = $png.RelPermalink -}}
+    {{- $generated = true -}}
+  {{- else -}}
+    {{- with site.Params.default_og_image -}}{{- $imgURL = . | relURL -}}{{- end -}}
+  {{- end -}}
+{{- end -}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Social preview · {{ $title }}</title>
+  <style>
+    :root {
+      --bg: #000000; --card: #15191f; --card-border: #2f3849;
+      --text: #ffffff; --dim: #8a8f98; --accent: #79a8ff; --link: #79a8ff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; background: var(--bg); color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      display: flex; flex-direction: column; align-items: center;
+      padding: 48px 20px; gap: 28px;
+    }
+    .lead { color: var(--dim); font-size: 14px; text-align: center; max-width: 520px; line-height: 1.5; }
+    .lead code { color: var(--accent); font-family: ui-monospace, "JetBrains Mono", monospace; font-size: 13px; }
+    /* X "summary_large_image" card */
+    .card {
+      width: 100%; max-width: 520px; border: 1px solid var(--card-border);
+      border-radius: 16px; overflow: hidden; background: var(--card);
+      text-decoration: none; color: inherit; display: block;
+    }
+    .card img { display: block; width: 100%; aspect-ratio: 1200 / 630; object-fit: cover; background: #000; }
+    .card .meta { padding: 12px 14px; }
+    .card .domain { color: var(--dim); font-size: 13px; }
+    .card .title { font-size: 15px; font-weight: 600; margin: 2px 0; line-height: 1.3; }
+    .card .desc { color: var(--dim); font-size: 14px; line-height: 1.35;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .links { display: flex; gap: 18px; font-size: 13px; }
+    .links a { color: var(--link); text-decoration: none; }
+    .links a:hover { text-decoration: underline; }
+    details { width: 100%; max-width: 520px; font-size: 13px; color: var(--dim); }
+    summary { cursor: pointer; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    td { padding: 5px 8px; border-top: 1px solid var(--card-border); vertical-align: top; word-break: break-word; }
+    td:first-child { color: var(--accent); font-family: ui-monospace, monospace; white-space: nowrap; width: 1px; }
+  </style>
+</head>
+<body>
+  <p class="lead">
+    How <code>{{ with .Permalink }}{{ . }}{{ end }}</code> unfurls as an
+    X / Open Graph <code>summary_large_image</code> card.
+    {{ if not $generated }}<br />Using {{ if .Params.image }}the page's explicit <code>image</code>{{ else }}the site default image{{ end }} (no banner generated).{{ end }}
+  </p>
+
+  {{ if $imgURL }}
+  <a class="card" href="{{ .Permalink }}">
+    <img src="{{ $imgURL }}" alt="Social card banner for {{ $title }}" />
+    <div class="meta">
+      <div class="domain">{{ $host }}</div>
+      <div class="title">{{ $title }}</div>
+      <div class="desc">{{ $desc }}</div>
+    </div>
+  </a>
+  {{ else }}
+  <p class="lead">No image available for this page.</p>
+  {{ end }}
+
+  <div class="links">
+    <a href="{{ .Permalink }}">→ open the post</a>
+    {{ if $imgURL }}<a href="{{ $imgURL }}">→ raw banner image</a>{{ end }}
+  </div>
+
+  <details>
+    <summary>Meta tags this card is built from</summary>
+    <table>
+      <tr><td>og:title</td><td>{{ $title }}</td></tr>
+      <tr><td>og:description</td><td>{{ $desc }}</td></tr>
+      <tr><td>og:image</td><td>{{ with $imgURL }}{{ . | absURL }}{{ else }}—{{ end }}</td></tr>
+      <tr><td>twitter:card</td><td>summary_large_image</td></tr>
+      <tr><td>source</td><td>{{ if $generated }}generated banner (1200×630){{ else if .Params.image }}front-matter image{{ else }}site default{{ end }}</td></tr>
+    </table>
+  </details>
+</body>
+</html>

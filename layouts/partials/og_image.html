@@ -1,0 +1,30 @@
+{{- /*
+  Generates a 1200x630 social-card image for the given page and returns it as
+  a resource (or an empty string if seed assets are missing, so callers can
+  fall back to site params). Seed images come from scripts/generate_og_base.py.
+
+  Themed to the site's modus-vivendi glowup palette: black background, white
+  title, blue ($--link-color) prompt, dimmed-grey description.
+
+  Text is drawn on a narrower transparent canvas and overlaid at x=80 because
+  images.Text wraps at the canvas edge — this is what produces the right margin.
+*/ -}}
+{{- $img := "" -}}
+{{- $base := resources.Get "img/og-base.png" -}}
+{{- $canvas := resources.Get "img/og-text-canvas.png" -}}
+{{- $fontBold := resources.Get "fonts/JetBrainsMono-Bold.ttf" -}}
+{{- $fontRegular := resources.Get "fonts/JetBrainsMono-Regular.ttf" -}}
+{{- if and $base $canvas $fontBold $fontRegular -}}
+  {{- $title := cond .IsHome site.Title .Title -}}
+  {{- /* truncate is HTML-aware and re-escapes plain strings, so unescape last */ -}}
+  {{- $desc := or .Params.description .Summary site.Params.description "" | plainify | htmlUnescape | truncate 140 | htmlUnescape -}}
+  {{- /* JetBrains Mono is ~0.6em wide: 64px fits ~27 chars/line, 52px ~33 — keeps long titles within 3 lines above the description block */ -}}
+  {{- $titleSize := cond (gt (len $title) 55) 52 64 -}}
+  {{- $text := $canvas | images.Filter
+    (images.Text "$ isaaclins.com" (dict "font" $fontBold "color" "#79a8ff" "size" 30 "x" 0 "y" 64))
+    (images.Text $title (dict "font" $fontBold "color" "#ffffff" "size" $titleSize "linespacing" 14 "x" 0 "y" 140))
+    (images.Text $desc (dict "font" $fontRegular "color" "#8a8f98" "size" 28 "linespacing" 12 "x" 0 "y" 470))
+  -}}
+  {{- $img = $base | images.Filter (images.Overlay $text 80 0) -}}
+{{- end -}}
+{{- return $img -}}

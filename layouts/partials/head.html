@@ -12,7 +12,22 @@
     {{ $description = .Site.Params.description }}
   {{ end }}
   <meta name="description" content="{{ $description }}" />
-  
+
+  <!-- Social card image: explicit front-matter image wins, else a banner
+       generated from title + description, else the site default. -->
+  {{ $ogImage := "" }}
+  {{ $ogIsGenerated := false }}
+  {{ with .Params.image }}
+    {{ $ogImage = . | absURL }}
+  {{ else }}
+    {{ with partial "og_image.html" $ }}
+      {{ $ogImage = .Permalink }}
+      {{ $ogIsGenerated = true }}
+    {{ else }}
+      {{ with site.Params.default_og_image }}{{ $ogImage = . | absURL }}{{ end }}
+    {{ end }}
+  {{ end }}
+
   {{ with .Params.tags }}
     <meta name="keywords" content="{{ delimit . ", " }}" />
   {{ end }}
@@ -36,10 +51,12 @@
   <meta property="og:description" content="{{ $description }}" />
   <meta property="og:site_name" content="{{ $.Site.Title }}" />
   
-  {{ if .Params.image }}
-    <meta property="og:image" content="{{ .Params.image | absURL }}" />
-  {{ else if .Site.Params.default_og_image }}
-    <meta property="og:image" content="{{ .Site.Params.default_og_image | absURL }}" />
+  {{ with $ogImage }}
+    <meta property="og:image" content="{{ . }}" />
+  {{ end }}
+  {{ if $ogIsGenerated }}
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
   {{ end }}
   
   {{ if .IsPage }}
@@ -67,10 +84,8 @@
   {{ end }}
   <meta name="twitter:title" content="{{ if not .IsHome }}{{ .Title }}{{ else }}{{ $.Site.Title }}{{ end }}" />
   <meta name="twitter:description" content="{{ $description }}" />
-  {{ if .Params.image }}
-    <meta name="twitter:image" content="{{ .Params.image | absURL }}" />
-  {{ else if .Site.Params.default_og_image }}
-    <meta name="twitter:image" content="{{ .Site.Params.default_og_image | absURL }}" />
+  {{ with $ogImage }}
+    <meta name="twitter:image" content="{{ . }}" />
   {{ end }}
   
   <!-- JSON-LD Structured Data for Blog Posts -->
@@ -96,7 +111,7 @@
         "url": "{{ .Site.Params.logo | default "/images/logo.png" | absURL }}"
       }
     },
-    {{ if .Params.image }}"image": "{{ .Params.image | absURL }}",{{ end }}
+    {{ with $ogImage }}"image": "{{ . }}",{{ end }}
     "url": "{{ .Permalink }}",
     "mainEntityOfPage": {
       "@type": "WebPage",

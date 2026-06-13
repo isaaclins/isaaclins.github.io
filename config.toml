@@ -68,4 +68,14 @@ target = 'static/images'
   complexity = "complexity"
 
 [outputs]
+  page    = ["HTML", "twitterpreview"]
   section = ["HTML", "RSS", "JSON"]
+
+# Per-page social-card preview page (see layouts/_default/single.twitterpreview.html).
+# Renders at /<page-url>twitterpreview.html and publishes the raw banner next to it.
+[outputFormats]
+  [outputFormats.twitterpreview]
+    mediaType      = "text/html"
+    baseName       = "twitterpreview"
+    isHTML         = true
+    notAlternative = true
