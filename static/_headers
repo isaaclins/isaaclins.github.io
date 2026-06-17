@@ -1,3 +1,8 @@
+# ⚠️  NOT ACTIVE ON THIS DEPLOYMENT.
+# This site is served via GitHub Pages behind a Cloudflare proxy. Neither honors
+# a `_headers` file (that is a Netlify / Cloudflare Pages feature). These rules
+# are the SOURCE OF TRUTH for what the Cloudflare edge should enforce — apply
+# them as Cloudflare Rules. See docs/security-headers.md.
 # ============================================
 # PERFORMANCE & SECURITY HEADERS
 # Boost SEO through Core Web Vitals

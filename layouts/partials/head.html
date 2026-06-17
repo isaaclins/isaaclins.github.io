@@ -3,7 +3,10 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  
+  <!-- Referrer policy (the one security header a static page can set itself;
+       the rest are enforced at the Cloudflare edge — see docs/security-headers.md). -->
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
   <!-- SEO Meta Tags -->
   {{ $description := .Summary }}
   {{ if .Params.description }}
