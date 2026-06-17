@@ -2,7 +2,7 @@ name: Lighthouse CI
 
 on:
   workflow_run:
-    workflows: ["deploy-hugo"]
+    workflows: ["pages-deploy"]
     types:
       - completed
 
