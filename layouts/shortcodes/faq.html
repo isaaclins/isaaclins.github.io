@@ -1,0 +1,55 @@
+{{- /*
+  faq — snippet-ready FAQ block + FAQPage JSON-LD structured data (SEO).
+  Usage:
+    {{< faq >}}
+    How much did SpaceX pay for Cursor? || $60 billion, in an all-stock deal.
+    Why did SpaceX buy Cursor? || For the [developer workflow data](/x/).
+    {{< /faq >}}
+  Each line: Question || Answer (answer may contain Markdown, incl. links).
+*/ -}}
+
+{{- $items := slice -}}
+{{- range (split (trim .Inner "\n") "\n") -}}
+  {{- $line := trim . " " -}}
+  {{- if $line -}}
+    {{- $p := split $line "||" -}}
+    {{- $q := trim (index $p 0) " " -}}
+    {{- $a := "" -}}
+    {{- if ge (len $p) 2 -}}{{- $a = trim (index $p 1) " " -}}{{- end -}}
+    {{- $items = $items | append (dict "q" $q "a" $a) -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if not (.Page.Scratch.Get "faqCSS") -}}
+{{- .Page.Scratch.Set "faqCSS" true -}}
+<style>
+.faq { margin: 2.2rem 0 1rem; }
+.faq__q { margin: 1.5rem 0 0.3rem; font-size: 1.05rem; }
+.faq__a { opacity: 0.92; }
+.faq__a > :first-child { margin-top: 0; }
+.faq__a > :last-child { margin-bottom: 0; }
+</style>
+{{- end -}}
+
+<section class="faq" aria-label="Frequently asked questions">
+  {{- range $items }}
+  <h3 class="faq__q">{{ .q }}</h3>
+  <div class="faq__a">{{ .a | markdownify }}</div>
+  {{- end }}
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {{- range $i, $it := $items }}{{ if $i }},{{ end }}
+    {
+      "@type": "Question",
+      "name": {{ $it.q | jsonify }},
+      "acceptedAnswer": { "@type": "Answer", "text": {{ $it.a | markdownify | plainify | htmlUnescape | jsonify }} }
+    }
+    {{- end }}
+  ]
+}
+</script>

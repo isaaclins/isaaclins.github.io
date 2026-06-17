@@ -2,18 +2,18 @@
 title = "Why SpaceX paid $60 billion for a VSCode fork"
 date = 2026-06-17
 draft = false
-tags = ["Dev", "AI"]
+tags = ["Dev", "AI", "Cursor", "SpaceX"]
 complexity = "medium"
-description = "SpaceX bought Cursor for $60B all-stock. It's not the editor they wanted. It's the million developers inside it, and the workflow data they generate every day."
+description = "SpaceX bought Cursor for $60 billion in shares, not cash. They didn't really want the code editor. They wanted the millions of people coding inside it, and the data they create."
 +++
 
-On June 16, 2026, SpaceX signed a [definitive $60 billion all-stock agreement](https://techcrunch.com/2026/06/16/spacex-to-acquire-cursor-for-60b-in-stock-days-after-blockbuster-ipo/) to buy Anysphere, the company behind **Cursor**. A rocket company bought a code editor. A code editor that is, at its core, a [fork of VSCode](/blog/cursor-ide-a-developers-double-edged-sword/) with a very good autocomplete strapped on.
+On June 16, 2026, SpaceX [signed the papers to buy Cursor](https://techcrunch.com/2026/06/16/spacex-to-acquire-cursor-for-60b-in-stock-days-after-blockbuster-ipo/) for **$60 billion** — paid entirely in SpaceX shares, not cash. A rocket company bought a code editor. And not a flashy one: Cursor is basically Microsoft's free VSCode editor with really good autocomplete bolted on.
 
-Sixty billion dollars. For a fork. Let that sit for a second, then let me explain why it's the most rational thing Mr. Musk has done all year.
+Sixty billion dollars. For that. Sit with it for a second, then let me explain why it's the smartest thing Mr. Musk has done all year.
 
 ## The number doesn't make sense until you watch it grow
 
-Cursor's valuation history reads like a typo that kept going. Each bar is a funding round (a "Series" is just the next lettered raise a startup takes — A, then B, then C); the value is the valuation that round set:
+A few years ago Cursor was worth almost nothing. Then this happened. Each bar below is one round of fundraising — startups raise money in rounds they label A, then B, then C — and the number is what investors said the whole company was worth at the time:
 
 {{< bar-chart caption="Cursor / Anysphere valuation by round" prefix="$" suffix="B" >}}
 Series B | 2.6 | Dec 2024
@@ -22,44 +22,54 @@ Series D | 29.3 | Late 2025
 SpaceX buyout | 60 | Jun 2026
 {{< /bar-chart >}}
 
-It was even lining up a $2B round from a16z, Thrive and Nvidia at **$50B+** in spring 2026, before SpaceX [walked in and pre-empted the whole thing](https://siliconangle.com/2026/04/22/spacex-partners-cursor-ai-training-floats-potential-60b-acquisition/).
+It was about to raise even more — a $2 billion round from big-name investors that would have valued it at over **$50 billion** — when SpaceX [walked in and grabbed it first](https://siliconangle.com/2026/04/22/spacex-partners-cursor-ai-training-floats-potential-60b-acquisition/).
 
-The revenue did the same trick. $100M ARR in January 2025. $1B by November. **[$4B annualized by June 2026](https://www.tradingkey.com/analysis/stocks/us-stocks/261970297-spacex-spcx-cursor-arr-acquire-tradingkey#bikqofguqh)**, enterprise-driven, with more than half the Fortune 500 running it somewhere. So no, $60B for "a VSCode fork" is not insane on the multiple. ~15x forward revenue for the fastest-growing dev tool in history is almost _boring_.
+The money coming in grew just as fast. Roughly $100 million a year in January 2025. A billion a year by November. **[Four billion a year by June 2026](https://www.tradingkey.com/analysis/stocks/us-stocks/261970297-spacex-spcx-cursor-arr-acquire-tradingkey#bikqofguqh)**, most of it from big companies, with more than half of the 500 biggest US firms using it somewhere. So $60 billion isn't actually crazy: for the fastest-growing developer tool ever, investors were paying about $15 for every $1 it makes in a year — which is almost... normal.
 
-But multiples aren't why Musk wrote the check.
+But that math isn't why Musk wrote the check.
 
-## SpaceX, not xAI, and the IPO that paid for it
+## Who actually bought what (and how they paid)
 
-First, the corporate plumbing, because it matters. This wasn't xAI. **SpaceX** absorbed xAI earlier in 2026, and SpaceX is the entity on the merger agreement. The acquisition vehicle is a wholly-owned subsidiary that merges into Cursor; close is expected in Q3 2026 pending regulators.
+Quick note on the company side, because it matters. This wasn't xAI, Musk's AI company. Earlier in 2026, SpaceX swallowed xAI, so **SpaceX** is the name on the paperwork — and it's buying all of Cursor outright. The deal should be final by **autumn 2026**, once regulators approve it.
 
-Here's the elegant part: it's **all stock**, and four days earlier SpaceX had just printed a brand-new pile of it. On June 12, SpaceX [IPO'd on the Nasdaq under SPCX](https://www.npr.org/2026/06/11/nx-s1-5853199/spacex-ipo-price-elon-musk), selling 555,555,555 shares at $135 to raise **$75 billion**, the biggest IPO ever, blowing past Saudi Aramco's old $29.4B record. Valuation: $1.77 trillion. Musk kept 82%+ voting control. The stock ran from $135 to north of $200 within days.
+Here's the clever bit. SpaceX paid in its own shares, and four days earlier it had just created a giant new pile of them. On June 12, SpaceX [sold shares to the public for the first time](https://www.npr.org/2026/06/11/nx-s1-5853199/spacex-ipo-price-elon-musk) — going onto the stock market under the ticker SPCX — selling about 555 million shares at $135 each to raise **$75 billion**. That's the biggest stock-market debut in history, beating Saudi Aramco's old record. It valued the whole company at $1.77 trillion. Musk still controls more than 82% of the votes. The share price jumped from $135 to over $200 within days.
 
-So the sequence is: go public, mint a trillion-plus in liquid currency, then spend $60B of freshly-minted paper on Cursor without touching a dollar of cash. The IPO _was_ the funding round for the acquisition. That's not a coincidence of timing. That's the plan.
+So the order of events is: go public, create a trillion dollars' worth of shares, then spend $60 billion of those brand-new shares on Cursor without touching a single dollar of real cash. Going public *was* how they paid for Cursor. That timing isn't luck. That's the plan.
 
 ## They didn't buy the editor. They bought you.
 
-Now the real reason. On the **same morning** the deal was signed, SpaceX started shipping **Grok V9-Medium**, a 1.5-trillion-parameter coding model (~3x the 500B model currently serving Grok traffic) that was [trained explicitly on real Cursor developer sessions](https://interestingengineering.com/culture/spacex-cursor-acquisition-coding-platform-60-billion#h-data-powers-expansion).
+Now the real reason. The **same morning** the deal was signed, SpaceX started rolling out **Grok V9-Medium**, a [new coding AI](/blog/native-moe-multimodal-llms/) about three times bigger than the one Grok runs on today — and it was [trained on real recordings of people coding inside Cursor](https://interestingengineering.com/culture/spacex-cursor-acquisition-coding-platform-60-billion#h-data-powers-expansion).
 
-Read that again. Not on public GitHub. GitHub gives you finished code: the polished commit, the answer with the working crossed out. What it does **not** give you is the part that actually matters for training a coding agent: how a real engineer describes a vague requirement, navigates an unfamiliar codebase, reacts when the model gets it wrong, and steers it back over a 90-minute session. That signal doesn't exist in any public dataset. It exists in exactly one place: inside a tool that a million expert developers already trust enough to use all day.
+Read that again. Not on public code from GitHub. Public code shows you the finished product — the tidy final version, with all the messy work erased. What it *doesn't* show you is the part that actually matters for teaching an AI to code: how a real engineer takes a vague request, pokes around a codebase they've never seen, reacts when the AI gets it wrong, and nudges it back on track over an hour-long session. You can't get that anywhere public. It exists in exactly one place: inside a tool that a million skilled developers already trust enough to use all day.
 
-There's even a named mechanism. Cursor's people call it **compaction-in-the-loop reinforcement learning**: the model is trained to crush thousands of tokens of working context down to ~1,000 tokens, then graded on whether it can keep a long-horizon task on the rails afterward. Lose a critical variable name or a past bug fix in the compression and you fail the task and eat a negative reward. The model learns _which information a developer's workflow actually needs to keep_ — and it learns it from millions of real sessions, not synthetic benchmarks.
+There's even a name for the trick. Cursor's team trains the AI to squeeze a huge pile of working notes down to a tiny summary, then tests whether it can keep going without forgetting anything important. Drop a key detail — a name, a bug it fixed earlier — and it fails and gets penalized. Over millions of real sessions, the AI slowly learns *what's worth remembering* and what's junk. You can't fake that with made-up practice problems.
 
-That is the asset. SpaceX didn't buy a VSCode fork. It bought the **training pipeline and the distribution channel for the one kind of data money can't otherwise buy**, plus the million experts generating fresh batches of it every single day. The editor is just the bucket the data falls into.
+That's the prize. SpaceX didn't buy a VSCode clone. It bought both the factory that produces this rare data *and* the storefront to deliver the finished AI — plus a million experts refilling the tank every single day. The editor is just the bucket the data drips into.
 
 ## The irony nobody at SpaceX will say out loud
 
-Cursor's entire edge with engineers was that it was **model-agnostic**. You could route a task to Claude, to GPT, or to Cursor's own Composer — whatever was best for the job. A lot of enterprises specifically picked it so they could keep sensitive code on Anthropic's Claude, which had the cleanest privacy track record. The product's neutrality _was_ the product.
+Cursor's whole appeal was that it didn't take sides: you could pick whichever AI you wanted — Claude, GPT, or Cursor's own — whatever did the job best. Lots of big companies chose Cursor *specifically* so they could keep their private code with [Anthropic's Claude](/blog/claude-fable-5-mythos-5/), which had the best reputation for not leaking your data. Being neutral was the entire selling point.
 
-It is now owned by a company that builds a directly competing model and has every financial reason to bury the competition. xAI's Grok division [lost $6.35 billion in 2025](https://www.techtimes.com/articles/318495/20260616/grok-v9-medium-arrives-spacex-seals-cursor-developers-face-model-choice-risk.htm). Every Cursor request routed to Claude is revenue walking straight out of SpaceX's ecosystem and into Anthropic's. No changes have been announced. But "no changes announced" and "owned by your competitor with a $6B hole to fill" are not a stable equilibrium.
+It's now owned by a company that makes a rival AI and has every reason to bury the competition. Musk's Grok team [lost $6.35 billion in 2025](https://www.techtimes.com/articles/318495/20260616/grok-v9-medium-arrives-spacex-seals-cursor-developers-face-model-choice-risk.htm). Every time someone in Cursor uses Claude, that money flows to Anthropic instead of SpaceX. Nothing's been announced yet. But "nothing announced" and "owned by your competitor with a $6 billion hole to fill" don't sit still for long.
 
-My favorite detail: SpaceX's _first_ Colossus supercluster was such an inefficient mixed-architecture mess that they [reportedly handed it to Anthropic for inference capacity](https://www.techtimes.com/articles/318495/20260616/grok-v9-medium-arrives-spacex-seals-cursor-developers-face-model-choice-risk.htm) and built Colossus 2 on clean Blackwell hardware to train Grok. So Anthropic is running on Musk's hand-me-down GPUs while Musk buys the front-end that mostly serves Anthropic's model. Everyone is feeding everyone. Nobody is comfortable.
+My favorite detail: SpaceX's first giant AI computer (nicknamed Colossus) was such a mismatched mess that they reportedly [handed it to Anthropic](https://www.techtimes.com/articles/318495/20260616/grok-v9-medium-arrives-spacex-seals-cursor-developers-face-model-choice-risk.htm) to run its AI on, and built a clean second one just to train Grok. So Anthropic is running on Musk's hand-me-down computers while Musk buys the app that mostly serves Anthropic's AI. Everyone is feeding everyone. Nobody's comfortable.
 
 ## If you pay them $20 a month
 
-Short version: nothing changes today, and you should still pay attention. Cursor runs independently until the deal closes in Q3. After that, watch which model is the default, watch which one is "free" and which one starts costing extra, and watch the enterprise privacy language. The thing that made Cursor worth choosing — neutrality — is exactly the thing an owner with a flagship model has an incentive to erode. I've [already complained about Cursor's pricing instincts](/blog/cursor-ide-a-developers-double-edged-sword/) back when they were a startup scrounging for pennies. Now the scrounging has a trillion-dollar balance sheet behind it.
+Short version: nothing changes today, but keep your eyes open. Cursor keeps running on its own until the deal is final (autumn 2026). After that, watch which AI becomes the default, watch which one stays free and which one suddenly costs extra, and watch the privacy fine print for companies. The thing that made Cursor worth choosing — staying neutral — is exactly the thing a new owner with its own AI to sell has every reason to chip away at. Cursor was never shy about charging, even as a scrappy startup. Now that instinct has a trillion-dollar company behind it.
 
 ## The part that's actually interesting
 
-While everyone argues about the price tag, the more important thing Cursor quietly shipped is **Origin**, which they're calling ["a git forge for the agentic era."](https://cursor.com/origin) Around the same time, Zed announced **DeltaDB** with the same thesis from the opposite direction. Both are betting that Git — a tool from 2005 designed around a human typing every line — is the wrong substrate for a world where agents write code through conversation.
+While everyone argues about the price, the more important thing Cursor quietly launched is **Origin**, which it calls ["a git forge for the agentic era"](https://cursor.com/origin) — basically a GitHub built for a world where AI writes the code. Around the same time, Zed announced **DeltaDB**, chasing the same idea from the other end. Both are betting that Git — the code-tracking tool from 2005, built for a human typing every line — is the wrong fit for a world where AI writes code by chatting with you.
 
-That's a bigger deal than who owns the editor, and it deserves its own post. So I wrote one: [**Git wasn't built for agents →**](/blog/git-wasnt-built-for-agents/)
+That's a bigger deal than who owns the editor, and it earns its own post. So I wrote one: [**Git wasn't built for agents →**](/blog/git-wasnt-built-for-agents/)
+
+## SpaceX–Cursor acquisition FAQ
+
+{{< faq >}}
+How much did SpaceX pay for Cursor? || **$60 billion**, paid in SpaceX shares instead of cash. The papers were signed on June 16, 2026, and the deal should be final by autumn 2026 once regulators approve it.
+Why did SpaceX buy Cursor? || For the data. The million people coding inside Cursor every day create exactly the kind of real-world recordings SpaceX needs to teach its Grok AI how to code — something you can't get from public code on GitHub.
+Who owns Cursor now? || Cursor is made by a company called Anysphere. SpaceX (which merged with Musk's AI company, xAI, in 2026) is buying it. Until the deal is final, Anysphere still runs on its own.
+Can I still use Claude and GPT in Cursor? || For now, yes — Cursor still lets you pick any AI. After the deal closes, watch whether Grok quietly becomes the default and whether Claude and GPT get harder to reach.
+When does the SpaceX–Cursor deal close? || Around autumn 2026, once regulators approve it. SpaceX paid for it using the $75 billion it raised by going public days earlier.
+{{< /faq >}}

@@ -2,64 +2,73 @@
 title = "Git wasn't built for agents"
 date = 2026-06-17
 draft = false
-tags = ["Dev", "AI"]
+tags = ["Dev", "AI", "Git", "Version Control"]
 complexity = "medium"
-description = "The conversation that wrote your code dies the moment you run git commit. Zed's DeltaDB and Cursor's Origin are both betting that's the problem worth fixing in the agentic era."
+description = "Git was built for humans typing code. Now AI writes a lot of it. Zed's DeltaDB and Cursor's Origin want to save the whole conversation with the AI, not just the final code."
 +++
 
-Here's a thing that's true and that you've stopped noticing: every time you run `git commit`, you throw away the most valuable artifact you produced. Not the code, the code survives. The _conversation_ that produced it. The dead ends, the "no, not like that," the reason this function looks deranged instead of obvious. Git keeps the answer and burns the working.
+Here's something that's true but easy to miss: every time you save a version of your code (what programmers call a `git commit`), you throw away the most valuable thing you made. Not the code — the code survives. The *conversation* that produced it. The dead ends, the "no, not like that," the reason a chunk of code looks weird instead of obvious. Git keeps the answer and throws away all the working-out.
 
-That was fine for twenty years. When you typed every line yourself, the reasoning lived in your head and you could mostly reconstruct it. It is very much **not** fine now that an agent wrote half the file over a 40-message back-and-forth that vanished the instant you committed. The next engineer — or the next agent — inherits the code with no path back to why.
+That was fine for twenty years. Back when you typed every line yourself, the reasoning lived in your head, and you could mostly piece it back together. It is very much **not** fine now that an AI wrote half the file over a 40-message back-and-forth that vanished the second you hit save. Whoever opens that code next — a teammate, or another AI — has no way to find out *why* it looks the way it does.
 
-Two companies decided that's the problem worth solving this month. I think they're right, and I think it's a bigger deal than [SpaceX buying Cursor for $60B](/blog/why-spacex-paid-60-billion-for-a-vscode-fork/).
+Two companies decided that's the problem worth fixing this month. I think they're right, and I think it's a bigger deal than [SpaceX buying Cursor for $60 billion](/blog/why-spacex-paid-60-billion-for-a-vscode-fork/).
 
 ## What Git actually is, and why it's the wrong shape
 
-Git, [created in 2005](https://en.wikipedia.org/wiki/Git#History), stores history as a graph of **commit objects**, each a content-addressed hash of a full snapshot of the repo. A commit is a photograph of the whole project at one instant. Everything _between_ two photographs — the debugging, the experiments, the agent chat that explains the weird workaround — is invisible. The log knows what the code looked like. It has no idea why.
+Git, [born in 2005](https://en.wikipedia.org/wiki/Git#History), saves your project's history as a row of snapshots. Each save (a "commit") is basically a photo of your entire project at one moment, with a unique fingerprint stamped on it. But everything that happens *between* two photos — the debugging, the failed attempts, the AI chat that explains the weird fix — simply isn't in the picture. Git knows what the code looked like. It has no idea why.
 
-Roughly 100 million developers live inside this model. It is excellent at what it was designed for: distributed snapshots, cryptographic integrity, "what changed between v1 and v2." It was simply never designed to hold a conversation, because in 2005 there was nobody to have one with.
+Around 100 million developers work this way, and Git is genuinely great at what it was built for: keeping copies in sync across thousands of computers, and proving nobody secretly tampered with the history. It was just never meant to hold a conversation — because in 2005, there was nobody on the other end to have one with.
 
-## DeltaDB: every operation, not every commit
+## DeltaDB: save every edit, not just every save
 
-On June 11, Zed's Nathan Sobo published a post with the best framing of the problem I've seen — [_"Software Is Made Between Commits."_](https://zed.dev/blog/introducing-deltadb) Days later Zed [opened the waitlist](https://www.techtimes.com/articles/318322/20260613/zed-opens-deltadb-waitlist-crdt-version-control-records-every-edit-not-just-commits.htm) for **DeltaDB**, and the core idea is a genuine inversion of Git.
+On June 11, Zed co-founder Nathan Sobo published the best description of this problem I've seen — a post called [*"Software Is Made Between Commits."*](https://zed.dev/blog/introducing-deltadb) A couple of days later, Zed [opened a waitlist](https://www.techtimes.com/articles/318322/20260613/zed-opens-deltadb-waitlist-crdt-version-control-records-every-edit-not-just-commits.htm) for **DeltaDB**, and the idea flips Git on its head.
 
-Where Git captures a snapshot at each commit, DeltaDB captures **every individual edit operation** and gives each one a stable, addressable identity. Your work becomes a continuous stream of fine-grained deltas instead of a sequence of photos. Two consequences fall out of that, and they're the whole point:
+Where Git takes a photo only when you save, DeltaDB records **every single edit** as you make it, and tags each one so you can point back to it later. Your work becomes one continuous stream of tiny changes instead of a handful of snapshots. Two things fall out of that, and they're the whole point:
 
-1. **The message and the edit it produced are stored side by side.** The agent prompt and the diff it generated are one linked artifact, so neither drifts away from the other. From any line in an old conversation you can jump to that code as it stands today; from any line of code you can trace back every conversation that ever touched it. Sobo's line: the conversation that generates code [_"is becoming the true source of our software."_](https://zed.dev/blog/introducing-deltadb#source-code-is-now-source-conversation)
+1. **The message and the change it caused are saved together.** The [AI prompt](/blog/model-context-protocol/) and the edit it produced are locked to each other, so you never lose track of which caused which. From any line in an old chat, you can jump to that code as it looks today. From any line of code, you can trace back every conversation that ever touched it. As Sobo puts it, the conversation with the AI is [*"becoming the true source of our software."*](https://zed.dev/blog/introducing-deltadb#source-code-is-now-source-conversation)
 
-2. **References are anchored to deltas, not line numbers.** A comment on a line survives that line being moved, refactored, or buried in new code, because it points at the operation, not at "line 42." If you've ever watched a GitHub review comment detach itself into useless "this comment was made on an outdated diff" limbo, you already feel why this matters.
+2. **Notes stick to the actual change, not to a line number.** Leave a comment on a line, and it follows that line even after it's moved, rewritten, or buried under new code — because it's pinned to the edit itself, not to "line 42." If you've ever seen a GitHub comment go stale the moment someone edits the file, you already feel why this matters.
 
 ## The clever part: conflicts stop being your problem
 
-DeltaDB is built on **[operation-based CRDTs](https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type#Operation-based_CRDTs)** — conflict-free replicated data types, formally defined in 2011 by Shapiro, Preguiça, Baquero and Zawirski, and already [battle-tested inside Redis, Riak and Azure Cosmos DB](https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type#Industry_use).
+Under the hood, DeltaDB uses a decades-old math trick called [CRDTs](https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type#Operation-based_CRDTs) — the same family of tech that lets several people edit one shared document at the same time without clobbering each other. It already [runs inside databases like Redis and Riak](https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type#Industry_use), so it's not science fiction.
 
-The property that buys you everything: if your edit operations are commutative and associative, the order they're applied in doesn't change the result. Two machines diverge — you on one, an agent on another, both hammering the same file — and the merge function is a deterministic join that **always converges to one state, by math, with no human resolving a conflict.** No `<<<<<<< HEAD`. The files stay real files, too: agents edit them through a terminal, and you can mount the whole worktree to disk and use your own tools whenever you want.
+The magic property: as long as the edits are built the right way, the order they arrive in doesn't change the final result. So if two machines drift apart — you editing on one, an AI on another, both touching the same file — the system just merges them into one clean version automatically. No human untangling anything. None of those ugly `<<<<<<< HEAD` markers you get from a Git conflict. And the files are still ordinary files on your computer: an AI edits them through the terminal, and you can pull the whole thing onto your disk and use whatever tools you like.
 
-That's the dream for parallel agents specifically. The moment you've got three agents working a codebase at once, Git's merge model is a tax you pay constantly. CRDT convergence makes that tax go to zero.
+That's the dream when you've got AIs working side by side. The second you have three AIs editing one project at once, Git makes you stop and untangle conflicts constantly. This makes that chore basically disappear.
 
-## The PR ceremony was a workaround all along
+## The pull request was a workaround all along
 
-The most provocative claim in Sobo's post is about the pull request, the thing the entire industry has organized itself around for a decade. His argument: PRs, review threads and inline comments only exist because the code and the conversation about it have **always lived in separate places**, so we built ceremony to staple them back together after the fact.
+Sobo's boldest claim is about the pull request — the formal "please review my code before it ships" step the whole industry has been built around for a decade. His argument: pull requests, review threads, and inline comments only exist because the code and the talk *about* the code have always lived in separate places. So we invented a ritual to staple them back together after the fact.
 
-Put them in the same place from the start and the ceremony just... evaporates. A teammate joins while the work is still happening, talks to the agent that did it, annotates as it goes — no waiting for someone to commit and push first. Git and CI don't die; they retreat to what they're genuinely good at, running checks and connecting you to the outside world, instead of being the place collaboration is forced to happen.
+Put them in the same place from the start, and the ritual just... melts away. A teammate can jump in while the work is still happening, talk to the AI that did it, and leave notes as they go — no waiting for someone to save and upload first. Git and the automated tests don't disappear; they go back to what they're actually good at (running checks, connecting you to the wider world) instead of being the place all the talking is forced to happen.
 
 ## Cursor's bet from the other direction: Origin
 
-Zed isn't alone. Cursor — yes, [the one SpaceX just bought](/blog/why-spacex-paid-60-billion-for-a-vscode-fork/) — is building **Origin**, pitched flatly as ["a git forge for the agentic era,"](https://cursor.com/origin) with the tagline "code is moving faster than any infrastructure was built to handle." Same diagnosis, different attack surface: Zed is reinventing the storage layer; Cursor is reinventing the _forge_, the GitHub-shaped layer on top, for a world where most commits have a non-human author.
+Zed isn't alone. Cursor — yes, [the one SpaceX just bought](/blog/why-spacex-paid-60-billion-for-a-vscode-fork/) — is building **Origin**, which it bluntly calls ["a git forge for the agentic era,"](https://cursor.com/origin) with the tagline "code is moving faster than any infrastructure was built to handle." (A "forge" is just the website where code lives and gets reviewed — GitHub is the famous one.) Same problem, opposite end: Zed is rebuilding how the code is *stored*; Cursor is rebuilding the *website on top* — a GitHub for a world where most of the code is written by AI.
 
-It's worth noting devs have been [asking Cursor for exactly this](https://forum.cursor.com/t/version-control-for-agentic-changes/85902) for over a year — "give me a local version history of the changes the AI makes so I can roll back and try a different prompt before it goes off the rails." Cursor's stopgap answer was chat checkpoints. Origin looks like the real one.
+Worth noting: developers have been [begging Cursor for this](https://forum.cursor.com/t/version-control-for-agentic-changes/85902) for over a year — "let me scroll back through the changes the AI made, so I can undo and try a different prompt before it goes off the rails." Cursor's stopgap was save-points inside the chat. Origin looks like the real thing.
 
-## So what does an "agentic version manager" actually feel like?
+## So what does this actually feel like, day to day?
 
-Strip the marketing and it's three concrete shifts in your day:
+Strip the marketing and it's three real changes to your day:
 
-- **You stop committing to collaborate.** Work is shared live, mid-flight, conversation attached. The commit becomes a checkpoint you make for the outside world, not the price of admission to talk about code.
-- **`git blame` gets an upgrade it desperately needed.** Instead of "Isaac, 8 months ago," you get the actual prompt and reasoning that produced the line, and the chain of every change since.
-- **Parallel agents stop fighting over the worktree.** Conflict-free merges mean you can fan out five agents on one repo without babysitting the rebases.
+- **You stop saving just to collaborate.** Work is shared live, as it happens, with the conversation attached. Saving a version becomes something you do for the outside world, not the price of being allowed to talk about the code.
+- **`git blame` finally gets useful.** (`git blame` is the tool that tells you who last touched a line and when.) Instead of "Isaac, 8 months ago," you see the actual prompt and reasoning that produced a line — and every change since.
+- **Parallel AIs stop fighting over your files.** Automatic merging means you can [point five AIs](/blog/building-a-codex-style-coding-app/) at one project at once without constantly cleaning up after them.
 
 ## The honest caveat
 
-This is hard, and not shipped. DeltaDB is a waitlist with a beta "in weeks"; Origin is a waitlist. Even sympathetic reviewers note that [CRDTs at code-edit scale are genuinely difficult](https://www.techtimes.com/articles/318322/20260613/zed-opens-deltadb-waitlist-crdt-version-control-records-every-edit-not-just-commits.htm) — the commutativity guarantee only holds if every operation is designed for it, and dragging that from a collaborative text buffer up to a full version-control layer is exactly where ambitious systems go to die. Git also has twenty years and 100 million users of inertia, and "good enough and already installed everywhere" has killed better ideas before.
+This is hard, and it isn't shipped. DeltaDB is a waitlist with a beta "in a few weeks." Origin is a waitlist. Even fans admit [the hard part is real](https://www.techtimes.com/articles/318322/20260613/zed-opens-deltadb-waitlist-crdt-version-control-records-every-edit-not-just-commits.htm): getting this math to behave on real code (not just a text box) is exactly where ambitious projects tend to die. And Git has twenty years and 100 million users of habit behind it — "good enough and already installed everywhere" has killed better ideas before.
 
-But the diagnosis is correct, and that's the part that won't reverse. Git answers "what did the code look like." The question that matters now is "why does it look like this, and what conversation got it here." Two serious teams launched an answer to that in the same week. That's not noise. That's the commit starting to lose its monopoly.
+But the diagnosis is right, and that part won't reverse. Git answers "what did the code look like." The question that matters now is "why does it look like this, and what conversation got it here." Two serious teams shipped an answer to that in the same week. That's not noise. That's the save button starting to lose its grip.
 
+## Agentic version control FAQ
+
+{{< faq >}}
+What is DeltaDB? || DeltaDB is Zed's new way of saving code. It records every edit you make — and the AI conversation behind it — instead of only taking a snapshot each time you commit.
+What is "agentic version control"? || It's version control built for code that AI helps write. The chat with the AI stays attached to the code, so the reasoning behind every change is still there later, instead of vanishing when you save.
+Is Git being replaced? || Not really. Git still handles testing, security, and syncing code between computers. Tools like DeltaDB and Cursor's Origin sit on top and add the missing piece — the conversation — where the AI work actually happens.
+What are CRDTs? || A kind of data that merges itself automatically. When several people (or AIs) edit the same thing at once, CRDTs combine the changes cleanly, with nobody stuck fixing a conflict by hand.
+What is Cursor Origin? || Cursor's upcoming "git forge for the agentic era" — think GitHub, but rebuilt for a world where AI writes most of the code.
+{{< /faq >}}
