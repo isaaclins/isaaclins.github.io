@@ -1,0 +1,14 @@
+{{- /* Root /llms.txt — index of blog posts linking to their Markdown views.
+       Bound to the `llms` output format on the home page. */ -}}
+# {{ .Site.Title }}
+
+{{ with .Site.Params.description }}> {{ . }}
+
+{{ end }}## Blog posts
+
+{{ range (sort (where .Site.RegularPages "Section" "blog") "Date" "desc") -}}
+{{ $p := . -}}
+{{ with .OutputFormats.Get "markdown" -}}
+- [{{ $p.Title }}]({{ .Permalink }}){{ with $p.Description }}: {{ . }}{{ end }}
+{{ end -}}
+{{ end -}}

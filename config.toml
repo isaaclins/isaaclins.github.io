@@ -68,7 +68,8 @@ target = 'static/images'
   complexity = "complexity"
 
 [outputs]
-  page    = ["HTML", "twitterpreview"]
+  home    = ["HTML", "RSS", "llms"]
+  page    = ["HTML", "twitterpreview", "markdown"]
   section = ["HTML", "RSS", "JSON"]
 
 # Per-page social-card preview page (see layouts/_default/single.twitterpreview.html).
@@ -78,4 +79,16 @@ target = 'static/images'
     mediaType      = "text/html"
     baseName       = "twitterpreview"
     isHTML         = true
+    notAlternative = true
+
+  [outputFormats.markdown]
+    mediaType      = "text/markdown"
+    baseName       = "index"
+    isPlainText    = true
+    notAlternative = true
+
+  [outputFormats.llms]
+    mediaType      = "text/plain"
+    baseName       = "llms"
+    isPlainText    = true
     notAlternative = true
