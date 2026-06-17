@@ -21,8 +21,6 @@ Hi, I'm Isaac. I build applications and break things on purpose to learn how the
 - [**Spotiglass**](https://github.com/isaaclins/spotiglass) — native macOS Spotify client (SwiftUI)
 - [**PowerUserMail**](https://github.com/isaaclins/powerusermail) — keyboard-first email for macOS
 
-If a project saved you time, a coffee funds bugfixes, docs, and releases: [**buymeacoffee.com/isaaclins**](https://buymeacoffee.com/isaaclins)
-
 ## My Work Mentality & Useful Sites
 
 - [**My Blog page**](/blog)
@@ -43,7 +41,7 @@ If a project saved you time, a coffee funds bugfixes, docs, and releases: [**buy
 
 ## Support open-source work
 
-I ship macOS tools and write-ups in the open ([Spotiglass](https://github.com/isaaclins/spotiglass), [PowerUserMail](https://github.com/isaaclins/powerusermail), and more). If something saved you time, a coffee funds the next evening of fixes, CI, and docs — [buymeacoffee.com/isaaclins](https://buymeacoffee.com/isaaclins).
+I ship macOS tools and write-ups in the open ([Spotiglass](https://github.com/isaaclins/spotiglass), [PowerUserMail](https://github.com/isaaclins/powerusermail), and more).
 
 If you're here, you know what you want.
 
