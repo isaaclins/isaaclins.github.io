@@ -1,0 +1,82 @@
+{{- /*
+  bar-chart — minimal monospace bar chart that inherits the page theme
+  (modus-vivendi / modus-operandi). No box, no chrome: bars in currentColor,
+  the largest one in the site's link accent.
+  Usage:
+    {{< bar-chart caption="Cursor valuation by round" prefix="$" suffix="B" >}}
+    Series B | 2.6 | Dec 2024
+    Series C | 9   | May 2025
+    Series D | 29.3 | Late 2025
+    SpaceX buyout | 60 | Jun 2026
+    {{< /bar-chart >}}
+  Each line: label | value | optional-sublabel. Each row shows ×multiplier vs the previous.
+*/ -}}
+
+{{- $prefix := .Get "prefix" | default "$" -}}
+{{- $suffix := .Get "suffix" | default "B" -}}
+{{- $caption := .Get "caption" -}}
+
+{{- $data := slice -}}
+{{- range (split (trim .Inner "\n") "\n") -}}
+  {{- $line := trim . " " -}}
+  {{- if $line -}}
+    {{- $p := split $line "|" -}}
+    {{- $label := trim (index $p 0) " " -}}
+    {{- $value := float (trim (index $p 1) " ") -}}
+    {{- $sub := "" -}}
+    {{- if ge (len $p) 3 -}}{{- $sub = trim (index $p 2) " " -}}{{- end -}}
+    {{- $data = $data | append (dict "label" $label "value" $value "sub" $sub) -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $max := 0.0 -}}
+{{- range $data -}}{{- if gt .value $max -}}{{- $max = .value -}}{{- end -}}{{- end -}}
+
+{{- if not (.Page.Scratch.Get "barChartCSS") -}}
+{{- .Page.Scratch.Set "barChartCSS" true -}}
+<style>
+.mbar { --mbar-accent: #79a8ff; margin: 1.8rem 0; font-family: inherit; }
+body[a="light"] .mbar { --mbar-accent: #3548cf; }
+body[a="dark"]  .mbar { --mbar-accent: #79a8ff; }
+@media (prefers-color-scheme: light) { body[a="auto"] .mbar { --mbar-accent: #3548cf; } }
+@media (prefers-color-scheme: dark)  { body[a="auto"] .mbar { --mbar-accent: #79a8ff; } }
+
+.mbar__caption { font-size: 0.8rem; opacity: 0.55; margin-bottom: 0.9rem; }
+.mbar__row {
+  display: grid;
+  grid-template-columns: 9rem 1fr auto;
+  grid-template-areas: "label bar value";
+  align-items: center; gap: 0.2rem 1rem; padding: 0.5rem 0;
+}
+.mbar__label { grid-area: label; font-weight: 700; line-height: 1.25; }
+.mbar__label small { display: block; font-weight: 400; opacity: 0.5; font-size: 0.8em; margin-top: 0.1rem; }
+
+.mbar__track { grid-area: bar; height: 8px; background: rgba(128,128,128,0.14); background: color-mix(in srgb, currentColor 11%, transparent); }
+.mbar__fill { height: 100%; width: var(--w); background: currentColor; }
+.mbar__fill--peak { background: var(--mbar-accent); }
+
+.mbar__value { grid-area: value; text-align: right; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1.25; white-space: nowrap; }
+.mbar__value small { display: block; font-weight: 400; opacity: 0.5; font-size: 0.8em; margin-top: 0.1rem; }
+.mbar__row--peak .mbar__value { color: var(--mbar-accent); }
+
+@media (max-width: 520px) {
+  .mbar__row { grid-template-columns: 1fr auto; grid-template-areas: "label value" "bar bar"; }
+  .mbar__track { margin-top: 0.3rem; }
+}
+</style>
+{{- end -}}
+
+<div class="mbar">
+  {{- with $caption }}<div class="mbar__caption">{{ . }}</div>{{ end }}
+  {{- range $i, $d := $data }}
+  {{- $pct := printf "%.1f" (mul (div $d.value $max) 100) -}}
+  {{- $isPeak := eq $d.value $max -}}
+  {{- $delta := "" -}}
+  {{- if gt $i 0 -}}{{- $delta = printf "×%.1f" (div $d.value (index $data (sub $i 1)).value) -}}{{- end -}}
+  <div class="mbar__row{{ if $isPeak }} mbar__row--peak{{ end }}">
+    <div class="mbar__label">{{ $d.label }}{{ with $d.sub }}<small>{{ . }}</small>{{ end }}</div>
+    <div class="mbar__track"><div class="mbar__fill{{ if $isPeak }} mbar__fill--peak{{ end }}" style="--w: {{ $pct }}%;"></div></div>
+    <div class="mbar__value">{{ $prefix }}{{ printf "%g" $d.value }}{{ $suffix }}{{ with $delta }}<small>{{ . }}</small>{{ end }}</div>
+  </div>
+  {{- end }}
+</div>
