@@ -2,7 +2,7 @@ name: Lighthouse CI
 
 on:
   workflow_run:
-    workflows: ["deploy-hugo"]
+    workflows: ["pages-deploy"]
     types:
       - completed
 
@@ -86,7 +86,7 @@ jobs:
         run: |
           RESULTS_JSON_CONTENT='${{ steps.lighthouse_run.outputs.lighthouseCheckResults || '{"data":[]}' }}'
 
-          ( # Start subshell to redirect all output to README.md
+          ( # Start subshell to redirect all output to lighthousetest.md
             echo "### Lighthouse Score Summary"
             echo "| URL | Accessibility | Best Practices | Performance | SEO |"
             echo "|-----|---------------|----------------|-------------|-----|"
@@ -151,17 +151,17 @@ jobs:
                   $avg_row_str + "\n\n# Average Score: \($final_avg_score_str)"
                 end
             '
-          ) > README.md # All echos inside () go to README.md
+          ) > lighthousetest.md # All echos inside () go to lighthousetest.md
 
-          # This echo goes to the workflow log, not the README.md
-          echo "Lighthouse summary report generated: README.md"
+          # This echo goes to the workflow log, not the lighthousetest.md
+          echo "Lighthouse summary report generated: lighthousetest.md"
 
       - name: Commit and Push Lighthouse Report
         uses: stefanzweifel/git-auto-commit-action@v7
         with:
-          commit_message: "docs: Update Lighthouse accessibility report"
+          commit_message: "docs: update Lighthouse report [skip ci]"
           branch: main # Or your default branch
-          file_pattern: README.md
+          file_pattern: lighthousetest.md
           commit_user_name: "GitHub Actions Bot"
           commit_user_email: "actions@github.com"
           commit_author: "GitHub Actions Bot <actions@github.com>"

@@ -1,55 +1,58 @@
-### Lighthouse Score Summary
-| URL | Accessibility | Best Practices | Performance | SEO |
-|-----|---------------|----------------|-------------|-----|
-| https://isaaclins.com/tags/ai/ | 89 | 100 | 84 | 92 |
-| https://isaaclins.com/complexity/ | 89 | 100 | 100 | 92 |
-| https://isaaclins.com/tags/cursor/ | 89 | 100 | 100 | 92 |
-| https://isaaclins.com/tags/dev/ | 89 | 100 | 99 | 92 |
-| https://isaaclins.com/tags/git/ | 89 | 100 | 99 | 92 |
-| https://isaaclins.com/blog/git-wasnt-built-for-agents/ | 89 | 100 | 99 | 92 |
-| https://isaaclins.com/complexity/medium/ | 89 | 100 | 100 | 92 |
-| https://isaaclins.com/tags/spacex/ | 89 | 100 | 100 | 92 |
-| https://isaaclins.com/tags/ | 89 | 100 | 99 | 92 |
-| https://isaaclins.com/tags/version-control/ | 89 | 100 | 99 | 92 |
-| https://isaaclins.com/blog/why-spacex-paid-60-billion-for-a-vscode-fork/ | 82 | 100 | 99 | 92 |
-| https://isaaclins.com/complexity/easy/ | 89 | 100 | 100 | 92 |
-| https://isaaclins.com/tags/policy/ | 89 | 100 | 100 | 92 |
-| https://isaaclins.com/tags/security/ | 89 | 100 | 99 | 92 |
-| https://isaaclins.com/blog/fable-5-mythos-5-suspended/ | 89 | 100 | 98 | 92 |
-| https://isaaclins.com/blog/claude-fable-5-mythos-5/ | 89 | 100 | 100 | 92 |
-| https://isaaclins.com/blog/spotiglass/ | 88 | 100 | 100 | 92 |
-| https://isaaclins.com/resume/create/ | 100 | 100 | 100 | 92 |
-| https://isaaclins.com/blog/building-a-codex-style-coding-app/ | 86 | 100 | 82 | 92 |
-| https://isaaclins.com/tags/coding-agents/ | 89 | 100 | 100 | 92 |
-| https://isaaclins.com/blog/notepad-markdown-rce/ | 87 | 100 | 78 | 92 |
-| https://isaaclins.com/tags/ops/ | 89 | 100 | 99 | 92 |
-| https://isaaclins.com/blog/notepad-plus-plus-hijack/ | 87 | 100 | 77 | 92 |
-| https://isaaclins.com/blog/cloudflare-nov-18-2025-outage/ | 85 | 100 | 52 | 92 |
-| https://isaaclins.com/blog/basics-of-cybersecurity/ | 84 | 100 | 84 | 92 |
-| https://isaaclins.com/complexity/hard/ | 89 | 100 | 100 | 92 |
-| https://isaaclins.com/tags/tech/ | 89 | 100 | 99 | 92 |
-| https://isaaclins.com/blog/ai-models-for-your-toaster/ | 84 | 100 | 79 | 92 |
-| https://isaaclins.com/blog/my-daily-software/ | 91 | 100 | 98 | 92 |
-| https://isaaclins.com/tags/productivity/ | 89 | 100 | 99 | 92 |
-| https://isaaclins.com/ | 95 | 100 | 99 | 92 |
-| https://isaaclins.com/blog/model-context-protocol/ | 87 | 96 | 83 | 92 |
-| https://isaaclins.com/blog/dia-the-browser-that-killed-arc/ | 91 | 100 | 87 | 92 |
-| https://isaaclins.com/blog/google-took-down-the-internet/ | 87 | 100 | 78 | 92 |
-| https://isaaclins.com/blog/how-i-automated-my-homework/ | 87 | 100 | 87 | 92 |
-| https://isaaclins.com/blog/netflix-chaos-monkey/ | 86 | 100 | 85 | 92 |
-| https://isaaclins.com/blog/cloudflare-outage-postmortem/ | 85 | 100 | 86 | 92 |
-| https://isaaclins.com/blog/functional-programming-java-explained/ | 91 | 100 | 87 | 92 |
-| https://isaaclins.com/blog/ai-deep-dive-explained/ | 86 | 100 | 74 | 92 |
-| https://isaaclins.com/blog/native-moe-multimodal-llms/ | 91 | 100 | 86 | 92 |
-| https://isaaclins.com/blog/4d-gaussian-splatting-braindance/ | 87 | 100 | 94 | 92 |
-| https://isaaclins.com/blog/skills-battle-2025/ | 89 | 100 | 75 | 92 |
-| https://isaaclins.com/latest/ | 82 | 82 | 96 | 92 |
-| https://isaaclins.com/blog/ghostty-fish-perfect-combination/ | 90 | 100 | 100 | 92 |
-| https://isaaclins.com/blog/macos-journey-with-m3-macbook-pro/ | 89 | 100 | 99 | 92 |
-| https://isaaclins.com/blog/raycast-its-hidden-power/ | 89 | 100 | 81 | 92 |
-| https://isaaclins.com/resume/ | 100 | 100 | 100 | 92 |
-| https://isaaclins.com/blog/ | 84 | 100 | 99 | 92 |
-| https://isaaclins.com/categories/ | 94 | 100 | 99 | 92 |
-| Overall Average | 88 | 99 | 92 | 92 |
+# isaaclins.com
 
-# Average Score: 93
+Personal website and blog of Isaac Lins — application developer and
+cybersecurity enthusiast. Built with [Hugo](https://gohugo.io/) (extended) and
+deployed to GitHub Pages behind Cloudflare at <https://isaaclins.com>.
+
+## Stack
+
+- **Hugo extended** (CI builds with v0.140.2; `config.toml` requires the
+  extended SCSS-capable build, min 0.41.0).
+- **Dart Sass** for `assets/css/main.scss`.
+- Content in `content/` as Markdown with **TOML frontmatter** (`+++`
+  delimiters).
+
+## Layout
+
+| Path | What it is |
+|------|------------|
+| `content/` | Pages and posts. Blog posts live in `content/blog/`. `content/blog/_TEMPLATE.md` is the starting point for a new post. |
+| `layouts/` | Hugo templates: `_default/`, `partials/`, and `shortcodes/`. |
+| `assets/` | SCSS (`css/main.scss`), fonts, and social-card seed images. |
+| `images/` | Post images (mounted to `/images/` at build time). |
+| `static/` | Files copied verbatim to the site root (JS, manifest, icons). |
+| `data/menu.toml` | Homepage menu entries. |
+| `scripts/` | Python helpers run by pre-commit (frontmatter, image-path, and draft checks). |
+| `.github/workflows/` | CI: build/validate, deploy, image optimization, and Lighthouse. |
+
+## Local development
+
+```bash
+hugo server            # live-reload dev server at http://localhost:1313
+hugo --gc --minify     # production build into ./public
+```
+
+## Writing a post
+
+1. Copy `content/blog/_TEMPLATE.md` to `content/blog/<slug>.md`.
+2. Fill in the TOML frontmatter (`title`, `date`, `tags`, `complexity`,
+   `description`, optional `image`). `description` should be under 160
+   characters for SEO.
+3. Drop images in `images/` and reference them as `/images/<file>`.
+4. Optionally install the local hooks: `pip install pre-commit && pre-commit install`.
+   They run markdownlint, cspell, and the validators in `scripts/`.
+
+## CI / deployment
+
+- **build-test** — builds the site, validates the generated HTML with
+  `html5validator`, and runs `cspell` on non-draft content.
+- **pages-deploy** — builds and deploys to GitHub Pages on push to `main`.
+- **optimize-images** — losslessly optimizes committed images and generates
+  WebP versions.
+- **Lighthouse CI** — runs Lighthouse against the live URLs after a deploy and
+  writes the score table to `lighthousetest.md`.
+
+## License / contact
+
+Content © Isaac Lins. Reach me at <contact@isaaclins.com> or
+[github.com/isaaclins](https://github.com/isaaclins).
