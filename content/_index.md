@@ -4,15 +4,15 @@ date = 2025-06-21
 draft = false
 +++
 
-**Application Developer & Cybersecurity Enthusiast**
+**Application Developer & Security Analyst**
 
-Hi, I'm Isaac. I build applications and break things on purpose to learn how they work. I'm currently working at Swisscom and I'm passionate about cybersecurity. My dream is simple: join a top Red-Team and make technology safer.
+Hi, I'm Isaac. I build applications and ship AI-powered tools. I'm currently working at Swisscom as a Blue Team Security Analyst. My goal is simple: become a top AI engineer and build systems that actually make it to production.
 
 ## What I Do
 
 - **Develop:** I craft clean, efficient applications using multiple languages and frameworks.
-- **Secure:** I dive into cybersecurity, always exploring vulnerabilities and learning to defend against them.
-- **Innovate:** I enjoy experimenting and pushing the limits of what technology can do.
+- **Build with AI:** I work with LLMs, agents, and the tooling around them, from prompt to production.
+- **Secure:** My security background means I build AI systems with security in mind, not as an afterthought.
 
 {{< recent_posts >}}
 
