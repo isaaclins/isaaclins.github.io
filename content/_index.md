@@ -39,9 +39,6 @@ Hi, I'm Isaac. I build applications and ship AI-powered tools. I'm currently wor
 - **LinkedIn:** [Isaac Lins](https://www.linkedin.com/in/isaaclinsdotcom/)
 - **Resume:** [View My Resume](/resume)
 
-## Support open-source work
-
-I ship macOS tools and write-ups in the open ([Spotiglass](https://github.com/isaaclins/spotiglass), [PowerUserMail](https://github.com/isaaclins/powerusermail), and more).
 
 If you're here, you know what you want.
 
