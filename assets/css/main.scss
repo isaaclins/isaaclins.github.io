@@ -959,73 +959,63 @@ img.thick-border {
   }
 }
 
-// Projects timeline: a tall track pins its viewport while the inner timeline
-// follows the page scroll. The cards are deliberately quiet and slightly
-// imperfect, like a working notebook rather than a product grid.
+// Projects timeline: a plain vertical list that scrolls with the page. One
+// date parks in the middle of the rail and names whichever card is crossing
+// the centre of the screen, so this reads like a rail you walk down rather
+// than a section that hijacks the scroll.
 .timeline {
+  --timeline-height: calc(var(--timeline-step) * var(--timeline-rows));
+
+  position: relative;
+  box-sizing: border-box;
   width: 100%;
   max-width: var(--measure);
   margin: 0 auto;
-  box-sizing: border-box;
-}
-
-// One row per project, plus an extra row for any project carrying the long
-// showcase text, so a tall card gets the space instead of colliding with its
-// neighbour. The runway is derived from that row count rather than hardcoded,
-// so adding a project or a long body cannot silently break the spacing.
-.timeline {
-  --timeline-card-height: max(100vh, calc(var(--timeline-step) * var(--timeline-rows)));
-  --timeline-content-height: calc(
-    var(--timeline-card-height) + var(--timeline-edge) + var(--timeline-edge)
-  );
-  --timeline-travel: calc(var(--timeline-content-height) - 100vh);
-  --timeline-length: var(--timeline-content-height);
-}
-
-.timeline-track {
-  position: relative;
-  width: 100%;
-  max-width: var(--measure);
-  height: var(--timeline-length);
-  margin-inline: auto;
-  box-sizing: border-box;
   view-timeline-name: --projects-track;
   view-timeline-axis: block;
 }
 
-.timeline-pin {
+// No height, and first in the DOM, so it can hold the middle of the viewport
+// for the whole section without pushing a single card out of place.
+.timeline-dates {
   position: sticky;
-  top: 0;
-  width: 100%;
-  max-width: var(--measure);
-  height: 100vh;
-  margin-inline: auto;
-  overflow: hidden;
-  box-sizing: border-box;
-  outline: none;
+  top: calc(50vh - 0.6em);
+  z-index: 1;
+  width: 28%;
+  height: 0;
+  margin-left: auto;
+  pointer-events: none;
+}
 
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: -2px;
-  }
+// Every label shares one slot. Each is painted only for the stretch where its
+// own card owns the centre line, and the stretches are adjacent, so exactly
+// one date is ever on screen.
+.timeline-date {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: var(--sp-3);
+  color: var(--accent);
+  font-size: var(--fs-meta);
+  line-height: 1.2;
+  white-space: nowrap;
+  opacity: 0;
 }
 
 .timeline-inner {
   position: relative;
-  height: var(--timeline-length);
-  min-height: 100%;
 }
 
 .timeline-rail {
   position: absolute;
-  top: var(--timeline-edge);
+  top: 0;
   right: 0;
-  bottom: auto;
   display: grid;
   grid-template-rows: repeat(var(--timeline-rows), minmax(0, 1fr));
   width: 28%;
-  height: var(--timeline-card-height);
+  height: var(--timeline-height);
   border-left: 1px solid var(--accent);
+  pointer-events: none;
 }
 
 .timeline-tick {
@@ -1043,106 +1033,14 @@ img.thick-border {
   border-top: 1px solid var(--accent);
 }
 
-// A single date owns the middle of the rail. It lives outside the scrolling
-// layer, so it holds position while the cards travel past underneath. Each
-// label is visible only for the stretch where its own card is the one being
-// read, and the windows are adjacent rather than overlapping, so exactly one
-// date is ever on screen.
-.timeline-dates {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  width: 28%;
-  height: 0;
-  pointer-events: none;
-}
-
-.timeline-date {
-  position: absolute;
-  top: -0.6em;
-  left: 0;
-  margin-left: var(--sp-3);
-  color: var(--accent);
-  font-size: var(--fs-meta);
-  line-height: 1.2;
-  white-space: nowrap;
-  opacity: 0;
-  animation: timeline-date-cycle linear;
-  animation-timeline: --projects-track;
-  animation-range: var(--from) var(--to);
-}
-
-.timeline-date--inactive {
-  display: none;
-}
-
-.timeline-date--range-start {
-  animation-name: timeline-date-first;
-}
-
-.timeline-date--range-end {
-  animation-name: timeline-date-last;
-  animation-range: var(--from) calc(var(--to) + 0.1%);
-}
-
-.timeline-date--range-hold {
-  animation-name: timeline-date-hold;
-  animation-range: var(--from) calc(var(--to) + 0.1%);
-}
-
-@keyframes timeline-date-first {
-  0%,
-  86% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  100% {
-    opacity: 0;
-    transform: translateY(-1.4em);
-  }
-}
-
-// The middle labels switch at their range boundary, so one label remains
-// visible even on the exact handover frame.
-@keyframes timeline-date-cycle {
-  0%,
-  86% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  100% {
-    opacity: 0;
-    transform: translateY(-1.4em);
-  }
-}
-
-@keyframes timeline-date-last {
-  0%,
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes timeline-date-hold {
-  0%,
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
+// One equal row per project, so a tick, a card and a date all describe the
+// same slice of the page.
 .timeline-cards {
-  position: absolute;
-  top: var(--timeline-edge);
-  right: calc(28% + var(--sp-4));
-  bottom: auto;
-  left: 0;
+  box-sizing: border-box;
   display: grid;
   grid-template-rows: repeat(var(--timeline-rows), minmax(0, 1fr));
-  height: var(--timeline-card-height);
+  height: var(--timeline-height);
+  padding-right: calc(28% + var(--sp-4));
 }
 
 .timeline-card {
@@ -1159,18 +1057,6 @@ img.thick-border {
     transparent 0 var(--sp-2),
     var(--rule) var(--sp-2) calc(var(--sp-2) + 1px)
   );
-}
-
-.timeline-card:first-child {
-  align-self: start;
-}
-
-.timeline-card:last-child {
-  align-self: end;
-}
-
-.timeline-card:only-child {
-  align-self: center;
 }
 
 .timeline-card--left {
@@ -1198,8 +1084,7 @@ img.thick-border {
   line-height: 1.2;
 }
 
-.timeline-card-description,
-.timeline-card-links {
+.timeline-card-description {
   font-size: var(--fs-meta);
   line-height: 1.45;
 
@@ -1227,116 +1112,59 @@ img.thick-border {
   white-space: nowrap;
 }
 
-// Bottom right, inside the rail gutter. The cards stop before this column, so
-// the hint never sits on top of card content.
-// Only useful before you have started. It fades out over the first stretch of
-// the pin so it stops competing with the cards.
-.timeline-scroll-hint {
-  position: absolute;
-  right: 0;
-  bottom: var(--sp-2);
-  left: auto;
-  margin: 0;
-  padding: var(--sp-1) var(--sp-3);
-  transform: none;
-  color: var(--muted);
-  background: var(--bg);
-  border: 1px solid var(--rule);
-  font-size: var(--fs-label);
-  letter-spacing: var(--tracking-label);
-  white-space: nowrap;
-  animation: timeline-hint-fade linear both;
-  animation-timeline: --projects-track;
-  animation-range: var(--timeline-view-start) var(--timeline-view-end);
-}
-
-@keyframes timeline-hint-fade {
-  0% {
+@keyframes timeline-date-show {
+  from,
+  to {
     opacity: 1;
   }
+}
 
-  100% {
-    opacity: 0;
+// Outside its range the animation simply does not apply, which leaves the
+// label on its base opacity of zero. That is what keeps the handover clean
+// without a second keyframe doing the hiding.
+@supports (animation-timeline: scroll()) {
+  .timeline-date {
+    animation: timeline-date-show 1ms linear;
+    animation-timeline: --projects-track;
+    animation-range: var(--from) var(--to);
   }
 }
 
-@keyframes timeline-pan {
-  from {
-    transform: translateY(0);
-  }
-
-  to {
-    transform: translateY(calc(100vh - var(--timeline-length)));
-  }
-}
-
+// Without scroll-driven animation there is no way to know which card owns the
+// centre. Every card already prints its own date, so the floating label is the
+// only thing that has to go. The rail and the cards are static layout and
+// survive intact.
 @mixin timeline-static {
-  .timeline-track {
-    height: auto;
-    view-timeline-name: none;
-  }
-
-  .timeline-pin {
-    position: static;
-    height: auto;
-    overflow: visible;
-  }
-
-  .timeline-inner {
-    height: auto;
-    min-height: 0;
-    padding-bottom: var(--sp-6);
-    animation: none;
-    transform: none;
-  }
-
-  // No pinning means no middle slot to park in. The cards already print their
-  // dates, so the rail and floating labels are noise in the static layout.
-  .timeline-rail,
   .timeline-dates {
+    display: none;
+  }
+}
+
+// Narrow screens have no room for a rail beside the cards, so the timeline
+// becomes an ordinary stack.
+@mixin timeline-plain {
+  @include timeline-static;
+
+  .timeline-rail {
     display: none;
   }
 
   .timeline-cards {
-    position: static;
-    top: auto;
-    right: auto;
-    bottom: auto;
-    left: auto;
     display: grid;
     grid-template-rows: none;
-    height: auto;
+    grid-auto-rows: auto;
     gap: var(--sp-5);
+    height: auto;
+    padding-right: 0;
   }
 
   .timeline-card,
   .timeline-card--left,
   .timeline-card--right {
-    width: 100%;
     max-width: none;
     margin: 0;
     transform: none;
     justify-self: stretch;
-    align-self: stretch;
-  }
-
-  .timeline-scroll-hint {
-    display: none;
-    position: static;
-    right: auto;
-    bottom: auto;
-    left: auto;
-    width: fit-content;
-    margin: var(--sp-4) auto 0;
-    transform: none;
-  }
-}
-
-@supports (animation-timeline: scroll()) {
-  .timeline-inner {
-    animation: timeline-pan 1ms linear both;
-    animation-timeline: --projects-track;
-    animation-range: var(--timeline-view-start) var(--timeline-view-end);
   }
 }
 
@@ -1452,7 +1280,7 @@ img.thick-border {
     gap: var(--sp-1);
   }
 
-  @include timeline-static;
+  @include timeline-plain;
 }
 
 // -------------- PRINT -------------- //
