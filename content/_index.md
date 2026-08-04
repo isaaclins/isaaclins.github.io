@@ -32,11 +32,11 @@ systems with security in mind, not as an afterthought.
 {{< sec "projects" >}}
 
 {{< timeline >}}
-pi-terminal-kit | Jul 16, 2026 | reusable Pi, tmux, Fish, and Ghostty pieces for visible agent work | [source](https://github.com/isaaclins/pi-terminal-kit)
-Spotiglass | May 3, 2026 | native macOS Spotify client in SwiftUI | [source](https://github.com/isaaclins/spotiglass)
-Home Server + LLM | TODO-DATE | self-hosted server with Ollama LLM integration, file uploads, and user management with JWT | [source](https://github.com/isaaclins/ollama-model-api)
-PowerUserMail | TODO-DATE | keyboard-first email client for macOS | [source](https://github.com/isaaclins/powerusermail)
-Restaurant Application | TODO-DATE | microservices system for online ordering with a customizable website, Kitchen Display System, and backend with SMTP control | [source](https://github.com/isaaclins/restaurant-application)
+pi-terminal-kit | Jul 2026 | reusable Pi, tmux, Fish, and Ghostty pieces for visible agent work | [source](https://github.com/isaaclins/pi-terminal-kit) | pi-terminal-kit
+Spotiglass | Apr 2026 | native macOS Spotify client in SwiftUI | [source](https://github.com/isaaclins/spotiglass)
+Restaurant Application | Dec 2025 | microservices system for online ordering with a customizable website, Kitchen Display System, and backend with SMTP control | [source](https://github.com/isaaclins/restaurant-application)
+PowerUserMail | Nov 2025 | keyboard-first email client for macOS | [source](https://github.com/isaaclins/powerusermail)
+Home Server + LLM | May 2025 | self-hosted server with Ollama LLM integration, file uploads, and user management with JWT | [source](https://github.com/isaaclins/ollama-model-api)
 {{< /timeline >}}
 
 {{< sec "writing" >}}
