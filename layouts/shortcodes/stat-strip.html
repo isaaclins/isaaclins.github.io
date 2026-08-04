@@ -1,0 +1,14 @@
+{{/* Three-cell stat strip: label above, value below, hairline dividers.
+     One "label | value" per line in the inner content. */}}
+<dl class="stat-strip">
+  {{- range $line := split (trim .Inner "\n\r \t") "\n" -}}
+    {{- $line = trim $line " \t\r" -}}
+    {{- if $line -}}
+      {{- $parts := split $line "|" -}}
+      <div class="stat">
+        <dt>{{ trim (index $parts 0) " " }}</dt>
+        <dd>{{ if gt (len $parts) 1 }}{{ trim (index $parts 1) " " | markdownify }}{{ end }}</dd>
+      </div>
+    {{- end -}}
+  {{- end -}}
+</dl>

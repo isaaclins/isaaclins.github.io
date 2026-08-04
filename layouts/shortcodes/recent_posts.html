@@ -1,18 +1,16 @@
-{{ $pages := where .Site.RegularPages "Section" "blog" }}
-{{ $pages = first 5 $pages }}
-{{ if $pages }}
-  <h2>Blog</h2>
-  I write stuff.
-  <br>
-  You might find some of it useful, or at least interesting.
-  <br>
-  Here are some of my latest posts you might like:
-  <ul>
-    {{ range $pages }}
-      <li><a href="{{ .Permalink }}">- {{ .Title }}</a></li>
-    {{ end }}
+{{/* Latest blog posts, title left and date right, hairline row separators. */}}
+{{- $limit := int (.Get "limit" | default 4) -}}
+{{- $pages := first $limit (where .Site.RegularPages "Section" "blog") -}}
+{{- if $pages -}}
+  <ul class="writing">
+    {{- range $pages }}
+      <li class="writing-item">
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        <time class="writing-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date | time.Format site.Params.theme_config.date_format }}</time>
+      </li>
+    {{- end }}
   </ul>
-{{ else }}
-  <h2>Blog</h2>
+  <p class="writing-more"><a href="{{ "/blog/" | relURL }}">all posts &rarr;</a></p>
+{{- else -}}
   <p>No recent posts to display at the moment.</p>
-{{ end }} 
+{{- end -}}

@@ -11,6 +11,17 @@
 
   color: $--primary-text-color;
 
+  // Single source of truth for the palette. Everything below the theme
+  // switcher reads these instead of hard-coding colours, so there is still
+  // exactly one theming mechanism.
+  --bg: #{$--bg-color};
+  --fg: #{$--primary-text-color};
+  --muted: #{$--secondary-text-color};
+  --accent: #{$--link-color};
+  --accent-dim: #{$--visited-link-color};
+  --rule: #{rgba($--primary-text-color, 0.2)};
+  --rule-strong: #{rgba($--primary-text-color, 0.35)};
+
   a {
     color: $--link-color;
     &:visited {
@@ -64,11 +75,13 @@
   }
 }
 
+// Palette unchanged (modus-vivendi). Only the dark secondary text colour
+// moved off #000000, which was invisible on the black background.
 @mixin dark-appearance {
   @include theme(
     #000000,
     #ffffff,
-    #000000,
+    #9b9b9b,
     #79a8ff,
     #f78fe7,
     #2f3849
@@ -107,6 +120,35 @@ body[a="light"] {
 
 // -------------------------------------------- //
 
+// -------------- SCALE -------------- //
+// One spacing scale, one measure, one type scale. Nothing else invents
+// its own numbers.
+
+:root {
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.5rem;
+  --sp-6: 2rem;
+  --sp-7: 3rem;
+  --sp-8: 4rem;
+  --sp-9: 6rem;
+
+  // Content measure. ~68 monospace characters at the 16px body size.
+  // Kept in rem, not ch: `ch` resolves against each element's own font-size,
+  // so the smaller-typed nav would otherwise get a narrower container than
+  // the content and sit visibly misaligned with it.
+  --measure: 45rem;
+
+  --fs-hero: 2.5rem;
+  --fs-lead: 1.0625rem;
+  --fs-body: 1rem;
+  --fs-meta: 0.8125rem;
+  --fs-label: 0.75rem;
+  --tracking-label: 0.18em;
+}
+
 html {
   height: 100%;
 }
@@ -129,17 +171,26 @@ h6 {
 }
 
 p {
-  margin: 1rem 0;
+  margin: var(--sp-4) 0;
+  line-height: 1.6;
 }
 
 li {
   margin: 0.4rem 0;
+  line-height: 1.6;
 }
 
 a {
   text-decoration: none;
   &:hover {
     text-decoration: underline;
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 1px;
+  }
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    text-decoration: none;
   }
 }
 
@@ -230,9 +281,9 @@ details[open] summary {
 }
 
 .w {
-  max-width: 640px;
+  max-width: var(--measure);
   margin: 0 auto;
-  padding: 4rem 2rem;
+  padding: var(--sp-8) var(--sp-6) var(--sp-9);
 }
 
 // TOC – fixed on the right side of the viewport
@@ -707,4 +758,281 @@ img.thick-border {
   border-bottom: 1px solid currentColor;
   padding-bottom: 0.3rem;
   margin-top: 2rem;
+}
+
+// -------------- SITE NAV -------------- //
+// Slim persistent bar: name left, sections right. Static, no JS.
+
+.site-nav {
+  border-bottom: 1px solid var(--rule);
+}
+
+.site-nav-inner {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: var(--sp-3) var(--sp-6);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--sp-2) var(--sp-5);
+  font-size: var(--fs-meta);
+}
+
+// Doubled class selectors: the theme mixin targets `body[a="…"] a`, so a
+// single class would lose the cascade.
+.site-nav .site-nav-brand {
+  color: var(--fg);
+  font-weight: bold;
+  &:visited {
+    color: var(--fg);
+  }
+  &:hover {
+    color: var(--accent);
+  }
+}
+
+.site-nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--sp-2) var(--sp-5);
+  margin: 0;
+  padding: 0;
+  min-width: 0; // let the row wrap instead of overflowing the viewport
+  list-style: none;
+
+  li {
+    margin: 0;
+  }
+}
+
+.site-nav .site-nav-links a {
+  color: var(--muted);
+  &:visited {
+    color: var(--muted);
+  }
+  &:hover,
+  &[aria-current] {
+    color: var(--accent);
+  }
+}
+
+// -------------- HOMEPAGE -------------- //
+
+.hero {
+  margin: 0;
+}
+
+.hero-name {
+  font-size: var(--fs-hero);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 var(--sp-3);
+}
+
+.hero-role {
+  color: var(--muted);
+  font-size: var(--fs-meta);
+  letter-spacing: 0.06em;
+  margin: 0 0 var(--sp-5);
+}
+
+.hero-lead {
+  font-size: var(--fs-lead);
+  line-height: 1.6;
+  max-width: 60ch;
+  margin: 0;
+}
+
+// Section heading: Isaac's slash motif, a lowercase label, and a hairline
+// that runs to the right edge of the measure.
+.sec {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  margin: var(--sp-9) 0 var(--sp-5);
+  font-size: var(--fs-label);
+  font-weight: normal;
+  line-height: 1;
+}
+
+.sec-slash {
+  color: var(--accent);
+  opacity: 0.7;
+}
+
+.sec-label {
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-label);
+  white-space: nowrap;
+}
+
+.sec-rule {
+  flex: 1 1 auto;
+  height: 1px;
+  background: var(--rule);
+}
+
+// Stat strip: three cells, label above, value below, hairline dividers.
+.stat-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--rule-strong);
+  border-bottom: 1px solid var(--rule-strong);
+  margin: var(--sp-6) 0 0;
+
+  .stat {
+    padding: var(--sp-3) var(--sp-4);
+    border-left: 1px solid var(--rule);
+
+    &:first-child {
+      padding-left: 0;
+      border-left: 0;
+    }
+  }
+
+  dt {
+    color: var(--muted);
+    font-size: var(--fs-meta);
+    margin-bottom: var(--sp-1);
+  }
+
+  dd {
+    margin: 0;
+    min-width: 0;
+    line-height: 1.35;
+  }
+}
+
+// Stack table: label column left, values right, hairline row separators.
+.rows {
+  margin: 0;
+  border-top: 1px solid var(--rule-strong);
+
+  .row {
+    display: grid;
+    grid-template-columns: 14ch minmax(0, 1fr);
+    gap: var(--sp-4);
+    padding: var(--sp-3) 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  dt {
+    color: var(--muted);
+    font-size: var(--fs-meta);
+    line-height: 1.6;
+    min-width: 0;
+  }
+
+  dd {
+    margin: 0;
+    min-width: 0;
+    line-height: 1.6;
+
+    p {
+      margin: 0;
+    }
+  }
+}
+
+// Latest writing: title left, date right, hairline row separators.
+.writing {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--rule-strong);
+}
+
+.writing-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--sp-2) var(--sp-4);
+  margin: 0;
+  padding: var(--sp-3) 0;
+  border-bottom: 1px solid var(--rule);
+  line-height: 1.5;
+
+  a {
+    flex: 1 1 auto;
+    min-width: 0; // long titles wrap instead of overflowing
+  }
+}
+
+.writing-date {
+  color: var(--muted);
+  font-size: var(--fs-meta);
+  white-space: nowrap;
+}
+
+.writing-more {
+  margin: var(--sp-4) 0 0;
+  font-size: var(--fs-meta);
+}
+
+// One-line pointer to a secondary page.
+.note {
+  margin: var(--sp-5) 0 0;
+  font-size: var(--fs-meta);
+  color: var(--muted);
+}
+
+.closing {
+  color: var(--muted);
+  margin: var(--sp-4) 0 0;
+
+  + .closing {
+    margin-top: var(--sp-2);
+  }
+}
+
+// -------------- HOMEPAGE, NARROW SCREENS -------------- //
+
+@media (max-width: 640px) {
+  :root {
+    --fs-hero: 1.875rem;
+  }
+
+  .site-nav-inner {
+    padding: var(--sp-3) var(--sp-4);
+    gap: var(--sp-2) var(--sp-4);
+  }
+
+  .stat-strip {
+    grid-template-columns: 1fr;
+
+    .stat {
+      padding: var(--sp-3) 0;
+      border-left: 0;
+      border-top: 1px solid var(--rule);
+
+      &:first-child {
+        border-top: 0;
+      }
+    }
+  }
+
+  .rows .row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-1);
+  }
+
+  // Keep every row the same shape instead of letting short titles keep
+  // their date inline.
+  .writing-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--sp-1);
+  }
+}
+
+// -------------- PRINT -------------- //
+// Navigation is not useful on paper. The resume layout already ships without
+// any chrome; this covers posts and pages printed or saved as PDF.
+@media print {
+  .site-nav {
+    display: none;
+  }
 }

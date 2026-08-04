@@ -1,0 +1,8 @@
+{{/* Section heading: Isaac's slash motif + label + hairline rule to the
+     right edge of the measure. Usage: {{< sec "about" >}} */}}
+{{- $label := .Get 0 -}}
+<h2 class="sec" id="{{ $label | anchorize }}">
+  <span class="sec-slash" aria-hidden="true">//////////</span>
+  <span class="sec-label">{{ $label }}</span>
+  <span class="sec-rule" aria-hidden="true"></span>
+</h2>

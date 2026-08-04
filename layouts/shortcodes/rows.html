@@ -1,0 +1,15 @@
+{{/* Stack table: label column left, values right, hairline row separators.
+     One "label | value" per line in the inner content. Both columns are
+     markdownified, so links and emphasis work in either. */}}
+<dl class="rows">
+  {{- range $line := split (trim .Inner "\n\r \t") "\n" -}}
+    {{- $line = trim $line " \t\r" -}}
+    {{- if $line -}}
+      {{- $parts := split $line "|" -}}
+      <div class="row">
+        <dt>{{ trim (index $parts 0) " " | markdownify }}</dt>
+        <dd>{{ if gt (len $parts) 1 }}{{ trim (delimit (after 1 $parts) "|") " " | markdownify }}{{ end }}</dd>
+      </div>
+    {{- end -}}
+  {{- end -}}
+</dl>

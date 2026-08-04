@@ -2,44 +2,68 @@
 title = "Isaac Lins"
 date = 2025-06-21
 draft = false
+description = "Isaac Lins. Application developer and security analyst at Swisscom, building AI-powered tools, agents, and the systems that carry them to production."
 +++
 
-**Application Developer & Security Analyst**
+Application Developer & Security Analyst · Swisscom
+{.hero-role}
 
-Hi, I'm Isaac. I build applications and ship AI-powered tools. I'm currently working at Swisscom as a Blue Team Security Analyst. My goal is simple: become a top AI engineer and build systems that actually make it to production.
+I build applications and ship AI-powered tools. The goal is simple: become a top
+AI engineer and build systems that actually make it to production.
+{.hero-lead}
 
-## What I Do
+{{< stat-strip >}}
+at swisscom | since 2022
+now | blue team security analyst
+building | ai tools & agents
+{{< /stat-strip >}}
 
-- **Develop:** I craft clean, efficient applications using multiple languages and frameworks.
-- **Build with AI:** I work with LLMs, agents, and the tooling around them, from prompt to production.
-- **Secure:** My security background means I build AI systems with security in mind, not as an afterthought.
+{{< sec "about" >}}
+
+I started at Swisscom as a developer and moved into security. Both stuck. I
+craft clean, efficient applications across multiple languages and frameworks,
+and I know how they break, because breaking them is the other half of the job.
+In 2025 I took first place at the national IT Skills Battle in cybersecurity.
+
+Most of my time now goes to the AI side: LLMs, agents, and the tooling around
+them, from prompt to production. The security background is why I build those
+systems with security in mind, not as an afterthought.
+
+{{< sec "stack" >}}
+
+{{< rows >}}
+languages | Python · Java · TypeScript · SQL · Bash
+frameworks | Next.js · React Native · Flutter · Spring Boot
+infrastructure | Docker · Git · Linux/RHEL · CI/CD
+security | Defensive · Offensive · Pentesting · CTF
+ai | LLMs · agents · prompt to production
+{{< /rows >}}
+
+{{< sec "writing" >}}
 
 {{< recent_posts >}}
 
-## Open source I maintain
+Also worth your time: [the sites and ideas that shaped how I work](/reading/).
+{.note}
 
-- [**Spotiglass**](https://github.com/isaaclins/spotiglass) — native macOS Spotify client (SwiftUI)
-- [**PowerUserMail**](https://github.com/isaaclins/powerusermail) — keyboard-first email for macOS
+{{< sec "open source" >}}
 
-## My Work Mentality & Useful Sites
+{{< rows >}}
+Spotiglass | native macOS Spotify client in SwiftUI · [source](https://github.com/isaaclins/spotiglass)
+PowerUserMail | keyboard-first email for macOS · [source](https://github.com/isaaclins/powerusermail)
+{{< /rows >}}
 
-- [**My Blog page**](/blog)
-- [**How To Code**](https://gist.github.com/isaaclins/b4d4cdc3b12891d09f3b3cdd846adb3f)
-- [**NoHello**](https://nohello.net/en/)
-- [**Grugbrain.dev**](https://grugbrain.dev/)
-- [**Websites & Opinion**](https://evenbettermotherfucking.website/)
-- [**KISS**](https://en.wikipedia.org/wiki/KISS_principle) 
-- [**git commits**](https://cbea.ms/git-commit/)
-- [**User Inyerface**](https://userinyerface.com/index.html)
+{{< sec "contact" >}}
 
-## Contact Me
-
-- **Email:** [contact@isaaclins.com](mailto:contact@isaaclins.com)
-- **GitHub:** [github.com/isaaclins](https://github.com/isaaclins)
-- **LinkedIn:** [Isaac Lins](https://www.linkedin.com/in/isaaclinsdotcom/)
-- **Resume:** [View My Resume](/resume)
-
+{{< rows >}}
+email | [contact@isaaclins.com](mailto:contact@isaaclins.com)
+github | [github.com/isaaclins](https://github.com/isaaclins)
+linkedin | [Isaac Lins](https://www.linkedin.com/in/isaaclinsdotcom/)
+resume | [view my resume](/resume)
+{{< /rows >}}
 
 If you're here, you know what you want.
+{.closing}
 
 let's get to work.
+{.closing}
