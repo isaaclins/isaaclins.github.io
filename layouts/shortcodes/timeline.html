@@ -1,0 +1,112 @@
+{{/* One project per line:
+     title | date | short description | markdown link | optional project page slug
+     The fifth field is optional. When present the card gets a read more link
+     pointing at /projects/<slug>/, where the long version lives. */}}
+{{- $projects := slice -}}
+{{- range $line := split (trim .Inner "\n\r \t") "\n" -}}
+  {{- $line = trim $line " \t\r" -}}
+  {{- if $line -}}
+    {{- $parts := split $line "|" -}}
+    {{- $title := trim (index $parts 0) " " -}}
+    {{- $date := "TODO-DATE" -}}
+    {{- $description := "" -}}
+    {{- $link := "" -}}
+    {{- $slug := "" -}}
+    {{- if gt (len $parts) 1 }}{{ $date = trim (index $parts 1) " " }}{{ end -}}
+    {{- if gt (len $parts) 2 }}{{ $description = trim (index $parts 2) " " }}{{ end -}}
+    {{- if gt (len $parts) 3 }}{{ $link = trim (index $parts 3) " " }}{{ end -}}
+    {{- if gt (len $parts) 4 }}{{ $slug = trim (delimit (after 4 $parts) "|") " " }}{{ end -}}
+    {{- $projects = $projects | append (dict "title" $title "date" $date "description" $description "link" $link "slug" $slug) -}}
+  {{- end -}}
+{{- end -}}
+{{- $rows := len $projects -}}
+{{- $steps := 1 -}}
+{{- if gt $rows 1 }}{{ $steps = sub $rows 1 }}{{ end -}}
+
+{{/* The pinned stretch occupies a sub-range of the track's view timeline.
+     Values are stored in thousandths of a percentage so Hugo's integer math
+     can keep the ranges deterministic without adding a runtime dependency. */}}
+{{- $viewStartN := 33333 -}}
+{{- $viewEndN := 66667 -}}
+{{- if eq $steps 1 }}{{ $viewStartN = 45455 }}{{ $viewEndN = 54545 }}
+{{- else if eq $steps 2 }}{{ $viewStartN = 41667 }}{{ $viewEndN = 58333 }}
+{{- else if eq $steps 3 }}{{ $viewStartN = 38462 }}{{ $viewEndN = 61538 }}
+{{- else if eq $steps 4 }}{{ $viewStartN = 35714 }}{{ $viewEndN = 64286 }}
+{{- else if eq $steps 6 }}{{ $viewStartN = 31250 }}{{ $viewEndN = 68750 }}
+{{- else if eq $steps 7 }}{{ $viewStartN = 29412 }}{{ $viewEndN = 70588 }}
+{{- else if eq $steps 8 }}{{ $viewStartN = 27778 }}{{ $viewEndN = 72222 }}
+{{- else if eq $steps 9 }}{{ $viewStartN = 26316 }}{{ $viewEndN = 73684 }}
+{{- else if eq $steps 10 }}{{ $viewStartN = 25000 }}{{ $viewEndN = 75000 }}{{ end -}}
+{{- $viewSpanN := sub $viewEndN $viewStartN -}}
+{{- $viewStart := printf "%d.%03d%%" (div $viewStartN 1000) (mod $viewStartN 1000) -}}
+{{- $viewEnd := printf "%d.%03d%%" (div $viewEndN 1000) (mod $viewEndN 1000) -}}
+
+{{/* Windows hand over at the midpoint between neighbouring card centres. */}}
+{{- $centres2 := slice -}}
+{{- $cursor := 0 -}}
+{{- range $project := $projects -}}
+  {{- $span := 1 -}}
+  {{- with $project.body }}{{ $span = 2 }}{{ end -}}
+  {{- $centres2 = $centres2 | append (add (mul 2 $cursor) (sub $span 1)) -}}
+  {{- $cursor = add $cursor $span -}}
+{{- end -}}
+{{- $last := sub (len $projects) 1 -}}
+{{- $placed := slice -}}
+{{- range $index, $project := $projects -}}
+  {{- $fromN := $viewStartN -}}
+  {{- if gt $index 0 -}}
+    {{- $edge2 := add (index $centres2 (sub $index 1)) (index $centres2 $index) -}}
+    {{- $fromN = add $viewStartN (div (mul $edge2 $viewSpanN) (mul 4 $steps)) -}}
+  {{- end -}}
+  {{- $toN := $viewEndN -}}
+  {{- if lt $index $last -}}
+    {{- $edge2 := add (index $centres2 $index) (index $centres2 (add $index 1)) -}}
+    {{- $toN = add $viewStartN (div (mul $edge2 $viewSpanN) (mul 4 $steps)) -}}
+  {{- end -}}
+  {{- $from := printf "%d.%03d%%" (div $fromN 1000) (mod $fromN 1000) -}}
+  {{- $to := printf "%d.%03d%%" (div $toN 1000) (mod $toN 1000) -}}
+  {{- $placed = $placed | append (merge $project (dict "from" $from "to" $to)) -}}
+{{- end -}}
+{{- $projects = $placed -}}
+
+<section class="timeline" aria-labelledby="projects" style="--timeline-items: {{ len $projects }}; --timeline-rows: {{ $rows }}; --timeline-steps: {{ $steps }}; --timeline-view-start: {{ $viewStart | safeCSS }}; --timeline-view-end: {{ $viewEnd | safeCSS }};">
+  <div class="timeline-track">
+    <div class="timeline-pin" tabindex="0" aria-label="Projects timeline, scrollable">
+      <div class="timeline-inner">
+        <div class="timeline-rail" aria-hidden="true">
+          {{- range $project := $projects -}}
+            <span class="timeline-tick"></span>
+          {{- end -}}
+        </div>
+
+        <div class="timeline-cards">
+          {{- range $index, $project := $projects -}}
+            <article class="timeline-card timeline-card--{{ if eq (mod $index 2) 0 }}left{{ else }}right{{ end }}">
+              <p class="timeline-card-date">{{ $project.date }}</p>
+              <h3 class="timeline-card-title">{{ $project.title }}</h3>
+              {{- with $project.description }}
+                <div class="timeline-card-description">{{ . | markdownify }}</div>
+              {{- end -}}
+              <div class="timeline-card-links">
+                {{- with $project.slug }}
+                  <a class="timeline-card-more" href="{{ printf "/projects/%s/" . | relURL }}">read more &rarr;</a>
+                {{- end -}}
+                {{- with $project.link }}{{ . | markdownify }}{{ end -}}
+              </div>
+            </article>
+          {{- end -}}
+        </div>
+
+      </div>
+      {{/* Outside the scrolling layer, so it can hold the middle slot. Only the
+           project currently being read shows its date here. */}}
+      <div class="timeline-dates" aria-hidden="true">
+        {{- range $index, $project := $projects -}}
+          <span class="timeline-date{{ if eq $index 0 }} timeline-date--first{{ end }}{{ if eq $index $last }} timeline-date--last{{ end }}" style="--from: {{ $project.from | safeCSS }}; --to: {{ $project.to | safeCSS }};">{{ $project.date }}</span>
+        {{- end -}}
+      </div>
+
+      <span class="timeline-scroll-hint" aria-hidden="true">scroll to explore</span>
+    </div>
+  </div>
+</section>

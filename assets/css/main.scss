@@ -959,6 +959,364 @@ img.thick-border {
   }
 }
 
+// Projects timeline: a tall track pins its viewport while the inner timeline
+// follows the page scroll. The cards are deliberately quiet and slightly
+// imperfect, like a working notebook rather than a product grid.
+.timeline {
+  width: 100%;
+  max-width: var(--measure);
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+// One row per project, plus an extra row for any project carrying the long
+// showcase text, so a tall card gets the space instead of colliding with its
+// neighbour. The runway is derived from that row count rather than hardcoded,
+// so adding a project or a long body cannot silently break the spacing.
+.timeline {
+  --timeline-step: 20vh;
+  --timeline-travel: calc(var(--timeline-step) * var(--timeline-steps));
+  --timeline-rail-top: calc(50vh - (var(--timeline-step) / 2));
+  --timeline-length: calc(100vh + var(--timeline-travel));
+}
+
+.timeline-track {
+  position: relative;
+  width: 100%;
+  max-width: var(--measure);
+  height: var(--timeline-length);
+  margin-inline: auto;
+  box-sizing: border-box;
+  view-timeline-name: --projects-track;
+  view-timeline-axis: block;
+}
+
+.timeline-pin {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  max-width: var(--measure);
+  height: 100vh;
+  margin-inline: auto;
+  overflow: hidden;
+  box-sizing: border-box;
+  outline: none;
+
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
+  }
+}
+
+.timeline-inner {
+  position: relative;
+  height: var(--timeline-length);
+  min-height: 100%;
+}
+
+.timeline-rail {
+  position: absolute;
+  top: var(--timeline-rail-top);
+  right: 0;
+  bottom: auto;
+  display: grid;
+  grid-template-rows: repeat(var(--timeline-rows), minmax(0, 1fr));
+  width: 28%;
+  height: calc(var(--timeline-step) * var(--timeline-rows));
+  border-left: 1px solid var(--accent);
+}
+
+.timeline-tick {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.timeline-tick::before {
+  content: "";
+  position: absolute;
+  left: calc(var(--sp-2) * -1);
+  width: var(--sp-3);
+  border-top: 1px solid var(--accent);
+}
+
+// A single date owns the middle of the rail. It lives outside the scrolling
+// layer, so it holds position while the cards travel past underneath. Each
+// label is visible only for the stretch where its own card is the one being
+// read, and the windows are adjacent rather than overlapping, so exactly one
+// date is ever on screen.
+.timeline-dates {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 28%;
+  height: 0;
+  pointer-events: none;
+}
+
+.timeline-date {
+  position: absolute;
+  top: -0.6em;
+  left: 0;
+  margin-left: var(--sp-3);
+  color: var(--accent);
+  font-size: var(--fs-meta);
+  line-height: 1.2;
+  white-space: nowrap;
+  opacity: 0;
+  animation: timeline-date-cycle linear;
+  animation-timeline: --projects-track;
+  animation-range: var(--from) var(--to);
+}
+
+// The first project already owns the slot when the pin engages.
+.timeline-date--first {
+  animation-name: timeline-date-first;
+  animation-range: calc(var(--from) - 0.1%) var(--to);
+}
+
+.timeline-date--last {
+  animation-name: timeline-date-last;
+}
+
+@keyframes timeline-date-first {
+  0%,
+  86% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-1.4em);
+  }
+}
+
+// The middle labels switch at their range boundary, so one label remains
+// visible even on the exact handover frame.
+@keyframes timeline-date-cycle {
+  0%,
+  86% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-1.4em);
+  }
+}
+
+@keyframes timeline-date-last {
+  0%,
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.timeline-cards {
+  position: absolute;
+  top: var(--timeline-rail-top);
+  right: calc(28% + var(--sp-4));
+  bottom: auto;
+  left: 0;
+  display: grid;
+  grid-template-rows: repeat(var(--timeline-rows), minmax(0, 1fr));
+  height: calc(var(--timeline-step) * var(--timeline-rows));
+}
+
+.timeline-card {
+  align-self: center;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 22rem;
+  padding: var(--sp-4);
+  overflow-wrap: anywhere;
+  border: 1px solid var(--rule-strong);
+  background-color: var(--bg);
+  background-image: repeating-linear-gradient(
+    135deg,
+    transparent 0 var(--sp-2),
+    var(--rule) var(--sp-2) calc(var(--sp-2) + 1px)
+  );
+}
+
+.timeline-card--left {
+  justify-self: start;
+  margin-left: var(--sp-4);
+  transform: rotate(-1.5deg);
+}
+
+.timeline-card--right {
+  justify-self: end;
+  margin-right: var(--sp-2);
+  transform: rotate(1.5deg);
+}
+
+.timeline-card-date {
+  margin: 0 0 var(--sp-1);
+  color: var(--muted);
+  font-size: var(--fs-meta);
+  line-height: 1.2;
+}
+
+.timeline-card-title {
+  margin: 0 0 var(--sp-2);
+  font-size: var(--fs-body);
+  line-height: 1.2;
+}
+
+.timeline-card-description,
+.timeline-card-links {
+  font-size: var(--fs-meta);
+  line-height: 1.45;
+
+  p {
+    margin: 0;
+  }
+}
+
+// The long version of a project lives on its own page, so the card only needs
+// a way in. Read more sits first, then the source link.
+.timeline-card-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2) var(--sp-4);
+  margin-top: var(--sp-2);
+  font-size: var(--fs-meta);
+  line-height: 1.45;
+
+  p {
+    margin: 0;
+  }
+}
+
+.timeline-card-more {
+  white-space: nowrap;
+}
+
+// Bottom right, inside the rail gutter. The cards stop before this column, so
+// the hint never sits on top of card content.
+// Only useful before you have started. It fades out over the first stretch of
+// the pin so it stops competing with the cards.
+.timeline-scroll-hint {
+  position: absolute;
+  right: 0;
+  bottom: var(--sp-2);
+  left: auto;
+  margin: 0;
+  padding: var(--sp-1) var(--sp-3);
+  transform: none;
+  color: var(--muted);
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  font-size: var(--fs-label);
+  letter-spacing: var(--tracking-label);
+  white-space: nowrap;
+  animation: timeline-hint-fade linear both;
+  animation-timeline: --projects-track;
+  animation-range: var(--timeline-view-start) calc(var(--timeline-view-start) + 6%);
+}
+
+@keyframes timeline-hint-fade {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes timeline-pan {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(calc(-100% + 100vh));
+  }
+}
+
+@mixin timeline-static {
+  .timeline-track {
+    height: auto;
+    view-timeline-name: none;
+  }
+
+  .timeline-pin {
+    position: static;
+    height: auto;
+    overflow: visible;
+  }
+
+  .timeline-inner {
+    height: auto;
+    min-height: 0;
+    padding-bottom: var(--sp-6);
+    animation: none;
+    transform: none;
+  }
+
+  // No pinning means no middle slot to park in. The cards already print their
+  // dates, so the rail and floating labels are noise in the static layout.
+  .timeline-rail,
+  .timeline-dates {
+    display: none;
+  }
+
+  .timeline-cards {
+    position: static;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    display: grid;
+    grid-template-rows: none;
+    height: auto;
+    gap: var(--sp-5);
+  }
+
+  .timeline-card,
+  .timeline-card--left,
+  .timeline-card--right {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    transform: none;
+    justify-self: stretch;
+  }
+
+  .timeline-scroll-hint {
+    display: none;
+    position: static;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    width: fit-content;
+    margin: var(--sp-4) auto 0;
+    transform: none;
+  }
+}
+
+@supports (animation-timeline: scroll()) {
+  .timeline-inner {
+    animation: timeline-pan 1ms linear both;
+    animation-timeline: --projects-track;
+    animation-range: 35.714% 64.286%;
+  }
+}
+
+@supports not (animation-timeline: scroll()) {
+  @include timeline-static;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @include timeline-static;
+}
+
 // Latest writing: title left, date right, hairline row separators.
 .writing {
   margin: 0;
@@ -1062,6 +1420,8 @@ img.thick-border {
     align-items: flex-start;
     gap: var(--sp-1);
   }
+
+  @include timeline-static;
 }
 
 // -------------- PRINT -------------- //
