@@ -1,0 +1,49 @@
+{{/* One project per line: title | date | description | markdown link. */}}
+{{- $projects := slice -}}
+{{- range $line := split (trim .Inner "\n\r \t") "\n" -}}
+  {{- $line = trim $line " \t\r" -}}
+  {{- if $line -}}
+    {{- $parts := split $line "|" -}}
+    {{- $title := trim (index $parts 0) " " -}}
+    {{- $date := "TODO-DATE" -}}
+    {{- $description := "" -}}
+    {{- $link := "" -}}
+    {{- if gt (len $parts) 1 }}{{ $date = trim (index $parts 1) " " }}{{ end -}}
+    {{- if gt (len $parts) 2 }}{{ $description = trim (index $parts 2) " " }}{{ end -}}
+    {{- if gt (len $parts) 3 }}{{ $link = trim (delimit (after 3 $parts) "|") " " }}{{ end -}}
+    {{- $projects = $projects | append (dict "title" $title "date" $date "description" $description "link" $link) -}}
+  {{- end -}}
+{{- end -}}
+
+<section class="timeline" aria-labelledby="projects">
+  <div class="timeline-track">
+    <div class="timeline-pin" tabindex="0" aria-label="Projects timeline, scrollable">
+      <div class="timeline-inner" style="--timeline-items: {{ len $projects }};">
+        <div class="timeline-rail" aria-hidden="true">
+          {{- range $project := $projects -}}
+            <span class="timeline-tick">
+              <span class="timeline-tick-date">{{ $project.date }}</span>
+            </span>
+          {{- end -}}
+        </div>
+
+        <div class="timeline-cards">
+          {{- range $index, $project := $projects -}}
+            <article class="timeline-card timeline-card--{{ if eq (mod $index 2) 0 }}left{{ else }}right{{ end }}">
+              <p class="timeline-card-date">{{ $project.date }}</p>
+              <h3 class="timeline-card-title">{{ $project.title }}</h3>
+              {{- with $project.description }}
+                <div class="timeline-card-description">{{ . | markdownify }}</div>
+              {{- end -}}
+              {{- with $project.link }}
+                <div class="timeline-card-link">{{ . | markdownify }}</div>
+              {{- end -}}
+            </article>
+          {{- end -}}
+        </div>
+
+      </div>
+      <span class="timeline-scroll-hint" aria-hidden="true">scroll to explore</span>
+    </div>
+  </div>
+</section>

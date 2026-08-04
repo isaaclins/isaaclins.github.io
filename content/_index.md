@@ -29,15 +29,15 @@ Most of my time now goes to the AI side: LLMs, agents, and the tooling around
 them, from prompt to production. The security background is why I build those
 systems with security in mind, not as an afterthought.
 
-{{< sec "stack" >}}
+{{< sec "projects" >}}
 
-{{< rows >}}
-languages | Python · Java · TypeScript · SQL · Bash
-frameworks | Next.js · React Native · Flutter · Spring Boot
-infrastructure | Docker · Git · Linux/RHEL · CI/CD
-security | Defensive · Offensive · Pentesting · CTF
-ai | LLMs · agents · prompt to production
-{{< /rows >}}
+{{< timeline >}}
+pi-terminal-kit | Jul 16, 2026 | reusable Pi, tmux, Fish, and Ghostty pieces for visible agent work | [source](https://github.com/isaaclins/pi-terminal-kit)
+Spotiglass | May 3, 2026 | native macOS Spotify client in SwiftUI | [source](https://github.com/isaaclins/spotiglass)
+Home Server + LLM | TODO-DATE | self-hosted server with Ollama LLM integration, file uploads, and user management with JWT | [source](https://github.com/isaaclins/ollama-model-api)
+PowerUserMail | TODO-DATE | keyboard-first email client for macOS | [source](https://github.com/isaaclins/powerusermail)
+Restaurant Application | TODO-DATE | microservices system for online ordering with a customizable website, Kitchen Display System, and backend with SMTP control | [source](https://github.com/isaaclins/restaurant-application)
+{{< /timeline >}}
 
 {{< sec "writing" >}}
 
