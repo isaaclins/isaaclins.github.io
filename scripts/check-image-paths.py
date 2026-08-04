@@ -4,6 +4,8 @@ Check that image paths referenced in markdown files actually exist.
 Validates both markdown image syntax and Hugo shortcodes.
 """
 
+from __future__ import annotations
+
 import sys
 import re
 from pathlib import Path

@@ -4,6 +4,8 @@ Validate Hugo TOML frontmatter in markdown files.
 Checks for required fields and valid structure.
 """
 
+from __future__ import annotations
+
 import sys
 import re
 from pathlib import Path

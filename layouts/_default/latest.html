@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.LanguageCode | default "en" }}">
+<html lang="{{ site.Language.Locale | default "en" }}">
 <head>
     <title>Redirecting to Latest Post</title>
     {{ $latestInBlogSection := first 1 (where .Site.RegularPages.ByDate.Reverse "Section" "blog") }}

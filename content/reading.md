@@ -2,6 +2,7 @@
 title = "Reading"
 date = 2026-08-04
 draft = false
+show_date = false
 description = "The short list of sites and ideas that shaped how I work: keep it simple, say the thing, write the commit message properly."
 +++
 
