@@ -6,8 +6,8 @@ deployed to GitHub Pages behind Cloudflare at <https://isaaclins.com>.
 
 ## Stack
 
-- **Hugo extended** (CI builds with v0.140.2; `config.toml` requires the
-  extended SCSS-capable build, min 0.41.0).
+- **Hugo extended** (the version is pinned in [`.hugo-version`](.hugo-version),
+  currently v0.164.0; `config.toml` requires Hugo 0.158.0 or newer).
 - **Dart Sass** for `assets/css/main.scss`.
 - Content in `content/` as Markdown with **TOML frontmatter** (`+++`
   delimiters).
@@ -22,7 +22,7 @@ deployed to GitHub Pages behind Cloudflare at <https://isaaclins.com>.
 | `images/` | Post images (mounted to `/images/` at build time). |
 | `static/` | Files copied verbatim to the site root (JS, manifest, icons). |
 | `data/menu.toml` | Homepage menu entries. |
-| `scripts/` | Python helpers run by pre-commit (frontmatter, image-path, and draft checks). |
+| `scripts/` | Python checks for frontmatter, image paths, draft status, and the installed Hugo version. |
 | `.github/workflows/` | CI: build/validate, deploy, image optimization, and Lighthouse. |
 
 ## Local development
@@ -45,8 +45,12 @@ hugo --gc --minify     # production build into ./public
 ## CI / deployment
 
 - **build-test** — builds the site, validates the generated HTML with
-  `html5validator`, and runs `cspell` on non-draft content.
+  `html5validator`, and runs `cspell` on non-draft content for pushes to `main`
+  and pull requests targeting `main`.
 - **pages-deploy** — builds and deploys to GitHub Pages on push to `main`.
+- Both Hugo workflows read the pinned version from [`.hugo-version`](.hugo-version)
+  and enforce `config.toml`'s minimum with `scripts/check-hugo-version.py`;
+  update the version file when upgrading Hugo.
 - **optimize-images** — losslessly optimizes committed images and generates
   WebP versions.
 - **Lighthouse CI** — runs Lighthouse against the live URLs after a deploy and

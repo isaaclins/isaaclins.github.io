@@ -6,7 +6,7 @@ enableRobotsTXT = true
 [module]
   [module.hugoVersion]
     extended = true
-    min      = "0.41.0"
+    min      = "0.158.0"
 [[module.mounts]]
 source = 'static'
 target = 'static'

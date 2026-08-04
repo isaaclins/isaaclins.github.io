@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
@@ -21,14 +24,21 @@ defaults:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-    env:
-      HUGO_VERSION: 0.140.2
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
         with:
           submodules: recursive
           fetch-depth: 0
+
+      - name: Read Hugo version
+        run: |
+          HUGO_VERSION="$(tr -d '[:space:]' < .hugo-version)"
+          if [[ ! "$HUGO_VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::error::Invalid Hugo version in .hugo-version: $HUGO_VERSION"
+            exit 1
+          fi
+          echo "HUGO_VERSION=$HUGO_VERSION" >> "$GITHUB_ENV"
 
       - name: Install Hugo CLI
         run: |
@@ -37,6 +47,9 @@ jobs:
 
       - name: Verify Hugo Version
         run: hugo version
+
+      - name: Enforce Hugo minimum version
+        run: python3 scripts/check-hugo-version.py
 
       - name: Install Dart Sass
         run: sudo snap install dart-sass
