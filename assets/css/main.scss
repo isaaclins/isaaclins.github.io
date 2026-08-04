@@ -974,10 +974,12 @@ img.thick-border {
 // neighbour. The runway is derived from that row count rather than hardcoded,
 // so adding a project or a long body cannot silently break the spacing.
 .timeline {
-  --timeline-step: 20vh;
-  --timeline-travel: calc(var(--timeline-step) * var(--timeline-steps));
-  --timeline-rail-top: calc(50vh - (var(--timeline-step) / 2));
-  --timeline-length: calc(100vh + var(--timeline-travel));
+  --timeline-card-height: max(100vh, calc(var(--timeline-step) * var(--timeline-rows)));
+  --timeline-content-height: calc(
+    var(--timeline-card-height) + var(--timeline-edge) + var(--timeline-edge)
+  );
+  --timeline-travel: calc(var(--timeline-content-height) - 100vh);
+  --timeline-length: var(--timeline-content-height);
 }
 
 .timeline-track {
@@ -1016,13 +1018,13 @@ img.thick-border {
 
 .timeline-rail {
   position: absolute;
-  top: var(--timeline-rail-top);
+  top: var(--timeline-edge);
   right: 0;
   bottom: auto;
   display: grid;
   grid-template-rows: repeat(var(--timeline-rows), minmax(0, 1fr));
   width: 28%;
-  height: calc(var(--timeline-step) * var(--timeline-rows));
+  height: var(--timeline-card-height);
   border-left: 1px solid var(--accent);
 }
 
@@ -1070,14 +1072,22 @@ img.thick-border {
   animation-range: var(--from) var(--to);
 }
 
-// The first project already owns the slot when the pin engages.
-.timeline-date--first {
-  animation-name: timeline-date-first;
-  animation-range: calc(var(--from) - 0.1%) var(--to);
+.timeline-date--inactive {
+  display: none;
 }
 
-.timeline-date--last {
+.timeline-date--range-start {
+  animation-name: timeline-date-first;
+}
+
+.timeline-date--range-end {
   animation-name: timeline-date-last;
+  animation-range: var(--from) calc(var(--to) + 0.1%);
+}
+
+.timeline-date--range-hold {
+  animation-name: timeline-date-hold;
+  animation-range: var(--from) calc(var(--to) + 0.1%);
 }
 
 @keyframes timeline-date-first {
@@ -1116,15 +1126,23 @@ img.thick-border {
   }
 }
 
+@keyframes timeline-date-hold {
+  0%,
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .timeline-cards {
   position: absolute;
-  top: var(--timeline-rail-top);
+  top: var(--timeline-edge);
   right: calc(28% + var(--sp-4));
   bottom: auto;
   left: 0;
   display: grid;
   grid-template-rows: repeat(var(--timeline-rows), minmax(0, 1fr));
-  height: calc(var(--timeline-step) * var(--timeline-rows));
+  height: var(--timeline-card-height);
 }
 
 .timeline-card {
@@ -1141,6 +1159,18 @@ img.thick-border {
     transparent 0 var(--sp-2),
     var(--rule) var(--sp-2) calc(var(--sp-2) + 1px)
   );
+}
+
+.timeline-card:first-child {
+  align-self: start;
+}
+
+.timeline-card:last-child {
+  align-self: end;
+}
+
+.timeline-card:only-child {
+  align-self: center;
 }
 
 .timeline-card--left {
@@ -1217,7 +1247,7 @@ img.thick-border {
   white-space: nowrap;
   animation: timeline-hint-fade linear both;
   animation-timeline: --projects-track;
-  animation-range: var(--timeline-view-start) calc(var(--timeline-view-start) + 6%);
+  animation-range: var(--timeline-view-start) var(--timeline-view-end);
 }
 
 @keyframes timeline-hint-fade {
@@ -1236,7 +1266,7 @@ img.thick-border {
   }
 
   to {
-    transform: translateY(calc(-100% + 100vh));
+    transform: translateY(calc(100vh - var(--timeline-length)));
   }
 }
 
@@ -1287,6 +1317,7 @@ img.thick-border {
     margin: 0;
     transform: none;
     justify-self: stretch;
+    align-self: stretch;
   }
 
   .timeline-scroll-hint {
@@ -1305,7 +1336,7 @@ img.thick-border {
   .timeline-inner {
     animation: timeline-pan 1ms linear both;
     animation-timeline: --projects-track;
-    animation-range: 35.714% 64.286%;
+    animation-range: var(--timeline-view-start) var(--timeline-view-end);
   }
 }
 

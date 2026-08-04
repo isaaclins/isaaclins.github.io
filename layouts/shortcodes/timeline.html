@@ -23,53 +23,57 @@
 {{- $steps := 1 -}}
 {{- if gt $rows 1 }}{{ $steps = sub $rows 1 }}{{ end -}}
 
+{{/* The cards occupy a real content block with a small viewport-relative
+     gutter at either end. The viewport-relative gutter keeps the pinned range
+     and the CSS view-timeline percentages deterministic at every height. */}}
+{{- $stepVh := 20 -}}
+{{- $contentVh := mul $rows $stepVh -}}
+{{- if lt $contentVh 100 }}{{ $contentVh = 100 }}{{ end -}}
+{{- $edgeVh := 4 -}}
+{{- $timelineHeightVh := add $contentVh (mul 2 $edgeVh) -}}
+{{- $viewTotalVh := add $timelineHeightVh 100 -}}
+
 {{/* The pinned stretch occupies a sub-range of the track's view timeline.
      Values are stored in thousandths of a percentage so Hugo's integer math
      can keep the ranges deterministic without adding a runtime dependency. */}}
-{{- $viewStartN := 33333 -}}
-{{- $viewEndN := 66667 -}}
-{{- if eq $steps 1 }}{{ $viewStartN = 45455 }}{{ $viewEndN = 54545 }}
-{{- else if eq $steps 2 }}{{ $viewStartN = 41667 }}{{ $viewEndN = 58333 }}
-{{- else if eq $steps 3 }}{{ $viewStartN = 38462 }}{{ $viewEndN = 61538 }}
-{{- else if eq $steps 4 }}{{ $viewStartN = 35714 }}{{ $viewEndN = 64286 }}
-{{- else if eq $steps 6 }}{{ $viewStartN = 31250 }}{{ $viewEndN = 68750 }}
-{{- else if eq $steps 7 }}{{ $viewStartN = 29412 }}{{ $viewEndN = 70588 }}
-{{- else if eq $steps 8 }}{{ $viewStartN = 27778 }}{{ $viewEndN = 72222 }}
-{{- else if eq $steps 9 }}{{ $viewStartN = 26316 }}{{ $viewEndN = 73684 }}
-{{- else if eq $steps 10 }}{{ $viewStartN = 25000 }}{{ $viewEndN = 75000 }}{{ end -}}
+{{- $viewStartN := div 10000000 $viewTotalVh -}}
+{{- $viewEndN := div (mul $timelineHeightVh 100000) $viewTotalVh -}}
 {{- $viewSpanN := sub $viewEndN $viewStartN -}}
 {{- $viewStart := printf "%d.%03d%%" (div $viewStartN 1000) (mod $viewStartN 1000) -}}
 {{- $viewEnd := printf "%d.%03d%%" (div $viewEndN 1000) (mod $viewEndN 1000) -}}
 
-{{/* Windows hand over at the midpoint between neighbouring card centres. */}}
-{{- $centres2 := slice -}}
-{{- $cursor := 0 -}}
-{{- range $project := $projects -}}
-  {{- $span := 1 -}}
-  {{- with $project.body }}{{ $span = 2 }}{{ end -}}
-  {{- $centres2 = $centres2 | append (add (mul 2 $cursor) (sub $span 1)) -}}
-  {{- $cursor = add $cursor $span -}}
-{{- end -}}
+{{/* A handover belongs at the midpoint between neighbouring card centres.
+     Clamp centres outside the pinned range to its edge. This keeps the date
+     windows adjacent even when a short content block needs only its end
+     gutter as travel. */}}
+{{- $rowCount := $rows -}}
+{{- if lt $rowCount 1 }}{{ $rowCount = 1 }}{{ end -}}
+{{- $travelVh := sub $timelineHeightVh 100 -}}
+{{- $travelDenom := mul $travelVh $rowCount -}}
 {{- $last := sub (len $projects) 1 -}}
 {{- $placed := slice -}}
 {{- range $index, $project := $projects -}}
   {{- $fromN := $viewStartN -}}
   {{- if gt $index 0 -}}
-    {{- $edge2 := add (index $centres2 (sub $index 1)) (index $centres2 $index) -}}
-    {{- $fromN = add $viewStartN (div (mul $edge2 $viewSpanN) (mul 4 $steps)) -}}
+    {{- $boundary := sub (add (mul $edgeVh $rowCount) (mul $index $contentVh)) (mul 50 $rowCount) -}}
+    {{- if lt $boundary 0 }}{{ $boundary = 0 }}{{ end -}}
+    {{- if gt $boundary $travelDenom }}{{ $boundary = $travelDenom }}{{ end -}}
+    {{- $fromN = add $viewStartN (div (mul $boundary $viewSpanN) $travelDenom) -}}
   {{- end -}}
   {{- $toN := $viewEndN -}}
   {{- if lt $index $last -}}
-    {{- $edge2 := add (index $centres2 $index) (index $centres2 (add $index 1)) -}}
-    {{- $toN = add $viewStartN (div (mul $edge2 $viewSpanN) (mul 4 $steps)) -}}
+    {{- $boundary := sub (add (mul $edgeVh $rowCount) (mul (add $index 1) $contentVh)) (mul 50 $rowCount) -}}
+    {{- if lt $boundary 0 }}{{ $boundary = 0 }}{{ end -}}
+    {{- if gt $boundary $travelDenom }}{{ $boundary = $travelDenom }}{{ end -}}
+    {{- $toN = add $viewStartN (div (mul $boundary $viewSpanN) $travelDenom) -}}
   {{- end -}}
   {{- $from := printf "%d.%03d%%" (div $fromN 1000) (mod $fromN 1000) -}}
   {{- $to := printf "%d.%03d%%" (div $toN 1000) (mod $toN 1000) -}}
-  {{- $placed = $placed | append (merge $project (dict "from" $from "to" $to)) -}}
+  {{- $placed = $placed | append (merge $project (dict "from" $from "to" $to "fromN" $fromN "toN" $toN)) -}}
 {{- end -}}
 {{- $projects = $placed -}}
 
-<section class="timeline" aria-labelledby="projects" style="--timeline-items: {{ len $projects }}; --timeline-rows: {{ $rows }}; --timeline-steps: {{ $steps }}; --timeline-view-start: {{ $viewStart | safeCSS }}; --timeline-view-end: {{ $viewEnd | safeCSS }};">
+<section class="timeline" aria-labelledby="projects" style="--timeline-items: {{ len $projects }}; --timeline-rows: {{ $rows }}; --timeline-steps: {{ $steps }}; --timeline-step: {{ $stepVh }}vh; --timeline-edge: {{ $edgeVh }}vh; --timeline-view-start: {{ $viewStart | safeCSS }}; --timeline-view-end: {{ $viewEnd | safeCSS }};">
   <div class="timeline-track">
     <div class="timeline-pin" tabindex="0" aria-label="Projects timeline, scrollable">
       <div class="timeline-inner">
@@ -102,7 +106,7 @@
            project currently being read shows its date here. */}}
       <div class="timeline-dates" aria-hidden="true">
         {{- range $index, $project := $projects -}}
-          <span class="timeline-date{{ if eq $index 0 }} timeline-date--first{{ end }}{{ if eq $index $last }} timeline-date--last{{ end }}" style="--from: {{ $project.from | safeCSS }}; --to: {{ $project.to | safeCSS }};">{{ $project.date }}</span>
+          <span class="timeline-date{{ if eq $project.fromN $project.toN }} timeline-date--inactive{{ else }}{{ if eq $project.fromN $viewStartN }} timeline-date--range-start{{ end }}{{ if eq $project.toN $viewEndN }} timeline-date--range-end{{ end }}{{ if and (eq $project.fromN $viewStartN) (eq $project.toN $viewEndN) }} timeline-date--range-hold{{ end }}{{ end }}" style="--from: {{ $project.from | safeCSS }}; --to: {{ $project.to | safeCSS }};">{{ $project.date }}</span>
         {{- end -}}
       </div>
 
