@@ -5,6 +5,8 @@ Warns (but doesn't fail) when committing draft posts to main.
 This is informational - sometimes you want to commit drafts.
 """
 
+from __future__ import annotations
+
 import sys
 import re
 from pathlib import Path

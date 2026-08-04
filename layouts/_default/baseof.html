@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="{{ $.Site.LanguageCode }}">
+<html lang="{{ site.Language.Locale }}">
     {{- partial "head.html" . -}}
     <body a="{{ $.Site.Params.theme_config.appearance | default "auto" }}">
+        <a class="skip-link" href="#content">skip to content</a>
         {{ partial "site_nav.html" . }}
-        <main class="page-content" aria-label="Content">
+        <main class="page-content" id="content" aria-label="Content">
             <div class="w">
                 {{ if and .IsSection (eq .Section "blog") }}
                 <div id="search-popup" class="search-popup">

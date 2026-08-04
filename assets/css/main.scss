@@ -760,6 +760,28 @@ img.thick-border {
   margin-top: 2rem;
 }
 
+// -------------- SKIP LINK -------------- //
+// Hidden off-screen until keyboard focus, then placed above the nav.
+
+.skip-link.skip-link {
+  position: absolute;
+  left: -100vw;
+  top: var(--sp-2);
+  z-index: 1;
+  padding: var(--sp-2) var(--sp-3);
+  background: var(--fg);
+  color: var(--bg);
+
+  &:visited {
+    color: var(--bg);
+  }
+
+  &:focus,
+  &:focus-visible {
+    left: var(--sp-4);
+  }
+}
+
 // -------------- SITE NAV -------------- //
 // Slim persistent bar: name left, sections right. Static, no JS.
 
@@ -961,6 +983,20 @@ img.thick-border {
   }
 }
 
+// Writing titles stay in the text colour until the reader points at them.
+.writing .writing-item a {
+  color: var(--fg);
+
+  &:visited {
+    color: var(--fg);
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: var(--accent);
+  }
+}
+
 .writing-date {
   color: var(--muted);
   font-size: var(--fs-meta);
@@ -1032,7 +1068,8 @@ img.thick-border {
 // Navigation is not useful on paper. The resume layout already ships without
 // any chrome; this covers posts and pages printed or saved as PDF.
 @media print {
-  .site-nav {
+  .site-nav,
+  .skip-link {
     display: none;
   }
 }
