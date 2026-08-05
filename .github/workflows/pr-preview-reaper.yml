@@ -68,7 +68,10 @@ jobs:
 
             response_file="$(mktemp)"
             api_exit=0
-            gh api --include --silent "repos/$REPOSITORY/pulls/$pr_number" >"$response_file" || api_exit=$?
+            # No --silent here. It suppresses the response body, which leaves the
+            # file holding headers only, so the state parse below finds nothing
+            # and every run dies on the first preview it inspects.
+            gh api --include "repos/$REPOSITORY/pulls/$pr_number" >"$response_file" || api_exit=$?
             status_code="$(awk '/^HTTP\/[^ ]+ / { code=$2 } END { print code }' "$response_file")"
 
             if (( api_exit == 0 )); then
