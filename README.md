@@ -47,7 +47,16 @@ hugo --gc --minify     # production build into ./public
 - **build-test** — builds the site, validates the generated HTML with
   `html5validator`, and runs `cspell` on non-draft content for pushes to `main`
   and pull requests targeting `main`.
-- **pages-deploy** — builds and deploys to GitHub Pages on push to `main`.
+- **pages-deploy** — builds the production site and publishes it to the
+  `gh-pages` branch on push to `main`.
+- **PR previews** — builds each pull request targeting `main` and publishes it
+  at `https://isaaclins.com/pr-preview/pr-<number>/`. The pull request preview
+  workflow uses `rossjrw/pr-preview-action` and removes the preview when the
+  pull request closes.
+- GitHub Pages must be set to **Deploy from a branch**, using `gh-pages` and the
+  repository root. The site must keep [`static/CNAME`](static/CNAME) with the
+  exact contents `isaaclins.com`; Hugo copies it to `public/CNAME` so branch
+  deployments keep the custom domain.
 - Both Hugo workflows read the pinned version from [`.hugo-version`](.hugo-version)
   and enforce `config.toml`'s minimum with `scripts/check-hugo-version.py`;
   update the version file when upgrading Hugo.
