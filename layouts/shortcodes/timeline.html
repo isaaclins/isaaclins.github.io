@@ -20,97 +20,65 @@
   {{- end -}}
 {{- end -}}
 {{- $rows := len $projects -}}
-{{- $steps := 1 -}}
-{{- if gt $rows 1 }}{{ $steps = sub $rows 1 }}{{ end -}}
 
-{{/* The cards occupy a real content block with a small viewport-relative
-     gutter at either end. The viewport-relative gutter keeps the pinned range
-     and the CSS view-timeline percentages deterministic at every height. */}}
-{{- $stepVh := 20 -}}
-{{- $contentVh := mul $rows $stepVh -}}
-{{- if lt $contentVh 100 }}{{ $contentVh = 100 }}{{ end -}}
-{{- $edgeVh := 4 -}}
-{{- $timelineHeightVh := add $contentVh (mul 2 $edgeVh) -}}
-{{- $viewTotalVh := add $timelineHeightVh 100 -}}
+{{/* Each project owns one row of the same height, so a tick, a card and a
+     date all describe the same slice of the page. The section is taller than
+     the viewport, which is what gives the sticky date something to hold. */}}
+{{- $stepVh := 26 -}}
+{{- $heightVh := mul $rows $stepVh -}}
 
-{{/* The pinned stretch occupies a sub-range of the track's view timeline.
-     Values are stored in thousandths of a percentage so Hugo's integer math
-     can keep the ranges deterministic without adding a runtime dependency. */}}
-{{- $viewStartN := div 10000000 $viewTotalVh -}}
-{{- $viewEndN := div (mul $timelineHeightVh 100000) $viewTotalVh -}}
-{{- $viewSpanN := sub $viewEndN $viewStartN -}}
-{{- $viewStart := printf "%d.%03d%%" (div $viewStartN 1000) (mod $viewStartN 1000) -}}
-{{- $viewEnd := printf "%d.%03d%%" (div $viewEndN 1000) (mod $viewEndN 1000) -}}
+{{/* The section carries a view timeline, so progress runs from the moment its
+     top enters the bottom of the viewport to the moment its bottom leaves the
+     top, a span of (height + 100vh). A point y inside the section sits on the
+     centre line at progress (y + 50) / (height + 100). Row boundaries put
+     through that gives each date the exact stretch where its own card is the
+     one crossing the middle of the screen.
 
-{{/* A handover belongs at the midpoint between neighbouring card centres.
-     Clamp centres outside the pinned range to its edge. This keeps the date
-     windows adjacent even when a short content block needs only its end
-     gutter as travel. */}}
-{{- $rowCount := $rows -}}
-{{- if lt $rowCount 1 }}{{ $rowCount = 1 }}{{ end -}}
-{{- $travelVh := sub $timelineHeightVh 100 -}}
-{{- $travelDenom := mul $travelVh $rowCount -}}
-{{- $last := sub (len $projects) 1 -}}
+     Values are kept in thousandths of a percent so Hugo's integer maths stays
+     exact and the windows tile with no gap and no overlap. */}}
+{{- $spanVh := add $heightVh 100 -}}
 {{- $placed := slice -}}
 {{- range $index, $project := $projects -}}
-  {{- $fromN := $viewStartN -}}
-  {{- if gt $index 0 -}}
-    {{- $boundary := sub (add (mul $edgeVh $rowCount) (mul $index $contentVh)) (mul 50 $rowCount) -}}
-    {{- if lt $boundary 0 }}{{ $boundary = 0 }}{{ end -}}
-    {{- if gt $boundary $travelDenom }}{{ $boundary = $travelDenom }}{{ end -}}
-    {{- $fromN = add $viewStartN (div (mul $boundary $viewSpanN) $travelDenom) -}}
-  {{- end -}}
-  {{- $toN := $viewEndN -}}
-  {{- if lt $index $last -}}
-    {{- $boundary := sub (add (mul $edgeVh $rowCount) (mul (add $index 1) $contentVh)) (mul 50 $rowCount) -}}
-    {{- if lt $boundary 0 }}{{ $boundary = 0 }}{{ end -}}
-    {{- if gt $boundary $travelDenom }}{{ $boundary = $travelDenom }}{{ end -}}
-    {{- $toN = add $viewStartN (div (mul $boundary $viewSpanN) $travelDenom) -}}
-  {{- end -}}
+  {{- $fromN := div (mul (add (mul $index $stepVh) 50) 100000) $spanVh -}}
+  {{- $toN := div (mul (add (mul (add $index 1) $stepVh) 50) 100000) $spanVh -}}
   {{- $from := printf "%d.%03d%%" (div $fromN 1000) (mod $fromN 1000) -}}
   {{- $to := printf "%d.%03d%%" (div $toN 1000) (mod $toN 1000) -}}
-  {{- $placed = $placed | append (merge $project (dict "from" $from "to" $to "fromN" $fromN "toN" $toN)) -}}
+  {{- $placed = $placed | append (merge $project (dict "from" $from "to" $to)) -}}
 {{- end -}}
 {{- $projects = $placed -}}
 
-<section class="timeline" aria-labelledby="projects" style="--timeline-items: {{ len $projects }}; --timeline-rows: {{ $rows }}; --timeline-steps: {{ $steps }}; --timeline-step: {{ $stepVh }}vh; --timeline-edge: {{ $edgeVh }}vh; --timeline-view-start: {{ $viewStart | safeCSS }}; --timeline-view-end: {{ $viewEnd | safeCSS }};">
-  <div class="timeline-track">
-    <div class="timeline-pin" tabindex="0" aria-label="Projects timeline, scrollable">
-      <div class="timeline-inner">
-        <div class="timeline-rail" aria-hidden="true">
-          {{- range $project := $projects -}}
-            <span class="timeline-tick"></span>
+<section class="timeline" aria-labelledby="projects" style="--timeline-rows: {{ $rows }}; --timeline-step: {{ $stepVh }}vh;">
+  {{/* First in the DOM and zero height, so it can park in the middle of the
+       viewport for the whole section without moving a single card. */}}
+  <div class="timeline-dates" aria-hidden="true">
+    {{- range $project := $projects -}}
+      <span class="timeline-date" style="--from: {{ $project.from | safeCSS }}; --to: {{ $project.to | safeCSS }};">{{ $project.date }}</span>
+    {{- end -}}
+  </div>
+
+  <div class="timeline-inner">
+    <div class="timeline-rail" aria-hidden="true">
+      {{- range $project := $projects -}}
+        <span class="timeline-tick"></span>
+      {{- end -}}
+    </div>
+
+    <div class="timeline-cards">
+      {{- range $index, $project := $projects -}}
+        <article class="timeline-card timeline-card--{{ if eq (mod $index 2) 0 }}left{{ else }}right{{ end }}">
+          <p class="timeline-card-date">{{ $project.date }}</p>
+          <h3 class="timeline-card-title">{{ $project.title }}</h3>
+          {{- with $project.description }}
+            <div class="timeline-card-description">{{ . | markdownify }}</div>
           {{- end -}}
-        </div>
-
-        <div class="timeline-cards">
-          {{- range $index, $project := $projects -}}
-            <article class="timeline-card timeline-card--{{ if eq (mod $index 2) 0 }}left{{ else }}right{{ end }}">
-              <p class="timeline-card-date">{{ $project.date }}</p>
-              <h3 class="timeline-card-title">{{ $project.title }}</h3>
-              {{- with $project.description }}
-                <div class="timeline-card-description">{{ . | markdownify }}</div>
-              {{- end -}}
-              <div class="timeline-card-links">
-                {{- with $project.slug }}
-                  <a class="timeline-card-more" href="{{ printf "/projects/%s/" . | relURL }}">read more &rarr;</a>
-                {{- end -}}
-                {{- with $project.link }}{{ . | markdownify }}{{ end -}}
-              </div>
-            </article>
-          {{- end -}}
-        </div>
-
-      </div>
-      {{/* Outside the scrolling layer, so it can hold the middle slot. Only the
-           project currently being read shows its date here. */}}
-      <div class="timeline-dates" aria-hidden="true">
-        {{- range $index, $project := $projects -}}
-          <span class="timeline-date{{ if eq $project.fromN $project.toN }} timeline-date--inactive{{ else }}{{ if eq $project.fromN $viewStartN }} timeline-date--range-start{{ end }}{{ if eq $project.toN $viewEndN }} timeline-date--range-end{{ end }}{{ if and (eq $project.fromN $viewStartN) (eq $project.toN $viewEndN) }} timeline-date--range-hold{{ end }}{{ end }}" style="--from: {{ $project.from | safeCSS }}; --to: {{ $project.to | safeCSS }};">{{ $project.date }}</span>
-        {{- end -}}
-      </div>
-
-      <span class="timeline-scroll-hint" aria-hidden="true">scroll to explore</span>
+          <div class="timeline-card-links">
+            {{- with $project.slug }}
+              <a class="timeline-card-more" href="{{ printf "/projects/%s/" . | relURL }}">read more &rarr;</a>
+            {{- end -}}
+            {{- with $project.link }}{{ . | markdownify }}{{ end -}}
+          </div>
+        </article>
+      {{- end -}}
     </div>
   </div>
 </section>
