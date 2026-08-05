@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Coding Agents on Isaac Lins</title><link>https://isaaclins.com/tags/coding-agents/</link><description>Recent content in Coding Agents on Isaac Lins</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Tue, 14 Apr 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://isaaclins.com/tags/coding-agents/index.xml" rel="self" type="application/rss+xml"/><item><title>Building a Codex-Style Coding App</title><link>https://isaaclins.com/blog/building-a-codex-style-coding-app/</link><pubDate>Tue, 14 Apr 2026 00:00:00 +0000</pubDate><guid>https://isaaclins.com/blog/building-a-codex-style-coding-app/</guid><description>&lt;p&gt;AI coding assistants feel like black magic until you peek under the hood.&lt;/p&gt;
+&lt;p&gt;Then you realize the &amp;ldquo;magic&amp;rdquo; is mostly a loop:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;User asks for something.&lt;/li&gt;
+&lt;li&gt;Model asks for a tool.&lt;/li&gt;
+&lt;li&gt;Runtime executes tool.&lt;/li&gt;
+&lt;li&gt;Tool result goes back to model.&lt;/li&gt;
+&lt;li&gt;Repeat until done.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Congrats. You now understand the core of modern coding agents.&lt;/p&gt;
+&lt;p&gt;This post is heavily inspired by Theo from t4.gg, specifically this video:
+&lt;a href="https://www.youtube.com/watch?v=I82j7AzMU80"&gt;Building a Codex-Style Coding App (Theo)&lt;/a&gt;.&lt;/p&gt;</description></item></channel></rss>
