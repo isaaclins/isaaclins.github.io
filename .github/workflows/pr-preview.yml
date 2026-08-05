@@ -1,17 +1,21 @@
-# Build Hugo and publish the production site to the gh-pages branch.
-name: pages-deploy
+name: Deploy PR previews
 
 on:
-  push:
+  pull_request:
     branches:
       - main
-  workflow_dispatch:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - closed
 
 permissions:
   contents: write
+  pull-requests: write
 
 concurrency:
-  group: pages-deploy
+  group: "pr-preview-${{ github.event.number }}"
   cancel-in-progress: false
 
 defaults:
@@ -19,16 +23,17 @@ defaults:
     shell: bash
 
 jobs:
-  deploy:
+  deploy-preview:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v7
         with:
           submodules: recursive
           fetch-depth: 0
 
       - name: Read Hugo version
+        if: github.event.action != 'closed'
         run: |
           HUGO_VERSION="$(tr -d '[:space:]' < .hugo-version)"
           if [[ ! "$HUGO_VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
@@ -38,35 +43,42 @@ jobs:
           echo "HUGO_VERSION=$HUGO_VERSION" >> "$GITHUB_ENV"
 
       - name: Install Hugo CLI
+        if: github.event.action != 'closed'
         run: |
           wget -O ${{ runner.temp }}/hugo.deb "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb"
           sudo dpkg -i ${{ runner.temp }}/hugo.deb
 
       - name: Verify Hugo Version
+        if: github.event.action != 'closed'
         run: hugo version
 
       - name: Enforce Hugo minimum version
+        if: github.event.action != 'closed'
         run: python3 scripts/check-hugo-version.py
 
       - name: Install Dart Sass
+        if: github.event.action != 'closed'
         run: sudo snap install dart-sass
 
       - name: Install Node.js dependencies
+        if: github.event.action != 'closed'
         run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
 
-      - name: Build with Hugo
+      - name: Build preview with Hugo
+        if: github.event.action != 'closed'
         env:
           HUGO_ENVIRONMENT: production
           HUGO_ENV: production
         run: |
-          hugo --gc --minify --baseURL "https://isaaclins.com/"
+          hugo --gc --minify --baseURL "https://isaaclins.com/pr-preview/pr-${{ github.event.number }}/"
 
-      - name: Publish production site
-        uses: JamesIves/github-pages-deploy-action@v4
+      - name: Deploy or remove preview
+        uses: rossjrw/pr-preview-action@v1
         with:
           token: ${{ github.token }}
-          branch: gh-pages
-          folder: ./public
-          clean-exclude: pr-preview/
-          single-commit: false
-          force: false
+          source-dir: ./public
+          preview-branch: gh-pages
+          pages-base-url: isaaclins.com
+          action: auto
+          wait-for-pages-deployment: false
+          qr-code: false
