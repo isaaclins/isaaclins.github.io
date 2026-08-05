@@ -52,7 +52,15 @@ hugo --gc --minify     # production build into ./public
 - **PR previews** — builds each pull request targeting `main` and publishes it
   at `https://isaaclins.com/pr-preview/pr-<number>/`. The pull request preview
   workflow uses `rossjrw/pr-preview-action` and removes the preview when the
-  pull request closes.
+  pull request closes while its head branch is still available.
+- **PR preview reaper** — `.github/workflows/pr-preview-reaper.yml` runs daily
+  and can also be started with `workflow_dispatch`. It checks every
+  `pr-preview/pr-<number>/` directory against the pull request API and removes
+  previews for closed or missing pull requests. It checks out only `gh-pages`,
+  never PR code, and makes one cleanup commit only when there is something to
+  remove. The action documentation covers the normal `pull_request` close
+  event, not `pull_request_target`, so the reaper is the safe fallback for a
+  deleted head branch.
 - GitHub Pages must be set to **Deploy from a branch**, using `gh-pages` and the
   repository root. The site must keep [`static/CNAME`](static/CNAME) with the
   exact contents `isaaclins.com`; Hugo copies it to `public/CNAME` so branch

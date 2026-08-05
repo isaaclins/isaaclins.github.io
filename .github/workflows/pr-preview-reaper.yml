@@ -1,0 +1,169 @@
+name: Reap stale PR previews
+
+on:
+  schedule:
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Report stale previews without changing gh-pages
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+  pull-requests: read
+
+concurrency:
+  group: pr-preview-reaper
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  reap:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      REPOSITORY: ${{ github.repository }}
+      DRY_RUN: ${{ inputs.dry_run || false }}
+    steps:
+      - name: Check out gh-pages
+        uses: actions/checkout@v7
+        with:
+          ref: gh-pages
+          fetch-depth: 1
+          token: ${{ github.token }}
+
+      - name: Remove previews for closed or missing pull requests
+        run: |
+          set -Eeuo pipefail
+
+          preview_root='pr-preview'
+          if [[ ! -d "$preview_root" ]]; then
+            echo "No $preview_root/ directory exists; would delete: none."
+            exit 0
+          fi
+          if [[ -L "$preview_root" ]]; then
+            echo '::error::Refusing to operate on a symlinked pr-preview/ directory.'
+            exit 1
+          fi
+
+          root_realpath="$(realpath -- "$preview_root")"
+          removals=()
+          shopt -s nullglob
+
+          for preview_path in "$preview_root"/pr-*; do
+            [[ -d "$preview_path" ]] || continue
+
+            preview_name="${preview_path##*/}"
+            if [[ ! "$preview_name" =~ ^pr-([0-9]+)$ ]]; then
+              echo "::warning::Ignoring unexpected preview path: $preview_path"
+              continue
+            fi
+            pr_number="${BASH_REMATCH[1]}"
+
+            response_file="$(mktemp)"
+            api_exit=0
+            gh api --include --silent "repos/$REPOSITORY/pulls/$pr_number" >"$response_file" || api_exit=$?
+            status_code="$(awk '/^HTTP\/[^ ]+ / { code=$2 } END { print code }' "$response_file")"
+
+            if (( api_exit == 0 )); then
+              if [[ "$status_code" != '200' ]]; then
+                rm -f -- "$response_file"
+                echo "::error::GitHub API returned HTTP $status_code for PR #$pr_number"
+                exit 1
+              fi
+              state="$(awk 'body || /^\{/ { body=1 } body' "$response_file" | jq -r '.state // empty')"
+              if [[ -z "$state" ]]; then
+                rm -f -- "$response_file"
+                echo "::error::GitHub API returned no pull request state for PR #$pr_number"
+                exit 1
+              fi
+            elif [[ "$status_code" == '404' ]]; then
+              state='missing'
+            else
+              rm -f -- "$response_file"
+              echo "::error::Could not read PR #$pr_number from the GitHub API (HTTP ${status_code:-unknown})"
+              exit 1
+            fi
+            rm -f -- "$response_file"
+
+            case "$state" in
+              open)
+                echo "Keeping $preview_path because PR #$pr_number is open."
+                ;;
+              closed|missing)
+                echo "Stale preview: $preview_path (PR #$pr_number is $state)."
+                removals+=("$preview_path")
+                ;;
+              *)
+                echo "::error::Unexpected state '$state' for PR #$pr_number"
+                exit 1
+                ;;
+            esac
+          done
+
+          guard_preview_path() {
+            local candidate="$1"
+            local candidate_realpath
+
+            if [[ ! "$candidate" =~ ^pr-preview/pr-[0-9]+$ ]]; then
+              echo "::error::Refusing to delete outside pr-preview/: $candidate"
+              return 1
+            fi
+            if [[ -L "$candidate" ]]; then
+              echo "::error::Refusing to delete symlinked preview: $candidate"
+              return 1
+            fi
+
+            candidate_realpath="$(realpath -- "$candidate")"
+            case "$candidate_realpath" in
+              "$root_realpath"/pr-*)
+                ;;
+              *)
+                echo "::error::Refusing to delete outside pr-preview/: $candidate"
+                return 1
+                ;;
+            esac
+            if [[ ! "$(basename -- "$candidate_realpath")" =~ ^pr-[0-9]+$ ]]; then
+              echo "::error::Refusing to delete outside pr-preview/: $candidate"
+              return 1
+            fi
+          }
+
+          if [[ "$DRY_RUN" == 'true' ]]; then
+            echo 'Dry run requested; no files or commits will be changed.'
+            if (( ${#removals[@]} == 0 )); then
+              echo 'WOULD DELETE: none'
+            else
+              for preview_path in "${removals[@]}"; do
+                guard_preview_path "$preview_path"
+                echo "WOULD DELETE $preview_path"
+              done
+            fi
+            exit 0
+          fi
+
+          if (( ${#removals[@]} == 0 )); then
+            echo 'No stale PR previews found; no commit created.'
+            exit 0
+          fi
+
+          for preview_path in "${removals[@]}"; do
+            guard_preview_path "$preview_path"
+            git rm -r -- "$preview_path"
+          done
+
+          if git diff --cached --quiet; then
+            echo '::error::Stale previews were found, but no deletion was staged.'
+            exit 1
+          fi
+
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Remove stale PR previews'
+          git push origin HEAD:gh-pages
