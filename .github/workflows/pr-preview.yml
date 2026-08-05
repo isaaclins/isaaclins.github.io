@@ -1,5 +1,9 @@
 name: Deploy PR previews
 
+# rossjrw/pr-preview-action documents cleanup on the normal pull_request
+# closed event. Keep this workflow on pull_request because it builds PR code;
+# pull_request_target would expose its write-capable token to that build.
+# Deleted-head cleanup is handled by the trusted scheduled reaper.
 on:
   pull_request:
     branches:
