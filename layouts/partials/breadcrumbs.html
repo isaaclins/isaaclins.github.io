@@ -1,6 +1,3 @@
-{{ $url := replace .Permalink (printf "%s" .Site.BaseURL) "" }}
-{{ $urlParts := split $url "/" }}
-
 <div class="breadcrumbs">
   <div>
     <a href="{{ "/" | relURL }}">Home</a>
@@ -10,7 +7,10 @@
       {{ end }}
     {{ end }}
     {{ if not .IsHome }}
-        / <a href="{{ .Permalink }}">{{ if .IsPage }}{{ .File.BaseFileName | humanize }}{{ else }}{{ .Title }}{{ end }}</a>
+        {{/* LinkTitle, not the humanized filename. Humanizing turned
+             pi-terminal-kit into "Pi terminal kit" and threw away the title
+             the page actually declares. */}}
+        / <a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
     {{ end }}
   </div>
 
