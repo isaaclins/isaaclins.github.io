@@ -7,14 +7,14 @@
   $--visited-link-color,
   $--highlight
 ) {
-  background-color: $--bg-color;
+  background-color: #c00000; // TEST ONLY: bogus change to prove PR previews work. Do not merge.
 
   color: $--primary-text-color;
 
   // Single source of truth for the palette. Everything below the theme
   // switcher reads these instead of hard-coding colours, so there is still
   // exactly one theming mechanism.
-  --bg: #c00000; // TEST ONLY: bogus change to prove PR previews work. Do not merge.
+  --bg: #{$--bg-color};
   --fg: #{$--primary-text-color};
   --muted: #{$--secondary-text-color};
   --accent: #{$--link-color};
