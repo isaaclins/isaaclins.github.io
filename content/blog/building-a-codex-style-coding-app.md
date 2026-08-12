@@ -19,7 +19,7 @@ Then you realize the "magic" is mostly a loop:
 
 Congrats. You now understand the core of modern coding agents.
 
-This post is heavily inspired by Theo from t4.gg, specifically this video:
+This post is heavily inspired by Theo from t3.gg, specifically this video:
 [Building a Codex-Style Coding App (Theo)](https://www.youtube.com/watch?v=I82j7AzMU80).
 
 This post is also inspired by Mihail Eric's write-up on building a functional coding agent in around 200 lines, and yes, the emperor really does have no clothes:
@@ -156,6 +156,6 @@ Stop overcomplicating it. Go build the thing.
 ## Credits
 
 - Major inspiration:
-  [Theo at t4.gg - YouTube video](https://www.youtube.com/watch?v=I82j7AzMU80)
+  [Theo at t3.gg - YouTube video](https://www.youtube.com/watch?v=I82j7AzMU80)
 - Original inspiration and technical walkthrough:
   [The Emperor Has No Clothes: How to Code Claude Code in 200 Lines of Code](https://www.mihaileric.com/The-Emperor-Has-No-Clothes/)
