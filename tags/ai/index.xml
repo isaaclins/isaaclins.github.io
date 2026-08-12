@@ -15,7 +15,7 @@
 &lt;li&gt;Repeat until done.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Congrats. You now understand the core of modern coding agents.&lt;/p&gt;
-&lt;p&gt;This post is heavily inspired by Theo from t4.gg, specifically this video:
+&lt;p&gt;This post is heavily inspired by Theo from t3.gg, specifically this video:
 &lt;a href="https://www.youtube.com/watch?v=I82j7AzMU80"&gt;Building a Codex-Style Coding App (Theo)&lt;/a&gt;.&lt;/p&gt;</description></item><item><title>Why You Can't Run ChatGPT on Your Toaster (Yet)</title><link>https://isaaclins.com/blog/ai-models-for-your-toaster/</link><pubDate>Mon, 29 Sep 2025 00:00:00 +0000</pubDate><guid>https://isaaclins.com/blog/ai-models-for-your-toaster/</guid><description>&lt;p&gt;Here&amp;rsquo;s a weird situation: you can download a state-of-the-art open-source AI model right now. It&amp;rsquo;s free. You can have the entire thing on your hard drive.&lt;/p&gt;
 &lt;p&gt;But you can&amp;rsquo;t actually run it.&lt;/p&gt;
 &lt;p&gt;Unless you&amp;rsquo;ve got around $400,000 for the kind of computer setup that data centers use, that AI model is just going to sit there. It&amp;rsquo;s like having a Formula 1 car but no racetrack to drive it on.&lt;/p&gt;</description></item><item><title>Model Context Protocol: The One Remote to Rule Them All</title><link>https://isaaclins.com/blog/model-context-protocol/</link><pubDate>Wed, 18 Jun 2025 00:00:00 +0000</pubDate><guid>https://isaaclins.com/blog/model-context-protocol/</guid><description>&lt;p&gt;Stop wiring a thousand custom webhooks. It&amp;rsquo;s 2025, we have standards now. Enter &lt;strong&gt;Model Context Protocol (MCP).&lt;/strong&gt; The universal adapter that lets your AI talk to &lt;em&gt;anything&lt;/em&gt; without the integration hangover.&lt;/p&gt;
