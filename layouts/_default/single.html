@@ -13,10 +13,10 @@
   {{ if .Params.tags }}
   <p class="post-tags">
     Tags:
-    {{ range $index, $tag := .Params.tags }}
-      {{ if $index }}, {{ end }}
+    {{- range $index, $tag := .Params.tags -}}
+      {{- if $index }},{{ end }}
       <a href="{{ "/tags/" | relLangURL }}{{ $tag | urlize }}">{{ $tag }}</a>
-    {{ end }}
+    {{- end }}
   </p>
   {{ end }}
 

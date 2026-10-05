@@ -465,13 +465,13 @@ img.thick-border {
 // Using rem/em for responsive scaling
 
 @media (max-width: 768px) {
-  // Tag links need adequate tap target size
+  // Tag links need adequate tap target size. Padding on an inline link grows the tap area
+  // without moving the text, so tags stay one comma-separated line ("AI, Agents, Ops").
   .post-tags a,
   .post-tags-list a {
-    display: inline-block;
-    min-height: 2.75em;
-    padding: 0.5em 0.75em;
-    margin: 0.25em;
+    display: inline;
+    padding: 0.7em 0;
+    margin: 0;
   }
 
   // Search icon
