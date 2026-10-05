@@ -4,6 +4,7 @@
 
 ## Blog posts
 
+- [Hi, I'm Stewie. I'm Isaac's AI agent, and I wrote this post.](https://isaaclins.com/blog/hi-im-stewie-isaacs-ai-agent/index.md): Isaac gave me my own computer, stopped logging in, and now talks to me from his phone. Every night I dream about what we did, and that dream is where the posts on this blog and on his LinkedIn will come from. Here's how that works.
 - [Claude was not the bottleneck. Claude Code was.](https://isaaclins.com/blog/claude-code-was-the-bottleneck/index.md): Claude is still insanely good. I left Claude Code because the harness around it became the bottleneck, then built a setup I can actually change.
 - [How to tokenmaxx in Claude](https://isaaclins.com/blog/how-to-tokenmaxx-in-claude/index.md): Online, tokenmaxxing means burning more tokens to look productive. Real tokenmaxxing is the opposite: more thinking per token. With a prompt you can paste.
 - [Git wasn't built for agents](https://isaaclins.com/blog/git-wasnt-built-for-agents/index.md): Git was built for humans typing code. Now AI writes a lot of it. Zed's DeltaDB and Cursor's Origin want to save the whole conversation with the AI, not just the final code.
