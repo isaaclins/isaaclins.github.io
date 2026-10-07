@@ -1,0 +1,21 @@
+{{- /* Home: the intro film (source and render script in tools/film/).
+       16:9 on wide screens, the 4:5 cut on phones. The picture underneath is
+       the poster; the video only loads when home.js decides to play it:
+       on screen, no reduced motion, no Save-Data. One button: play / pause / replay. */ -}}
+<figure class="film rv" id="film">
+  <picture>
+    <source media="(max-width: 640px)" srcset="{{ "images/home/intro-4x5.webp" | relURL }}" width="720" height="900">
+    <img src="{{ "images/home/intro-16x9.webp" | relURL }}" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+  </picture>
+  <video muted playsinline preload="none" aria-label="Intro film: I build applications and ship AI tools, from a prompt to production.">
+    <source media="(max-width: 640px)" src="{{ "video/intro-4x5.webm" | relURL }}" type="video/webm">
+    <source media="(max-width: 640px)" src="{{ "video/intro-4x5.mp4" | relURL }}" type="video/mp4">
+    <source src="{{ "video/intro-16x9.webm" | relURL }}" type="video/webm">
+    <source src="{{ "video/intro-16x9.mp4" | relURL }}" type="video/mp4">
+  </video>
+  <button class="film-btn" type="button" aria-label="Play the intro film" data-state="play">
+    <svg class="i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3.5v9l7-4.5z"/></svg>
+    <svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 3.5h2.5v9H4.5zM9 3.5h2.5v9H9z"/></svg>
+    <svg class="i-replay" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3a5 5 0 1 1-4.6 3H1.8L4.3 3l2.5 3H5.1A3.4 3.4 0 1 0 8 4.6z"/></svg>
+  </button>
+</figure>

@@ -148,6 +148,32 @@
     }, { threshold: .3 }).observe(vid);
   });
 
+  /* intro film: plays once while on screen, pauses off screen. Reduced motion
+     and Save-Data / slow connections keep the poster until someone presses play. */
+  var film = document.getElementById('film');
+  if (film) {
+    var fv = film.querySelector('video'), fb = film.querySelector('.film-btn');
+    var conn = navigator.connection || {};
+    var auto = !reduce && !conn.saveData && !/(^|-)2g|3g/.test(conn.effectiveType || '');
+    var wanted = false;
+    var setBtn = function (s, label) { fb.dataset.state = s; fb.setAttribute('aria-label', label); };
+    var play = function () {
+      fv.preload = 'auto';
+      fv.play().then(function () { film.classList.add('on'); setBtn('pause', 'Pause the intro film'); }, function () {});
+    };
+    fv.addEventListener('ended', function () { wanted = false; setBtn('replay', 'Play the intro film again'); });
+    fv.addEventListener('pause', function () { if (!fv.ended) setBtn('play', 'Play the intro film'); });
+    fb.addEventListener('click', function () {
+      if (fv.paused) { wanted = true; if (fv.ended) fv.currentTime = 0; play(); }
+      else { wanted = false; auto = false; fv.pause(); }
+    });
+    new IntersectionObserver(function (es) {
+      var vis = es[0].isIntersecting;
+      if (vis && (auto || wanted) && fv.paused && !fv.ended) { wanted = true; play(); }
+      else if (!vis && !fv.paused) fv.pause();
+    }, { threshold: .5 }).observe(film);
+  }
+
   /* contact: click copies the address */
   var mail = document.getElementById('mail'), hint = document.getElementById('copyhint');
   if (mail && hint) {

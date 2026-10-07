@@ -8,7 +8,8 @@ description = "Isaac Lins. Application developer and security analyst at Swissco
 <!--
   The home page. The big name above this is the site title (config.toml).
   Projects and "Also built" are in data/projects.toml.
-  Shortcodes: layouts/shortcodes/{meta,proof,sec,about,work,writing,contact}.html
+  Shortcodes: layouts/shortcodes/{meta,proof,film,sec,about,work,writing,contact}.html
+  The intro film is made in code: tools/film/ (README there).
 -->
 
 {{< meta >}}
@@ -27,6 +28,8 @@ engineer and build systems that make it to production.
 {posts} | posts that explain tech in plain words | /blog/
 AI | tools & agents, from prompt to production
 {{< /proof >}}
+
+{{< film >}}
 
 {{< sec "about" >}}
 
