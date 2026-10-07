@@ -706,8 +706,15 @@ html.arcoiris main {
       font-size: inherit;
     }
 
+    // Underlined (not colour alone), and tall enough to tap without
+    // reaching up into the title link.
     a {
+      display: inline-block;
+      padding: 4px 0;
       color: var(--fg-2);
+      text-decoration: underline;
+      text-decoration-color: color-mix(in srgb, var(--fg-2) 40%, transparent);
+      text-underline-offset: .2em;
 
       &:hover {
         color: var(--blue);
