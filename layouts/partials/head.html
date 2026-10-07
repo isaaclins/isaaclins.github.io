@@ -168,7 +168,7 @@
     integrity="{{ $style.Data.Integrity }}"
   />
   
-  <!-- Theme toggle, easter eggs, toast: every page. The home page adds its own. -->
+  <!-- Theme toggle, toast: every page. The home page adds its own. -->
   {{ $site := resources.Get "js/site.js" | minify | fingerprint "sha512" }}
   <script src="{{ $site.RelPermalink }}" integrity="{{ $site.Data.Integrity }}" defer></script>
   {{ if .IsHome }}

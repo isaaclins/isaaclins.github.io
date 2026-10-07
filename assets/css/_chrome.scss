@@ -1,6 +1,6 @@
 // -------------- CHROME -------------- //
-// What every page shares: the font, the top bar, the footer, the easter-egg
-// panel and toast, and the reading styles for posts. The home page itself
+// What every page shares: the font, the top bar, the footer, the flashbang,
+// the toast, and the reading styles for posts. The home page itself
 // lives in _home.scss.
 
 // Self-hosted JetBrains Mono (OFL, static/fonts/OFL.txt): one variable file
@@ -48,9 +48,9 @@ samp {
 
 // The new parts are border-box throughout; post bodies keep their old model.
 .wrap,
-:is(.home, .top, .site-footer, .eggs, .fb) *,
-:is(.home, .top, .site-footer, .eggs, .fb) *::before,
-:is(.home, .top, .site-footer, .eggs, .fb) *::after,
+:is(.home, .top, .site-footer, .fb) *,
+:is(.home, .top, .site-footer, .fb) *::before,
+:is(.home, .top, .site-footer, .fb) *::after,
 .toast {
   box-sizing: border-box;
 }
@@ -83,7 +83,7 @@ body::after {
 
 
 // Chrome links take the text colour; only post bodies are blue.
-:where(.top, .site-footer, .toast, .eggs) a {
+:where(.top, .site-footer, .toast) a {
   color: inherit;
 
   &:hover {
@@ -92,8 +92,7 @@ body::after {
 }
 
 .site-footer code,
-.toast code,
-.eggs code {
+.toast code {
   background: none;
   border: 0;
   padding: 0;
@@ -243,30 +242,13 @@ body::after {
   }
 
   // 44 px tall tap targets without flex, which would eat the spaces inside.
-  a,
-  .eggshint {
+  a {
     display: inline-block;
     padding: 12px 0;
     line-height: 20px;
   }
 }
 
-.eggshint {
-  cursor: pointer;
-  background: none;
-  border: 0;
-  padding: 0;
-  font: inherit;
-  font-size: 12px;
-  color: var(--fg-3);
-
-  &:hover {
-    color: var(--fg);
-  }
-}
-
-.eggs kbd,
-.eggshint kbd,
 .toast kbd,
 .home .hint kbd {
   font: inherit;
@@ -277,7 +259,7 @@ body::after {
   color: var(--fg-2);
 }
 
-// -------------- EASTER EGGS -------------- //
+// -------------- FLASHBANG -------------- //
 
 // Dark -> light is a flashbang. Silent on purpose.
 .fb {
@@ -391,16 +373,6 @@ body::after {
   }
 }
 
-html.arcoiris main {
-  animation: arcoiris 4s linear;
-}
-
-@keyframes arcoiris {
-  to {
-    filter: hue-rotate(360deg);
-  }
-}
-
 .toast {
   position: fixed;
   left: 50%;
@@ -428,13 +400,6 @@ html.arcoiris main {
     transition: opacity .3s var(--ease), transform .4s var(--ease);
   }
 
-  .egg {
-    display: block;
-    color: #6f95ff;
-    font-size: 11px;
-    margin-bottom: 4px;
-  }
-
   b {
     color: #6f95ff;
     font-weight: 500;
@@ -453,115 +418,6 @@ html.arcoiris main {
   kbd {
     border-color: #2c2c30;
     color: #ecebe7;
-  }
-}
-
-.eggs {
-  position: fixed;
-  inset: 0;
-  z-index: 160;
-  display: grid;
-  place-items: center;
-  padding: 20px;
-  background: color-mix(in srgb, var(--bg) 70%, transparent);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity .25s var(--ease), visibility 0s .25s;
-
-  &.open {
-    opacity: 1;
-    visibility: visible;
-    transition: opacity .25s var(--ease);
-  }
-
-  .card {
-    width: #{"min(460px, 100%)"};
-    background: var(--bg);
-    border: 1px solid var(--line-2);
-    border-radius: 14px;
-    padding: 24px;
-    transform: translateY(10px) scale(.98);
-    transition: transform .35s var(--ease);
-    box-shadow: 0 30px 80px -20px rgba(0, 0, 0, .5);
-  }
-
-  &.open .card {
-    transform: none;
-  }
-
-  h2 {
-    margin: 0 0 16px;
-    font-size: 12px;
-    line-height: 1.7;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: var(--fg-2);
-    font-weight: 400;
-    display: flex;
-    justify-content: space-between;
-
-    b {
-      color: var(--blue);
-      font-weight: 600;
-      letter-spacing: 0;
-    }
-  }
-
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  li {
-    display: grid;
-    grid-template-columns: 22px 1fr;
-    gap: 10px;
-    margin: 0;
-    padding: 10px 0;
-    border-top: 1px solid var(--line);
-    font-size: 13px;
-    line-height: 1.55;
-    color: var(--fg-3);
-
-    &.got {
-      color: var(--fg);
-    }
-
-    .s {
-      color: var(--fg-3);
-    }
-
-    &.got .s {
-      color: var(--blue);
-    }
-  }
-
-  .keysrow {
-    margin: 18px 0 0;
-    font-size: 12px;
-    color: var(--fg-3);
-  }
-
-  .close {
-    margin-top: 18px;
-    width: 100%;
-    min-height: 44px;
-    padding: 0;
-    border-radius: 8px;
-    border: 1px solid var(--line-2);
-    background: none;
-    color: var(--fg);
-    font: inherit;
-    font-size: 13px;
-    cursor: pointer;
-
-    &:hover {
-      border-color: var(--blue);
-      color: var(--blue);
-    }
   }
 }
 
