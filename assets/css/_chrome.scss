@@ -658,6 +658,13 @@ html.arcoiris main {
   color: var(--fg-3);
 }
 
+.post-tags a,
+.post-complexity a {
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--blue) 40%, transparent);
+  text-underline-offset: .2em;
+}
+
 .post-meta time {
   color: var(--fg-2);
 }

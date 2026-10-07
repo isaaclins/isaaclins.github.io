@@ -214,6 +214,16 @@
     --accent: var(--blue);
   }
 
+  // Accent as text: the bright project colours are too pale on the light
+  // background, so light mode reads them half-mixed with black.
+  .commit {
+    --c-ink: var(--c);
+  }
+
+  [data-theme="light"] & .commit {
+    --c-ink: color-mix(in srgb, var(--c) 50%, #000);
+  }
+
   .rail {
     position: absolute;
     left: var(--rail-x);
@@ -305,7 +315,7 @@
     }
 
     .when .date {
-      color: var(--c);
+      color: var(--c-ink);
     }
   }
 
@@ -365,8 +375,8 @@
   }
 
   .ref {
-    color: var(--c);
-    border: 1px solid color-mix(in srgb, var(--c) 45%, transparent);
+    color: var(--c-ink);
+    border: 1px solid color-mix(in srgb, var(--c-ink) 45%, transparent);
     padding: 1px 8px;
     border-radius: 4px;
 
@@ -422,8 +432,8 @@
     transition: border-color .2s, background-color .2s, color .2s, transform .2s var(--ease);
 
     &:hover {
-      border-color: var(--c);
-      color: var(--c);
+      border-color: var(--c-ink);
+      color: var(--c-ink);
     }
 
     &:active {
@@ -1134,6 +1144,9 @@
 
     a {
       color: var(--blue);
+      text-decoration: underline;
+      text-decoration-color: color-mix(in srgb, var(--blue) 40%, transparent);
+      text-underline-offset: 3px;
     }
   }
 
@@ -1196,6 +1209,14 @@
       opacity: 1;
       transform: none;
     }
+  }
+
+  // The lead and the proof strip are on screen at load: same fade, but in
+  // CSS, so the largest text on the page doesn't wait for the deferred JS.
+  .js & :is(.lead, .proof).rv {
+    opacity: 1;
+    transform: none;
+    animation: home-rise .9s var(--ease) .1s both;
   }
 
   // ---------- small screens ----------
@@ -1393,6 +1414,18 @@
   30% {
     opacity: 1;
     transform: translateY(-2px);
+  }
+}
+
+@keyframes home-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
 
