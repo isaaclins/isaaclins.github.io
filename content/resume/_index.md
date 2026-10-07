@@ -147,7 +147,7 @@ summary = "Started as a developer, moved into security, kept both. I build appli
     link = "https://github.com/isaaclins/spotiglass"
 
 [[skills]]
-  label = "Languages"
+  label = "Programming"
   items = "Python, TypeScript, Swift, Java, SQL, Bash"
 [[skills]]
   label = "Frameworks"
@@ -161,6 +161,9 @@ summary = "Started as a developer, moved into security, kept both. I build appli
 [[skills]]
   label = "Infrastructure"
   items = "Linux/RHEL, Docker, Git, CI/CD"
+[[skills]]
+  label = "Languages"
+  items = "German and Spanish (native), English (C2), Portuguese (good)"
 
 [[education]]
   title = "Informatiker EFZ (Application Developer)"

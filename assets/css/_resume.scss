@@ -356,8 +356,10 @@ html body.cv-body {
   }
   .site-nav, .skip-link, .no-print, .web-only, .cv-foot, .cv-row::before { display: none !important; }
   .page-content { min-height: 0 !important; }
+  // The site's grain overlay (_chrome.scss) would print as a full-page noise image.
+  body.cv-body::after { display: none !important; }
 
-  .cv-body .cv { max-width: none; padding: 12mm 13mm 8mm; }
+  .cv-body .cv { max-width: none; padding: 11mm 13mm 6mm; }
 
   .cv-top { grid-template-columns: auto 1fr auto; gap: 6mm; align-items: center; }
   .cv .cv-photo { width: 25mm; height: 25mm; border-radius: 2.5mm; }
@@ -389,7 +391,7 @@ html body.cv-body {
     .sep { display: inline; }
   }
 
-  .cv-sec { margin-top: 4mm; break-inside: auto; }
+  .cv-sec { margin-top: 3.6mm; break-inside: auto; }
   .cv .cv-head { margin-bottom: .6mm; font-size: 7.4pt; gap: 3mm; break-after: avoid; }
 
   .cv-row {
@@ -405,6 +407,6 @@ html body.cv-body {
   .cv-meta { margin-top: .6mm !important; gap: 0 4mm; font-size: 7.5pt; }
   .cv-meta a, .cv-org a { color: var(--cv-blue); text-decoration: none; }
   .cv-row:has(+ .web-only) { border-bottom: 0; }
-  .cv-skills .cv-row { padding: 1mm 0; }
+  .cv-skills .cv-row { padding: .75mm 0; }
   .cv-skills dd { font-size: 8pt; }
 }
