@@ -70,7 +70,6 @@
     addEventListener('keydown', function (e) {
       if (e.metaKey || e.ctrlKey || e.altKey || /^(input|textarea|select)$/i.test(e.target.tagName)) return;
       if (e.key !== 'j' && e.key !== 'k') return;
-      if (document.querySelector('.eggs.open')) return;
       var y = scrollY + 100, tops = commits.map(function (c) { return c.getBoundingClientRect().top + scrollY; });
       var next = e.key === 'j' ? tops.find(function (t) { return t > y + 8; }) : tops.slice().reverse().find(function (t) { return t < y - 8; });
       if (next === undefined) next = e.key === 'j' ? null : document.getElementById('work').getBoundingClientRect().top + scrollY - 90;
