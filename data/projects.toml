@@ -165,7 +165,7 @@ why = "A free, open-source application firewall for macOS: rules per app, alerts
   kind = "shot"
   img = "home/freesnitch.webp"
   width = 1600
-  height = 868
+  height = 870
   alt = "FreeSnitch 1.0: apps with their traffic, a world map of where it goes and a summary"
 
 [[commit]]
