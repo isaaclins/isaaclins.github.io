@@ -1,0 +1,19 @@
+{{/* Home: the strip of three proofs under the lead.
+     One "big | small | optional link" per line. {posts} = the number of
+     published blog posts, counted at build time. */}}
+{{- $posts := len (where site.RegularPages "Section" "blog") -}}
+<div class="proof rv">
+  {{- range $line := split (trim .Inner "\n\r \t") "\n" -}}
+    {{- $line = trim $line " \t\r" -}}
+    {{- if $line -}}
+      {{- $p := split $line "|" -}}
+      {{- $big := replace (trim (index $p 0) " ") "{posts}" (string $posts) -}}
+      {{- $small := trim (index $p 1) " " -}}
+      {{- if ge (len $p) 3 }}
+      <a href="{{ partial "home/url.html" (trim (index $p 2) " ") }}"><b>{{ $big }}</b><span>{{ $small }}</span></a>
+      {{- else }}
+      <div><b>{{ $big }}</b><span>{{ $small }}</span></div>
+      {{- end -}}
+    {{- end -}}
+  {{- end }}
+</div>

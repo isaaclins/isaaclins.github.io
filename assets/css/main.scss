@@ -1,121 +1,108 @@
-// -------------- THEME SWITCHER -------------- //
-@mixin theme(
-  $--bg-color,
-  $--primary-text-color,
-  $--secondary-text-color,
-  $--link-color,
-  $--visited-link-color,
-  $--highlight
-) {
-  background-color: $--bg-color;
+// -------------- THEME -------------- //
+// One palette, two modes, shared by every page. <html data-theme> is set
+// before first paint by the inline script in partials/head.html (saved
+// choice, else the system's); without JS the media query picks the system's.
 
-  color: $--primary-text-color;
-
-  // Single source of truth for the palette. Everything below the theme
-  // switcher reads these instead of hard-coding colours, so there is still
-  // exactly one theming mechanism.
-  --bg: #{$--bg-color};
-  --fg: #{$--primary-text-color};
-  --muted: #{$--secondary-text-color};
-  --accent: #{$--link-color};
-  --accent-dim: #{$--visited-link-color};
-  --rule: #{rgba($--primary-text-color, 0.2)};
-  --rule-strong: #{rgba($--primary-text-color, 0.35)};
-
-  a {
-    color: $--link-color;
-    &:visited {
-      color: $--visited-link-color;
-    }
-  }
-
-  details {
-    border: thin solid $--primary-text-color;
-  }
-
-  details summary {
-    color: $--primary-text-color;
-  }
-
-  details[open] summary {
-    border-bottom: 1px solid $--primary-text-color;
-  }
-
-  pre {
-    background: $--bg-color;
-  }
-
-  code:not(pre > code) {
-    background-color: $--primary-text-color;
-    color: $--bg-color;
-  }
-
-  *:target {
-    background: $--highlight;
-    color: $--primary-text-color;
-  }
-
-  table,
-  th,
-  td {
-    border: thin solid $--primary-text-color;
-  }
-
-  .toc {
-    border: thin solid $--primary-text-color;
-    padding: 1rem;
-  }
-
-  figcaption {
-    color: $--secondary-text-color;
-  }
-
-  blockquote {
-    border: thin solid $--primary-text-color;
-  }
+@mixin light-palette {
+  --bg: #f5f4ef;
+  --bg-2: #ecebe5;
+  --fg: #121212;
+  --fg-2: #55544f;
+  --fg-3: #6f6e69;
+  --line: #e0ded7;
+  --line-2: #d2d0c8;
+  --blue: #2c55f0;
+  --highlight: #dde5fb;
+  color-scheme: light;
 }
 
-// Palette unchanged (modus-vivendi). Only the dark secondary text colour
-// moved off #000000, which was invisible on the black background.
-@mixin dark-appearance {
-  @include theme(
-    #000000,
-    #ffffff,
-    #9b9b9b,
-    #79a8ff,
-    #f78fe7,
-    #2f3849
-  ); // modus-vivendi
+:root {
+  --bg: #09090a;
+  --bg-2: #111113;
+  --fg: #ecebe7;
+  --fg-2: #a6a5a0;
+  --fg-3: #82817c;
+  --line: #1f1f22;
+  --line-2: #2c2c30;
+  --blue: #6f95ff;
+  --highlight: #1b2440;
+  color-scheme: dark;
+
+  // Older names the rest of this file reads.
+  --muted: var(--fg-2);
+  --accent: var(--blue);
+  --rule: var(--line);
+  --rule-strong: var(--line-2);
+
+  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --ease: cubic-bezier(.2, .8, .2, 1);
 }
 
-@mixin light-appearance {
-  @include theme(
-    #ffffff,
-    #000000,
-    #595959,
-    #3548cf,
-    #8f0075,
-    #dae5ec
-  ); // modus-operandi
-}
-
-body[a="dark"] {
-  @include dark-appearance;
-}
-body[a="light"] {
-  @include light-appearance;
-}
-
-@media (prefers-color-scheme: dark) {
-  body[a="auto"] {
-    @include dark-appearance;
-  }
+[data-theme="light"] {
+  @include light-palette;
 }
 
 @media (prefers-color-scheme: light) {
-  body[a="auto"] {
-    @include light-appearance;
+  :root:not([data-theme]) {
+    @include light-palette;
   }
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+}
+
+a {
+  color: var(--blue);
+}
+
+details {
+  border: 1px solid var(--line-2);
+  border-radius: 8px;
+}
+
+details summary {
+  color: var(--fg);
+}
+
+details[open] summary {
+  border-bottom: 1px solid var(--line);
+}
+
+code:not(pre > code) {
+  background-color: var(--bg-2);
+  color: var(--fg);
+  border: 1px solid var(--line-2);
+  border-radius: 4px;
+}
+
+*:target {
+  background: var(--highlight);
+  color: var(--fg);
+}
+
+table,
+th,
+td {
+  border: 1px solid var(--line-2);
+}
+
+.toc {
+  border: 1px solid var(--line-2);
+  border-radius: 8px;
+  padding: 1rem;
+  background: var(--bg);
+}
+
+figcaption {
+  color: var(--fg-2);
+}
+
+blockquote {
+  border: 0;
+  border-left: 2px solid var(--blue);
+  color: var(--fg-2);
 }
 
 // -------------------------------------------- //
@@ -154,9 +141,12 @@ html {
 }
 
 body {
-  font-family: monospace;
-  font-size: 16px;
-  line-height: 1.4;
+  font-family: var(--mono);
+  font-size: 15px;
+  line-height: 1.7;
+  font-feature-settings: "calt" 1, "zero" 1;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
   margin: 0;
   min-height: 100%;
   overflow-wrap: break-word;
@@ -172,12 +162,12 @@ h6 {
 
 p {
   margin: var(--sp-4) 0;
-  line-height: 1.6;
+  line-height: 1.75;
 }
 
 li {
   margin: 0.4rem 0;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 a {
@@ -375,22 +365,25 @@ li {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0,0,0,0.8);
+  background-color: color-mix(in srgb, var(--bg) 70%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .search-popup-content {
-  background-color: #1e1e1e;
+  background-color: var(--bg);
   margin: 15% auto;
   padding: 20px;
-  border: 1px solid #888;
+  border: 1px solid var(--line-2);
   width: 80%;
   max-width: 500px;
-  border-radius: 5px;
+  border-radius: 14px;
+  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, .5);
   position: relative;
 }
 
 .search-popup-close {
-  color: #aaa;
+  color: var(--fg-3);
   position: absolute;
   top: 10px;
   right: 25px;
@@ -401,7 +394,7 @@ li {
 
 .search-popup-close:hover,
 .search-popup-close:focus {
-  color: #fff;
+  color: var(--fg);
   text-decoration: none;
   cursor: pointer;
 }
@@ -411,9 +404,11 @@ li {
   padding: 10px;
   margin-bottom: 10px;
   box-sizing: border-box;
-  background-color: #333;
-  color: #fff;
-  border: 1px solid #555;
+  background-color: var(--bg-2);
+  color: var(--fg);
+  border: 1px solid var(--line-2);
+  border-radius: 8px;
+  font: inherit;
 }
 
 #search-results ul {
@@ -424,7 +419,7 @@ li {
 #search-results li a {
   display: block;
   padding: 8px 0;
-  color: #cda8ff;
+  color: var(--fg);
   text-decoration: none;
 }
 
@@ -434,7 +429,7 @@ li {
 
 .search-result-tags {
   font-size: 0.8rem;
-  color: #999;
+  color: var(--fg-3);
   margin-top: 4px;
 }
 
@@ -516,10 +511,9 @@ img.thick-border {
 // Make the site more responsive on mobile devices without drastically changing desktop
 
 @media (max-width: 768px) {
-  // Reduce body font size slightly for better mobile readability
+  // A touch smaller on phones; JetBrains Mono stays readable at this size.
   body {
-    font-size: 0.875rem; // 14px if base is 16px
-    line-height: 1.5;
+    font-size: 14.5px;
   }
 
   // Adjust content wrapper padding for mobile
@@ -663,17 +657,10 @@ img.thick-border {
     padding: 3rem 1.5rem;
   }
 
-  body {
-    font-size: 0.9375rem; // 15px
-  }
 }
 
 // Small phones (very narrow screens)
 @media (max-width: 480px) {
-  body {
-    font-size: 0.8125rem; // 13px
-  }
-
   h1 {
     font-size: 1.6rem;
   }
@@ -782,151 +769,8 @@ img.thick-border {
   }
 }
 
-// -------------- SITE NAV -------------- //
-// Slim persistent bar: name left, sections right. Static, no JS.
-
-.site-nav {
-  border-bottom: 1px solid var(--rule);
-}
-
-.site-nav-inner {
-  max-width: var(--measure);
-  margin: 0 auto;
-  padding: var(--sp-3) var(--sp-6);
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: var(--sp-2) var(--sp-5);
-  font-size: var(--fs-meta);
-}
-
-// Doubled class selectors: the theme mixin targets `body[a="…"] a`, so a
-// single class would lose the cascade.
-.site-nav .site-nav-brand {
-  color: var(--fg);
-  font-weight: bold;
-  &:visited {
-    color: var(--fg);
-  }
-  &:hover {
-    color: var(--accent);
-  }
-}
-
-.site-nav-links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: var(--sp-2) var(--sp-5);
-  margin: 0;
-  padding: 0;
-  min-width: 0; // let the row wrap instead of overflowing the viewport
-  list-style: none;
-
-  li {
-    margin: 0;
-  }
-}
-
-.site-nav .site-nav-links a {
-  color: var(--muted);
-  &:visited {
-    color: var(--muted);
-  }
-  &:hover,
-  &[aria-current] {
-    color: var(--accent);
-  }
-}
-
-// -------------- HOMEPAGE -------------- //
-
-.hero {
-  margin: 0;
-}
-
-.hero-name {
-  font-size: var(--fs-hero);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  margin: 0 0 var(--sp-3);
-}
-
-.hero-role {
-  color: var(--muted);
-  font-size: var(--fs-meta);
-  letter-spacing: 0.06em;
-  margin: 0 0 var(--sp-5);
-}
-
-.hero-lead {
-  font-size: var(--fs-lead);
-  line-height: 1.6;
-  max-width: 60ch;
-  margin: 0;
-}
-
-// Section heading: Isaac's slash motif, a lowercase label, and a hairline
-// that runs to the right edge of the measure.
-.sec {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-3);
-  margin: var(--sp-9) 0 var(--sp-5);
-  font-size: var(--fs-label);
-  font-weight: normal;
-  line-height: 1;
-}
-
-.sec-slash {
-  color: var(--accent);
-  opacity: 0.7;
-}
-
-.sec-label {
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-label);
-  white-space: nowrap;
-}
-
-.sec-rule {
-  flex: 1 1 auto;
-  height: 1px;
-  background: var(--rule);
-}
-
-// Stat strip: three cells, label above, value below, hairline dividers.
-.stat-strip {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid var(--rule-strong);
-  border-bottom: 1px solid var(--rule-strong);
-  margin: var(--sp-6) 0 0;
-
-  .stat {
-    padding: var(--sp-3) var(--sp-4);
-    border-left: 1px solid var(--rule);
-
-    &:first-child {
-      padding-left: 0;
-      border-left: 0;
-    }
-  }
-
-  dt {
-    color: var(--muted);
-    font-size: var(--fs-meta);
-    margin-bottom: var(--sp-1);
-  }
-
-  dd {
-    margin: 0;
-    min-width: 0;
-    line-height: 1.35;
-  }
-}
+// -------------- HOMEPAGE LEFTOVERS -------------- //
+// Shortcodes other pages still use (reading, the post template).
 
 // Stack table: label column left, values right, hairline row separators.
 .rows {
@@ -959,222 +803,6 @@ img.thick-border {
   }
 }
 
-// Projects timeline: a plain vertical list that scrolls with the page. One
-// date parks in the middle of the rail and names whichever card is crossing
-// the centre of the screen, so this reads like a rail you walk down rather
-// than a section that hijacks the scroll.
-.timeline {
-  --timeline-height: calc(var(--timeline-step) * var(--timeline-rows));
-
-  position: relative;
-  box-sizing: border-box;
-  width: 100%;
-  max-width: var(--measure);
-  margin: 0 auto;
-  view-timeline-name: --projects-track;
-  view-timeline-axis: block;
-}
-
-// No height, and first in the DOM, so it can hold the middle of the viewport
-// for the whole section without pushing a single card out of place.
-.timeline-dates {
-  position: sticky;
-  top: calc(50vh - 0.6em);
-  z-index: 1;
-  width: 28%;
-  height: 0;
-  margin-left: auto;
-  pointer-events: none;
-}
-
-// Every label shares one slot. Each is painted only for the stretch where its
-// own card owns the centre line, and the stretches are adjacent, so exactly
-// one date is ever on screen.
-.timeline-date {
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin-left: var(--sp-3);
-  color: var(--accent);
-  font-size: var(--fs-meta);
-  line-height: 1.2;
-  white-space: nowrap;
-  opacity: 0;
-}
-
-.timeline-inner {
-  position: relative;
-}
-
-.timeline-rail {
-  position: absolute;
-  top: 0;
-  right: 0;
-  display: grid;
-  grid-template-rows: repeat(var(--timeline-rows), minmax(0, 1fr));
-  width: 28%;
-  height: var(--timeline-height);
-  border-left: 1px solid var(--accent);
-  pointer-events: none;
-}
-
-.timeline-tick {
-  position: relative;
-  display: flex;
-  align-items: center;
-  min-width: 0;
-}
-
-.timeline-tick::before {
-  content: "";
-  position: absolute;
-  left: calc(var(--sp-2) * -1);
-  width: var(--sp-3);
-  border-top: 1px solid var(--accent);
-}
-
-// One equal row per project, so a tick, a card and a date all describe the
-// same slice of the page.
-.timeline-cards {
-  box-sizing: border-box;
-  display: grid;
-  grid-template-rows: repeat(var(--timeline-rows), minmax(0, 1fr));
-  height: var(--timeline-height);
-  padding-right: calc(28% + var(--sp-4));
-}
-
-.timeline-card {
-  align-self: center;
-  box-sizing: border-box;
-  width: 100%;
-  max-width: 22rem;
-  padding: var(--sp-4);
-  overflow-wrap: anywhere;
-  border: 1px solid var(--rule-strong);
-  background-color: var(--bg);
-  background-image: repeating-linear-gradient(
-    135deg,
-    transparent 0 var(--sp-2),
-    var(--rule) var(--sp-2) calc(var(--sp-2) + 1px)
-  );
-}
-
-.timeline-card--left {
-  justify-self: start;
-  margin-left: var(--sp-4);
-  transform: rotate(-1.5deg);
-}
-
-.timeline-card--right {
-  justify-self: end;
-  margin-right: var(--sp-2);
-  transform: rotate(1.5deg);
-}
-
-.timeline-card-date {
-  margin: 0 0 var(--sp-1);
-  color: var(--muted);
-  font-size: var(--fs-meta);
-  line-height: 1.2;
-}
-
-.timeline-card-title {
-  margin: 0 0 var(--sp-2);
-  font-size: var(--fs-body);
-  line-height: 1.2;
-}
-
-.timeline-card-description {
-  font-size: var(--fs-meta);
-  line-height: 1.45;
-
-  p {
-    margin: 0;
-  }
-}
-
-// The long version of a project lives on its own page, so the card only needs
-// a way in. Read more sits first, then the source link.
-.timeline-card-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--sp-2) var(--sp-4);
-  margin-top: var(--sp-2);
-  font-size: var(--fs-meta);
-  line-height: 1.45;
-
-  p {
-    margin: 0;
-  }
-}
-
-.timeline-card-more {
-  white-space: nowrap;
-}
-
-@keyframes timeline-date-show {
-  from,
-  to {
-    opacity: 1;
-  }
-}
-
-// Outside its range the animation simply does not apply, which leaves the
-// label on its base opacity of zero. That is what keeps the handover clean
-// without a second keyframe doing the hiding.
-@supports (animation-timeline: scroll()) {
-  .timeline-date {
-    animation: timeline-date-show 1ms linear;
-    animation-timeline: --projects-track;
-    animation-range: var(--from) var(--to);
-  }
-}
-
-// Without scroll-driven animation there is no way to know which card owns the
-// centre. Every card already prints its own date, so the floating label is the
-// only thing that has to go. The rail and the cards are static layout and
-// survive intact.
-@mixin timeline-static {
-  .timeline-dates {
-    display: none;
-  }
-}
-
-// Narrow screens have no room for a rail beside the cards, so the timeline
-// becomes an ordinary stack.
-@mixin timeline-plain {
-  @include timeline-static;
-
-  .timeline-rail {
-    display: none;
-  }
-
-  .timeline-cards {
-    display: grid;
-    grid-template-rows: none;
-    grid-auto-rows: auto;
-    gap: var(--sp-5);
-    height: auto;
-    padding-right: 0;
-  }
-
-  .timeline-card,
-  .timeline-card--left,
-  .timeline-card--right {
-    max-width: none;
-    margin: 0;
-    transform: none;
-    justify-self: stretch;
-  }
-}
-
-@supports not (animation-timeline: scroll()) {
-  @include timeline-static;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  @include timeline-static;
-}
 
 // Latest writing: title left, date right, hairline row separators.
 .writing {
@@ -1232,41 +860,8 @@ img.thick-border {
   color: var(--muted);
 }
 
-.closing {
-  color: var(--muted);
-  margin: var(--sp-4) 0 0;
-
-  + .closing {
-    margin-top: var(--sp-2);
-  }
-}
-
-// -------------- HOMEPAGE, NARROW SCREENS -------------- //
 
 @media (max-width: 640px) {
-  :root {
-    --fs-hero: 1.875rem;
-  }
-
-  .site-nav-inner {
-    padding: var(--sp-3) var(--sp-4);
-    gap: var(--sp-2) var(--sp-4);
-  }
-
-  .stat-strip {
-    grid-template-columns: 1fr;
-
-    .stat {
-      padding: var(--sp-3) 0;
-      border-left: 0;
-      border-top: 1px solid var(--rule);
-
-      &:first-child {
-        border-top: 0;
-      }
-    }
-  }
-
   .rows .row {
     grid-template-columns: minmax(0, 1fr);
     gap: var(--sp-1);
@@ -1279,16 +874,19 @@ img.thick-border {
     align-items: flex-start;
     gap: var(--sp-1);
   }
-
-  @include timeline-plain;
 }
 
 // -------------- PRINT -------------- //
 // Navigation is not useful on paper. The resume layout already ships without
 // any chrome; this covers posts and pages printed or saved as PDF.
 @media print {
-  .site-nav,
+  .top,
+  .site-footer,
   .skip-link {
     display: none;
   }
 }
+
+// Shared top bar, footer, post typography; then the home page.
+@import "chrome";
+@import "home";

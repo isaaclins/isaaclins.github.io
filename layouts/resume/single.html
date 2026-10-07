@@ -1,628 +1,117 @@
 {{ define "main" }}
+{{- /* The resume, rendered from the front matter of content/resume/_index.md.
+       Same markup for screen and paper; assets/css/_resume.scss does both. */ -}}
+{{- $p := .Params }}
+{{- $pdf := "resume.pdf" | relURL }}
 
-<style>
-/* Resume-specific styles */
-.resume-header {
-  text-align: center;
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 2px solid currentColor;
-}
-
-.resume-name {
-  font-size: 2.2rem;
-  margin-bottom: 0.3rem;
-  letter-spacing: 0.1em;
-}
-
-.resume-tagline {
-  font-size: 1rem;
-  opacity: 0.8;
-  margin-bottom: 0.75rem;
-}
-
-.resume-contact {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.2rem;
-  font-size: 0.85rem;
-}
-
-.resume-contact a {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.resume-dob {
-  font-size: 0.85rem;
-  opacity: 0.85;
-}
-
-/* Make links blue */
-.resume a {
-  color: #3548cf;
-}
-
-body[a="dark"] .resume a {
-  color: #79a8ff;
-}
-
-.section-title {
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  border-bottom: 1px solid currentColor;
-  padding-bottom: 0.3rem;
-  margin-top: 1.5rem;
-  margin-bottom: 0.75rem;
-}
-
-.experience-item {
-  margin-bottom: 1rem;
-}
-
-.experience-header {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  align-items: baseline;
-  margin-bottom: 0.2rem;
-}
-
-.experience-title {
-  font-weight: bold;
-}
-
-.experience-date {
-  font-size: 0.85rem;
-  opacity: 0.7;
-}
-
-.experience-description {
-  font-size: 0.9rem;
-  margin: 0.2rem 0 0 0;
-}
-
-.experience-description ul {
-  margin: 0.2rem 0;
-  padding-left: 1.2rem;
-}
-
-.experience-description li {
-  margin: 0.1rem 0;
-}
-
-.skills-inline {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  margin: 0.5rem 0;
-}
-
-.skill-tag {
-  display: inline-block;
-  padding: 0.15rem 0.5rem;
-  border: 1px solid currentColor;
-  font-size: 0.8rem;
-}
-
-.two-column {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-}
-
-.highlight-inline,
-.resume-print-photo-frame {
-  border: 1px solid currentColor;
-  padding: 0.5rem 1rem;
-  margin: 1rem 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.9rem;
-}
-
-.resume-print-photo-frame {
-  justify-content: center;
-  padding: 0;
-  margin: 0;
-}
-
-.resume-print-top {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.resume-print-links {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.35rem;
-  font-size: 0.85rem;
-  text-align: right;
-}
-
-.resume-print-photo-frame img {
-  display: block;
-  max-width: 7.5rem;
-  max-height: 7.5rem;
-  object-fit: cover;
-}
-
-.download-section {
-  margin-top: 2rem;
-  padding-top: 1.5rem;
-  border-top: 2px solid currentColor;
-  text-align: center;
-}
-
-.download-btn {
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  border: 2px solid currentColor;
-  font-family: monospace;
-  font-size: 1rem;
-  cursor: pointer;
-  background: transparent;
-  color: inherit;
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-
-.download-btn:hover {
-  text-decoration: none;
-  transform: translateY(-2px);
-}
-
-/* Mobile responsive */
-@media (max-width: 768px) {
-  .resume-name { font-size: 1.6rem; }
-  .resume-contact { flex-direction: column; gap: 0.5rem; }
-  .experience-header { flex-direction: column; gap: 0.15rem; }
-  .two-column { grid-template-columns: 1fr; }
-  .highlight-inline,
-  .resume-print-photo-frame { flex-direction: column; text-align: center; gap: 0.3rem; }
-}
-
-/* ========== PRINT STYLES FOR 1-PAGE PDF ========== */
-@media print {
-  * {
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-  }
-  
-  @page {
-    size: A4;
-    margin: 10mm;
-  }
-  
-  html, body {
-    font-size: 9pt !important;
-    line-height: 1.25 !important;
-    color: #000 !important;
-    background: #fff !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    height: auto !important;
-    overflow: visible !important;
-  }
-  
-  body {
-    padding: 0 !important;
-  }
-  
-  .w {
-    max-width: 100% !important;
-    padding: 5mm 10mm !important;
-    margin: 0 !important;
-    min-height: 0 !important;
-    height: auto !important;
-  }
-  
-  .page-content {
-    min-height: 0 !important;
-    height: auto !important;
-  }
-  
-  .resume a {
-    color: #2563eb !important;
-    text-decoration: none !important;
-  }
-  
-  /* Hide non-essential elements */
-  .download-section,
-  .no-print,
-  .mermaid,
-  pre.mermaid,
-  footer,
-  .site-footer,
-  hr {
-    display: none !important;
-  }
-  
-  /* Hide everything after the resume article */
-  .resume ~ * {
-    display: none !important;
-  }
-  
-  /* Target the footer content specifically */
-  .w > *:not(.resume):not(article) {
-    display: none !important;
-  }
-  
-  /* Compact header */
-  .resume-header {
-    margin-bottom: 8pt;
-    padding-bottom: 6pt;
-    border-bottom: 1pt solid #000;
-  }
-  
-  .resume-name {
-    font-size: 16pt;
-    margin-bottom: 2pt;
-  }
-  
-  .resume-tagline {
-    font-size: 9pt;
-    margin-bottom: 6pt;
-  }
-
-  .resume-print-only {
-    display: block !important;
-  }
-
-  .resume-print-top {
-    display: flex !important;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 10pt;
-    margin-bottom: 8pt;
-  }
-
-  .resume-print-links {
-    display: flex !important;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 4pt;
-    font-size: 8pt;
-    text-align: right;
-  }
-
-  .resume-print-photo-frame img {
-    max-width: 26mm;
-    max-height: 26mm;
-    object-fit: cover;
-  }
-  
-  /* Compact sections */
-  .section-title {
-    font-size: 10pt;
-    margin-top: 10pt;
-    margin-bottom: 4pt;
-    padding-bottom: 2pt;
-    page-break-after: avoid;
-  }
-  
-  /* Compact experience items */
-  .experience-item {
-    margin-bottom: 6pt;
-    page-break-inside: avoid;
-  }
-  
-  .experience-header {
-    margin-bottom: 1pt;
-    flex-direction: row !important;
-  }
-  
-  .experience-title {
-    font-size: 9pt;
-  }
-  
-  .experience-date {
-    font-size: 8pt;
-  }
-  
-  .experience-description {
-    font-size: 8pt;
-    margin: 1pt 0 0 0;
-  }
-  
-  .experience-description ul {
-    margin: 1pt 0;
-    padding-left: 12pt;
-  }
-  
-  .experience-description li {
-    margin: 0;
-  }
-  
-  /* Compact skills */
-  .skills-inline {
-    gap: 3pt;
-    margin: 3pt 0;
-  }
-  
-  .skill-tag {
-    padding: 1pt 4pt;
-    font-size: 7.5pt;
-    border-width: 0.5pt;
-  }
-  
-  /* Two column layout for print */
-  .two-column {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 8pt;
-  }
-  
-  /* Compact highlight */
-  .highlight-inline,
-  .resume-print-photo-frame {
-    font-size: 8pt;
-    border-width: 0.5pt;
-    flex-direction: row !important;
-  }
-
-  .highlight-inline {
-    padding: 4pt 8pt;
-    margin: 6pt 0;
-    justify-content: space-between !important;
-  }
-
-  .resume-print-photo-frame {
-    padding: 0 !important;
-    margin: 0 !important;
-    flex-shrink: 0;
-    justify-content: center !important;
-  }
-  
-  /* Paragraphs */
-  p {
-    margin: 3pt 0;
-    font-size: 8pt;
-  }
-  
-  /* Lists */
-  ul, ol {
-    margin: 2pt 0;
-    padding-left: 12pt;
-  }
-  
-  li {
-    margin: 1pt 0;
-    font-size: 8pt;
-  }
-  
-  h2, h3, h4 {
-    margin-top: 8pt;
-    margin-bottom: 3pt;
-  }
-  
-  /* Hide print-only to save space */
-  .print-only {
-    display: none !important;
-  }
-  
-  /* Prevent empty second page */
-  .resume {
-    page-break-after: avoid;
-    page-break-inside: avoid;
-    overflow: hidden;
-  }
-  
-  article {
-    overflow: hidden;
-    height: auto !important;
-  }
-  
-  main, .page-content, .w, article, .resume {
-    page-break-after: avoid !important;
-    page-break-before: avoid !important;
-  }
-}
-
-/* Hide print-only on screen */
-@media screen {
-  .print-only {
-    display: none;
-  }
-
-  .resume-print-only {
-    display: none !important;
-  }
-}
-</style>
-
-<article class="resume">
-  <div class="resume-print-only">
-    <div class="resume-print-top">
-      <div class="resume-print-photo-frame">
-        <img src="{{ "resume/resume-image.png" | relURL }}" alt="Isaac Lins" width="120" height="120" />
-      </div>
-      <div class="resume-print-links">
-        <a href="mailto:contact@isaaclins.com">contact@isaaclins.com</a>
-        <a href="https://isaaclins.com">isaaclins.com</a>
-        <a href="https://github.com/isaaclins">github.com/isaaclins</a>
-        <a href="https://linkedin.com/in/isaaclinsdotcom">linkedin.com/in/isaaclinsdotcom</a>
-      </div>
+<article class="cv">
+  <header class="cv-top">
+    <img class="cv-photo" src="{{ "resume/resume-image.webp" | relURL }}" alt="Isaac Lins" width="112" height="112" />
+    <div class="cv-id">
+      <h1 class="cv-name">Isaac Lins</h1>
+      <p class="cv-role">{{ $p.role }}</p>
+      <p class="cv-loc">{{ $p.location }}</p>
     </div>
-  </div>
-  <header class="resume-header">
-    <h1 class="resume-name">ISAAC LINS</h1>
-    <p class="resume-tagline">Application Developer · Security Analyst · Zürich, Switzerland</p>
-    <div class="resume-contact no-print">
-      <a href="mailto:contact@isaaclins.com">contact@isaaclins.com</a>
-      <a href="https://isaaclins.com">isaaclins.com</a>
-      <a href="https://github.com/isaaclins">github.com/isaaclins</a>
-      <a href="https://linkedin.com/in/isaaclinsdotcom">linkedin.com/in/isaaclinsdotcom</a>
-    </div>
+    <a class="cv-btn no-print" href="{{ $pdf }}" download="Isaac-Lins-Resume.pdf">Download PDF <span class="arr" aria-hidden="true">↓</span></a>
+    <ul class="cv-contact">
+      {{- range $p.contact }}
+      <li><a href="{{ .link }}"><small>{{ .label }}</small><span>{{ .text }}</span></a></li>
+      {{- end }}
+    </ul>
   </header>
 
-  {{ .Content }}
+  <p class="cv-summary">{{ $p.summary }}</p>
 
-  <div class="download-section no-print">
-    <button class="download-btn" onclick="window.print()">
-      [ Download as PDF ]
-    </button>
-    <p style="font-size: 0.8rem; margin-top: 0.75rem; opacity: 0.7;">
-      Select "Save" in the print dialog
-    </p>
-  </div>
+  {{- with $p.highlight }}
+  <a class="cv-proof" href="{{ partial "cv-url" .link }}">
+    <b>{{ .big }}</b>
+    <span><strong>{{ .title }}</strong><span class="sep"> · </span>{{ .text }}</span>
+  </a>
+  {{- end }}
+
+  <section class="cv-sec" aria-labelledby="cv-exp">
+    <h2 class="cv-head" id="cv-exp"><span class="slashes" aria-hidden="true">//////////</span>experience<span class="rule"></span></h2>
+    <ol class="cv-list">
+      {{- range $p.experience }}
+      <li class="cv-row">
+        <p class="cv-when">{{ partial "cv-dates" . }}</p>
+        <div class="cv-what">
+          <div class="cv-line">
+            <h3>{{ .title }}{{ with .team }}<span class="cv-team"> · {{ . }}</span>{{ end }}</h3>
+            <p class="cv-org">{{ .org }}</p>
+          </div>
+          <p class="cv-text">{{ .text }}</p>
+        </div>
+      </li>
+      {{- end }}
+    </ol>
+  </section>
+
+  <section class="cv-sec" aria-labelledby="cv-proj">
+    <h2 class="cv-head" id="cv-proj"><span class="slashes" aria-hidden="true">//////////</span>projects<span class="rule"></span><a class="aside no-print" href="{{ "/" | relURL }}#work">all work →</a></h2>
+    <ol class="cv-list">
+      {{- range $p.projects }}
+      <li class="cv-row{{ if not .print }} web-only{{ end }}">
+        <p class="cv-when">{{ .when }}</p>
+        <div class="cv-what">
+          <h3>{{ .name }}{{ with .note }}<span class="cv-note"> · {{ . }}</span>{{ end }}</h3>
+          <p class="cv-text">{{ .text }}</p>
+          <p class="cv-meta"><span class="cv-stack">{{ .stack }}</span>
+            {{- range .links }}<a{{ if not .print }} class="web-only"{{ end }} href="{{ partial "cv-url" .link }}">{{ .text }}</a>{{ end }}</p>
+        </div>
+      </li>
+      {{- end }}
+    </ol>
+  </section>
+
+  <section class="cv-sec" aria-labelledby="cv-skills">
+    <h2 class="cv-head" id="cv-skills"><span class="slashes" aria-hidden="true">//////////</span>skills<span class="rule"></span></h2>
+    <dl class="cv-skills">
+      {{- range $p.skills }}
+      <div class="cv-row"><dt class="cv-when">{{ .label }}</dt><dd>{{ .items }}</dd></div>
+      {{- end }}
+    </dl>
+  </section>
+
+  <section class="cv-sec" aria-labelledby="cv-edu">
+    <h2 class="cv-head" id="cv-edu"><span class="slashes" aria-hidden="true">//////////</span>education &amp; certificates<span class="rule"></span></h2>
+    <ol class="cv-list">
+      {{- range $p.education }}
+      <li class="cv-row">
+        <p class="cv-when">{{ partial "cv-dates" . }}</p>
+        <div class="cv-what">
+          <div class="cv-line">
+            <h3>{{ .title }}</h3>
+            <p class="cv-org">{{ .org }}{{ if .link }} · <a href="{{ partial "cv-url" .link }}">{{ .linktext | default "link" }}</a>{{ end }}</p>
+          </div>
+        </div>
+      </li>
+      {{- end }}
+    </ol>
+  </section>
+
+  <footer class="cv-foot no-print">
+    <span>Updated {{ .Date.Format "January 2006" }}</span>
+    <a href="{{ $pdf }}" download="Isaac-Lins-Resume.pdf">Download PDF ↓</a>
+  </footer>
 </article>
 
-<style>
-/* Toast notification styles */
-.toast {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  background: #000000;
-  color: #ffffff;
-  padding: 1rem 1.25rem;
-  border: thin solid #ffffff;
-  opacity: 0;
-  transform: translateY(1rem);
-  transition: all 0.3s ease;
-  z-index: 1000;
-  max-width: 360px;
-  font-family: monospace;
-  font-size: 14px;
-  line-height: 1.4;
-  pointer-events: none;
-}
-
-.toast.show {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-.toast-content {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.toast-title {
-  font-weight: normal;
-  font-size: 14px;
-  margin-bottom: 0.25rem;
-}
-
-.toast-message {
-  font-size: 13px;
-  line-height: 1.5;
-}
-
-.toast-email {
-  color: #79a8ff;
-  text-decoration: none;
-}
-
-.toast-email:hover {
-  text-decoration: underline;
-}
-
-.toast-close {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.75rem;
-  background: none;
-  border: none;
-  color: #ffffff;
-  cursor: pointer;
-  font-family: monospace;
-  font-size: 16px;
-  padding: 0;
-  opacity: 0.7;
-}
-
-.toast-close:hover {
-  opacity: 1;
-}
-
-body[a="light"] .toast {
-  background: #ffffff;
-  color: #000000;
-  border-color: #000000;
-}
-
-body[a="light"] .toast-email {
-  color: #3548cf;
-}
-
-body[a="light"] .toast-close {
-  color: #000000;
-}
-
-@media (prefers-color-scheme: light) {
-  body[a="auto"] .toast {
-    background: #ffffff;
-    color: #000000;
-    border-color: #000000;
-  }
-  
-  body[a="auto"] .toast-email {
-    color: #3548cf;
-  }
-  
-  body[a="auto"] .toast-close {
-    color: #000000;
-  }
-}
-
-@media print {
-  .toast {
-    display: none !important;
-  }
-}
-</style>
-
-<div id="toast" class="toast">
-  <button class="toast-close" onclick="hideToast()">[x]</button>
-  <div class="toast-content">
-    <div class="toast-title">// thank you for your interest</div>
-    <div class="toast-message">
-      feel free to reach out at <a href="mailto:contact@isaaclins.com" class="toast-email">contact@isaaclins.com</a> if you have any questions.
-    </div>
-  </div>
-</div>
-
 <script>
-// Show toast after printing
-addEventListener("afterprint", (event) => {
-  showToast();
-});
-
-onafterprint = (event) => {
-  showToast();
-};
-
-function showToast() {
-  const toast = document.getElementById('toast');
-  if (!toast) return;
-  
-  toast.classList.add('show');
-  
-  setTimeout(() => {
-    hideToast();
-  }, 6000);
-}
-
-function hideToast() {
-  const toast = document.getElementById('toast');
-  if (toast) {
-    toast.classList.remove('show');
-  }
-}
+  // "Save as PDF" names the file after the document title.
+  (function () {
+    var t = document.title;
+    addEventListener('beforeprint', function () { document.title = 'Isaac Lins - Resume'; });
+    addEventListener('afterprint', function () { document.title = t; });
+  })();
 </script>
-
 {{ end }}
+
+{{- define "partials/cv-url" -}}
+  {{- if hasPrefix . "/" -}}{{- strings.TrimPrefix "/" . | absURL -}}{{- else -}}{{- . -}}{{- end -}}
+{{- end -}}
+
+{{- define "partials/cv-dates" -}}
+  {{- $start := .start }}{{ $end := .end -}}
+  {{- if eq $start "?" }}<mark class="cv-tbd" title="date to confirm">date?</mark>{{ else }}{{ $start }}{{ end -}}
+  {{- with $end }} – {{ if eq . "?" }}<mark class="cv-tbd" title="date to confirm">date?</mark>{{ else }}{{ . }}{{ end }}{{ end -}}
+{{- end -}}

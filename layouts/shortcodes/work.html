@@ -1,0 +1,56 @@
+{{/* Home: WORK as a `git log --graph`, then "Also built".
+     Content is data/projects.toml. The rail, the lit commits and j/k are
+     assets/js/home.js. */}}
+{{- $d := hugo.Data.projects -}}
+<div class="work" id="log">
+  <div class="rail" aria-hidden="true"><div class="fill" id="fill"></div></div>
+  {{- range $d.commit }}
+  {{- $c := . }}
+  <article class="commit" style="{{ printf "--c:%s" .color | safeCSS }}" id="{{ .id }}">
+    <span class="node" aria-hidden="true"></span>
+    <div class="when"><span class="date">{{ .date }}</span><span class="hash">{{ .hash }}</span></div>
+    <div class="case">
+      <div class="text">
+        <div class="refs">
+          {{- range .refs }}<span class="ref">{{ . }}</span>{{ end -}}
+          {{- range .refs_muted }}<span class="ref muted">{{ . }}</span>{{ end -}}
+        </div>
+        <h3>{{ with .icon }}<img src="{{ printf "images/%s" . | relURL }}" alt="" width="34" height="34">{{ end }}{{ .name }}</h3>
+        <p class="one">{{ .one }}</p>
+        <p class="why">{{ .why | markdownify }}</p>
+        {{- with .stack }}
+        <dl class="stack">
+          {{- range . }}<dt>{{ .k }}</dt><dd>{{ .v | markdownify }}</dd>{{ end -}}
+        </dl>
+        {{- end }}
+        <div class="links">
+          {{- range .links }}
+          {{- if .copy }}
+          <button class="btn{{ if .primary }} primary{{ end }}" type="button" data-copy="{{ .copy }}" data-copied="{{ .copied }}">{{ .label }}{{ if .primary }} <span class="arr" aria-hidden="true">→</span>{{ end }}</button>
+          {{- else }}
+          <a class="btn{{ if .primary }} primary{{ end }}" href="{{ partial "home/url.html" .url }}">{{ .label }}{{ if .primary }} <span class="arr" aria-hidden="true">→</span>{{ end }}</a>
+          {{- end }}
+          {{- end }}
+        </div>
+      </div>
+      <div class="stage">
+        {{- partial (printf "home/stage-%s.html" .stage.kind) .stage }}
+        {{- with .stage.caption }}
+        <div class="cap">{{ . | markdownify }}</div>
+        {{- end }}
+      </div>
+    </div>
+  </article>
+  {{- end }}
+</div>
+<p class="hint"><kbd>j</kbd> <kbd>k</kbd> step through projects</p>
+
+<div class="also rv" id="also">
+  <h3 class="also-h">Also built</h3>
+  <ul>
+    {{- range $d.also }}
+    <li><a href="{{ partial "home/url.html" .url }}"><span class="n">{{ .name }}</span><span class="d">{{ .desc }}</span><span class="y">{{ .year }} ↗</span></a></li>
+    {{- end }}
+  </ul>
+  <a class="all" href="https://github.com/isaaclins?tab=repositories">Everything on GitHub →</a>
+</div>

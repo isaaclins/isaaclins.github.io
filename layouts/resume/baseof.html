@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html lang="{{ site.Language.Locale }}">
     {{- partial "head.html" . -}}
-    <body a="{{ $.Site.Params.theme_config.appearance | default "auto" }}">
+    <body a="{{ $.Site.Params.theme_config.appearance | default "auto" }}"{{ if eq .Layout "single" }} class="cv-body"{{ end }}>
+        {{- if eq .Layout "single" }}
+        {{- /* Resume only: own fonts and stylesheet (assets/css/_resume.scss).
+               Theme before first paint: same localStorage key as the homepage. */}}
+        <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;})();</script>
+        <style>
+          @font-face { font-family: "JetBrains Mono"; font-weight: 400; font-display: swap; src: url("{{ (resources.Get "fonts/JetBrainsMono-Regular.ttf").RelPermalink }}") format("truetype"); }
+          @font-face { font-family: "JetBrains Mono"; font-weight: 700; font-display: swap; src: url("{{ (resources.Get "fonts/JetBrainsMono-Bold.ttf").RelPermalink }}") format("truetype"); }
+        </style>
+        {{- $cv := resources.Get "css/_resume.scss" | css.Sass (dict "outputStyle" "compressed" "targetPath" "css/resume.css") | resources.Fingerprint "sha512" }}
+        <link rel="stylesheet" href="{{ $cv.RelPermalink }}" integrity="{{ $cv.Data.Integrity }}" />
+        {{- end }}
         <a class="skip-link" href="#content">skip to content</a>
         {{ partial "site_nav.html" . }}
         <main class="page-content" id="content" aria-label="Content">
+            {{- if eq .Layout "single" }}
+            {{- block "main" . }}{{- end }}
+            {{- else }}
             <div class="w">
                 {{- block "main" . }}{{- end }}
-                {{/* No footer for resume - cleaner for PDF export */}}
             </div>
+            {{- end }}
         </main>
     </body>
 </html>

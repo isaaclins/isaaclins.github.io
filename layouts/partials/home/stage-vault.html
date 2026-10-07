@@ -1,0 +1,14 @@
+{{- /* pi-vault: ask, approve, run, redacted. The flow from its README;
+       home.js steps through the s1..s4 classes in a loop. Line breaks are
+       markup, not whitespace, so the HTML minifier can't fold them. */ -}}
+<div class="term vault s4" aria-hidden="true" id="vault">
+  <div class="bar"><i></i><i></i><i></i><span>pi — ~/project</span></div>
+  <div class="out">
+    <div class="l1"><span class="p">❯</span> list the models my OpenAI key can use</div>
+    <div class="l2"><span class="k">●</span> <span class="d">pi wants to run, with</span> <span class="y">OPENAI_API_KEY</span><span class="d">:</span>
+      <span class="in">curl -s api.openai.com/v1/models \</span>
+      <span class="in in2">-H "Authorization: Bearer $OPENAI_API_KEY"</span></div>
+    <div class="l4"><span class="ok">✓</span> <span class="d">approved · read from login keychain</span><br><span class="d">→</span> Bearer <span class="y">[redacted]</span><br><span class="ok">✓</span> <span class="d">the key never entered the chat</span></div>
+  </div>
+  <div class="sheet"><b>Allow pi to use OPENAI_API_KEY?</b><small>Only for this command. The value is not shown to the agent.</small><span class="bt"><span>Deny</span><span class="allow">Allow once</span></span></div>
+</div>

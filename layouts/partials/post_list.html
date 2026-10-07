@@ -1,53 +1,37 @@
+{{- /* A list of posts: the title on one line, date, tags and complexity in a
+       quiet line under it. Params: context, section, limit, show_more,
+       show_more_url, show_more_text. */ -}}
 {{- $posts := "" -}}
-
 {{- if .section -}}
     {{- $posts = (where site.RegularPages "Section" .section) -}}
+{{- else if in (slice "taxonomy" "term") .context.Kind -}}
+    {{- $posts = .context.Pages -}}
 {{- else -}}
-    {{- if (eq .context.Kind "taxonomy") -}}
-        {{- $posts = .context.Pages -}}
-    {{- else -}}
-        {{- if (eq .context.Kind "term") -}}
-            {{- $posts = .context.Pages -}}
-        {{- else -}}
-            {{- $posts = site.RegularPages }}
-        {{- end -}}
-    {{- end -}}
+    {{- $posts = site.RegularPages -}}
 {{- end -}}
+{{- $more := and .limit (gt (len $posts) .limit) -}}
+{{- if .limit }}{{ $posts = first .limit $posts }}{{ end -}}
+{{- $fmt := site.Params.theme_config.date_format -}}
 
-{{- $limit_exceeded:= "" -}}
-{{- if (and .limit (gt (len $posts) .limit)) -}}
-    {{- $limit_exceeded = true -}}
-{{- else -}}
-    {{- $limit_exceeded = false -}}
-{{ end }}
-
-{{- if (gt (len $posts) 0) }}
-    {{- if .limit }}
-        {{ $posts = (first .limit $posts ) }}
-    {{ end }}
-
-    {{- range $post := $posts -}}
-        <h2><a href="{{ $post.Permalink | relURL }}">{{ $post.Title }}</a></h2>
-        <ul>
-            <li>DATE: <span class="post-date">{{ $post.Date | time.Format site.Params.theme_config.date_format }}</span></li>
-            <li>TAGS: [<span class="post-tags-list">
-            {{- if $post.Params.tags -}}
-                {{- range $index, $tag := $post.Params.tags -}}
-                    {{- if $index }}, {{ end -}}
-                    <a href="{{ "/tags/" | relLangURL }}{{ $tag | urlize }}">{{ $tag }}</a>
+{{- if $posts }}
+<ul class="post-list">
+    {{- range $posts }}
+    <li>
+        <a class="t" href="{{ .RelPermalink }}">{{ .Title }}</a>
+        <div class="m">
+            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date | time.Format $fmt }}</time>
+            {{- with .Params.tags }} · <span class="post-tags-list">
+                {{- range $i, $tag := . -}}
+                    {{- if $i }}, {{ end -}}
+                    <a href="{{ "tags/" | relLangURL }}{{ $tag | urlize }}/">{{ $tag }}</a>
                 {{- end -}}
-            {{- end -}}
-                ]
-            </span>
-            </li>
-            {{- if $post.Params.complexity }}
-            <li>COMPLEXITY: <span class="post-complexity"><a href="{{ "/complexity/" | relLangURL }}{{ $post.Params.complexity | urlize }}">{{ $post.Params.complexity }}</a></span></li>
-            {{- end }}
-            <br>
-            </ul>
-            {{- end -}}
-
-    {{- if and .show_more $limit_exceeded }}
-        <li><a href="{{ .show_more_url | relURL }}">{{ .show_more_text | default "Show more..." }}</a></li>
-    {{ end }}
-{{ end }}
+            </span>{{ end }}
+            {{- with .Params.complexity }} · <a href="{{ "complexity/" | relLangURL }}{{ . | urlize }}/">{{ . }}</a>{{ end }}
+        </div>
+    </li>
+    {{- end }}
+</ul>
+{{- if and $.show_more $more }}
+<p><a href="{{ $.show_more_url | relURL }}">{{ $.show_more_text | default "Show more..." }}</a></p>
+{{- end }}
+{{- end }}

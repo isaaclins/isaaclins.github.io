@@ -1,0 +1,16 @@
+{{/* Home: contact. The address is one big click-to-copy button, then one
+     "label | text | link" per line as a row of links.
+     Usage: {{< contact email="me@example.com" >}} rows {{< /contact >}} */}}
+{{- $mail := .Get "email" -}}
+{{- $at := split $mail "@" -}}
+<button class="mail rv" type="button" id="mail" data-mail="{{ $mail }}" aria-describedby="copyhint"><span class="u">{{ index $at 0 }}</span><span class="at">@</span><span class="u">{{ index $at 1 }}</span></button>
+<div class="copyhint" id="copyhint">Click to copy. Or <a href="mailto:{{ $mail }}">open your mail app</a>.</div>
+<div class="contact-rows rv">
+  {{- range $line := split (trim .Inner "\n\r \t") "\n" -}}
+    {{- $line = trim $line " \t\r" -}}
+    {{- if $line -}}
+      {{- $p := split $line "|" }}
+  <a href="{{ partial "home/url.html" (trim (index $p 2) " ") }}"><small>{{ trim (index $p 0) " " }}</small><span>{{ trim (index $p 1) " " }}</span></a>
+    {{- end -}}
+  {{- end }}
+</div>

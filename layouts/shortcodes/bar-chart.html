@@ -1,6 +1,6 @@
 {{- /*
   bar-chart — minimal monospace bar chart that inherits the page theme
-  (modus-vivendi / modus-operandi). No box, no chrome: bars in currentColor,
+  (dark / light). No box, no chrome: bars in currentColor,
   the largest one in the site's link accent.
   Usage:
     {{< bar-chart caption="Cursor valuation by round" prefix="$" suffix="B" >}}
@@ -35,11 +35,7 @@
 {{- if not (.Page.Scratch.Get "barChartCSS") -}}
 {{- .Page.Scratch.Set "barChartCSS" true -}}
 <style>
-.mbar { --mbar-accent: #79a8ff; margin: 1.8rem 0; font-family: inherit; }
-body[a="light"] .mbar { --mbar-accent: #3548cf; }
-body[a="dark"]  .mbar { --mbar-accent: #79a8ff; }
-@media (prefers-color-scheme: light) { body[a="auto"] .mbar { --mbar-accent: #3548cf; } }
-@media (prefers-color-scheme: dark)  { body[a="auto"] .mbar { --mbar-accent: #79a8ff; } }
+.mbar { --mbar-accent: var(--blue); margin: 1.8rem 0; font-family: inherit; }
 
 .mbar__caption { font-size: 0.8rem; opacity: 0.55; margin-bottom: 0.9rem; }
 .mbar__row {

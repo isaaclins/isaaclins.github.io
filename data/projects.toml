@@ -1,0 +1,261 @@
+# WORK on the home page: a `git log --graph`, newest first.
+# Rendered by layouts/shortcodes/work.html.
+#
+# One [[commit]] per featured project:
+#   color      the project's accent (node, refs, buttons, stage glow)
+#   date/hash  left of the rail; hash = a real commit of the project
+#   refs       outlined tags; refs_muted the grey ones
+#   one        one sentence, what it is
+#   why        two or three sentences, Markdown allowed
+#   stack      [[commit.stack]] k/v rows under the text, Markdown allowed in v
+#   links      [[commit.links]]; primary = filled button; copy = a button that
+#              copies that value instead of a link (copied = toast text)
+#   stage      the big picture: kind = "shot" | "video" | "chat" | "vault",
+#              a shot may set img2/alt2 (same size): it crossfades in and out
+#              one partial each in layouts/partials/home/stage-<kind>.html
+#              (chat = the lines it replays; the vault flow is in its partial)
+# Internal links start with "/", other isaaclins.com project sites
+# (/freesnitch/, /spotiglass/, ...) are separate repos: use the full URL.
+
+[[commit]]
+id = "stewie"
+name = "Stewie"
+color = "#6f95ff"
+date = "now"
+hash = "a4d82da"
+refs = ["HEAD -> main"]
+refs_muted = ["since Sep 30, 2026"]
+one = "An AI agent with its own computer. I send outcomes, it does the work."
+why = "A small machine in my living room that I never log into. I talk to it from my phone. It runs my servers, keeps its own notes, and every night at 2:30 it dreams: it replays the day and writes down what it learned."
+  [[commit.stack]]
+  k = "built on"
+  v = "Claude · T3 Code · Ubuntu · systemd"
+  [[commit.stack]]
+  k = "pieces"
+  v = "its own notes, a search over every session, nightly dream, a projector wall"
+  [[commit.stack]]
+  k = "first week"
+  v = "servers moved, hackathon entry (3rd, Zurich hub), a Minecraft server with 65 challenges"
+  [[commit.links]]
+  label = "Meet Stewie"
+  url = "/blog/hi-im-stewie-isaacs-ai-agent/"
+  primary = true
+  [commit.stage]
+  kind = "chat"
+  chat = [
+    ["me", "my friends want to play Minecraft"],
+    ["st", "Server is up. A lobby, a parkour and 65 challenge modes. Address is in your chat."],
+    ["me", "build something for the hackathon"],
+    ["st", "Built it overnight. It placed 3rd at the Zurich hub."],
+    ["me", "move my servers off the gaming PC"],
+    ["st", "Moved and switched off on the old box. Notes updated."],
+  ]
+  caption = "Real requests, from [Stewie's first post](/blog/hi-im-stewie-isaacs-ai-agent/)"
+
+[[commit]]
+id = "navigator"
+name = "Rental Law Navigator"
+color = "#8fb1ff"
+date = "Oct 2026"
+hash = "417d035"
+refs = ["3rd · Hack-Nation 7 Zurich"]
+refs_muted = ["Python"]
+one = "US rental law for any address, quoted word for word."
+why = "Type an address and get the rules that apply there: rent limits, evictions, deposits, fees. Every answer cites its source with an as-of date and shows what is about to change. Built with Stewie for the RealPage challenge."
+  [[commit.stack]]
+  k = "under the hood"
+  v = "US Census geocoder · cited sources · change tracking"
+  [[commit.stack]]
+  k = "languages"
+  v = "English, Spanish"
+  [[commit.links]]
+  label = "Try it"
+  url = "https://navigator.isaaclins.com/"
+  primary = true
+  [[commit.links]]
+  label = "Source"
+  url = "https://github.com/isaaclins/rental-law-navigator"
+  [commit.stage]
+  kind = "shot"
+  img = "home/navigator.webp"
+  width = 1400
+  height = 875
+  alt = "Rental Law Navigator: the rules at 3515 Fillmore St, San Francisco"
+  caption = "A real lookup: 3515 Fillmore St, San Francisco"
+
+[[commit]]
+id = "demo-video"
+name = "demo-video-skill"
+color = "#f5b83d"
+date = "Oct 2026"
+hash = "1b623a3"
+refs = ["2 ★"]
+refs_muted = ["Claude Code skill"]
+one = "Give Claude Code a URL. Get a product demo video."
+why = "It explores the site, picks the one flow worth showing, writes the script from what the page really says, records it in a real browser and cuts a video under 60 seconds: smooth zooms, captions, voice-over."
+  [[commit.stack]]
+  k = "stack"
+  v = "Playwright · ElevenLabs · ffmpeg"
+  [[commit.stack]]
+  k = "checks"
+  v = "length, codecs, loudness, caption sync"
+  [[commit.links]]
+  label = "Get the skill"
+  url = "https://github.com/isaaclins/demo-video-skill"
+  primary = true
+  [commit.stage]
+  kind = "video"
+  src = "video/demo-video.mp4"
+  poster = "home/demo-video-poster.webp"
+  width = 960
+  height = 540
+  label = "Demo video the skill made of the Rental Law Navigator"
+  caption = "The skill made this from one prompt: [navigator.isaaclins.com](https://navigator.isaaclins.com/)"
+
+[[commit]]
+id = "minecraft"
+name = "Challenge Server"
+color = "#ff9f1a"
+date = "Oct 2026"
+hash = "851cf10"
+refs = ["65 challenges"]
+refs_muted = ["Java · Fabric"]
+one = "Minecraft with friends, but every run is a challenge."
+why = "You land in a lobby and pick challenges with a nether star: shared hearts, hotbars that swap every few minutes, hardcore runs that reset the world for everyone. A fresh world per run, the good ones saved."
+  [[commit.stack]]
+  k = "built from"
+  v = "own Fabric mod · own Velocity plugin · Minecraft 26.2"
+  [[commit.links]]
+  label = "Copy server address"
+  copy = "minecraft.isaaclins.com"
+  copied = "Copied. Paste it into Multiplayer, Java 26.2."
+  primary = true
+  [commit.stage]
+  kind = "shot"
+  img = "home/minecraft.webp"
+  width = 1280
+  height = 720
+  alt = "The lobby of the challenge server at minecraft.isaaclins.com"
+  caption = "The lobby, in game"
+
+[[commit]]
+id = "freesnitch"
+name = "FreeSnitch"
+color = "#34d399"
+date = "Aug 2026"
+hash = "cc88217"
+refs = ["11 ★"]
+refs_muted = ["Swift · SwiftUI"]
+one = "See what your Mac is talking to. Block what you don't trust."
+why = "A free, open-source application firewall for macOS: rules per app, alerts on new connections, a live map of where your traffic goes, DNS over HTTPS. No subscription, no telemetry."
+  [[commit.stack]]
+  k = "under the hood"
+  v = "NEFilterDataProvider · XPC helper · SwiftUI"
+  [[commit.stack]]
+  k = "docs"
+  v = "in 6 languages"
+  [[commit.links]]
+  label = "Download"
+  url = "https://isaaclins.com/freesnitch/"
+  primary = true
+  [[commit.links]]
+  label = "Source"
+  url = "https://github.com/isaaclins/freesnitch"
+  [commit.stage]
+  kind = "shot"
+  img = "home/freesnitch.webp"
+  width = 1600
+  height = 870
+  alt = "FreeSnitch 1.0: apps with their traffic, a world map of where it goes and a summary"
+
+[[commit]]
+id = "pi-vault"
+name = "pi-vault"
+color = "#3fd0ff"
+date = "Aug 2026"
+hash = "977842a"
+refs = ["security"]
+refs_muted = ["TypeScript"]
+one = "Let an agent use a secret it never gets to see."
+why = "The agent names a secret and a command. You approve. The key goes from the macOS keychain straight into the command and is redacted from the output. The README says plainly what 0.1 can't stop yet. Touch ID is next."
+  [[commit.stack]]
+  k = "keeps the key out of"
+  v = "the chat, the transcript, `ps`, the output"
+  [[commit.links]]
+  label = "Source"
+  url = "https://github.com/isaaclins/pi-vault"
+  primary = true
+  [commit.stage]
+  kind = "vault"
+  caption = "The flow from the [README](https://github.com/isaaclins/pi-vault#readme)"
+
+[[commit]]
+id = "spotiglass"
+name = "Spotiglass"
+icon = "home/spotiglass-logo.webp"
+color = "#ff5a72"
+date = "Apr 2026"
+hash = "3e34eb7"
+refs = ["8 ★"]
+refs_muted = ["Swift · SwiftUI"]
+one = "Spotify for macOS, native, without the clutter."
+why = "A command palette for everything, a real system-level 10-band equalizer, synced lyrics and pins. I got tired of the stock app and built my own."
+  [[commit.stack]]
+  k = "under the hood"
+  v = "OAuth PKCE · Web Playback SDK · Keychain"
+  [[commit.links]]
+  label = "Download"
+  url = "https://isaaclins.com/spotiglass/"
+  primary = true
+  [[commit.links]]
+  label = "Why I built it"
+  url = "/blog/spotiglass/"
+  [[commit.links]]
+  label = "Source"
+  url = "https://github.com/isaaclins/spotiglass"
+  [commit.stage]
+  kind = "shot"
+  img = "home/spotiglass-real.webp"
+  width = 1600
+  height = 1042
+  alt = "Spotiglass on macOS: home with playlists, recently played and the player bar"
+  img2 = "home/spotiglass-palette.webp"
+  alt2 = "The Spotiglass command palette searching songs, albums and playlists for \"night\""
+  caption = "The real app on macOS"
+
+# "Also built": one line each, under the log.
+[[also]]
+name = "pi-terminal-kit"
+desc = "watch your coding agent work in your own tmux pane, steer it mid-run"
+year = "2026"
+url = "/projects/pi-terminal-kit/"
+
+[[also]]
+name = "PowerUserMail"
+desc = "keyboard-first email for macOS, a free Superhuman alternative"
+year = "2025"
+url = "https://isaaclins.com/powerusermail/"
+
+[[also]]
+name = "Belo"
+desc = "teach your computer to recognize things from your own pictures, fully offline"
+year = "2026"
+url = "https://isaaclins.com/belo/"
+
+[[also]]
+name = "MindDeck"
+desc = "local-first flashcards for iOS, Android, macOS, Windows and Linux"
+year = "2026"
+url = "https://isaaclins.com/MindDeck/"
+
+[[also]]
+name = "Let Die Ride!"
+desc = "a Yahtzee roguelike: roll, lock, score, survive"
+year = "2026"
+url = "https://isaaclins.itch.io/let-die-ride"
+
+[[also]]
+name = "Restaurant App"
+desc = "microservices for online ordering and a kitchen display, graded 6/6"
+year = "2025"
+url = "https://github.com/isaaclins/restaurant-application"

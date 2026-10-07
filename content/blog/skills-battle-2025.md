@@ -1,73 +1,94 @@
 +++
-title = "Are CTFs Pay2Win?"
+title = "I won a hacking contest with AI. Is that pay-to-win?"
 date = 2025-05-07
 draft = false
 tags = ["Security", "AI"]
 complexity = "easy"
+description = "I took first at the IT Skills Battle 2025 hacking contest with AI agents doing the grunt work. The edge wasn't money. It was explaining the problem well."
 +++
 
-Alright, let's cut to the chase. The Skills Battle CTF. You know, that competitive shindig for us IT folks. My boss nudged me, said it'd be a "good idea." So, I figured, why the hell not? Threw my hat in the ring, not expecting much.
+My boss thought it would be a "good idea" if I entered the IT Skills Battle, a hacking competition for people who work in IT. So I signed up. I didn't expect much.
 
-## The Slow Burn Start
+I finished in **first place**.
 
-I'm not gonna lie, I started out slower than a dial-up modem. Took me a painstaking **45 minutes for a single flag**. I was all over the place, distracted. I needed to lock in, and fast. My position on the graph? Buried at the bottom.
+And I'm sure I wouldn't have got anywhere near the top without AI doing a lot of the work. So here's the uncomfortable question: did I win, or did my tools? Are hacking contests turning **pay-to-win**? My answer is yes, kind of. Just not in the way you'd think.
 
-## Flipping the Script
+## I started dead last
 
-After that initial crawl, around the 10:00 mark, things changed. Instead of hitting a wall or getting exponentially slower like a lot of the others, I put my older brother on the game.
+The contest was a CTF, short for [capture the flag](https://en.wikipedia.org/wiki/Capture_the_flag_(cybersecurity)). Each challenge hides a secret piece of text, the "flag" (here it looked like `flag{...}`). You find it by breaking into something you're allowed to break into, paste it into the scoreboard, and get points. Everyone's score is on a live graph.
 
-![My REAL CTF Dominance](/images/skills-battle-graph-with-points.png)
+My start was bad. It took me **45 minutes to get a single flag**. I was distracted and all over the place, and on that live graph I was at the very bottom.
 
-There was a `1096 point difference` between me and the second place.
+## The slow flag turned out to be the valuable one
 
-I knocked out **three challenges back-to-back in about 20 minutes**. Flag after flag after flag. Turns out, that first super slow flag? It was one of the hardest ones. And thanks to the "first blood" style scoring. more points for flags fewer people capture. that initial pain paid off, big time. I shot up the leaderboard, leaving a good chunk of the competition eating my dust.
+Around 10:00, I put my older brother on the game. (My older brother, in this story, is AI.) A lot of the others hit a wall and got slower with every challenge. I solved **three in a row in about 20 minutes**. Flag, flag, flag.
 
-I ended up tying for first place with FOUR OTHER COMPETITORS.
+Then it got better. That first painful flag was one of the hardest in the whole contest, and the scoring rewarded it: the fewer people capture a flag, the more points it's worth. Those 45 minutes paid off. I shot up the leaderboard.
 
-I was the first to solve the second to last challenge, but they were all close.
+![Contest scoreboard: Isaaclins in first place with 2,846 points, derlenzer second with 1,750, above a line graph of the top 10 players' scores](/images/skills-battle-graph-with-points.png)
 
-![My CTF Dominance](/images/skills-battle-graph.png)
-**(I'm the blue line)**
+On the points scoreboard, the gap between me and second place was **1,096 points**.
 
-## The Unfair Advantage: My Setup
+On the final graph, I **tied for first with four other people**. I was the first to solve the second-to-last challenge, but it was close all the way.
 
-How'd I pull it off? My setup, pure and simple. Rocking my MacBook, I had everything streamlined.
-Need to brainstorm or debug? **`Ctrl+Space` + `chat`** and boom, ChatGPT was ready for my prompts.
-Need to scope a repo? **`Ctrl+Space` + `g`** and GitHub was there in a blink.
+![Line graph of the top 10 players' scores from 9:30 to 15:00. Five lines, including mine, end level at the top.](/images/skills-battle-graph.png)
+*I'm the blue line, "Isaaclins".*
 
-ps: THANKS, RAYCAST! (not sponsored)
+## My setup did the boring parts
 
-My rig did the heavy lifting; I just had to articulate the problems. to myself, and yeah, to my AI sidekick. I wasn't just faster; I was operating on a different level. I completely demolished the others.
+I was on my MacBook with [Raycast](https://www.raycast.com/), an app launcher you open with a keyboard shortcut ([I've written about it before](/blog/raycast-its-hidden-power/)). Need to brainstorm or debug? `Ctrl+Space`, type `chat`, and ChatGPT is open. Need to look through a project's code? `Ctrl+Space`, type `g`, and GitHub is there. (Not sponsored. I just like it.)
 
-## Agents: The Fucking Game Changer
+That sounds small. It isn't. I spent zero time clicking around. My only job was to explain the problem, to myself and to the AI.
 
-And this brings me to my main takeaway: **Agents are... FUCKING AMAZING.** Seriously.
-My workflow became ridiculously efficient. Dump all relevant info for a challenge into a new directory, clearly explain the goal, and hit enter. That was basically it.
+## The agents were the real cheat code
 
-I even had Cursor set up with custom rules. One rule automatically generated a `solve.md` file, forcing the AI to explain the solution path _after_ it cracked it. reinforcing my own understanding by then reading the solution. The other rule? It were instructions on how to set up a Linux Ubuntu VM for me on demand, saving me a good 20 minutes of fiddling when I needed a clean environment.
+The biggest help was AI agents. (An agent is an AI that doesn't just answer you. It reads files, runs commands and tries things by itself.)
 
-The crazy part? I didn't even sweat writing these Cursor rules. I just typed something like: "`/generate-cursor-rule I'm in a CTF and will give you challenges. The flags look like this: flag{flag_content}`" and it just _worked_. This level of automation let me focus on the actual problem-solving, making me incredibly, almost unfairly, efficient.
+My workflow for each challenge: make a new folder, dump everything I had into it, explain the goal clearly, hit enter. That was basically it.
 
-## The New "Pay-to-Win": Smarter, Not Harder
+I ran the agents in Cursor, an AI code editor, with two custom [rules](https://cursor.com/docs/context/rules) (standing instructions the AI follows in every chat):
 
-This whole experience got me thinking. CTFs are leaning into a new kind of "pay-to-win." But it's not about just throwing more money at a bigger AI model or feeding it endless files hoping it'll magically spit out flags.
+1. **Explain yourself.** After cracking a challenge, the AI wrote a `solve.md` file explaining how it got there. Reading it is how I actually understood the solution instead of just copying a flag.
+2. **Build me a clean machine.** Instructions for setting up an Ubuntu Linux virtual machine (a fresh computer running inside mine) on demand. That saved me a good 20 minutes of fiddling every time I needed one.
 
-The _real_ edge comes from how you use these tools. It's about figuring out:
+The best part: I didn't even write those rules myself. I typed roughly this, and it just worked:
 
-**"How can I explain this problem to the AI so _it_ can then understand the path to the solution, or even explain parts of the solution, back to _me_?"**
+```
+/generate-cursor-rule I'm in a CTF and will give you challenges. The flags look like this: flag{flag_content}
+```
 
-You make the AI an extension of your own thought process, a powerful collaborator. You leverage it to break down complexity, to automate the grunt work, to see patterns you might miss. _That's_ how you break the pattern of stupid answers in a high-pressure environment.
+## Pay-to-win, but the currency isn't money
 
-## Wrapping Up
+So yes, I think CTFs are heading toward a new kind of pay-to-win. But you can't just pay for the biggest AI model, feed it every file and wait for flags to fall out. That isn't what won it.
 
-I genuinely enjoy CTFs. They're a blast. But I've gotta be honest: I wouldn't have been anywhere _near_ the top, nor would I have operated at that speed, without AI integrated into my workflow.
+The edge is one question:
 
-I've tried it with and without AI, and while it's more rewarding without, it's just not feasible to do without it.
+**"How do I explain this problem so the AI can find the way to the solution, and then explain that way back to me?"**
 
-**TLDR; I didn't just win; I leveraged AI to redefine what "winning" looked like. Call it P2W, call it adaptive thinking, call it whatever. It worked.**
+You treat the AI as an extension of your own thinking. It breaks big problems into small ones, does the grunt work and spots patterns you'd miss. That's how you stop getting stupid answers when the clock is running.
 
-> ![DHTP-HTG.png](/images/DHTP-HTG.png)
+## What this means if you enter one
 
-Huge thanks to the Skills Battle organizers and everyone involved. It was a hell of a ride.
+- **Set up the boring stuff before the clock starts.** Shortcuts, agent rules, a recipe for a clean machine. Every minute you don't spend clicking is a minute on the actual problem.
+- **Make the AI show its work.** Without something like that `solve.md`, you walk away with points and learn nothing.
+- **Put your effort into the explanation, not the model.** A clear problem description got me further than any amount of extra files would have.
 
-FIRST PLACE BABYYYY
+## The honest part
+
+I love CTFs. I've done them with and without AI, and without is more rewarding. But it's just not feasible anymore. I wouldn't have been anywhere near the top, or anywhere near that fast, without AI in my workflow.
+
+Call it pay-to-win, call it adaptive thinking, call it whatever. It worked.
+
+![A terminal window that reads "Don't hate the player, hate the game."](/images/DHTP-HTG.png)
+
+Huge thanks to the Skills Battle organizers and everyone who played. It was a hell of a ride.
+
+I didn't just win. I changed what winning looks like.
+
+{{< faq >}}
+What is the IT Skills Battle? || A competition for people who work in IT. The 2025 contest was a CTF, a hacking competition where you solve security challenges to find hidden "flags" and score points.
+What is a CTF in cybersecurity? || Short for [capture the flag](https://en.wikipedia.org/wiki/Capture_the_flag_(cybersecurity)): each challenge hides a secret string (the flag) that you find by legally hacking something, then submit for points.
+How did Isaac place at the IT Skills Battle 2025? || **First place**, tied with four other competitors on the final graph. On the points scoreboard he was **1,096 points** ahead of second place.
+How did AI help? || ChatGPT through [Raycast](/blog/raycast-its-hidden-power/) shortcuts for brainstorming and debugging, plus AI agents in Cursor with two custom rules: one wrote a `solve.md` explaining every solution, the other set up an Ubuntu virtual machine on demand.
+Are CTFs pay-to-win now? || Kind of, but not with money. The edge isn't the biggest model, it's explaining the problem well enough that the AI can solve it and explain the solution back to you.
+{{< /faq >}}

@@ -1,0 +1,6 @@
+{{/* Home: about. The pull quote left, the Markdown body right.
+     Usage: {{< about pull="One strong line." >}} paragraphs {{< /about >}} */}}
+<div class="about">
+  <p class="pull rv">{{ .Get "pull" }}</p>
+  <div class="body rv">{{ .Inner | .Page.RenderString (dict "display" "block") }}</div>
+</div>

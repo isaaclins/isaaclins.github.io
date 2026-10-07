@@ -1,0 +1,3 @@
+{{- /* Muted loop. home.js plays it only while it is on screen; with reduced
+       motion it never autoplays and gets controls instead. */ -}}
+<div class="shot video"><video src="{{ .src | relURL }}" poster="{{ printf "images/%s" .poster | relURL }}" muted loop playsinline preload="none" width="{{ .width }}" height="{{ .height }}" aria-label="{{ .label }}"></video></div>
