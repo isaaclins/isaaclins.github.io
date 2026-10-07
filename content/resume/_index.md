@@ -43,7 +43,7 @@ summary = "Started as a developer, moved into security, kept both. I build appli
   title = "Blue Team Security Analyst"
   team = "Internal Security"
   org = "Swisscom AG"
-  start = "?"
+  start = "Aug 2026"
   end = "now"
   text = "In-house blue team: threat detection and incident response for Swisscom itself."
 [[experience]]
@@ -51,7 +51,7 @@ summary = "Started as a developer, moved into security, kept both. I build appli
   team = "Threat Detection & Response"
   org = "Swisscom AG"
   start = "Oct 2025"
-  end = "?"
+  end = "Aug 2026"
   text = "Triage and incident response for 50+ customer tenants: SIEM, EDR, NDR, XDR, SOAR."
 [[experience]]
   title = "Application Developer"
