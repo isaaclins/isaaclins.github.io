@@ -1,8 +1,8 @@
-{{/* Section heading: Isaac's slash motif + label + hairline rule to the
-     right edge of the measure. Usage: {{< sec "about" >}} */}}
+{{/* Section heading: Isaac's slash motif, a label, a hairline to the right
+     edge, and an optional grey aside after it. The label is also the anchor.
+     Usage: {{< sec "work" "git log --graph" >}} */}}
 {{- $label := .Get 0 -}}
-<h2 class="sec" id="{{ $label | anchorize }}">
-  <span class="sec-slash" aria-hidden="true">//////////</span>
-  <span class="sec-label">{{ $label }}</span>
-  <span class="sec-rule" aria-hidden="true"></span>
+<h2 class="head" id="{{ $label | anchorize }}">
+  <span class="slashes" aria-hidden="true">//////////</span>{{ $label }}<span class="rule" aria-hidden="true"></span>
+  {{- with .Get 1 }}<span class="aside">{{ . }}</span>{{ end }}
 </h2>

@@ -5,65 +5,59 @@ draft = false
 description = "Isaac Lins. Application developer and security analyst at Swisscom, building AI-powered tools, agents, and the systems that carry them to production."
 +++
 
-Application Developer & Security Analyst · Swisscom
-{.hero-role}
+<!--
+  The home page. The big name above this is the site title (config.toml).
+  Projects and "Also built" are in data/projects.toml.
+  Shortcodes: layouts/shortcodes/{meta,proof,sec,about,work,writing,contact}.html
+-->
 
-I build applications and ship AI-powered tools. The goal is simple: become a top
-AI engineer and build systems that actually make it to production.
-{.hero-lead}
+{{< meta >}}
+role | Application developer<br>& security analyst
+at | Swisscom, since 2022<br>Switzerland
+local time | {clock}
+for terminals | `curl isaaclins.com`
+{{< /meta >}}
 
-{{< stat-strip >}}
-at swisscom | since 2022
-now | blue team security analyst
-building | ai tools & agents
-{{< /stat-strip >}}
+I build applications and ship AI&#8209;powered tools. The goal: become a top AI
+engineer and build systems that make it to production.
+{.lead .rv}
+
+{{< proof >}}
+1st | national IT Skills Battle 2025, cybersecurity | /blog/skills-battle-2025/
+{posts} | posts that explain tech in plain words | /blog/
+AI | tools & agents, from prompt to production
+{{< /proof >}}
 
 {{< sec "about" >}}
 
-I started at Swisscom as a developer and moved into security. Both stuck. I
-craft clean, efficient applications across multiple languages and frameworks,
-and I know how they break, because breaking them is the other half of the job.
-In 2025 I took first place at the national IT Skills Battle in cybersecurity.
+{{< about pull="I started as a developer and moved into security. Both stuck." >}}
+I craft clean, efficient applications across many languages and frameworks,
+and I know how they break, **because breaking them is the other half of the
+job**.
 
 Most of my time now goes to the AI side: LLMs, agents, and the tooling around
-them, from prompt to production. The security background is why I build those
-systems with security in mind, not as an afterthought.
+them. The security background is why I build those systems with security in
+mind, not as an afterthought.
+{{< /about >}}
 
-{{< sec "projects" >}}
+{{< sec "work" "git log --graph" >}}
 
-{{< timeline >}}
-pi-terminal-kit | Jul 2026 | reusable Pi, tmux, Fish, and Ghostty pieces for visible agent work | [source](https://github.com/isaaclins/pi-terminal-kit) | pi-terminal-kit
-Spotiglass | Apr 2026 | native macOS Spotify client in SwiftUI | [source](https://github.com/isaaclins/spotiglass)
-Restaurant Application | Dec 2025 | microservices system for online ordering with a customizable website, Kitchen Display System, and backend with SMTP control | [source](https://github.com/isaaclins/restaurant-application)
-PowerUserMail | Nov 2025 | keyboard-first email client for macOS | [source](https://github.com/isaaclins/powerusermail)
-Home Server + LLM | May 2025 | self-hosted server with Ollama LLM integration, file uploads, and user management with JWT | [source](https://github.com/isaaclins/ollama-model-api)
-{{< /timeline >}}
+{{< work >}}
 
-{{< sec "writing" >}}
+{{< sec "writing" "latest first" >}}
 
-{{< recent_posts >}}
-
-Also worth your time: [the sites and ideas that shaped how I work](/reading/).
-{.note}
-
-{{< sec "open source" >}}
-
-{{< rows >}}
-Spotiglass | native macOS Spotify client in SwiftUI · [source](https://github.com/isaaclins/spotiglass)
-PowerUserMail | keyboard-first email for macOS · [source](https://github.com/isaaclins/powerusermail)
-{{< /rows >}}
+{{< writing >}}
+Also worth your time: [the sites that shaped how I work](/reading/)
+{{< /writing >}}
 
 {{< sec "contact" >}}
 
-{{< rows >}}
-email | [contact@isaaclins.com](mailto:contact@isaaclins.com)
-github | [github.com/isaaclins](https://github.com/isaaclins)
-linkedin | [Isaac Lins](https://www.linkedin.com/in/isaaclinsdotcom/)
-resume | [view my resume](/resume)
-{{< /rows >}}
+{{< contact email="contact@isaaclins.com" >}}
+github | isaaclins ↗ | https://github.com/isaaclins
+linkedin | Isaac Lins ↗ | https://www.linkedin.com/in/isaaclinsdotcom/
+resume | view my resume → | /resume/
+buy me a | coffee ↗ | https://buymeacoffee.com/isaaclins
+{{< /contact >}}
 
-If you're here, you know what you want.
-{.closing}
-
-let's get to work.
-{.closing}
+If you're here, you know what you want. **Let's get to work.**
+{.closing .rv}

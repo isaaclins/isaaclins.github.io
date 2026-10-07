@@ -1,0 +1,9 @@
+{{- /* Stewie's phone. The lines are in the HTML so the stage reads fine
+       without JS; home.js replays them with typing dots when it scrolls in. */ -}}
+<div class="chat" aria-hidden="true">
+  <div class="chat-bar"><span class="av">S</span><span><b>Stewie</b><small><i class="on"></i>agent-machine</small></span></div>
+  <div class="msgs" id="stewchat">
+    {{- range .chat }}<div class="msg {{ index . 0 }}">{{ index . 1 }}</div>{{ end -}}
+  </div>
+  <div class="dream">next dream in <b id="dreamin">--:--:--</b><span>02:30 Zurich</span></div>
+</div>

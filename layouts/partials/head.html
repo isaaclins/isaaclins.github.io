@@ -3,6 +3,18 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark light" />
+  <!-- Theme before first paint: saved choice, else the system's. -->
+  <script>
+    (function () {
+      var d = document.documentElement, t;
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      d.dataset.theme = t;
+      d.className += ' js';
+    })();
+  </script>
+  <link rel="preload" href="{{ "fonts/jetbrains-mono.woff2" | relURL }}" as="font" type="font/woff2" crossorigin />
   <!-- Referrer policy (the one security header a static page can set itself;
        the rest are enforced at the Cloudflare edge — see docs/security-headers.md). -->
   <meta name="referrer" content="strict-origin-when-cross-origin" />
@@ -156,6 +168,14 @@
     integrity="{{ $style.Data.Integrity }}"
   />
   
+  <!-- Theme toggle, easter eggs, toast: every page. The home page adds its own. -->
+  {{ $site := resources.Get "js/site.js" | minify | fingerprint "sha512" }}
+  <script src="{{ $site.RelPermalink }}" integrity="{{ $site.Data.Integrity }}" defer></script>
+  {{ if .IsHome }}
+  {{ $home := resources.Get "js/home.js" | minify | fingerprint "sha512" }}
+  <script src="{{ $home.RelPermalink }}" integrity="{{ $home.Data.Integrity }}" defer></script>
+  {{ end }}
+
   <!-- MathJax and Mermaid -->
   {{ if .Params.mathjax }}{{ partial "mathjax.html" . }}{{ end }}
   {{- if and .IsPage (findRE "```mermaid" .RawContent) -}}{{- partial "mermaid.html" . -}}{{- end -}}

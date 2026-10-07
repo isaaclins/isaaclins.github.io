@@ -1,0 +1,22 @@
+{{/* Home: the newest post as a feature, the next five as rows, then a line
+     of "more". The inner Markdown is the right-hand side of that line.
+     A post can set `teaser` in its front matter for a shorter feature text;
+     otherwise its description is used. */}}
+{{- $posts := (where site.RegularPages "Section" "blog").ByDate.Reverse -}}
+{{- $fmt := site.Params.theme_config.date_format -}}
+{{- with index $posts 0 }}
+<a class="feature rv" href="{{ .RelPermalink }}">
+  <div>
+    <div class="k">{{ .Date | time.Format $fmt }}{{ range first 2 .Params.tags }} · {{ . }}{{ end }}</div>
+    <h3>{{ .Title }}</h3>
+    <p>{{ .Params.teaser | default .Description }}</p>
+  </div>
+  <span class="go" aria-hidden="true">→</span>
+</a>
+{{- end }}
+<ul class="posts rv">
+  {{- range first 5 (after 1 $posts) }}
+  <li><a href="{{ .RelPermalink }}"><span class="t">{{ .Title }}</span><span class="m"><span class="tag">{{ delimit (first 2 .Params.tags) " · " }}</span><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date | time.Format $fmt }}</time></span></a></li>
+  {{- end }}
+</ul>
+<div class="more rv"><a href="{{ "blog/" | relURL }}">All posts →</a>{{ with .Inner }}<span>{{ . | markdownify }}</span>{{ end }}</div>

@@ -1,0 +1,5 @@
+{{- /* A link from content or data: "/blog/x/" becomes relative to baseURL
+       (so PR previews link to themselves), anything else stays as written. */ -}}
+{{- $u := . -}}
+{{- if hasPrefix $u "/" -}}{{- $u = relURL (strings.TrimPrefix "/" $u) -}}{{- end -}}
+{{- return $u -}}

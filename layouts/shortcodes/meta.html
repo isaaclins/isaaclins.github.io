@@ -1,0 +1,18 @@
+{{/* Home: the row under the name. One "label | value" per line; the value
+     is Markdown. The value {clock} becomes the live Zurich clock. */}}
+<dl class="meta">
+  {{- range $line := split (trim .Inner "\n\r \t") "\n" -}}
+    {{- $line = trim $line " \t\r" -}}
+    {{- if $line -}}
+      {{- $p := split $line "|" -}}
+      {{- $v := trim (delimit (after 1 $p) "|") " " -}}
+      <div><dt>{{ trim (index $p 0) " " }}</dt><dd>
+        {{- if eq $v "{clock}" -}}
+          <span class="live" id="clock">--:--:--</span><br><span id="tz">Zurich</span>
+        {{- else -}}
+          {{ $v | markdownify }}
+        {{- end -}}
+      </dd></div>
+    {{- end -}}
+  {{- end -}}
+</dl>

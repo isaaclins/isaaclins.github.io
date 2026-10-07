@@ -1,11 +1,13 @@
 {{ define "main" }}
-
-<header class="hero">
-    <h1 class="hero-name">{{ $.Site.Title }}</h1>
-    {{- if $.Site.Params.theme_config.show_description -}}
-        <p>{{ $.Site.Params.description }}</p>
+{{- /* The home page. The name is split into letters here, not in JS, so the
+       decrypt-on-load effect in assets/js/home.js never changes its width.
+       Everything below the name is content/_index.md and its shortcodes. */ -}}
+<div class="wrap">
+  <h1 class="name" aria-label="{{ site.Title }}"><span aria-hidden="true" id="name">
+    {{- range split site.Title "" -}}
+      {{- if eq . " " }}<span class="sp"></span>{{ else }}<span class="ch">{{ . }}</span>{{ end -}}
     {{- end -}}
-</header>
-{{ .Content }}
-
+  </span></h1>
+  {{ .Content }}
+</div>
 {{ end }}

@@ -4,20 +4,21 @@
     <body a="{{ $.Site.Params.theme_config.appearance | default "auto" }}">
         <a class="skip-link" href="#content">skip to content</a>
         {{ partial "site_nav.html" . }}
-        <main class="page-content" id="content" aria-label="Content">
-            <div class="w">
+        <main class="page-content{{ if .IsHome }} home{{ end }}" id="content" aria-label="Content">
+            {{- /* The home page runs full width; everything else reads in one column. */ -}}
+            {{ if not .IsHome }}<div class="w">{{ end }}
                 {{ if and .IsSection (eq .Section "blog") }}
                 <div id="search-popup" class="search-popup">
                     <div class="search-popup-content">
                         <span class="search-popup-close">&times;</span>
-                        <input type="text" id="search-query" placeholder="Search posts..." />
+                        <input type="text" id="search-query" placeholder="Search posts..." aria-label="Search posts" />
                         <div id="search-results"></div>
                     </div>
                 </div>
                 {{ end }}
                 {{- block "main" . }}{{- end }}
-                {{ partial "footer.html" . }}
-            </div>
+            {{ if not .IsHome }}</div>{{ end }}
         </main>
+        {{ partial "footer.html" . }}
     </body>
 </html>

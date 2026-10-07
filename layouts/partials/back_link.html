@@ -1,1 +1,5 @@
-<a href="{{ "" | relURL }}">{{ $.Site.Params.theme_config.back_home_text }}</a>
+{{- /* Optional "back home" link; renders nothing unless back_home_text is set,
+       so pages don't ship an empty link (the breadcrumbs already go home). */ -}}
+{{- with site.Params.theme_config.back_home_text -}}
+<a href="{{ "" | relURL }}">{{ . }}</a>
+{{- end -}}

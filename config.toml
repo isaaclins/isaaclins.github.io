@@ -47,6 +47,7 @@ target = 'static/images'
 [params]
   # SEO Parameters
   author = "Isaac Lins"
+  email = "contact@isaaclins.com"
   description = "A blog about tech, programming, and whatever interests me. Deep dives into software, tools, and the digital world."
   tagline = "Tech, Code, and Digital Chaos"
   default_og_image = "/images/pfp.png"
