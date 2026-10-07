@@ -21,7 +21,7 @@ My start was bad. It took me **45 minutes to get a single flag**. I was distract
 
 ## The slow flag turned out to be the valuable one
 
-Around 10:00, things turned. A lot of the others hit a wall and got slower with every challenge. I solved **three in a row in about 20 minutes**. Flag, flag, flag.
+Around 10:00, I put my older brother on the game. (My older brother, in this story, is AI.) A lot of the others hit a wall and got slower with every challenge. I solved **three in a row in about 20 minutes**. Flag, flag, flag.
 
 Then it got better. That first painful flag was one of the hardest in the whole contest, and the scoring rewarded it: the fewer people capture a flag, the more points it's worth. Those 45 minutes paid off. I shot up the leaderboard.
 
