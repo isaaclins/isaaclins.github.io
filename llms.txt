@@ -29,7 +29,7 @@
 - [AI is Just Spicy Autocomplete, And You're Falling For It](https://isaaclins.com/blog/ai-deep-dive-explained/index.md)
 - [Your AI is a Frankenstein's Monster](https://isaaclins.com/blog/native-moe-multimodal-llms/index.md)
 - [4D Gaussian Splatting: The Tech That Could Make Braindance Real](https://isaaclins.com/blog/4d-gaussian-splatting-braindance/index.md)
-- [Are CTFs Pay2Win?](https://isaaclins.com/blog/skills-battle-2025/index.md)
+- [I won a hacking contest with AI. Is that pay-to-win?](https://isaaclins.com/blog/skills-battle-2025/index.md): I took first at the IT Skills Battle 2025 hacking contest with AI agents doing the grunt work. The edge wasn't money. It was explaining the problem well.
 - [Ghostty X Fish. The Perfect Combination](https://isaaclins.com/blog/ghostty-fish-perfect-combination/index.md)
 - [My macOS Journey with an M3 MacBook](https://isaaclins.com/blog/macos-journey-with-m3-macbook-pro/index.md)
 - [Raycast. It's Hidden Power](https://isaaclins.com/blog/raycast-its-hidden-power/index.md)
