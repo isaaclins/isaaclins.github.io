@@ -559,6 +559,18 @@
       top: 50%;
       transform: translateY(-50%);
     }
+
+    // Second screenshot on top of the first, faded in by home.js.
+    &.swap .alt {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity .9s var(--ease);
+    }
+
+    &.swap.flip .alt {
+      opacity: 1;
+    }
   }
 
   .commit:hover .shot {

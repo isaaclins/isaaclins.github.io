@@ -1,1 +1,8 @@
-<div class="shot wide"><img src="{{ printf "images/%s" .img | relURL }}" alt="{{ .alt }}" width="{{ .width }}" height="{{ .height }}" loading="lazy" decoding="async"></div>
+{{- /* A real screenshot. With img2 (same size) the two crossfade while the
+       stage is on screen (home.js); with reduced motion only img shows. */ -}}
+<div class="shot wide{{ if .img2 }} swap{{ end }}">
+  <img src="{{ printf "images/%s" .img | relURL }}" alt="{{ .alt }}" width="{{ .width }}" height="{{ .height }}" loading="lazy" decoding="async">
+  {{- with .img2 }}
+  <img class="alt" src="{{ printf "images/%s" . | relURL }}" alt="{{ $.alt2 }}" width="{{ $.width }}" height="{{ $.height }}" loading="lazy" decoding="async">
+  {{- end }}
+</div>

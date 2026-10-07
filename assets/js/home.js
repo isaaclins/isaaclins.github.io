@@ -129,6 +129,18 @@
     vio.observe(vault);
   }
 
+  /* two-screenshot stages crossfade every few seconds while on screen */
+  document.querySelectorAll('.shot.swap').forEach(function (shot) {
+    if (reduce) return;
+    var t = null;
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.isIntersecting && !t) t = setInterval(function () { shot.classList.toggle('flip'); }, 3600);
+        else if (!e.isIntersecting && t) { clearInterval(t); t = null; }
+      });
+    }, { threshold: .3 }).observe(shot);
+  });
+
   /* demo video plays only while on screen; reduced motion gets controls instead */
   document.querySelectorAll('.shot.video video').forEach(function (vid) {
     if (reduce) { vid.controls = true; return; }

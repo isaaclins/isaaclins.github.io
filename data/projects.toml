@@ -11,6 +11,7 @@
 #   links      [[commit.links]]; primary = filled button; copy = a button that
 #              copies that value instead of a link (copied = toast text)
 #   stage      the big picture: kind = "shot" | "video" | "chat" | "vault",
+#              a shot may set img2/alt2 (same size): it crossfades in and out
 #              one partial each in layouts/partials/home/stage-<kind>.html
 #              (chat = the lines it replays; the vault flow is in its partial)
 # Internal links start with "/", other isaaclins.com project sites
@@ -163,9 +164,9 @@ why = "A free, open-source application firewall for macOS: rules per app, alerts
   [commit.stage]
   kind = "shot"
   img = "home/freesnitch.webp"
-  width = 1312
-  height = 712
-  alt = "FreeSnitch: apps with traffic, a world map of connections and a summary"
+  width = 1600
+  height = 868
+  alt = "FreeSnitch 1.0: apps with their traffic, a world map of where it goes and a summary"
 
 [[commit]]
 id = "pi-vault"
@@ -216,8 +217,10 @@ why = "A command palette for everything, a real system-level 10-band equalizer, 
   kind = "shot"
   img = "home/spotiglass-real.webp"
   width = 1600
-  height = 1013
+  height = 1042
   alt = "Spotiglass on macOS: home with playlists, recently played and the player bar"
+  img2 = "home/spotiglass-palette.webp"
+  alt2 = "The Spotiglass command palette searching songs, albums and playlists for \"night\""
   caption = "The real app on macOS"
 
 # "Also built": one line each, under the log.
