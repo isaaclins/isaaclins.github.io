@@ -77,6 +77,10 @@ body::after {
   opacity: .06;
   mix-blend-mode: multiply;
 }
+@media print {
+  body::after { display: none; }
+}
+
 
 // Chrome links take the text colour; only post bodies are blue.
 :where(.top, .site-footer, .toast, .eggs) a {
