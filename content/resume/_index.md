@@ -20,7 +20,7 @@ summary = "Started as a developer, moved into security, kept both. I build appli
   big = "1st"
   title = "IT Skills Battle 2025, Cybersecurity"
   text = "National competition"
-  link = "/blog/skills-battle-2025/"
+  link = "https://isaaclins.com/blog/skills-battle-2025/"
 
 [[contact]]
   label = "email"
@@ -88,7 +88,7 @@ summary = "Started as a developer, moved into security, kept both. I build appli
   [[projects.links]]
     text = "isaaclins.com/blog/hi-im-stewie-isaacs-ai-agent"
     print = true
-    link = "/blog/hi-im-stewie-isaacs-ai-agent/"
+    link = "https://isaaclins.com/blog/hi-im-stewie-isaacs-ai-agent/"
 [[projects]]
   name = "Rental Law Navigator"
   note = "3rd place, Hack-Nation 7, Zurich hub"
@@ -111,7 +111,7 @@ summary = "Started as a developer, moved into security, kept both. I build appli
   stack = "Swift, SwiftUI, Network Extension, XPC"
   [[projects.links]]
     text = "isaaclins.com/freesnitch"
-    link = "/freesnitch/"
+    link = "https://isaaclins.com/freesnitch/"
   [[projects.links]]
     text = "github.com/isaaclins/freesnitch"
     print = true
@@ -141,7 +141,7 @@ summary = "Started as a developer, moved into security, kept both. I build appli
   stack = "Swift, SwiftUI, OAuth PKCE, Web Playback SDK"
   [[projects.links]]
     text = "isaaclins.com/spotiglass"
-    link = "/spotiglass/"
+    link = "https://isaaclins.com/spotiglass/"
   [[projects.links]]
     text = "github.com/isaaclins/spotiglass"
     link = "https://github.com/isaaclins/spotiglass"
@@ -171,6 +171,6 @@ summary = "Started as a developer, moved into security, kept both. I build appli
   title = "English C2 Proficiency"
   org = "Cambridge English"
   start = "Jan 2026"
-  link = "/resume/certificates/cambridge-C2.pdf"
+  link = "https://isaaclins.com/resume/certificates/cambridge-C2.pdf"
   linktext = "certificate"
 +++
