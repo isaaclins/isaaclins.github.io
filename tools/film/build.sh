@@ -23,7 +23,7 @@ ffmpeg -v error -y -i out/master-4x5.mp4 -vf scale=720:900:flags=lanczos $X264 -
 ffmpeg -v error -y -i out/master-4x5.mp4 -vf scale=720:900:flags=lanczos $VP9 -crf 40 out/intro-4x5-720.webm
 ffmpeg -v error -y -i out/master-4x5.mp4 $X264 -crf 18 out/intro-4x5-linkedin.mp4
 ffmpeg -v error -y -i out/master-16x9.mp4 $X264 -crf 18 out/intro-16x9-hq.mp4
-# posters: the finished git log (8.6 s)
-ffmpeg -v error -y -ss 8.6 -i out/master-16x9.mp4 -frames:v 1 -c:v libwebp -quality 82 out/intro-16x9-poster.webp
-ffmpeg -v error -y -ss 8.6 -i out/master-4x5.mp4 -frames:v 1 -vf scale=720:900:flags=lanczos -c:v libwebp -quality 82 out/intro-4x5-poster.webp
+# posters: the finished git log (6.8 s)
+ffmpeg -v error -y -ss 6.8 -i out/master-16x9.mp4 -frames:v 1 -c:v libwebp -quality 82 out/intro-16x9-poster.webp
+ffmpeg -v error -y -ss 6.8 -i out/master-4x5.mp4 -frames:v 1 -vf scale=720:900:flags=lanczos -c:v libwebp -quality 82 out/intro-4x5-poster.webp
 ls -la out

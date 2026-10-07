@@ -26,10 +26,10 @@
     head: 6.00,         // HEAD -> main
     s3: 7.05,           // cut to black: "from a prompt"
     send: 9.05,
-    s4: 9.58,           // cut to paper: "to production."
-    push: 11.90,        // push into the live dot
-    s5: 12.40,          // match cut to black on the dot
-    end: 15.95,
+    s4: 9.85,           // cut to paper: "to production."
+    push: 12.17,        // push into the live dot
+    s5: 12.67,          // match cut to black on the dot
+    end: 16.20,
   };
   const DUR = T.end;
   const FRAMES = Math.round(DUR * FPS);
@@ -139,7 +139,7 @@
   // one word in its own slot, shifted by dy (the mask)
   function slot(L, w, x, y, size, cw, dy) {
     ctx.save(); ctx.beginPath();
-    ctx.rect(x + w.s * cw - size * .12, y - size * 1.02, (w.e - w.s) * cw + size * .24, size * 1.32); ctx.clip();
+    ctx.rect(x + w.s * cw - size * .12, y - size * 1.02, (w.e - w.s) * cw + size * .24, size * 1.36); ctx.clip();
     runs(L, w.s, w.e, x, y + dy, cw); ctx.restore();
   }
 
@@ -175,7 +175,7 @@
       return;
     }
     const ls = lerp(.28, -.04, p), k = lerp(1.07, 1, p);
-    ctx.save(); ctx.globalAlpha = Math.min(1, p * 1.6);
+    ctx.save(); ctx.globalAlpha = .6 + .4 * Math.min(1, p * 1.6);
     ctx.translate(W / 2, cy); ctx.scale(k, k); ctx.translate(-W / 2, -cy);
     const cw = font(size, weight, ls);
     lines.forEach((L, i) => runs(L, 0, L.n, W / 2 - textW(L.n, size, cw, ls) / 2, lineY(i, lines.length, size, cy), cw));
@@ -208,8 +208,10 @@
     }
     ctx.save(); ctx.translate(cx, cy); if (o.rot) ctx.rotate(o.rot);
     ctx.globalAlpha *= (o.alpha ?? 1);
-    if (o.blur > .05) ctx.filter = `blur(${o.blur.toFixed(2)}px)`;
-    else if (th === DARK) ctx.filter = `drop-shadow(0 0 ${(1.5 * S).toFixed(2)}px rgba(236,235,231,.55))`;   // light rim on black
+    const f = [];
+    if (o.blur > .05) f.push(`blur(${o.blur.toFixed(2)}px)`);
+    if (th === DARK) f.push(`drop-shadow(0 0 ${(1.5 * S).toFixed(2)}px rgba(236,235,231,.55))`);   // light rim on black
+    if (f.length) ctx.filter = f.join(' ');
     if (th === PAPER && o.shadow !== false) {
       const k = size / (180 * S), z = o.z ?? 1;          // z: 0 = far back, 1 = front
       ctx.shadowColor = `rgba(40,32,20,${lerp(.08, .17, z).toFixed(3)})`;
@@ -224,11 +226,11 @@
 
   // the cast on a tilted, turning ellipse; depth = sin(angle), front = bottom
   function ring(i, t, o) {
-    const th = -Math.PI / 2 + i * 2 * Math.PI / CAST.length + (t - o.t0) * o.speed;
+    const th = -Math.PI / 2 + i * 2 * Math.PI / CAST.length + (o.spin ? o.spin(t - o.t0) : (t - o.t0) * o.speed);
     const ex = o.rx * Math.cos(th), ey = o.ry * Math.sin(th), c = Math.cos(o.tilt), s = Math.sin(o.tilt);
     const depth = Math.sin(th);
     const z = (depth + 1) / 2;
-    return { x: o.cx + ex * c - ey * s, y: o.cy + ex * s + ey * c, depth, z, s: lerp(.55, 1.15, z), rot: .14 * Math.sin(th * 2 + i * 1.7) };
+    return { x: o.cx + ex * c - ey * s, y: o.cy + ex * s + ey * c, depth, z, s: lerp(o.sMin ?? .55, o.sMax ?? 1.15, z), rot: .14 * Math.sin(th * 2 + i * 1.7) };
   }
 
   // ---------- layout ----------
@@ -236,8 +238,10 @@
   const L2 = TALL ? [line([['and ship', PAPER.fg]]), line([['AI tools.', PAPER.blue]])] : [line([['and ship ', PAPER.fg], ['AI tools.', PAPER.blue]])];
   const SZ1 = (TALL ? 132 : 106) * S, SZ2 = (TALL ? 116 : 100) * S;
   const RING = TALL
-    ? { rx: 360 * S, ry: 330 * S, tilt: .14, size: 160 * S, speed: .61 }
-    : { rx: 620 * S, ry: 190 * S, tilt: -.21, size: 190 * S, speed: .61 };   // 35 deg/s
+    ? { rx: 360 * S, ry: 330 * S, tilt: .14, size: 160 * S, dy: 40 * S }
+    : { rx: 620 * S, ry: 190 * S, tilt: -.21, size: 180 * S, dy: 60 * S };
+  // spins in at 220 deg/s and settles to 80 deg/s
+  const SPIN = dt => dt <= 0 ? 0 : 1.4 * dt + (3.84 - 1.4) / 2 * (1 - Math.exp(-2 * dt));
 
   // git log (the 4:5 cut drops the hashes so the names can be big)
   const LOG = TALL
@@ -297,7 +301,7 @@
   function shot2(t) {             // paper: "and ship AI tools." -> ring -> git log
     background(PAPER);
     ctx.save(); camera(t, T.s2, T.s3, .028);
-    const ro = { ...RING, cx: W / 2, cy: H / 2, t0: T.s2 };
+    const ro = { ...RING, cx: W / 2, cy: H / 2 + RING.dy, t0: T.ringIn, spin: SPIN, sMin: .4, sMax: 1 };
     const icons = CAST.map((c, i) => {
       const tin = T.ringIn + i * .07;
       if (t < tin) return null;
@@ -314,10 +318,16 @@
         alpha: lerp(lerp(.55, 1, r.z), 1, pm), blur: lerp(3 * S * (1 - r.z), 0, pm),
       };
     }).filter(Boolean);
-    const draw = ic => drawIcon(ic.c.id, t, ic.x, ic.y, ic.size, { build: ic.build, rot: ic.rot, th: PAPER, z: ic.z, alpha: ic.alpha, blur: ic.blur });
+    const draw = ic => {
+      if (ic.pm === 0 && ic.z > .6) [[2, .15], [4, .08], [6, .04]].forEach(([k, a]) => {   // a short trail on the front pass
+        const r = ring(ic.i, t - k / FPS, ro);
+        drawIcon(ic.c.id, t, r.x, r.y, ic.size, { rot: r.rot, th: PAPER, alpha: a, shadow: false });
+      });
+      drawIcon(ic.c.id, t, ic.x, ic.y, ic.size, { build: ic.build, rot: ic.rot, th: PAPER, z: ic.z, alpha: ic.alpha, blur: ic.blur });
+    };
     const behind = ic => ic.pm === 0 && ic.depth < 0;
     icons.filter(behind).sort((a, b) => a.depth - b.depth).forEach(draw);
-    settle(L2, SZ2, 700, t, T.s2 + .05, T.textOut, H / 2);
+    settle(L2, SZ2, 700, t, T.s2 - 1 / FPS, T.textOut, H / 2);
 
     // header
     const hdr = line([['$ ', PAPER.blue], ['git log --graph', PAPER.fg2]]);
@@ -382,6 +392,7 @@
   const BTNX = PILL.cx + PILL.w / 2 - 14 * S - BTN, BTNY = PILL.cy + (TALL ? PILL.h / 2 - 14 * S - BTN : 0);
   const BR = BTN - 8 * S;
   const collapse = bez(.65, 0, .35, 1);
+  const inOutQuart = x => x < .5 ? 8 * x * x * x * x : 1 - Math.pow(-2 * x + 2, 4) / 2;
   const lerpRect = (a, b, p) => a.map((v, i) => lerp(v, b[i], p));
   // colour tween between two #rrggbb
   const mix = (a, b, p) => '#' + [1, 3, 5].map(i => Math.round(lerp(parseInt(a.substr(i, 2), 16), parseInt(b.substr(i, 2), 16), clamp01(p))).toString(16).padStart(2, '0')).join('');
@@ -393,64 +404,63 @@
     const dot = back(prog(t, T.s3 + .14, .26), 2.2);                       // the dot pops in
     const toBtn = E.out(prog(t, T.s3 + .3, .3));                           // and swells into the button
     const gp = E.out(prog(t, T.s3 + .42, .62));                            // the pill grows out of it
-    const cp = collapse(prog(t, T.send + .06, .28));                       // send: collapse to the circle
-    const btnR = lerp(DOT0, BR, toBtn) * dot;
+    const cp = inOutQuart(prog(t, T.send + .15, .32));                     // send: the pill closes back into the button
+    const land = T.send + .47;
+    const gl = E.snap(prog(t, land + .08, .25));                           // then the button glides to the centre and grows
     const btnRect = [BTNX - BR, BTNY - BR, BR * 2, BR * 2], pillRect = [PILL.cx - PILL.w / 2, PILL.cy - PILL.h / 2, PILL.w, PILL.h];
-    const circRect = [W / 2 - CIRC / 2, PILL.cy - CIRC / 2, CIRC, CIRC];
-    let [x, y, w, h] = lerpRect(lerpRect(btnRect, pillRect, gp), circRect, cp);
-    const r = lerp(lerp(BR, PILL.r, gp), CIRC / 2, cp);
-    const sq = Math.sin(Math.PI * prog(t, T.send + .34, .18));           // squash as it lands
-    ctx.save(); ctx.translate(x + w / 2, y + h / 2); ctx.scale(1 + .12 * sq, 1 - .12 * sq); ctx.translate(-(x + w / 2), -(y + h / 2));
-    if (gp > 0) {
-      rr(x, y, w, h, r); ctx.fillStyle = mix(DARK.card, DARK.blue, cp); ctx.fill();
+    const [x, y, w, h] = lerpRect(lerpRect(btnRect, pillRect, gp), btnRect, cp);
+    const r = lerp(lerp(BR, PILL.r, gp), BR, cp);
+    if (gp > 0 && cp < 1) {
+      rr(x, y, w, h, r); ctx.fillStyle = DARK.card; ctx.fill();
       ctx.lineWidth = 1.5 * S; ctx.strokeStyle = 'rgba(111,149,255,.34)'; ctx.stroke();
+      const alpha = prog(t, T.s3 + .75, .2);
+      if (alpha > 0) {
+        ctx.save(); ctx.globalAlpha = alpha;
+        rr(x, y, w, h, r); ctx.clip();                                     // contents only ever clipped, never faded out
+        const x0 = PILL.cx - PILL.w / 2, lh = PILL.txt * 1.3;
+        const y0 = PILL.cy - (PROMPT.length - 1) * lh / 2 + PILL.txt * .36;
+        const cwp = font(PILL.txt, 700, 0);
+        ctx.fillStyle = DARK.blue; ctx.fillText('>', x0 + 46 * S, y0);
+        const cwt = font(PILL.txt, 450, -.02);
+        const tx = x0 + 46 * S + cwp + 24 * S;
+        const c = promptText(keysAt(t), tx, y0, cwt, lh, DARK.fg);
+        if (blinkOn(t, keyT[keyT.length - 1] + .1) && t < T.send) caretBox(c.cx, c.cy, PILL.txt, DARK.blue);
+        ctx.restore();
+      }
     }
-    const alpha = prog(t, T.s3 + .75, .2) * (1 - prog(t, T.send + .06, .1));
-    if (alpha > 0) {
-      ctx.save(); ctx.globalAlpha = alpha;
-      rr(x, y, w, h, r); ctx.clip();                                       // contents stay inside the pill
-      const x0 = PILL.cx - PILL.w / 2, lh = PILL.txt * 1.3;
-      const y0 = PILL.cy - (PROMPT.length - 1) * lh / 2 + PILL.txt * .36;
-      const cwp = font(PILL.txt, 700, 0);
-      ctx.fillStyle = DARK.blue; ctx.fillText('>', x0 + 46 * S, y0);
-      const cwt = font(PILL.txt, 450, -.02);
-      const tx = x0 + 46 * S + cwp + 24 * S;
-      const c = promptText(keysAt(t), tx, y0, cwt, lh, DARK.fg);
-      if (blinkOn(t, keyT[keyT.length - 1] + .1) && t < T.send) caretBox(c.cx, c.cy, PILL.txt, DARK.blue);
-      ctx.restore();
+    // send: one ring around the button, done before the pill closes
+    const fl = prog(t, T.send, .2);
+    if (fl > 0 && fl < 1) {
+      ctx.beginPath(); ctx.arc(BTNX, BTNY, lerp(48, 100, E.outCubic(fl)) * S, 0, Math.PI * 2);
+      ctx.lineWidth = 2.5 * S; ctx.strokeStyle = DARK.blue; ctx.globalAlpha = .5 * (1 - fl); ctx.stroke(); ctx.globalAlpha = 1;
     }
-    // the button (the dot), pressed on send, then merged into the circle
-    if (dot > 0 && cp < 1) {
+    // the button: the dot, always solid blue and on top. Pressed, squashed as the pill lands in it, then it becomes the loader circle.
+    if (dot > 0) {
       const bp = t < T.send ? 1 : t < T.send + .08 ? lerp(1, .88, prog(t, T.send, .08)) : lerp(.88, 1, back(prog(t, T.send + .08, .16), 2));
-      const bx = lerp(BTNX, W / 2, cp), by = lerp(BTNY, PILL.cy, cp);
-      ctx.save(); ctx.globalAlpha = 1 - cp; ctx.translate(bx, by); ctx.scale(bp, bp);
-      ctx.beginPath(); ctx.arc(0, 0, btnR, 0, Math.PI * 2); ctx.fillStyle = DARK.blue; ctx.fill();
-      const ia = prog(t, T.s3 + .45, .2);
+      const sq = Math.sin(Math.PI * prog(t, land, .08));
+      const bx = lerp(BTNX, W / 2, gl), by = lerp(BTNY, PILL.cy, gl), br = lerp(lerp(DOT0, BR, toBtn) * dot, CIRC / 2, gl);
+      ctx.save(); ctx.translate(bx, by); ctx.scale(bp * (1 + .12 * sq), bp * (1 - .1 * sq));
+      ctx.beginPath(); ctx.arc(0, 0, br, 0, Math.PI * 2); ctx.fillStyle = DARK.blue; ctx.fill();
+      const ia = prog(t, T.s3 + .45, .2) * (1 - prog(t, land + .05, .1));
       if (ia > 0) {
-        ctx.globalAlpha *= ia; ctx.strokeStyle = DARK.bg; ctx.lineWidth = 4.5 * S; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+        ctx.globalAlpha = ia; ctx.strokeStyle = DARK.bg; ctx.lineWidth = 4.5 * S; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
         ctx.beginPath(); ctx.moveTo(0, 14 * S); ctx.lineTo(0, -14 * S); ctx.moveTo(-12 * S, -2 * S); ctx.lineTo(0, -14 * S); ctx.lineTo(12 * S, -2 * S); ctx.stroke();
       }
       ctx.restore();
     }
     ctx.restore();
-    const fl = prog(t, T.send, .3);                                        // send: a ring flashes out of the button
-    if (fl > 0 && fl < 1) {
-      ctx.beginPath(); ctx.arc(BTNX, BTNY, lerp(48, 120, E.outCubic(fl)) * S, 0, Math.PI * 2);
-      ctx.lineWidth = 2.5 * S; ctx.strokeStyle = DARK.blue; ctx.globalAlpha = .6 * (1 - fl); ctx.stroke(); ctx.globalAlpha = 1;
-    }
-    ctx.restore();
     grain(DARK);
   }
 
-  function liveDot(t, t0, x, y, th, col = th.blue) {
+  function liveDot(t, t0, x, y, th, ringA = 1) {
     if (t < t0) return;
-    const p = back(prog(t, t0, .3), 2.4);
-    for (let pt = t0 + .15; pt < t; pt += 1.2) {             // pulse every 1.2 s, max radius 22 px
+    const pp = prog(t, t0, .2), p = pp < .6 ? lerp(0, 1.2, E.outCubic(pp / .6)) : lerp(1.2, 1, E.outCubic((pp - .6) / .4));   // 0 -> 1.2 -> 1
+    for (let pt = t0 + .05; pt < t; pt += 1.2) {             // pulse every 1.2 s, max radius 22 px
       const q = prog(t, pt, 1.2); if (q >= 1) continue;
       ctx.beginPath(); ctx.arc(x, y, 7 * S + E.out(q) * 15 * S, 0, Math.PI * 2);
-      ctx.lineWidth = 2 * S; ctx.strokeStyle = col; ctx.globalAlpha = .35 * (1 - q); ctx.stroke(); ctx.globalAlpha = 1;
+      ctx.lineWidth = 2 * S; ctx.strokeStyle = th.blue; ctx.globalAlpha = .35 * (1 - q) * ringA; ctx.stroke(); ctx.globalAlpha = 1;
     }
-    ctx.beginPath(); ctx.arc(x, y, 7 * S * p, 0, Math.PI * 2); ctx.fillStyle = col; ctx.fill();
+    ctx.beginPath(); ctx.arc(x, y, 7 * S * p, 0, Math.PI * 2); ctx.fillStyle = th.blue; ctx.fill();
   }
 
   // Move 3, letter cascade: each letter rises out of its own slot, 22 ms apart.
@@ -460,7 +470,7 @@
     L.chars.forEach((ch, i) => {
       if (ch.c === ' ') return;
       const p = E.out(prog(t, tin + i * .022, .55)); if (p <= 0) return;
-      ctx.save(); ctx.beginPath(); ctx.rect(x + i * cw - size * .1, y - size * 1.02, cw + size * .2, size * 1.32); ctx.clip();
+      ctx.save(); ctx.beginPath(); ctx.rect(x + i * cw - size * .1, y - size * 1.02, cw + size * .2, size * 1.36); ctx.clip();
       ctx.fillStyle = ch.col; ctx.fillText(ch.c, x + i * cw, y + (1 - p) * size * 1.15); ctx.restore();
     });
   }
@@ -481,11 +491,12 @@
     }
     const textA = 1 - prog(k, 5, 7);       // the type is long out of frame by then; never draw glyphs hundreds of px tall
     if (textA > 0) { ctx.save(); ctx.globalAlpha = textA; cascade(line([['to production.', PAPER.fg]]), SZ4, 800, t, T.s4 + .03, TXT_CY); ctx.restore(); }
-    const t1 = T.s4 + .45, t2 = t1 + .24, t3 = t2 + .04;  // spinner until t1, check until t3, then the chip opens
-    const ex = back(prog(t, t3, .45), 1.1);
+    // spinner until t1, check drawn, colour change t2..t3 (blue -> white, check shrinks away), then the width opens
+    const t1 = T.s4 + .45, t2 = t1 + .26, t3 = t2 + .12;
+    const ex = 1 - Math.pow(1 - prog(t, t3, .38), 5);   // easeOutQuint
     const w = lerp(CIRC, CHIP.w, ex), h = lerp(CIRC, CHIP.h, ex), r = lerp(CIRC / 2, CHIP.r, ex);
     const bx = W / 2 - w / 2, by = PILL.cy - h / 2;
-    const fillP = prog(t, t3, .2);           // the blue circle turns into the white chip as it opens
+    const fillP = E.outCubic(prog(t, t2, .12));   // colour first, width second
     if (k < 8) { ctx.save(); ctx.shadowColor = `rgba(40,32,20,${(.12 * fillP).toFixed(3)})`; ctx.shadowBlur = 40 * S; ctx.shadowOffsetY = 14 * S; }
     else ctx.save();
     rr(bx, by, w, h, r); ctx.fillStyle = mix(PAPER.blue, PAPER.card, fillP); ctx.fill(); ctx.restore();
@@ -495,17 +506,17 @@
     if (t < t1) {                // spinner, white on the blue circle
       const a = (t - T.s4) * 9, len = 1.1 + .6 * Math.sin((t - T.s4) * 7);
       ctx.beginPath(); ctx.arc(W / 2, PILL.cy, sr, a, a + len * Math.PI); ctx.stroke();
-    } else if (ex < .3) {        // check, drawn, then gone as the chip opens
-      const p = E.out(prog(t, t1, .22)), kk = sr / 24;
-      ctx.save(); ctx.globalAlpha = 1 - ex / .3; ctx.translate(W / 2, PILL.cy); ctx.scale(kk, kk);
+    } else if (t < t3) {         // check, drawn, then scaled away while the circle turns white
+      const p = E.out(prog(t, t1, .22)), kk = sr / 24 * (1 - fillP);
+      ctx.save(); ctx.translate(W / 2, PILL.cy); ctx.scale(Math.max(kk, .001), Math.max(kk, .001));
       const pts = [[-15, 1], [-4, 12], [17, -11]];
       const l1 = Math.hypot(11, 11), l2 = Math.hypot(21, 23), d = p * (l1 + l2);
-      ctx.lineWidth = 8 * S / kk; ctx.beginPath(); ctx.moveTo(...pts[0]);
+      ctx.lineWidth = 8 * S / (sr / 24); ctx.beginPath(); ctx.moveTo(...pts[0]);
       if (d <= l1) ctx.lineTo(lerp(pts[0][0], pts[1][0], d / l1), lerp(pts[0][1], pts[1][1], d / l1));
       else { ctx.lineTo(...pts[1]); const q = (d - l1) / l2; ctx.lineTo(lerp(pts[1][0], pts[2][0], q), lerp(pts[1][1], pts[2][1], q)); }
       ctx.stroke(); ctx.restore();
     }
-    if (t >= t3 + .04) {         // chip contents at full contrast, revealed only by the chip's own width
+    if (t >= t3) {               // chip contents at full contrast, revealed only by the chip's own width
       ctx.save(); rr(bx, by, w, h, r); ctx.clip();
       if (textA > 0) {
         ctx.globalAlpha = textA;
@@ -516,7 +527,7 @@
       }
       ctx.fillStyle = PAPER.rim; ctx.fillRect(CHIP.divX, PILL.cy - 26 * S, 2 * S, 52 * S);
       ctx.restore();
-      liveDot(t, t3 + .35, CHIP.dotX, CHIP.dotY, PAPER);
+      liveDot(t, t3 + .38, CHIP.dotX, CHIP.dotY, PAPER, 1 - prog(t, T.push + .35, .08));
     }
     ctx.restore();
     grain(PAPER);
@@ -527,30 +538,29 @@
   const ENDL = line([['//////////', DARK.blue], [' isaaclins.com', DARK.fg]]);
   const SWEEP = .6;
   const passAt = Array.from({ length: ENDL.n }, (_, i) => reach(E.inOut, (i + .5) / ENDL.n) * SWEEP);
-  const inOutQuart = x => x < .5 ? 8 * x * x * x * x : 1 - Math.pow(-2 * x + 2, 4) / 2;
   function shot5(t) {             // black: the dot pulls the cast in, becomes the caret and draws the address
     background(DARK);
     ctx.save(); camera(t, T.s5, T.end, .03);
     const ls = -.02, cw = font(ENDS, 600, ls);
     const lw = textW(ENDL.n, ENDS, cw, ls), ex = W / 2 - lw / 2 - ENDS * .27, ey = H / 2 + ENDS * .36;
     // the same disc as the last paper frame (same size, same place, same blue for 4 frames), shrinking to a 24 px dot
-    let rDot = lerp(7 * S * PUSHK, 12 * S, E.outExpo(prog(t, T.s5 + 2 / FPS, .4)));
+    let rDot = lerp(7 * S * PUSHK, 12 * S, E.inOut(prog(t, T.s5, .45)));
     const dotCol = mix(PAPER.blue, DARK.blue, prog(t, T.s5 + 4 / FPS, .2));
-    // the cast spirals back in, turns once, then falls into the dot
-    const ro = { rx: (TALL ? 330 : 540) * S, ry: (TALL ? 400 : 230) * S, tilt: TALL ? .14 : -.21, speed: .9, t0: T.s5 - 1.5, cx: W / 2, cy: H / 2 };
-    let bump = 0, last = 0;
+    // the cast spirals back in on a smaller orbit (depth blur like the first one), then falls into the dot one by one
+    const ro = { rx: (TALL ? 330 : 380) * S, ry: (TALL ? 260 : 170) * S, tilt: TALL ? .14 : -.21, speed: 1.1, t0: T.s5 - 1.5, cx: W / 2, cy: H / 2, sMin: .6, sMax: 1.1 };
+    let bump = 0;
     CAST.forEach((c, i) => {
-      const tin = T.s5 + .12 + i * .04; if (t < tin) return;
-      const ts = T.s5 + .62 + i * .05, ps = E.quart(prog(t, ts, .4)); last = ts + .4;
-      if (ps >= 1) { bump = Math.max(bump, 1 - prog(t, ts + .4, .2)); return; }
+      const tin = T.s5 + .1 + i * .04; if (t < tin) return;
+      const ts = T.s5 + .6 + i * .04, ps = E.quart(prog(t, ts, .38));
+      if (ps >= 1) { const q = prog(t, ts + .38, .08); if (q < 1) bump = Math.max(bump, Math.sin(Math.PI * q)); return; }   // each arrival feeds the dot
       const sp = E.outCubic(prog(t, tin, .5)), grow = 1 + .9 * (1 - sp);
       const r = ring(i, t + (1 - sp) * 1.4, { ...ro, rx: ro.rx * grow * (1 - ps), ry: ro.ry * grow * (1 - ps) });
-      drawIcon(c.id, t, r.x, r.y, 150 * S * lerp(.75, 1.1, r.z) * (1 - ps * .8), { rot: r.rot + ps * 1.6, th: DARK, alpha: Math.min(1, sp * 2) });
+      drawIcon(c.id, t, r.x, r.y, 100 * S * r.s * (1 - ps * .8), { rot: r.rot + ps * 3.2, th: DARK, alpha: Math.min(1, sp * 2), blur: ps > 0 ? 0 : 3 * S * (1 - r.z) });
     });
-    rDot *= 1 + .25 * bump;
+    rDot *= 1 + .15 * bump;
     // dot -> caret where it is, glide to the start, then sweep: the line appears behind it
-    const tq = T.s5 + .62 + 6 * .05 + .4, tg = tq + .15, tsw = tg + .25;
-    const sq = E.outCubic(prog(t, tq, .15));
+    const tq = T.s5 + .6 + 6 * .04 + .38 + .04, tg = tq + .12, tsw = tg + .25;
+    const sq = E.outCubic(prog(t, tq, .12));
     const cwB = ENDS * .44, chB = ENDS * .9;
     const bw = lerp(rDot * 2, cwB, sq), bh = lerp(rDot * 2, chB, sq);
     const startX = ex + ENDS * .1, endX = ex + ENDL.n * cw + ENDS * .1, top = ey - ENDS * .76;
