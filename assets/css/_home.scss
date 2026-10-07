@@ -1241,6 +1241,11 @@
     overflow: hidden;
     background: #09090a;
     box-shadow: 0 0 0 1px var(--line);
+    // iOS Safari draws a video a fraction of a pixel smaller than its rounded, overflow-clipped box, so the poster
+    // underneath showed as thin light lines at the edges (Isaac 2026-10-07). Own layer + mask = clean clipping.
+    isolation: isolate;
+    transform: translateZ(0);
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
 
     img,
     video {
@@ -1254,12 +1259,21 @@
     }
 
     video {
+      inset: -1px;
+      width: calc(100% + 2px);
+      height: calc(100% + 2px);
       opacity: 0;
       transition: opacity .3s var(--ease);
     }
 
     &.on video {
       opacity: 1;
+    }
+
+    // once the film shows, the poster must not peek through anywhere
+    &.on picture {
+      visibility: hidden;
+      transition: visibility 0s .3s;
     }
   }
 
