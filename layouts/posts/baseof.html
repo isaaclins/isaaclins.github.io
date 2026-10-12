@@ -5,6 +5,7 @@
         <a class="skip-link" href="#content">skip to content</a>
         {{ partial "site_nav.html" . }}
         <main class="page-content" id="content" aria-label="Content">
+            {{- partial "agent-note.html" . }}
             <div class="w">
                 <div class="post-meta">
                     {{ partial "back_link.html" .}}

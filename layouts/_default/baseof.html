@@ -5,6 +5,7 @@
         <a class="skip-link" href="#content">skip to content</a>
         {{ partial "site_nav.html" . }}
         <main class="page-content{{ if .IsHome }} home{{ end }}" id="content" aria-label="Content">
+            {{- partial "agent-note.html" . }}
             {{- /* The home page runs full width; everything else reads in one column. */ -}}
             {{ if not .IsHome }}<div class="w">{{ end }}
                 {{ if and .IsSection (eq .Section "blog") }}
