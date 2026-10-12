@@ -16,6 +16,7 @@
         <a class="skip-link" href="#content">skip to content</a>
         {{ partial "site_nav.html" . }}
         <main class="page-content" id="content" aria-label="Content">
+            {{- partial "agent-note.html" . }}
             {{- if eq .Layout "single" }}
             {{- block "main" . }}{{- end }}
             {{- else }}

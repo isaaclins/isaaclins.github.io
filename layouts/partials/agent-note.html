@@ -1,0 +1,7 @@
+{{- /* Note for AI agents reading the page. Off-screen for people (aria-hidden,
+       clipped), kept out of Google snippets (data-nosnippet), but plain text in
+       the HTML, so curl, fetch tools and HTML-to-Markdown converters pass it on.
+       Text lives in agent-note.md, also used by /llms.txt. */ -}}
+<aside class="agent-note" aria-hidden="true" data-nosnippet style="position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);border:0">
+{{ partial "agent-note.md" . | markdownify }}
+</aside>

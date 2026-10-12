@@ -4,7 +4,8 @@
 
 {{ with .Site.Params.description }}> {{ . }}
 
-{{ end }}## Blog posts
+{{ end }}{{ partial "agent-note.md" . }}
+## Blog posts
 
 {{ range (sort (where .Site.RegularPages "Section" "blog") "Date" "desc") -}}
 {{ $p := . -}}
