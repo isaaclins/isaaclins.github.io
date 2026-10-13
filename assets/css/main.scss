@@ -553,74 +553,18 @@ img.thick-border {
     margin: 1rem 0;
   }
 
-  // RESPONSIVE TABLE SOLUTION: Transform tables into card-style layout
-  // This is much better than horizontal scrolling for content-heavy tables
+  // Tables stay tables on phones: the table scrolls sideways inside its own box
+  // and keeps its headers, so the page itself never scrolls sideways.
   table {
     display: block;
-    border: none;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
-  thead {
-    display: none; // Hide table headers on mobile
-  }
-
-  tbody {
-    display: block;
-  }
-
-  tr {
-    display: block;
-    margin-bottom: 1.5rem;
-    border: 1px solid currentColor;
-    padding: 1rem;
-    border-radius: 0.5rem; // 8px
-  }
-
+  // Narrow cells scroll inside the table instead of squeezing into a column
+  th,
   td {
-    display: block;
-    text-align: left !important;
-    border: none;
-    padding: 0.5rem 0;
-  }
-
-  // Add labels to table cells using data attributes
-  td:before {
-    content: attr(data-label);
-    font-weight: bold;
-    display: block;
-    margin-bottom: 0.25rem;
-    opacity: 0.7;
-  }
-
-  // Special handling for icon column in tables
-  td:first-child {
-    text-align: center !important;
-    padding: 1rem 0;
-  }
-
-  td:first-child img {
-    max-width: 5rem; // 80px
-    margin: 0 auto;
-  }
-
-  // Special styling for rating cells (star emojis)
-  td:nth-child(2):before {
-    content: "Rating: ";
-  }
-
-  // Make "More Information" links into prominent buttons
-  td:last-child {
-    text-align: center !important;
-    padding-top: 1rem;
-  }
-
-  td:last-child a {
-    display: inline-block;
-    padding: 0.625rem 1.25rem; // 10px 20px
-    border: 1px solid currentColor;
-    border-radius: 0.25rem; // 4px
-    margin: 0.5rem auto; // 8px
-    text-decoration: none;
+    min-width: 8.5rem; // 136px
   }
 
   // Improve image sizing on mobile
