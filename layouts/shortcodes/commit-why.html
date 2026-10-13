@@ -1,0 +1,190 @@
+{{- /*
+  commit-why — the figures for "My git blame now tells me why".
+  Usage: {{< commit-why "lost" >}}, "trap", "blame", "how". Styles and script are emitted once per page.
+*/ -}}
+{{- $fig := .Get 0 -}}
+{{- if not (.Page.Store.Get "commit-why") -}}
+{{- .Page.Store.Set "commit-why" true -}}
+<style>
+.cw{margin:2.2rem 0;font-family:var(--mono);font-size:.82rem;line-height:1.55;color:var(--fg)}
+.cw *{box-sizing:border-box}
+.cw p{margin:0}
+.cw-code{white-space:pre;overflow-x:auto;font:inherit}
+.cw-k{font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--fg-3);margin-bottom:.6rem}
+.cw-card{border:1px solid var(--line-2);border-radius:10px;padding:1rem 1.1rem;background:var(--bg-2)}
+.cw-add{color:var(--blue)}
+.cw-dim{color:var(--fg-3)}
+.cw-note{margin-top:.8rem;color:var(--fg-2);font-size:.78rem}
+
+/* lost: the chat vs what git keeps */
+.cw-lost{display:grid;grid-template-columns:1.25fr auto 1fr;gap:1rem;align-items:center}
+.cw-chat{display:grid;gap:.45rem;transition:opacity .9s var(--ease) .9s,filter .9s var(--ease) .9s}
+.cw-msg{max-width:92%;padding:.5rem .7rem;border-radius:10px;border:1px solid var(--line-2);background:var(--bg-2)}
+.cw-msg.you{justify-self:end;background:var(--highlight);border-color:transparent}
+.cw-msg b{display:block;font-weight:500;font-size:.68rem;color:var(--fg-3);margin-bottom:.1rem}
+.cw-arrow{color:var(--fg-3);text-align:center;font-size:.72rem;white-space:nowrap}
+.cw-arrow span{display:block;font-size:1.2rem;line-height:1}
+.cw-keep{transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.cw-gone{margin-top:.7rem;font-size:.75rem;color:var(--fg-2);opacity:0;transition:opacity .6s var(--ease) 1.6s}
+.cw-lost.cw-in .cw-chat{opacity:.28;filter:saturate(0)}
+.cw-lost.cw-in .cw-gone{opacity:1}
+.cw-anim .cw-lost:not(.cw-in) .cw-keep{opacity:0;transform:translateX(-12px)}
+
+/* trap: three days */
+.cw-trap{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem}
+.cw-day{display:flex;flex-direction:column;gap:.55rem}
+.cw-day h4{margin:0;font-size:.82rem;font-weight:600}
+.cw-day .cw-code{font-size:.74rem;padding:.55rem .6rem;border-radius:7px;background:var(--bg);border:1px solid var(--line)}
+.cw-del{color:var(--fg-3);text-decoration:line-through}
+.cw-bad{border-color:color-mix(in srgb,#e5484d 55%,var(--line-2))}
+.cw-bad h4{color:#e5484d}
+
+/* blame: before / after */
+.cw-tabs{display:inline-flex;gap:.25rem;padding:.2rem;border:1px solid var(--line-2);border-radius:9px;margin-bottom:.8rem}
+.cw-tabs button{font:inherit;font-size:.76rem;color:var(--fg-2);background:none;border:0;border-radius:7px;padding:.35rem .7rem;cursor:pointer}
+.cw-tabs button[aria-pressed="true"]{background:var(--bg-2);color:var(--fg);box-shadow:0 0 0 1px var(--line-2)}
+.cw-blame{display:grid;gap:.1rem}
+.cw-line{display:grid;grid-template-columns:5.2rem 4.4rem 2.6rem 1fr;gap:.6rem;padding:.15rem .4rem;border-radius:5px;white-space:pre}
+.cw-line .cw-dim{overflow:hidden;text-overflow:ellipsis}
+.cw-line.cw-hit{background:var(--highlight)}
+.cw-why{display:grid;grid-template-rows:0fr;transition:grid-template-rows .55s var(--ease),opacity .55s var(--ease);opacity:0}
+.cw-why>div{overflow:hidden}
+.cw-blamebox.cw-open .cw-why{grid-template-rows:1fr;opacity:1}
+.cw-why-in{margin-top:.9rem;padding-top:.9rem;border-top:1px dashed var(--line-2);display:grid;gap:.45rem}
+.cw-why-in .cw-msg{max-width:100%}
+.cw-verdict{margin-top:.3rem;color:var(--blue)}
+
+/* how: the three moments */
+.cw-how{position:relative;display:grid;gap:0;padding-left:1.6rem}
+.cw-how::before{content:"";position:absolute;left:.45rem;top:.6rem;bottom:.6rem;width:1px;background:var(--line-2)}
+.cw-step{position:relative;padding:.1rem 0 1.3rem}
+.cw-step:last-child{padding-bottom:0}
+.cw-step::before{content:"";position:absolute;left:-1.43rem;top:.42rem;width:9px;height:9px;border-radius:50%;background:var(--bg);border:1px solid var(--fg-3)}
+.cw-step.cw-main::before{background:var(--blue);border-color:var(--blue)}
+.cw-step h4{margin:0 0 .35rem;font-size:.82rem;font-weight:600}
+.cw-step h4 span{color:var(--fg-3);font-weight:400}
+.cw-q{display:grid;grid-template-columns:auto 1fr;gap:.15rem .7rem;margin:.35rem 0 .6rem;color:var(--fg-2)}
+.cw-q i{font-style:normal;color:var(--fg-3)}
+.cw-how>*{min-width:0}
+.cw-msgbox{display:inline-block;max-width:100%;overflow-x:auto;padding:.6rem .8rem;border:1px solid var(--line-2);border-radius:8px;background:var(--bg-2)}
+.cw-msgbox .cw-code{line-height:1.6}
+
+@media (max-width:640px){
+  .cw-lost{grid-template-columns:1fr}
+  .cw-arrow span{transform:rotate(90deg)}
+  .cw-anim .cw-lost:not(.cw-in) .cw-keep{transform:translateY(-10px)}
+  .cw-trap{grid-template-columns:1fr}
+  .cw-msgbox{display:block;font-size:.72rem}
+  .cw-line{grid-template-columns:4.6rem 2.4rem 1fr}
+  .cw-line>:nth-child(2){display:none}
+}
+@media (prefers-reduced-motion:reduce){.cw *{transition:none!important}}
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('.cw-lost').forEach(function (el) {
+    if (still || !('IntersectionObserver' in window)) { el.classList.add('cw-in'); return; }
+    el.parentNode.classList.add('cw-anim');
+    new IntersectionObserver(function (es) { es.forEach(function (e) { el.classList.toggle('cw-in', e.intersectionRatio > 0.55); }); }, { threshold: [0, 0.55, 1] }).observe(el);
+  });
+  document.querySelectorAll('.cw-blamebox').forEach(function (box) {
+    var bs = box.querySelectorAll('.cw-tabs button');
+    bs.forEach(function (b) { b.addEventListener('click', function () {
+      bs.forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+      box.classList.toggle('cw-open', b.dataset.v === 'why');
+    }); });
+  });
+});
+</script>
+{{- end -}}
+
+{{- if eq $fig "lost" -}}
+<figure class="cw" aria-label="A chat about a failing bank sync, and the commit it produced. After the commit, only the commit is kept.">
+<div class="cw-lost">
+  <div class="cw-chat">
+    <p class="cw-msg you"><b>you</b>The bank sync fails every morning with "too many requests".</p>
+    <p class="cw-msg"><b>agent</b>The bank's API allows one request per second. We send 40 at once.</p>
+    <p class="cw-msg"><b>agent</b>Adding a one-second pause between calls. It looks wasteful, but it's what the API needs.</p>
+    <p class="cw-msg you"><b>you</b>Works. Ship it.</p>
+  </div>
+  <div class="cw-arrow"><span>→</span>git commit</div>
+  <div class="cw-keep">
+    <div class="cw-card">
+      <div class="cw-k">what git keeps</div>
+<div class="cw-code">fix bank sync
+
+  for account in accounts:
+      fetch(account)
+<span class="cw-add">+     time.sleep(1)</span></div>
+    </div>
+    <p class="cw-gone">The chat, and the reason for that pause, are not saved anywhere git can see.</p>
+  </div>
+</div>
+</figure>
+{{- end -}}
+
+{{- if eq $fig "trap" -}}
+<figure class="cw" aria-label="Three days: an agent fixes the bank sync with a pause, a second agent removes the pause to make it faster, and the bug comes back.">
+<div class="cw-trap">
+  <div class="cw-card cw-day">
+    <div class="cw-k">Monday</div>
+    <h4>The fix</h4>
+    <p>An agent fixes the sync by adding a pause. The reason is in the chat.</p>
+<div class="cw-code">  fetch(account)
+<span class="cw-add">+ time.sleep(1)</span></div>
+  </div>
+  <div class="cw-card cw-day">
+    <div class="cw-k">Thursday</div>
+    <h4>The cleanup</h4>
+    <p>New chat: "make the sync faster". A fresh agent finds a one-second sleep in a loop, with no reason given. It deletes it. The tests pass.</p>
+<div class="cw-code">  fetch(account)
+<span class="cw-del">- time.sleep(1)</span></div>
+  </div>
+  <div class="cw-card cw-day cw-bad">
+    <div class="cw-k">Friday morning</div>
+    <h4>The bug is back</h4>
+    <p>"Too many requests", again. Nothing in the code or in git says why that line was there.</p>
+  </div>
+</div>
+</figure>
+{{- end -}}
+
+{{- if eq $fig "blame" -}}
+<figure class="cw" aria-label="git blame for the sleep line, before and after: with the chat link, the reason for the line is one step away.">
+<div class="cw-card cw-blamebox">
+  <div class="cw-tabs" role="group" aria-label="Show"><button data-v="plain" aria-pressed="true">plain git blame</button><button data-v="why" aria-pressed="false">with the chat link</button></div>
+  <div class="cw-blame">
+    <div class="cw-line"><span class="cw-dim">3e18b07</span><span class="cw-dim">Isaac</span><span class="cw-dim">Sep</span><span>for account in accounts:</span></div>
+    <div class="cw-line"><span class="cw-dim">3e18b07</span><span class="cw-dim">Isaac</span><span class="cw-dim">Sep</span><span>    fetch(account)</span></div>
+    <div class="cw-line cw-hit"><span>a41c9e2</span><span class="cw-dim">Isaac</span><span class="cw-dim">Mon</span><span>    time.sleep(1)</span></div>
+  </div>
+  <div class="cw-why"><div><div class="cw-why-in">
+    <div class="cw-k">a41c9e2 came from the chat "Bank sync fails every morning"</div>
+    <p class="cw-msg you"><b>you</b>The bank sync fails every morning with "too many requests".</p>
+    <p class="cw-msg"><b>agent</b>Adding a one-second pause between calls. It looks wasteful, but it's what the API needs.</p>
+    <p class="cw-verdict">→ The pause stays. The agent makes the sync faster some other way.</p>
+  </div></div></div>
+</div>
+</figure>
+{{- end -}}
+
+{{- if eq $fig "how" -}}
+<figure class="cw" aria-label="What happens on every commit: before it is saved, after it is saved, and after an amend or rebase. Later, one command opens the chat behind any commit.">
+<div class="cw-how">
+  <div class="cw-step"><h4>git commit</h4><p class="cw-dim">An agent, a scheduled job or I run it, in any repo on the machine.</p></div>
+  <div class="cw-step cw-main">
+    <h4>1 · Before the commit is saved</h4>
+    <div class="cw-q"><i>Is an agent committing?</i><span>No: nothing happens. A human typed it.</span><i>Is the repo private?</i><span>No: the commit stays clean.</span></div>
+    <p style="margin-bottom:.55rem">Both yes: two lines go at the bottom of the commit message.</p>
+    <div class="cw-msgbox"><div class="cw-code">fix bank sync
+
+<span class="cw-add">T3-Thread: 555685fb…</span>   <span class="cw-dim">← the chat</span>
+<span class="cw-add">Session: claude:ee152e9c…</span>   <span class="cw-dim">← the agent run</span></div></div>
+  </div>
+  <div class="cw-step"><h4>2 · After it is saved</h4><p>One line goes into a list on my machine: this commit came from that chat. Every commit, every repo, public ones too. The list never leaves the machine.</p></div>
+  <div class="cw-step"><h4>3 · After an amend or rebase</h4><p>Git gives the commit a new ID. The new ID inherits the old one's chat, so the link survives.</p></div>
+  <div class="cw-step cw-main"><h4>Later: something broke <span>· recall --commit a41c9e2</span></h4><p>Opens the chat behind that commit: my request, and the agent's last 25 steps before it committed.</p></div>
+</div>
+</figure>
+{{- end -}}
