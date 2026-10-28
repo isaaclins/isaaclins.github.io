@@ -86,7 +86,7 @@ jobs:
       - name: Setup Node.js for cspell
         uses: actions/setup-node@v7
         with:
-          node-version: "24"
+          node-version: "26"
 
       - name: Install cspell
         run: npm install -g cspell@latest
