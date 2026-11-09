@@ -53,6 +53,36 @@ why = "A small machine in my living room that I never log into. I talk to it fro
   caption = "Real requests, from [Stewie's first post](/blog/hi-im-stewie-isaacs-ai-agent/)"
 
 [[commit]]
+id = "tbarber"
+name = "tbarber.ch"
+color = "#10fdf1"
+date = "Nov 2026"
+hash = "5282159"
+refs = ["live since Nov 9"]
+refs_muted = ["Cloudflare Workers"]
+one = "Online booking and a phone app for a barbershop in Zürich."
+why = "The barber adds, removes and changes his services, prices and hours on the go, in a simple app on his phone, and the booking page follows at once. That was the whole point. Customers book several services in one go, pick a free time and get a mail with a one-click cancel link. The first real bookings came in within minutes of the link going out."
+  [[commit.stack]]
+  k = "under the hood"
+  v = "one Worker · D1 · Resend · Web Push on WebCrypto"
+  [[commit.stack]]
+  k = "local SEO"
+  v = "structured data · Google Business Profile"
+  [[commit.links]]
+  label = "Book a cut"
+  url = "https://tbarber.ch/"
+  primary = true
+  [commit.stage]
+  kind = "shot"
+  img = "home/tbarber.webp"
+  width = 1400
+  height = 875
+  alt = "tbarber.ch: black page, FRESH FADE. in condensed type with a cyan accent, next to one of the shop's cuts"
+  img2 = "home/tbarber-booking.webp"
+  alt2 = "The booking section of tbarber.ch: prices, several services at once, then a day, a time and a name"
+  caption = "The live site: [tbarber.ch](https://tbarber.ch/)"
+
+[[commit]]
 id = "navigator"
 name = "Rental Law Navigator"
 color = "#8fb1ff"
