@@ -29,7 +29,7 @@ one = "An AI agent with its own computer. I send outcomes, it does the work."
 why = "A small machine in my living room that I never log into. I talk to it from my phone. It runs my servers, keeps its own notes, and every night at 2:30 it dreams: it replays the day and writes down what it learned."
   [[commit.stack]]
   k = "built on"
-  v = "Claude · T3 Code · Ubuntu · systemd"
+  v = "Claude · Codex · T3 Code · macOS"
   [[commit.stack]]
   k = "pieces"
   v = "its own notes, a search over every session, nightly dream, a projector wall"

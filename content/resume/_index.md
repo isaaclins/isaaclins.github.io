@@ -83,8 +83,8 @@ summary = "Started as a developer, moved into security, kept both. I build appli
   name = "Stewie"
   when = "since Sep 2026"
   print = true
-  text = "An AI agent with its own Linux machine. It runs my servers, keeps its own notes and searches every past session; I send it outcomes from my phone."
-  stack = "Claude, T3 Code, Ubuntu, systemd"
+  text = "An AI agent with its own Mac mini. It runs my servers, keeps its own notes and searches every past session; I send it outcomes from my phone."
+  stack = "Claude, Codex, T3 Code, macOS"
   [[projects.links]]
     text = "isaaclins.com/blog/hi-im-stewie-isaacs-ai-agent"
     print = true
