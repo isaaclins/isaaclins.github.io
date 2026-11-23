@@ -3,15 +3,14 @@
     <channel>
         <title>Wax</title>
         <item>
-            <title>0.8.60</title>
-            <pubDate>Mon, 23 Nov 2026 13:32:26 +0100</pubDate>
-            <sparkle:version>71</sparkle:version>
-            <sparkle:shortVersionString>0.8.60</sparkle:shortVersionString>
+            <title>0.8.61</title>
+            <pubDate>Mon, 23 Nov 2026 15:15:11 +0100</pubDate>
+            <sparkle:version>72</sparkle:version>
+            <sparkle:shortVersionString>0.8.61</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="plain-text"><![CDATA[• Hold the lyrics and drag the line being sung into the middle to fix a song's lyric timing, and the fix is saved for each song.
-• Clicking a lyrics line now jumps to the right spot when a song has a timing shift.
+            <description sparkle:format="plain-text"><![CDATA[Small fixes behind the scenes.
 ]]></description>
-            <enclosure url="https://github.com/isaaclins/spotiglass/releases/download/v0.8.60/Wax-0.8.60.zip" length="16726746" type="application/octet-stream" sparkle:edSignature="yavf+1YohWNOe7ZB+J5oinEGwnYS/8JlVQbgDjIptJXdudKd+8chrpYQY7ZKruILtzhfhjR9zJP4JEf5eWq3Ag=="/>
+            <enclosure url="https://github.com/isaaclins/spotiglass/releases/download/v0.8.61/Wax-0.8.61.zip" length="16726785" type="application/octet-stream" sparkle:edSignature="SSImqnQ9Bk4mGSDD1ciCmT758TUdV6fAXCZ+Z/DoDvuY+1k1cxZZ48RJHyMuJKbm6dxd8FInxI0tmER1YZBfCA=="/>
         </item>
     </channel>
 </rss>
