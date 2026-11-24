@@ -3,14 +3,14 @@
     <channel>
         <title>Wax</title>
         <item>
-            <title>0.8.61</title>
-            <pubDate>Mon, 23 Nov 2026 15:15:11 +0100</pubDate>
-            <sparkle:version>72</sparkle:version>
-            <sparkle:shortVersionString>0.8.61</sparkle:shortVersionString>
+            <title>0.8.62</title>
+            <pubDate>Tue, 24 Nov 2026 19:17:31 +0100</pubDate>
+            <sparkle:version>73</sparkle:version>
+            <sparkle:shortVersionString>0.8.62</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="plain-text"><![CDATA[Small fixes behind the scenes.
+            <description sparkle:format="plain-text"><![CDATA[• Pause and play now show right away when you use the media keys or in long lists, instead of still saying "playing" for 20+ seconds.
 ]]></description>
-            <enclosure url="https://github.com/isaaclins/spotiglass/releases/download/v0.8.61/Wax-0.8.61.zip" length="16726785" type="application/octet-stream" sparkle:edSignature="SSImqnQ9Bk4mGSDD1ciCmT758TUdV6fAXCZ+Z/DoDvuY+1k1cxZZ48RJHyMuJKbm6dxd8FInxI0tmER1YZBfCA=="/>
+            <enclosure url="https://github.com/isaaclins/spotiglass/releases/download/v0.8.62/Wax-0.8.62.zip" length="16740098" type="application/octet-stream" sparkle:edSignature="Hrk8cSZdLMKSCu+yvKSrd5oMG4deYlGTBbns4YGVOj64yJmRJeBztxF4HYYCbgko5MDKdlUuva/cgUXXSBe5AA=="/>
         </item>
     </channel>
 </rss>
