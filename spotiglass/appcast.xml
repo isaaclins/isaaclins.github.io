@@ -3,14 +3,14 @@
     <channel>
         <title>Wax</title>
         <item>
-            <title>0.8.62</title>
-            <pubDate>Tue, 24 Nov 2026 19:17:31 +0100</pubDate>
-            <sparkle:version>73</sparkle:version>
-            <sparkle:shortVersionString>0.8.62</sparkle:shortVersionString>
+            <title>0.8.63</title>
+            <pubDate>Tue, 24 Nov 2026 20:31:11 +0100</pubDate>
+            <sparkle:version>74</sparkle:version>
+            <sparkle:shortVersionString>0.8.63</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="plain-text"><![CDATA[• Pause and play now show right away when you use the media keys or in long lists, instead of still saying "playing" for 20+ seconds.
+            <description sparkle:format="plain-text"><![CDATA[• Screenshot mode now resizes its time window correctly on Spotify playlists with 1000 songs.
 ]]></description>
-            <enclosure url="https://github.com/isaaclins/spotiglass/releases/download/v0.8.62/Wax-0.8.62.zip" length="16740098" type="application/octet-stream" sparkle:edSignature="Hrk8cSZdLMKSCu+yvKSrd5oMG4deYlGTBbns4YGVOj64yJmRJeBztxF4HYYCbgko5MDKdlUuva/cgUXXSBe5AA=="/>
+            <enclosure url="https://github.com/isaaclins/spotiglass/releases/download/v0.8.63/Wax-0.8.63.zip" length="16740095" type="application/octet-stream" sparkle:edSignature="8SXH80HplZ6XMM2q68prxCh1k6IKgyKX/+m5dYk7cXHBPyJ2ZprZOP1sIio41c7w14enkVpwiW8B/lZgyRzGAQ=="/>
         </item>
     </channel>
 </rss>
