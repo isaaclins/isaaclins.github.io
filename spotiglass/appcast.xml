@@ -3,14 +3,14 @@
     <channel>
         <title>Wax</title>
         <item>
-            <title>0.8.67</title>
-            <pubDate>Wed, 25 Nov 2026 01:39:09 +0100</pubDate>
-            <sparkle:version>78</sparkle:version>
-            <sparkle:shortVersionString>0.8.67</sparkle:shortVersionString>
+            <title>0.8.68</title>
+            <pubDate>Wed, 25 Nov 2026 02:41:56 +0100</pubDate>
+            <sparkle:version>79</sparkle:version>
+            <sparkle:shortVersionString>0.8.68</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="plain-text"><![CDATA[Small fixes behind the scenes.
+            <description sparkle:format="plain-text"><![CDATA[• Removing a song from a long Apple Music playlist now removes the copy you picked, and your edits stay correct while the rest of the list loads.
 ]]></description>
-            <enclosure url="https://github.com/isaaclins/spotiglass/releases/download/v0.8.67/Wax-0.8.67.zip" length="16851843" type="application/octet-stream" sparkle:edSignature="WY32zSHE4J1X2gkMrvue3BD/+1HIF0E0tRBqtPp4cjwqYRBiccI/5rr9+e3yMKwl/eSycoLgPQqDTZBexyAeAw=="/>
+            <enclosure url="https://github.com/isaaclins/spotiglass/releases/download/v0.8.68/Wax-0.8.68.zip" length="16861942" type="application/octet-stream" sparkle:edSignature="bgcY1HnqVDHPmQ/L9pKEZ6LGSVqc2e3SsbgMRGOrE4xeWWRcp3diZXNXUwEmmRD9c96mYf9hF1Cbpbd4S6YrDA=="/>
         </item>
     </channel>
 </rss>
