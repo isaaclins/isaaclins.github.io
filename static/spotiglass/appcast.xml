@@ -3,14 +3,15 @@
     <channel>
         <title>Wax</title>
         <item>
-            <title>0.8.65</title>
-            <pubDate>Wed, 25 Nov 2026 00:55:07 +0100</pubDate>
-            <sparkle:version>76</sparkle:version>
-            <sparkle:shortVersionString>0.8.65</sparkle:shortVersionString>
+            <title>0.8.66</title>
+            <pubDate>Wed, 25 Nov 2026 01:18:42 +0100</pubDate>
+            <sparkle:version>77</sparkle:version>
+            <sparkle:shortVersionString>0.8.66</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="plain-text"><![CDATA[• Menu bar commands now act on the tracks you select in Home's top tracks.
+            <description sparkle:format="plain-text"><![CDATA[• Wax now tells you when Apple Music isn't signed in, instead of showing an empty library.
+• After signing in to Apple Music, your playlists and covers appear right away, without restarting Wax.
 ]]></description>
-            <enclosure url="https://github.com/isaaclins/spotiglass/releases/download/v0.8.65/Wax-0.8.65.zip" length="16728913" type="application/octet-stream" sparkle:edSignature="VIvbq9JaXTIBdwfOOP/0HKl1z+emcH/k6/CEfH1vVWyQoJLkKMeSUlfBRxi4bLEpOHL7/YCYmfoChbf2olHSCg=="/>
+            <enclosure url="https://github.com/isaaclins/spotiglass/releases/download/v0.8.66/Wax-0.8.66.zip" length="16798943" type="application/octet-stream" sparkle:edSignature="AGdBwGjQ8IyiNFrBR6yPkoYt/9V24iostu52jqTqpQhVK3Gf+FPotVqJ8G4mtKl4t4wHf8d5saoaKCJP1y44Dg=="/>
         </item>
     </channel>
 </rss>
