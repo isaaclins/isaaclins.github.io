@@ -3,14 +3,14 @@
     <channel>
         <title>Wax</title>
         <item>
-            <title>0.8.76</title>
-            <pubDate>Wed, 25 Nov 2026 16:17:48 +0100</pubDate>
-            <sparkle:version>87</sparkle:version>
-            <sparkle:shortVersionString>0.8.76</sparkle:shortVersionString>
+            <title>0.8.77</title>
+            <pubDate>Wed, 25 Nov 2026 17:25:08 +0100</pubDate>
+            <sparkle:version>88</sparkle:version>
+            <sparkle:shortVersionString>0.8.77</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="plain-text"><![CDATA[Small fixes behind the scenes.
+            <description sparkle:format="plain-text"><![CDATA[• The Spotify player bar now recovers on its own when it gets stuck on "connecting", loses its device list, or keeps showing an old song.
 ]]></description>
-            <enclosure url="https://github.com/isaaclins/spotiglass/releases/download/v0.8.76/Wax-0.8.76.zip" length="17482700" type="application/octet-stream" sparkle:edSignature="Jg6IZ1qsT7+vWMJYzvRvlRU3xouWJyhm36ixx1ZKAG36qnYGwRidVJj+64DLUdAu91Bnu5SiwAFXHqagFO6gAw=="/>
+            <enclosure url="https://github.com/isaaclins/spotiglass/releases/download/v0.8.77/Wax-0.8.77.zip" length="17501379" type="application/octet-stream" sparkle:edSignature="9NP4JDDYnW9DQi2TktNhZXSPTe8pWL93bQYfXgatTZ+li69OKMd9UuQzA4gGF3RZQt0LFXd4YLMio1Aa44DxDw=="/>
         </item>
     </channel>
 </rss>
