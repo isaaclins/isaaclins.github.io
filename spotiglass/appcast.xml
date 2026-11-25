@@ -3,14 +3,14 @@
     <channel>
         <title>Wax</title>
         <item>
-            <title>0.8.78</title>
-            <pubDate>Wed, 25 Nov 2026 18:38:56 +0100</pubDate>
-            <sparkle:version>89</sparkle:version>
-            <sparkle:shortVersionString>0.8.78</sparkle:shortVersionString>
+            <title>0.8.79</title>
+            <pubDate>Wed, 25 Nov 2026 20:41:53 +0100</pubDate>
+            <sparkle:version>90</sparkle:version>
+            <sparkle:shortVersionString>0.8.79</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="plain-text"><![CDATA[• Autoplay no longer jumps from song to song through a long playlist on its own.
+            <description sparkle:format="plain-text"><![CDATA[Small fixes behind the scenes.
 ]]></description>
-            <enclosure url="https://github.com/isaaclins/spotiglass/releases/download/v0.8.78/Wax-0.8.78.zip" length="17512378" type="application/octet-stream" sparkle:edSignature="dG0X27goul+3NJv25DOrCvENmUcXBKKpg8Hz1A8ITTu6NfMn9mWfw3MmSHUlPwHqcjHuHhDqsuyvMJkTvT3iCQ=="/>
+            <enclosure url="https://github.com/isaaclins/spotiglass/releases/download/v0.8.79/Wax-0.8.79.zip" length="17796033" type="application/octet-stream" sparkle:edSignature="W1qHBI0y+hmvTQX28lm9TfKVomcNKyeBqi1NVEd9qp9pnUT2dwbb9DkjeVMDn3f36puCJyH1u2I31NEiKnCYDw=="/>
         </item>
     </channel>
 </rss>
