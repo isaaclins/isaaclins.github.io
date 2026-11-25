@@ -3,14 +3,14 @@
     <channel>
         <title>Wax</title>
         <item>
-            <title>0.8.71</title>
-            <pubDate>Wed, 25 Nov 2026 09:10:32 +0100</pubDate>
-            <sparkle:version>82</sparkle:version>
-            <sparkle:shortVersionString>0.8.71</sparkle:shortVersionString>
+            <title>0.8.72</title>
+            <pubDate>Wed, 25 Nov 2026 09:42:48 +0100</pubDate>
+            <sparkle:version>83</sparkle:version>
+            <sparkle:shortVersionString>0.8.72</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="plain-text"><![CDATA[• Next and previous now show the new song right away instead of waiting for Spotify to report it.
+            <description sparkle:format="plain-text"><![CDATA[• Lyrics that LRCLIB has now show up for singles and smaller artists, instead of "No lyrics found".
 ]]></description>
-            <enclosure url="https://github.com/isaaclins/spotiglass/releases/download/v0.8.71/Wax-0.8.71.zip" length="17151839" type="application/octet-stream" sparkle:edSignature="Yc/cqTF58TLN9S836FYoVUi4YoWsU0abRpzndiz7u5rvQ4UZ+iL+AC37U5xlemnn3pbatb7fKefSACNseV/CCw=="/>
+            <enclosure url="https://github.com/isaaclins/spotiglass/releases/download/v0.8.72/Wax-0.8.72.zip" length="17184084" type="application/octet-stream" sparkle:edSignature="2vS6OWD43a8rY7hlvyZ/SkHGOXXT0EIeldvb3Xtcr+P2VMO3QPR7A+DDit826aFpclMbxalNgOM4G3x6G3SCCA=="/>
         </item>
     </channel>
 </rss>
