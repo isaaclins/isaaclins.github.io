@@ -3,14 +3,14 @@
     <channel>
         <title>Wax</title>
         <item>
-            <title>0.8.74</title>
-            <pubDate>Wed, 25 Nov 2026 14:16:18 +0100</pubDate>
-            <sparkle:version>85</sparkle:version>
-            <sparkle:shortVersionString>0.8.74</sparkle:shortVersionString>
+            <title>0.8.75</title>
+            <pubDate>Wed, 25 Nov 2026 16:04:47 +0100</pubDate>
+            <sparkle:version>86</sparkle:version>
+            <sparkle:shortVersionString>0.8.75</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="plain-text"><![CDATA[• Apple Music artist pages now show the artist's full catalog of songs and albums, with your saved music in its own section.
+            <description sparkle:format="plain-text"><![CDATA[• Lyrics no longer stay hidden for 15 minutes after a short Wi-Fi drop.
 ]]></description>
-            <enclosure url="https://github.com/isaaclins/spotiglass/releases/download/v0.8.74/Wax-0.8.74.zip" length="17445852" type="application/octet-stream" sparkle:edSignature="iV/WMcgmBk4pV2keed4Fa7wET1NqOa24QoXpTSqrIklQNm4x2lQtOR19BVSkMuNv/FnV+rJJGuhUbACxyvsGDA=="/>
+            <enclosure url="https://github.com/isaaclins/spotiglass/releases/download/v0.8.75/Wax-0.8.75.zip" length="17482669" type="application/octet-stream" sparkle:edSignature="kFcKOge3aMcWUBPwDRcKmPiEmVie7Fk0keUHtbwfoWenniLQPRwx8jsqLobSowdI021kHl9eh6ZK6n+s9oU+Ag=="/>
         </item>
     </channel>
 </rss>
