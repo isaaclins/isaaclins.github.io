@@ -3,14 +3,14 @@
     <channel>
         <title>Wax</title>
         <item>
-            <title>0.8.73</title>
-            <pubDate>Wed, 25 Nov 2026 11:50:40 +0100</pubDate>
-            <sparkle:version>84</sparkle:version>
-            <sparkle:shortVersionString>0.8.73</sparkle:shortVersionString>
+            <title>0.8.74</title>
+            <pubDate>Wed, 25 Nov 2026 14:16:18 +0100</pubDate>
+            <sparkle:version>85</sparkle:version>
+            <sparkle:shortVersionString>0.8.74</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="plain-text"><![CDATA[• Apple Music shows the song you start right away, before it begins playing.
+            <description sparkle:format="plain-text"><![CDATA[• Apple Music artist pages now show the artist's full catalog of songs and albums, with your saved music in its own section.
 ]]></description>
-            <enclosure url="https://github.com/isaaclins/spotiglass/releases/download/v0.8.73/Wax-0.8.73.zip" length="17225089" type="application/octet-stream" sparkle:edSignature="Fzi1OCuyMjIjbfKa70TkYi7I1ymfYcGRf1RGiE1nfjZPCaOYF5cx9DIgRI4q5TL7bTlzFEBk4X3nF5EkWMA4CQ=="/>
+            <enclosure url="https://github.com/isaaclins/spotiglass/releases/download/v0.8.74/Wax-0.8.74.zip" length="17445852" type="application/octet-stream" sparkle:edSignature="iV/WMcgmBk4pV2keed4Fa7wET1NqOa24QoXpTSqrIklQNm4x2lQtOR19BVSkMuNv/FnV+rJJGuhUbACxyvsGDA=="/>
         </item>
     </channel>
 </rss>
