@@ -3,14 +3,14 @@
     <channel>
         <title>Wax</title>
         <item>
-            <title>0.8.70</title>
-            <pubDate>Wed, 25 Nov 2026 06:23:44 +0100</pubDate>
-            <sparkle:version>81</sparkle:version>
-            <sparkle:shortVersionString>0.8.70</sparkle:shortVersionString>
+            <title>0.8.71</title>
+            <pubDate>Wed, 25 Nov 2026 09:10:32 +0100</pubDate>
+            <sparkle:version>82</sparkle:version>
+            <sparkle:shortVersionString>0.8.71</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="plain-text"><![CDATA[Small fixes behind the scenes.
+            <description sparkle:format="plain-text"><![CDATA[• Next and previous now show the new song right away instead of waiting for Spotify to report it.
 ]]></description>
-            <enclosure url="https://github.com/isaaclins/spotiglass/releases/download/v0.8.70/Wax-0.8.70.zip" length="17114149" type="application/octet-stream" sparkle:edSignature="fbG0Dqf0vnOnUjePJj+tvNEdfZCPu+i647vlpuxUR5+zNXWOh7kgkyIXOVfGyppsdtj5yhpDDm08Ww0uId8SAA=="/>
+            <enclosure url="https://github.com/isaaclins/spotiglass/releases/download/v0.8.71/Wax-0.8.71.zip" length="17151839" type="application/octet-stream" sparkle:edSignature="Yc/cqTF58TLN9S836FYoVUi4YoWsU0abRpzndiz7u5rvQ4UZ+iL+AC37U5xlemnn3pbatb7fKefSACNseV/CCw=="/>
         </item>
     </channel>
 </rss>
