@@ -3,16 +3,14 @@
     <channel>
         <title>Wax</title>
         <item>
-            <title>0.8.82</title>
-            <pubDate>Thu, 26 Nov 2026 01:26:08 +0100</pubDate>
-            <sparkle:version>93</sparkle:version>
-            <sparkle:shortVersionString>0.8.82</sparkle:shortVersionString>
+            <title>0.8.83</title>
+            <pubDate>Thu, 26 Nov 2026 04:31:52 +0100</pubDate>
+            <sparkle:version>94</sparkle:version>
+            <sparkle:shortVersionString>0.8.83</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="plain-text"><![CDATA[• Saved songs now show their proper album cover instead of the library artwork.
-• Covers no longer show as a black and white diagonal tile.
-• Covers load faster.
+            <description sparkle:format="plain-text"><![CDATA[• Clicking a song in an album keeps the rest of the album queued, even when Apple Music won't start that first song.
 ]]></description>
-            <enclosure url="https://github.com/isaaclins/spotiglass/releases/download/v0.8.82/Wax-0.8.82.zip" length="17838366" type="application/octet-stream" sparkle:edSignature="86qDbZU4IhSzJ4xeZ4BIQQhmiFO2UuJw6vKDClcEN8xYyFjFPUu4IvEJnpf/3+x9VGX7pqQYAcsx4XSHdgycCA=="/>
+            <enclosure url="https://github.com/isaaclins/spotiglass/releases/download/v0.8.83/Wax-0.8.83.zip" length="17883680" type="application/octet-stream" sparkle:edSignature="xLVmPGEwhBLph3UydpkAIxHZHvMPZ5N+MWHxclwiPwvXtm2fxo6UHRrBttO1TaxajTACmwWec/ra+cLIenTqBg=="/>
         </item>
     </channel>
 </rss>
