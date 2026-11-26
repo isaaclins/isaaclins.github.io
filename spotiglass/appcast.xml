@@ -3,14 +3,16 @@
     <channel>
         <title>Wax</title>
         <item>
-            <title>0.8.81</title>
-            <pubDate>Wed, 25 Nov 2026 23:22:35 +0100</pubDate>
-            <sparkle:version>92</sparkle:version>
-            <sparkle:shortVersionString>0.8.81</sparkle:shortVersionString>
+            <title>0.8.82</title>
+            <pubDate>Thu, 26 Nov 2026 01:26:08 +0100</pubDate>
+            <sparkle:version>93</sparkle:version>
+            <sparkle:shortVersionString>0.8.82</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="plain-text"><![CDATA[Small fixes behind the scenes.
+            <description sparkle:format="plain-text"><![CDATA[• Saved songs now show their proper album cover instead of the library artwork.
+• Covers no longer show as a black and white diagonal tile.
+• Covers load faster.
 ]]></description>
-            <enclosure url="https://github.com/isaaclins/spotiglass/releases/download/v0.8.81/Wax-0.8.81.zip" length="17814424" type="application/octet-stream" sparkle:edSignature="7lX6pGsKRUy0pDL2Dyv1k8ZKSmpLZTQC79GVQ+DdpBHjxGELX24fp+0LvQ2gQg3u3c70TN5qAUN/gx84KVacBQ=="/>
+            <enclosure url="https://github.com/isaaclins/spotiglass/releases/download/v0.8.82/Wax-0.8.82.zip" length="17838366" type="application/octet-stream" sparkle:edSignature="86qDbZU4IhSzJ4xeZ4BIQQhmiFO2UuJw6vKDClcEN8xYyFjFPUu4IvEJnpf/3+x9VGX7pqQYAcsx4XSHdgycCA=="/>
         </item>
     </channel>
 </rss>
