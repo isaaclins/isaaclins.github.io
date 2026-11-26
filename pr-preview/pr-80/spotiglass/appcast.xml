@@ -1,0 +1,16 @@
+<?xml version="1.0" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>Wax</title>
+        <item>
+            <title>0.8.86</title>
+            <pubDate>Thu, 26 Nov 2026 07:29:30 +0100</pubDate>
+            <sparkle:version>97</sparkle:version>
+            <sparkle:shortVersionString>0.8.86</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="plain-text"><![CDATA[• You can remove the equalizer driver now, and your Mac's sound no longer gets stuck on a device that plays nothing.
+]]></description>
+            <enclosure url="https://github.com/isaaclins/spotiglass/releases/download/v0.8.86/Wax-0.8.86.zip" length="17925905" type="application/octet-stream" sparkle:edSignature="QbpqB/WhTFUymQX1WFUw1U1acy2/ufOP1j89ANstmMuZJ3ibboIADHIT618xnC78ZeQFpTfYGqJfmpcM1fP8Cg=="/>
+        </item>
+    </channel>
+</rss>
