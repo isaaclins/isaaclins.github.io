@@ -3,14 +3,14 @@
     <channel>
         <title>Wax</title>
         <item>
-            <title>0.8.102</title>
-            <pubDate>Thu, 26 Nov 2026 16:29:42 +0100</pubDate>
-            <sparkle:version>113</sparkle:version>
-            <sparkle:shortVersionString>0.8.102</sparkle:shortVersionString>
+            <title>0.8.103</title>
+            <pubDate>Thu, 26 Nov 2026 16:55:52 +0100</pubDate>
+            <sparkle:version>114</sparkle:version>
+            <sparkle:shortVersionString>0.8.103</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="plain-text"><![CDATA[• Autoplay on Spotify now keeps playing music from the artists in your queue and your playlists when the queue runs out.
+            <description sparkle:format="plain-text"><![CDATA[• Opening and closing the lyrics with ⌥⌘L now happens almost instantly.
 ]]></description>
-            <enclosure url="https://github.com/isaaclins/spotiglass/releases/download/v0.8.102/Wax-0.8.102.zip" length="18509845" type="application/octet-stream" sparkle:edSignature="KxzWhNNIOzsX62LjocIx3DsV5lvEUBtlY1ul1tdtFQUBVFdXhQudCxB80Htx32DgVGn8dNT6f9FHjZY9ocxOBQ=="/>
+            <enclosure url="https://github.com/isaaclins/spotiglass/releases/download/v0.8.103/Wax-0.8.103.zip" length="18500118" type="application/octet-stream" sparkle:edSignature="nqPQ1I5gu9aexVyc44NjD+Ql+9jRtPBrjlERreIeEj5gBpYo5WvKbnoJmefqcDtJZQSyGK1XGyR9jUxYQVruAQ=="/>
         </item>
     </channel>
 </rss>
