@@ -3,14 +3,14 @@
     <channel>
         <title>Wax</title>
         <item>
-            <title>0.8.93</title>
-            <pubDate>Thu, 26 Nov 2026 11:53:07 +0100</pubDate>
-            <sparkle:version>104</sparkle:version>
-            <sparkle:shortVersionString>0.8.93</sparkle:shortVersionString>
+            <title>0.8.94</title>
+            <pubDate>Thu, 26 Nov 2026 12:13:51 +0100</pubDate>
+            <sparkle:version>105</sparkle:version>
+            <sparkle:shortVersionString>0.8.94</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="plain-text"><![CDATA[• The log you attach to bug reports no longer includes your searches, songs or device IDs.
+            <description sparkle:format="plain-text"><![CDATA[Small fixes behind the scenes.
 ]]></description>
-            <enclosure url="https://github.com/isaaclins/spotiglass/releases/download/v0.8.93/Wax-0.8.93.zip" length="18152220" type="application/octet-stream" sparkle:edSignature="K6CQq/XwOvGN8iNrKUwSyofRV8bFGi8y/6G0Aik//TWC0IKV+QmS21050k0Re9VlNk5U3YQka5Z4tD7hmMMkBw=="/>
+            <enclosure url="https://github.com/isaaclins/spotiglass/releases/download/v0.8.94/Wax-0.8.94.zip" length="18199080" type="application/octet-stream" sparkle:edSignature="++vyhW1ZcnT8qKGSTozEmPwwaB11Xw946XXPO6iLBWT7t+aYzOHDvmEb8lKQHQPE6AwpIz4XJHkYd9/f7bBeAA=="/>
         </item>
     </channel>
 </rss>
