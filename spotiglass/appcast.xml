@@ -3,14 +3,14 @@
     <channel>
         <title>Wax</title>
         <item>
-            <title>0.8.94</title>
-            <pubDate>Thu, 26 Nov 2026 12:13:51 +0100</pubDate>
-            <sparkle:version>105</sparkle:version>
-            <sparkle:shortVersionString>0.8.94</sparkle:shortVersionString>
+            <title>0.8.95</title>
+            <pubDate>Thu, 26 Nov 2026 13:03:39 +0100</pubDate>
+            <sparkle:version>106</sparkle:version>
+            <sparkle:shortVersionString>0.8.95</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="plain-text"><![CDATA[Small fixes behind the scenes.
+            <description sparkle:format="plain-text"><![CDATA[• On macOS 26, opening or closing the queue no longer makes the player controls and song rows redraw.
 ]]></description>
-            <enclosure url="https://github.com/isaaclins/spotiglass/releases/download/v0.8.94/Wax-0.8.94.zip" length="18199080" type="application/octet-stream" sparkle:edSignature="++vyhW1ZcnT8qKGSTozEmPwwaB11Xw946XXPO6iLBWT7t+aYzOHDvmEb8lKQHQPE6AwpIz4XJHkYd9/f7bBeAA=="/>
+            <enclosure url="https://github.com/isaaclins/spotiglass/releases/download/v0.8.95/Wax-0.8.95.zip" length="18200999" type="application/octet-stream" sparkle:edSignature="vHQW92DQTrjlpHKa5nmbiEuknGK4Fi2Y1SJOqf3xeGRJ+VgnVG/t2cYLbzBnaxCELnOwZUIdOEtuMeS6czcgAQ=="/>
         </item>
     </channel>
 </rss>
