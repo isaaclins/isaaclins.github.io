@@ -13,23 +13,13 @@ jobs:
     outputs:
       urls: ${{ steps.get_urls.outputs.urls }}
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v7
-
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v3
-        with:
-          hugo-version: "latest" # Or your specific Hugo version
-          extended: true
-
-      - name: Build site
-        run: hugo --minify
-
-      - name: List public directory (for debugging)
-        run: ls -R public
-
       - name: Install yq (for parsing XML)
         run: sudo wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq && sudo chmod +x /usr/bin/yq
+
+      - name: Download the live sitemap
+        # Lighthouse tests the live site, so the URL list comes from the live sitemap
+        # instead of a second build that can drift from pages-deploy.
+        run: mkdir -p public && curl -fsSL --retry 3 https://isaaclins.com/sitemap.xml -o public/sitemap.xml
 
       - name: Extract URLs from sitemap
         id: get_urls
