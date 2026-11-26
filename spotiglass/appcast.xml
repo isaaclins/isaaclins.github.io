@@ -3,14 +3,14 @@
     <channel>
         <title>Wax</title>
         <item>
-            <title>0.8.83</title>
-            <pubDate>Thu, 26 Nov 2026 04:31:52 +0100</pubDate>
-            <sparkle:version>94</sparkle:version>
-            <sparkle:shortVersionString>0.8.83</sparkle:shortVersionString>
+            <title>0.8.84</title>
+            <pubDate>Thu, 26 Nov 2026 06:17:12 +0100</pubDate>
+            <sparkle:version>95</sparkle:version>
+            <sparkle:shortVersionString>0.8.84</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="plain-text"><![CDATA[• Clicking a song in an album keeps the rest of the album queued, even when Apple Music won't start that first song.
+            <description sparkle:format="plain-text"><![CDATA[• Hiding or showing the sidebar with ⌘S now responds almost instantly.
 ]]></description>
-            <enclosure url="https://github.com/isaaclins/spotiglass/releases/download/v0.8.83/Wax-0.8.83.zip" length="17883680" type="application/octet-stream" sparkle:edSignature="xLVmPGEwhBLph3UydpkAIxHZHvMPZ5N+MWHxclwiPwvXtm2fxo6UHRrBttO1TaxajTACmwWec/ra+cLIenTqBg=="/>
+            <enclosure url="https://github.com/isaaclins/spotiglass/releases/download/v0.8.84/Wax-0.8.84.zip" length="17887655" type="application/octet-stream" sparkle:edSignature="OeiQ+c7hiC2a9yVKDToLHirkSFGCuTCL2BqfP0C5enfc22q3Eiy85PJSCufm+lm+RBvTdyYItfmhSzuoA4BgCw=="/>
         </item>
     </channel>
 </rss>
