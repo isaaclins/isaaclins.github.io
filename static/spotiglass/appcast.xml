@@ -3,14 +3,14 @@
     <channel>
         <title>Wax</title>
         <item>
-            <title>0.8.87</title>
-            <pubDate>Thu, 26 Nov 2026 08:42:47 +0100</pubDate>
-            <sparkle:version>98</sparkle:version>
-            <sparkle:shortVersionString>0.8.87</sparkle:shortVersionString>
+            <title>0.8.88</title>
+            <pubDate>Thu, 26 Nov 2026 09:49:20 +0100</pubDate>
+            <sparkle:version>99</sparkle:version>
+            <sparkle:shortVersionString>0.8.88</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="plain-text"><![CDATA[• Volume keys now change the loudness with the equalizer on, even on USB DAC and HDMI outputs.
+            <description sparkle:format="plain-text"><![CDATA[• Opening or closing the queue no longer makes the sidebar and page redraw.
 ]]></description>
-            <enclosure url="https://github.com/isaaclins/spotiglass/releases/download/v0.8.87/Wax-0.8.87.zip" length="17926557" type="application/octet-stream" sparkle:edSignature="CcvDcK6UtNezWCdnbQCaJYIKGcMp/9lRJFbVxgrrZpEkGDnU+j/NKenKgz5FAJuTU2MyrafbKRU7Hbt5C4WIBg=="/>
+            <enclosure url="https://github.com/isaaclins/spotiglass/releases/download/v0.8.88/Wax-0.8.88.zip" length="17946053" type="application/octet-stream" sparkle:edSignature="DjLQGQO/Pk7CYp4qogU7JwJNH/9ysQvwkKC5igvQ624vttfag4LfyEYF5ec/6p47D+zq9uZoViRSyoTQ5KfHAg=="/>
         </item>
     </channel>
 </rss>
