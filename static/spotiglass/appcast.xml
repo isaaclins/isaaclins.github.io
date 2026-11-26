@@ -3,14 +3,14 @@
     <channel>
         <title>Wax</title>
         <item>
-            <title>0.8.89</title>
-            <pubDate>Thu, 26 Nov 2026 10:42:03 +0100</pubDate>
-            <sparkle:version>100</sparkle:version>
-            <sparkle:shortVersionString>0.8.89</sparkle:shortVersionString>
+            <title>0.8.90</title>
+            <pubDate>Thu, 26 Nov 2026 10:46:14 +0100</pubDate>
+            <sparkle:version>101</sparkle:version>
+            <sparkle:shortVersionString>0.8.90</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="plain-text"><![CDATA[• If an edit fails partway through, the app now shows which changes already went through, so your library and the screen match.
+            <description sparkle:format="plain-text"><![CDATA[• Switching the equalizer on no longer freezes the app, and the window shows right away at launch even with the equalizer on.
 ]]></description>
-            <enclosure url="https://github.com/isaaclins/spotiglass/releases/download/v0.8.89/Wax-0.8.89.zip" length="17987255" type="application/octet-stream" sparkle:edSignature="pzR4dJJy/uA+m5o4v3nS+bTEhY7Uk9BWxSgg4ZKl1lghIPdbMllzjbeKXKmGW9ysI5A2vViTPFpjSCMLib0MAQ=="/>
+            <enclosure url="https://github.com/isaaclins/spotiglass/releases/download/v0.8.90/Wax-0.8.90.zip" length="18024777" type="application/octet-stream" sparkle:edSignature="fgyKTCngGWfQsNjKoCvuEcENdf4HXx0EjXKAj4aR7riSqtUoP7PjelufkgYYcyOj/G+p2c3VHCPT8EYD+9kCCA=="/>
         </item>
     </channel>
 </rss>
