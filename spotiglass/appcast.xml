@@ -3,14 +3,14 @@
     <channel>
         <title>Wax</title>
         <item>
-            <title>0.8.92</title>
-            <pubDate>Thu, 26 Nov 2026 11:46:58 +0100</pubDate>
-            <sparkle:version>103</sparkle:version>
-            <sparkle:shortVersionString>0.8.92</sparkle:shortVersionString>
+            <title>0.8.93</title>
+            <pubDate>Thu, 26 Nov 2026 11:53:07 +0100</pubDate>
+            <sparkle:version>104</sparkle:version>
+            <sparkle:shortVersionString>0.8.93</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="plain-text"><![CDATA[• Menu bar shortcuts ⌥⌘S, ⌥⌘R, ⌘→ and ⌘[ now show up reliably, and the menu bar refreshes after a window closes.
+            <description sparkle:format="plain-text"><![CDATA[• The log you attach to bug reports no longer includes your searches, songs or device IDs.
 ]]></description>
-            <enclosure url="https://github.com/isaaclins/spotiglass/releases/download/v0.8.92/Wax-0.8.92.zip" length="18097024" type="application/octet-stream" sparkle:edSignature="pyqzMbwR70eJ8tLYXKVZWnpslwz2tQqMAwuZjVaDIsEv1AFJDpzeaf62o/B90hV2bfbdUSneABGQxbmE2Y++DA=="/>
+            <enclosure url="https://github.com/isaaclins/spotiglass/releases/download/v0.8.93/Wax-0.8.93.zip" length="18152220" type="application/octet-stream" sparkle:edSignature="K6CQq/XwOvGN8iNrKUwSyofRV8bFGi8y/6G0Aik//TWC0IKV+QmS21050k0Re9VlNk5U3YQka5Z4tD7hmMMkBw=="/>
         </item>
     </channel>
 </rss>
